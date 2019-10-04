@@ -1,0 +1,112 @@
+<resources>
+    <string name="app_name">متخصصین شیراز سرویس</string>
+
+
+
+    <string name="escape_button_text">برو به آخر</string>
+    <string name="start_app_button_text">شروع کنید</string>
+    <string name="all_string_next">بعدی</string>
+    <string name="all_string_previous">قبلی</string>
+    <string name="text_fix_login_pass">ورود به متخصصین شیراز سرویس</string>
+    <string name="text_fix_forget_pass">فراموشی رمز</string>
+    <string name="text_user_name">نام کاربری</string>
+    <string name="text_pass">کـلمه عبور</string>
+    <string name="text_title_login">کنترل ورود</string>
+    <string name="text_error_need_user_name">نام کاربری وارد نشده است</string>
+    <string name="text_error_need_pass">رمز عبور وارد نشده است</string>
+    <string name="text_chk_remember_me">مرا به خاطر بسپار</string>
+    <string name="text_run_app">بیخیال</string>
+    <string name="internet_connection_error">اتصال دستگاه شما به اینترنت برقرار نیست. برای استـفاده از خدمات شیراز سرویس به اینترنت متصل شوید.</string>
+    <string name="internet_connection_error_title">خطا در اتصال به اینترنت!</string>
+    <string name="internet">اینترنت</string>
+    <string name="exit">خروج</string>
+    <string name="internet_try_again">تلاش مجدد</string>
+    <string name="shirazService_update_recommend">نسخه ی جدیدی از برنامه وجود دارد</string>
+    <string name="title_charge">شارژ</string>
+    <string name="title_message">پیام</string>
+    <string name="title_my_service">سرویس من</string>
+    <string name="title_transaction">تراکنش</string>
+    <string name="error_text">خطا</string>
+    <string name="text_ok">تایید</string>
+    <string name="welcome_text">خوش آمدید</string>
+    <string name="text_error_incorrect_user_name">شماره همراه وارد شده صحیح نمی باشد</string>
+    <string name="title_home">خانه</string>
+    <string name="all_transaction_text">لیست تمام تراکنش ها</string>
+    <string name="error_no_whats_up">واتس آپ نصب نمی باشد</string>
+    <string name="text_request_detail">جزییات درخواست</string>
+    <string name="error_net_title">اینترنت درستگاه شما قطع می باشد</string>
+    <string name="text_waiting">لطفا منتظر بمانید</string>
+    <string name="text_no_request_found">اطلاعاتی جهت نمایش یافت نشد</string>
+    <string name="text_try_again">فراخوانی مجدد</string>
+    <string name="text_show_all_transaction">تمام تراکنش ها</string>
+    <string name="text_amount">موجودی</string>
+    <string name="text_increase_charge">افزایش شارژ</string>
+    <string name="text_current_amount">موجودی فعلی:</string>
+    <string name="text_charge">افزودن شارژ هدیه به صورت پلکانی جهت متخصصین
+جدول مربوطه طراحی شد، ماژول در قسمت مدیریت، زیر منو سرویس دهندگان با عنوان « فرمول شارژ هدیه سرویس دهندگان » افزوده گردید
+از قسمت مدیریت می توانید درصد مربوط به هر بازه ای را ویرایش نمایید
+اطلاعات فرمول شارژ پلکانی در قالب یک وب سرویس به اپلیکیشن بازگردانده می شود</string>
+
+    <string name="text_service_detail">جزئیات سرویس</string>
+    <string name="text_successful_operation">عملیات با موفقیت ثبت شد</string>
+    <string name="error_money_select">مبلغی انتخاب نشده است</string>
+    <string name="text_online_payment_description">پرداخت متخصص</string>
+    <string name="error_online_payment">خطا در ایجاد درخواست پرداخت</string>
+    <string name="text_financial_transaction_serialize">workmanFinancialTransactionList</string>
+    <string name="text_bundle_req_id">ReqId</string>
+    <string name="text_bundle_service_status">serviceStatus</string>
+    <string name="text_gift_charge">با شارژ مبلغ  %s  ریال   مبلغ %s ریال،هدیه  به حساب شما افزوده خواهد شد. آیا از انجام این عملیات اطمینان دارید؟</string>
+    <string name="text_preference_slider_is_show">slider_is_show</string>
+    <string name="text_fire_base_news">News</string>
+    <string name="text_profile_title">اطلاعات شخصی</string>
+    <string name="text_request_detail_title">جزئیات درخواست</string>
+    <string name="text_service_detail_title">جزئیات سرویس</string>
+    <string name="text_payment_detail">اطلاعات واریز</string>
+    <string name="text_error_need_value">پر کردن تمامی فیلدها الزامی می باشد</string>
+    <string name="text_error_select_payment_type">انتخاب نوع واریز الزامی می باشد</string>
+    <string name="text_error_select_date">انتخاب تاریخ واریز الزامی می باشد</string>
+    <string name="text_currency_symbol">ریال</string>
+    <string name="text_service_man">ServiceMan</string>
+    <string name="text_float_point">%.0f</string>
+    <string name="text_string_format">%s [%s]</string>
+    <string name="text_string_format_2">%s / %s</string>
+    <string name="text_payment_online_button">آنلاین</string>
+    <string name="text_offline_payment_button">واریز</string>
+    <string name="text_enter_user_name">نام کاربری خود را وارد کنید</string>
+    <string name="text_user_name_mobile_number">شماره همراه شما نام کاربری شماست</string>
+    <string name="text_enter_password">رمز عبورتان را وارد کنید</string>
+    <string name="text_cancel_request">لغو درخواست</string>
+    <string name="text_cancel">انصراف</string>
+    <string name="text_choose_request">انتخاب درخواست</string>
+    <string name="text_ok_charge">تایید شارژ حساب</string>
+    <string name="text_charge_account">شارژ حساب</string>
+    <string name="text_tracking_code">کد پیگیری</string>
+    <string name="text_requester">درخواست دهنده</string>
+    <string name="text_request_status">وضعیت درخواست</string>
+    <string name="text_cost_request">هزینه ی این درخواست</string>
+    <string name="text_address">آدرس</string>
+    <string name="text_customer_explaination">توضیحات مشتری</string>
+    <string name="text_phone">تلفن ثابت</string>
+    <string name="text_mobile">تلفن همراه</string>
+    <string name="text_register_date">تاریخ ثبت درخواست</string>
+    <string name="text_date_service">تاریخ سرویس دهی</string>
+    <string name="text_time_service">ساعت سرویس دهی</string>
+    <string name="text_address_region">محدوده درخواست</string>
+    <string name="text_pay_money_cart_number">شماره کارت/شماره قبض واریز کننده</string>
+    <string name="text_card_to_card">کارت به کارت</string>
+    <string name="text_pay_to_card">واریز به کارت</string>
+    <string name="text_choose_date_button">انتخاب تاریخ</string>
+    <string name="text_owner_card_name">نام و نام خانوادگی صاحب کارت</string>
+    <string name="text_pay_money_offline">مبلغ واریز شده (ریال)</string>
+    <string name="text_register">ثبت</string>
+    <string name="text_confirmation">پس از تایید توسط کارشناسان اعتبار شما افزایش خواهد یاقت.</string>
+    <string name="text_unsuccessful_operation">عملیات با شکست مواجه شد، مجددا تلاش نمایید.</string>
+    <string name="text_new_version_title">ورژن جدید</string>
+    <string name="text_download_new_version">دریافت نسخه ی جدید</string>
+    <string name="text_obligation_update">لطفا، نسخه ی برنامه ی خود را ارتقا دهید.</string>
+    <string name="text_optional_update">نسخه ی جدیدی وجود دارد، آیا مایل به بروزرسانی هستید؟</string>
+    <string name="text_imidiately">فوری</string>
+    <string name="text_all_tap_back_button">لطفا برای خروج کلید بازگشت را مجددا فشار دهید.</string>
+
+
+</resources>

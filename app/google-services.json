@@ -1,0 +1,93 @@
+{
+  "project_info": {
+    "project_number": "54285829648",
+    "firebase_url": "https://shiraz-service.firebaseio.com",
+    "project_id": "shiraz-service",
+    "storage_bucket": "shiraz-service.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54285829648:android:77105ad922d34c28",
+        "android_client_info": {
+          "package_name": "com.rahbaran.shirazservice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54285829648-o5n0ae979n3sfr4jso65cm9d79vn2le6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rahbaran.shirazservice",
+            "certificate_hash": "5c755037ee035ab3345bfa3b5836a42664883763"
+          }
+        },
+        {
+          "client_id": "54285829648-c16hg65ha6r8gt3o1aksf2reki4p83oc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIAxrsD7BCXoR-OP6YMbi5_rnDE11j6oY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54285829648-c16hg65ha6r8gt3o1aksf2reki4p83oc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54285829648:android:c941003ce853e500",
+        "android_client_info": {
+          "package_name": "ir.shirazservice.expert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54285829648-29olbalpcfuifsaq2sg6hoq3pvhlgem4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.shirazservice.expert",
+            "certificate_hash": "eb074cf2f2134eedf9b28b443720c610bd216a75"
+          }
+        },
+        {
+          "client_id": "54285829648-ksming76r30gffq8eh2nauvbu6ab3btc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.shirazservice.expert",
+            "certificate_hash": "5c755037ee035ab3345bfa3b5836a42664883763"
+          }
+        },
+        {
+          "client_id": "54285829648-c16hg65ha6r8gt3o1aksf2reki4p83oc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIAxrsD7BCXoR-OP6YMbi5_rnDE11j6oY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54285829648-c16hg65ha6r8gt3o1aksf2reki4p83oc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="color_toast_solid_color">#d21d1d1d</color>
+    <color name="colorPrimary">#1c1d24</color>
+    <color name="colorPrimaryDark">#1c1d24</color>
+    <color name="colorAccent">#d32f2f</color>
+    <color name="colorGreen">#38833C</color>
+    <color name="colorGrayBorder">#E0E0E0</color>
+
+    <color name="colorBlackStep_1">#8F8F8F</color>
+    <color name="colorBlackStep_2">#545454</color>
+    <color name="colorBlackStep_3">#373737</color>
+    <color name="colorBlackStep_4">#2A2A2A</color>
+    <color name="colorBlackStep_5">#000000</color>
+    <color name="colorBlackStep_6">#2D2D2D</color>
+
+    <color name="color_active_dit">#000</color>
+    <color name="color_in_active_dot">#B8B8B8</color>
+
+    <color name="colorBackGrayStep_2">#d9d9d9</color>
+
+    <color name="color_in_loading">#FFFF</color>
+
+    <color name="color_red">#d32f2f</color>
+    <color name="color_black">#1c1d24</color>
+
+    <color name="colorRedStep_1">#d32f2f</color>
+
+    <color name="colorWhite">#ffffff</color>
+    <color name="info_forms_bg">#def4f4f4</color>
+    <color name="colorControlNormal">#8e8e8e</color>
+
+    <color name = "colorControlActivated">#d2403f</color>
+    <color name = "background_slider_sepration_line">#818181</color>
+
+</resources>

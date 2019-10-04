@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bgLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/dimen_dp_very_huge"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/slide_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/splash_a"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/slide_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_dp_large"
+            android:gravity="center"
+            android:text="@string/slider_1_title"
+            android:textColor="@color/colorBlackStep_5"
+            android:textSize="@dimen/dimen_sp_very_large"
+            android:fontFamily="@font/iran_sans"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/slide_image" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/slide_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/dimen_dp_large"
+            android:layout_marginTop="@dimen/dimen_dp_small"
+            android:layout_marginEnd="@dimen/dimen_dp_large"
+            android:fontFamily="@font/iran_sans_light"
+            android:gravity="center"
+            android:text="@string/slider_1_desc"
+            android:textColor="@color/colorBlackStep_3"
+            android:textSize="@dimen/dimen_sp_small"
+            app:layout_constraintLeft_toLeftOf="@id/slide_title"
+            app:layout_constraintRight_toRightOf="@id/slide_title"
+            app:layout_constraintTop_toBottomOf="@id/slide_title" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

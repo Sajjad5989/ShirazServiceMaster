@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:layoutDirection="rtl">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nested_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linear_buttons"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/const_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_dp_small"
+                android:background="@drawable/const_border_light">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_current_amount_caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_dp_very_large"
+                    android:fontFamily="@font/iran_sans_light"
+                    android:gravity="center"
+                    android:text="@string/text_amount"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_sp_medium"
+                    app:layout_constraintBottom_toTopOf="@id/const_current_amount"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/const_current_amount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_dp_medium"
+                    android:layout_marginEnd="@dimen/dimen_dp_medium"
+                    android:background="@drawable/const_border_line"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_current_amount_caption">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tv_current_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/iran_sans_bold"
+                        android:gravity="center"
+                        android:text="18,754"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/dimen_sp_very_huge"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tv_currency_symbol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dimen_dp_tiny"
+                        android:fontFamily="@font/iran_sans_light"
+                        android:gravity="center"
+                        android:text="@string/text_currency_symbol"
+                        android:textColor="@color/colorBlackStep_1"
+                        android:textSize="@dimen/dimen_sp_medium"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tv_current_amount"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/const_red"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/const_green"
+                    app:layout_constraintTop_toBottomOf="@+id/const_current_amount">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img_get_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_dp_small"
+                        android:layout_marginEnd="@dimen/dimen_dp_tiny"
+                        android:layout_marginBottom="@dimen/dimen_dp_tiny"
+                        android:src="@drawable/ic_get_money"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tv_get_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/iran_sans"
+                        android:text="65,250"
+                        android:textColor="@color/color_red"
+                        android:textSize="@dimen/dimen_sp_large"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_get_money" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dimen_dp_tiny"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/iran_sans_light"
+                        android:text="@string/text_currency_symbol"
+                        android:textColor="@color/colorBlackStep_1"
+                        android:textSize="@dimen/dimen_sp_tiny"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_get_money"
+                        app:layout_constraintRight_toLeftOf="@+id/tv_get_money" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/const_green"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/const_red"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/const_current_amount">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img_pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_dp_small"
+                        android:layout_marginEnd="@dimen/dimen_dp_tiny"
+                        android:layout_marginBottom="@dimen/dimen_dp_tiny"
+                        android:src="@drawable/ic_pay_money"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tv_pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/iran_sans"
+                        android:text="21,250"
+                        android:textColor="@color/colorGreen"
+                        android:textSize="@dimen/dimen_sp_large"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_pay" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dimen_dp_tiny"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/iran_sans_light"
+                        android:text="@string/text_currency_symbol"
+                        android:textColor="@color/colorBlackStep_1"
+                        android:textSize="@dimen/dimen_sp_tiny"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_pay"
+                        app:layout_constraintRight_toLeftOf="@+id/tv_pay" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/my_transaction_list_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/linear_buttons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_dp_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/btn_show_all_lis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@drawable/button_style_red_light_corner"
+            android:fontFamily="@font/iran_sans"
+            android:gravity="center"
+            android:padding="@dimen/dimen_dp_medium"
+            android:text="@string/text_show_all_transaction"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dimen_sp_small" />
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/btn_increase_charge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_dp_tiny"
+            android:layout_weight="3"
+            android:background="@drawable/button_style_green_light_corner"
+            android:fontFamily="@font/iran_sans"
+            android:gravity="center"
+            android:padding="@dimen/dimen_dp_medium"
+            android:text="@string/text_increase_charge"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dimen_sp_small" />
+
+
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/const_waiting_main_fragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorWhite"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_dp_tiny"
+            android:fontFamily="@font/iran_sans_light"
+            android:text="@string/text_waiting"
+            android:textColor="@color/color_red"
+            android:textSize="@dimen/dimen_sp_tiny"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressBar" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/const_not_found_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_not_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iran_sans_bold"
+            android:text="@string/text_no_request_found"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/dimen_sp_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_dp_medium"
+            android:background="@drawable/text_view_round_corner"
+            android:fontFamily="@font/iran_sans"
+            android:paddingStart="@dimen/dimen_dp_medium"
+            android:paddingTop="@dimen/dimen_dp_tiny"
+            android:paddingEnd="@dimen/dimen_dp_medium"
+            android:paddingBottom="@dimen/dimen_dp_tiny"
+            android:text="@string/text_try_again"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_not_found" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    >
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/const_current_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_dp_very_tiny"
+        android:background="@drawable/const_border_line"
+        android:padding="@dimen/dimen_dp_small"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_current_amount_caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_dp_small"
+            android:fontFamily="@font/iran_sans_light"
+            android:gravity="center"
+            android:text="@string/text_current_amount"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/dimen_sp_tiny"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_current_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_dp_small"
+            android:fontFamily="@font/iran_sans_bold"
+            android:gravity="center"
+            android:text="18,754"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/dimen_sp_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_current_amount_caption"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_currency_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_dp_tiny"
+            android:fontFamily="@font/iran_sans_light"
+            android:gravity="center"
+            android:text="@string/text_currency_symbol"
+            android:textColor="@color/colorBlackStep_1"
+            android:textSize="@dimen/dimen_sp_tiny"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_current_amount"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_third_money_extra_charge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_dp_small"
+            android:fontFamily="@font/iran_sans"
+            android:padding="@dimen/dimen_dp_small"
+            android:text="راهنمای شارژ شگفت انگیز"
+
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/dimen_sp_medium"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/const_first"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/const_border_line"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/const_current_amount">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_dp_small"
+            android:padding="@dimen/dimen_dp_tiny"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_first_charge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_dp_small"
+                    android:background="@drawable/text_red_border_style"
+                    android:fontFamily="@font/iran_sans"
+                    android:gravity="center"
+                    android:padding="@dimen/dimen_dp_small"
+                    android:text="200,000 ریال"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_sp_medium"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/img_first_charge"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="@dimen/dimen_dp_tiny"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:src="@drawable/ic_gift"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_first_gift"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_first_charge" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_first_gift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iran_sans_medium"
+                    android:text="33,000 ریال"
+                    android:textColor="@color/color_red"
+                    android:textSize="@dimen/dimen_sp_tiny"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_first_charge" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_second_charge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_dp_small"
+                    android:background="@drawable/text_red_border_style"
+                    android:fontFamily="@font/iran_sans"
+                    android:gravity="center"
+                    android:padding="@dimen/dimen_dp_small"
+                    android:text="300,000 ریال"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_sp_medium"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/img_second_charge"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="@dimen/dimen_dp_tiny"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:src="@drawable/ic_gift"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_second_gift"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_second_charge" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_second_gift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:fontFamily="@font/iran_sans_medium"
+                    android:text="47,000 ریال"
+                    android:textColor="@color/color_red"
+                    android:textSize="@dimen/dimen_sp_tiny"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_second_charge" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_third_charge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_dp_small"
+                    android:background="@drawable/text_red_border_style"
+                    android:fontFamily="@font/iran_sans"
+                    android:gravity="center"
+                    android:padding="@dimen/dimen_dp_small"
+                    android:text="400,000 ریال"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_sp_medium"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/img_third_charge"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="@dimen/dimen_dp_tiny"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:src="@drawable/ic_gift"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_third_gift"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_third_charge" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_third_gift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iran_sans_medium"
+                    android:text="59,000 ریال"
+                    android:textColor="@color/color_red"
+                    android:textSize="@dimen/dimen_sp_tiny"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_third_charge" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/const_second"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/const_border_line"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/const_first">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_dp_small"
+            android:padding="@dimen/dimen_dp_tiny"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_fourth_charge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_dp_small"
+                    android:background="@drawable/text_red_border_style"
+                    android:fontFamily="@font/iran_sans"
+                    android:gravity="center"
+                    android:padding="@dimen/dimen_dp_small"
+                    android:text="500,000 ریال"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_sp_medium"
+                    app:layout_constraintLeft_toLeftOf="parent"
+
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/img_fourth_charge"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="@dimen/dimen_dp_tiny"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:src="@drawable/ic_gift"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_fourth_gift"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_fourth_charge" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_fourth_gift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:fontFamily="@font/iran_sans_medium"
+                    android:text="33,000 ریال"
+                    android:textColor="@color/color_red"
+                    android:textSize="@dimen/dimen_sp_tiny"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_fourth_charge" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_fifth_charge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_dp_small"
+                    android:background="@drawable/text_red_border_style"
+                    android:fontFamily="@font/iran_sans"
+                    android:gravity="center"
+                    android:padding="@dimen/dimen_dp_small"
+                    android:text="600,000 ریال"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_sp_medium"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/img_fifth_charge"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="@dimen/dimen_dp_tiny"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:src="@drawable/ic_gift"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_fifth_gift"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_fifth_charge" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_fifth_gift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:fontFamily="@font/iran_sans_medium"
+                    android:text="47,000 ریال"
+                    android:textColor="@color/color_red"
+                    android:textSize="@dimen/dimen_sp_tiny"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_fifth_charge" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_sixth_charge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_dp_small"
+                    android:background="@drawable/text_red_border_style"
+                    android:fontFamily="@font/iran_sans"
+                    android:gravity="center"
+                    android:padding="@dimen/dimen_dp_small"
+                    android:text="700,000 ریال"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_sp_medium"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/img_sixth_charge"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="@dimen/dimen_dp_tiny"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:src="@drawable/ic_gift"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_sixth_gift"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sixth_charge" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_sixth_gift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:fontFamily="@font/iran_sans_medium"
+                    android:text="59,000 ریال"
+                    android:textColor="@color/color_red"
+                    android:textSize="@dimen/dimen_sp_tiny"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sixth_charge" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/const_third"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/const_border_line"
+        android:paddingStart="@dimen/dimen_dp_small"
+        android:paddingEnd="@dimen/dimen_dp_small"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/const_second">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_caption_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iran_sans"
+            android:text="مبلغ دلخواه"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/dimen_sp_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/tv_money"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimen_sp_small"
+            app:layout_constraintLeft_toRightOf="@+id/tv_currency_symbol_money"
+            app:layout_constraintRight_toLeftOf="@+id/tv_caption_money"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_currency_symbol_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iran_sans"
+            android:text="@string/text_currency_symbol"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/dimen_sp_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_buttons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_dp_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_pay_online"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_style_red_light_corner"
+            android:fontFamily="@font/iran_sans"
+            android:gravity="center"
+            android:padding="@dimen/dimen_dp_medium"
+            android:text="@string/text_payment_online_button"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dimen_sp_medium" />
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/btn_increase_charge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_dp_tiny"
+            android:layout_weight="1"
+            android:background="@drawable/button_style_green_light_corner"
+            android:fontFamily="@font/iran_sans"
+            android:gravity="center"
+            android:padding="@dimen/dimen_dp_medium"
+            android:text="@string/text_offline_payment_button"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dimen_sp_medium" />
+
+
+    </LinearLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/const_waiting_main_fragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorWhite"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_dp_tiny"
+            android:fontFamily="@font/iran_sans_light"
+            android:text="@string/text_waiting"
+            android:textColor="@color/color_red"
+            android:textSize="@dimen/dimen_sp_tiny"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressBar" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/const_not_found_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_not_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iran_sans_bold"
+            android:text="@string/text_no_request_found"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/dimen_sp_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_dp_medium"
+            android:background="@drawable/text_view_round_corner"
+            android:fontFamily="@font/iran_sans"
+            android:paddingStart="@dimen/dimen_dp_medium"
+            android:paddingTop="@dimen/dimen_dp_tiny"
+            android:paddingEnd="@dimen/dimen_dp_medium"
+            android:paddingBottom="@dimen/dimen_dp_tiny"
+            android:text="@string/text_try_again"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_not_found" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="button_red_style">
+        <item name="android:layout_width">@dimen/dimen_dp_zero</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/dimen_dp_small</item>
+        <item name="android:background">@drawable/button_style_red_light_corner</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/dimen_sp_small</item>
+
+    </style>
+
+
+    <style name="button_login_style">
+        <item name="android:layout_width">@dimen/dimen_dp_zero</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/dimen_dp_small</item>
+        <item name="android:background">@drawable/button_style_red_light_corner</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/dimen_sp_small</item>
+        <item name="android:text">@string/text_fix_login_pass</item>
+
+
+    </style>
+
+
+    <style name="button_single_forget">
+        <item name="android:layout_width">@dimen/dimen_dp_zero</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/dimen_dp_small</item>
+        <item name="android:background">@drawable/button_style_dark</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/dimen_sp_medium</item>
+    </style>
+
+
+    <style name="text_style_edit_captions">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/dimen_dp_large</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_dp_very_huge</item>
+        <item name="android:textColor">@color/colorBlackStep_1</item>
+        <item name="android:textSize">@dimen/dimen_sp_large</item>
+    </style>
+
+
+    <style name="image_style_in_linear">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_dp_tiny</item>
+        <item name="android:padding">@dimen/dimen_dp_tiny</item>
+    </style>
+
+
+</resources>

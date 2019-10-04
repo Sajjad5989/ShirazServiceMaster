@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="slider_1_title">انتخاب کار از اپلیکیشن متخصصین</string>
+    <string name="slider_2_title">توافق با کارفرما و انجام کار</string>
+    <string name="slider_3_title">کار را انجام دهید و درآمد کسب نمایید</string>
+
+
+    <string name="slider_1_desc">بعد از ثبت نام در شیراز سرویس و دریافت نام کاربری و رمزعبور به لیست کارهایی که مشتریان درخواست داده اند دسترسی دارید. می توانید نوع کار، ساعت انجام و منطقه آن را ببینید و از بین کارهای مناسب شما، برای انجام آن ها که مایل هستید، اعلام آمادگی کنید.</string>
+    <string name="slider_2_desc">اعلام آمادگی شما به مشتری اطلاع داده شده وپس از پذیرش شما توسط مشتری، شماره تماس او در اختیار شما قرار می گیرد.هماهنگی های لازم را انجام وبعد از توافق، کار را انجام می دهید.</string>
+    <string name="slider_3_desc">بسته به نوع سفارش شما در محل مشتری حاضر شده و یا مشتری برای دریافت خدمات به شما مراجعه می کند.سفارش مشتری را انجام دهید و درآمد کسب کنید. با انجام درست و به موقع کار امتیاز از مشتریان دریافت می کنید و کارهای جدید را زودتر از سایرین می بینید و می توانید درآمد خود را افزایش دهید.</string>
+
+    <string-array name="slide_titles">
+        <item>@string/slider_1_title</item>
+        <item>@string/slider_2_title</item>
+        <item>@string/slider_3_title</item>
+    </string-array>
+
+    <string-array name="slide_descs">
+        <item>@string/slider_1_desc</item>
+        <item>@string/slider_2_desc</item>
+        <item>@string/slider_3_desc</item>
+    </string-array>
+
+</resources>

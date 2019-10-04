@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="200dp"
+    android:layout_height="100dp"
+    android:layout_margin="@dimen/dimen_dp_very_tiny"
+    android:background="@drawable/const_border_light"
+    android:elevation="@dimen/dimen_dp_tiny"
+    android:padding="@dimen/dimen_dp_small"
+    app:cardCornerRadius="@dimen/dimen_card_corner"
+    tools:targetApi="lollipop">
+
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/image_news"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_message"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_news_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:alpha="0.9"
+        android:background="#9EFFFFFF"
+        android:fontFamily="@font/iran_sans_light"
+        android:gravity="start"
+        android:padding="@dimen/dimen_dp_tiny"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/dimen_sp_tiny"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_news_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/dimen_dp_tiny"
+        android:fontFamily="@font/iran_sans_light"
+        android:gravity="start"
+        android:text="مشاهده"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/dimen_sp_tiny"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_dp_tiny"
+    android:background="@drawable/const_border_light">
+
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/image_request"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/ic_gift"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_request_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iran_sans_light"
+        android:gravity="end"
+        android:text="لوله کشی"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/dimen_sp_small"
+
+        app:layout_constraintRight_toLeftOf="@id/image_request"
+        app:layout_constraintTop_toTopOf="@id/image_request" />
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_request_area"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iran_sans_light"
+        android:gravity="end"
+        android:text="شهرداری"
+        android:textColor="@color/colorBlackStep_1"
+        android:textSize="@dimen/dimen_sp_very_tiny"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/image_request"
+        app:layout_constraintTop_toBottomOf="@id/tv_request_title" />
+
+
+</android.support.constraint.ConstraintLayout>

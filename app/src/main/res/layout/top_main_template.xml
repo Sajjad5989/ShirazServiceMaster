@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/const_border">
+
+    <LinearLayout
+        android:layout_width="12dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
+            android:background="@color/colorWhite">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.75"
+            android:background="@color/colorAccent">
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/image_expert"
+        android:layout_width="@dimen/service_man_avatar_size"
+        android:layout_height="@dimen/service_man_avatar_size"
+        android:layout_margin="@dimen/dimen_dp_tiny"
+        android:background="@drawable/oval_shape"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/dimen_dp_tiny"
+        android:src="@drawable/splash_a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_expert_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iran_sans_bold"
+        android:gravity="center"
+        android:text="سولماز زارع مهذبیه"
+        android:layout_marginStart="8dp"
+
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/dimen_sp_medium"
+        app:layout_constraintRight_toLeftOf="@id/image_expert"
+        app:layout_constraintTop_toTopOf="@id/image_expert" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_expert_Credit_caption"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iran_sans"
+        android:gravity="center"
+        android:text="اعتبار شما"
+        android:textColor="@color/colorBlackStep_5"
+        android:textSize="@dimen/dimen_sp_small"
+
+        app:layout_constraintRight_toRightOf="@id/tv_expert_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_expert_name"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_expert_Credit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_dp_tiny"
+        android:layout_marginEnd="@dimen/dimen_dp_tiny"
+        android:fontFamily="@font/iran_sans_bold"
+        android:gravity="center"
+        android:text="2,500,521"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/dimen_sp_medium"
+        app:layout_constraintBottom_toBottomOf="@id/tv_expert_Credit_caption"
+        app:layout_constraintRight_toLeftOf="@+id/tv_expert_Credit_caption"
+        app:layout_constraintTop_toTopOf="@id/tv_expert_Credit_caption" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_expert_Credit_symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_dp_tiny"
+        android:layout_marginEnd="@dimen/dimen_dp_tiny"
+        android:fontFamily="@font/iran_sans_light"
+        android:gravity="center"
+        android:text="ریال"
+        android:textColor="@color/colorBlackStep_1"
+        android:textSize="@dimen/dimen_sp_small"
+        app:layout_constraintBottom_toBottomOf="@id/tv_expert_Credit"
+        app:layout_constraintRight_toLeftOf="@id/tv_expert_Credit"
+        app:layout_constraintTop_toTopOf="@id/tv_expert_Credit" />
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_expert_discount_caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iran_sans"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="درصد تخفیف"
+        android:textColor="@color/colorBlackStep_5"
+        android:textSize="@dimen/dimen_sp_small"
+        app:layout_constraintRight_toRightOf="@id/tv_expert_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_expert_Credit_caption"
+        />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_expert_discount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iran_sans"
+        android:gravity="center"
+        android:text="8"
+        android:textColor="@color/color_red"
+        android:textSize="@dimen/dimen_sp_medium"
+        android:layout_marginEnd="@dimen/dimen_dp_small"
+        app:layout_constraintTop_toTopOf="@id/tv_expert_discount_caption"
+        app:layout_constraintBottom_toBottomOf="@id/tv_expert_discount_caption"
+        app:layout_constraintRight_toLeftOf="@+id/tv_expert_discount_caption"/>
+
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layoutDirection="ltr"
+        android:numStars="5"
+        android:rating="2.5"
+        android:stepSize="0.1"
+        android:theme="@style/smallRatingBar"
+        app:layout_constraintRight_toRightOf="@id/image_expert"
+        app:layout_constraintLeft_toLeftOf="@id/image_expert"
+        app:layout_constraintBottom_toBottomOf="@id/image_expert"
+        />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/iran_sans"
+        android:gravity="center"
+        android:text="8"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/dimen_sp_tiny"
+        android:layout_marginEnd="@dimen/dimen_dp_small"
+        app:layout_constraintLeft_toLeftOf="@id/ratingBar"
+        app:layout_constraintRight_toRightOf="@id/ratingBar"
+        app:layout_constraintTop_toBottomOf="@id/ratingBar"
+        />
+
+
+</android.support.constraint.ConstraintLayout>

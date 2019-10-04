@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:layoutDirection="rtl">
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/const_request_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_dp_very_tiny"
+                android:background="@drawable/const_border_light"
+                android:padding="@dimen/dimen_dp_large"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/img_request_Detail"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_request_detail_service_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_dp_medium"
+                    android:fontFamily="@font/iran_sans_bold"
+                    android:text="شستشوی مبل با بخار"
+                    android:textColor="@color/colorBlackStep_5"
+                    android:textSize="@dimen/dimen_sp_large"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/img_request_Detail"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_dp_very_tiny"
+                android:background="@drawable/const_border_line"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_credit">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_service_description_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:layout_marginEnd="@dimen/dimen_dp_small"
+                    android:fontFamily="@font/iran_sans_bold"
+                    android:text="توضیحات سرویس"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_service_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:layout_marginEnd="@dimen/dimen_dp_large"
+                    android:paddingBottom="@dimen/dimen_dp_large"
+                    android:fontFamily="@font/iran_sans_bold"
+                    android:text="بیا بگیر و ببر"
+                    android:textColor="@color/colorBlackStep_1"
+                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_service_description_title" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_dp_very_tiny"
+                android:background="@drawable/const_border_line"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_credit">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_extraTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:layout_marginEnd="@dimen/dimen_dp_small"
+                    android:fontFamily="@font/iran_sans_bold"
+                    android:text="نرخنامه خدمات تعمیر لوازم برقی"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_extraField"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:layout_marginEnd="@dimen/dimen_dp_large"
+                    android:fontFamily="@font/iran_sans_bold"
+                    android:text="تشخیص عیب دستگاه های گردنده بزرگ و سرد کننده ها: 30،000 تومان"
+                    android:textColor="@color/colorBlackStep_1"
+                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_extraTitle" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_extraTitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:layout_marginEnd="@dimen/dimen_dp_small"
+                    android:fontFamily="@font/iran_sans_bold"
+                    android:text="*توجه توجه*"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_extraField" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_extraField2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_dp_tiny"
+                    android:layout_marginEnd="@dimen/dimen_dp_large"
+                    android:fontFamily="@font/iran_sans_bold"
+                    android:paddingBottom="@dimen/dimen_dp_large"
+                    android:text="در صورتی که متخصص درمحل حضور یابد و عیب یابی کند مبلغ 7،000 تومان تا 30،000 تومان با توجه به طول مسیر(شهرک های گوشواره ای شهر و ...) دریافت می گردد."
+                    android:textColor="@color/colorBlackStep_1"
+                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_extraTitle2" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/const_waiting_main_fragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorWhite"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_dp_tiny"
+            android:fontFamily="@font/iran_sans_light"
+            android:text="@string/text_waiting"
+            android:textColor="@color/color_red"
+            android:textSize="@dimen/dimen_sp_tiny"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressBar" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>

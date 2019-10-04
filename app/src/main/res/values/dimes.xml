@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--size ( for example margin & padding ) -->
+    <dimen name="dimen_dp_zero">0dp</dimen>
+
+    <dimen name="dimen_dp_very_tiny">2dp</dimen>
+    <dimen name="dimen_dp_tiny">4dp</dimen>
+    <dimen name="dimen_dp_small">8dp</dimen>
+    <dimen name="dimen_dp_medium">12dp</dimen>
+    <dimen name="dimen_dp_large">16dp</dimen>
+    <dimen name="dimen_dp_very_large">20dp</dimen>
+    <dimen name="dimen_dp_huge">24dp</dimen>
+    <dimen name="dimen_dp_very_huge">28dp</dimen>
+    <dimen name="dimen_dp_very_very_huge">34dp</dimen>
+    <dimen name="dimen_dp_very_very_very_huge">50dp</dimen>
+    <dimen name="dimen_dp_most_huge">80dp</dimen>
+
+    <!-- text size as sp -->
+    <dimen name="dimen_sp_very_very_tiny">6sp</dimen>
+    <dimen name="dimen_sp_very_tiny">8sp</dimen>
+    <dimen name="dimen_sp_tiny">10sp</dimen>
+    <dimen name="dimen_sp_small">12sp</dimen>
+    <dimen name="dimen_sp_medium">14sp</dimen>
+    <dimen name="dimen_sp_large">16sp</dimen>
+    <dimen name="dimen_sp_very_large">18sp</dimen>
+    <dimen name="dimen_sp_huge">20sp</dimen>
+    <dimen name="dimen_sp_very_huge">24sp</dimen>
+
+    <dimen name="dimen_toast_corners_radius">20dp</dimen>
+
+    <dimen name="dimen_stroke_width">0.5dp</dimen>
+    <dimen name="dimen_stroke_edit_box_width">0.1dp</dimen>
+
+    <dimen name="dimen_bottom_stroke_width">1dp</dimen>
+
+    <dimen name="dimen_logo_size">144dp</dimen>
+
+    <dimen name="dimen_dp_weight">1</dimen>
+
+    <dimen name="dimen_card_corner">4dp</dimen>
+
+    <dimen name="app_buttons_corner_radius">8dp</dimen>
+
+    <dimen name="dimen_pass_btn_size">64dp</dimen>
+    <dimen name="dimen_pass_center_btn_margin">36dp</dimen>
+
+
+    <dimen name="app_card_view_elevation">3dp</dimen>
+    <dimen name="app_card_view_corner_radius">5dp</dimen>
+
+</resources>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/dimen_dp_medium"
+    android:background="@color/colorWhite"
+    android:layoutDirection="rtl">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_username_caption"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen_dp_very_large"
+        android:fontFamily="@font/iran_sans_light"
+        android:gravity="center"
+        android:padding="@dimen/dimen_dp_small"
+        android:text="@string/text_pay_money_cart_number"
+        android:textColor="@color/colorRedStep_1"
+        android:textSize="@dimen/dimen_sp_small"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/et_card_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_dp_small"
+        android:layout_marginEnd="@dimen/dimen_dp_small"
+        android:layout_marginBottom="@dimen/dimen_dp_small"
+        android:background="@drawable/box_for_edits"
+        android:fontFamily="@font/iran_sans_medium"
+        android:gravity="center"
+        android:padding="@dimen/dimen_dp_medium"
+        android:textColorHint="@color/colorBackGrayStep_2"
+        android:textSize="@dimen/dimen_sp_medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_username_caption" />
+
+    <LinearLayout
+        android:id="@+id/linear_pay_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_card_number">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/rb_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/iran_sans"
+                android:text="@string/text_card_to_card"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/dimen_sp_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/rb_cart"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/rb_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/iran_sans"
+                android:text="@string/text_pay_to_card"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/dimen_sp_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/rb_pay"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </LinearLayout>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_date"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/dimen_dp_zero"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_dp_small"
+        android:background="@drawable/button_style_red_light"
+        android:fontFamily="@font/iran_sans_bold"
+        android:text="@string/text_choose_date_button"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/dimen_sp_small"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear_pay_type" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_password_caption"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen_dp_small"
+        android:fontFamily="@font/iran_sans_light"
+        android:gravity="center"
+        android:padding="@dimen/dimen_dp_small"
+        android:text="@string/text_owner_card_name"
+        android:textColor="@color/colorRedStep_1"
+        android:textSize="@dimen/dimen_sp_small"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_date" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/et_payer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_dp_small"
+        android:layout_marginEnd="@dimen/dimen_dp_small"
+        android:layout_marginBottom="@dimen/dimen_dp_small"
+        android:background="@drawable/box_for_edits"
+        android:fontFamily="@font/iran_sans_medium"
+        android:gravity="center"
+        android:padding="@dimen/dimen_dp_medium"
+        android:textColorHint="@color/colorBackGrayStep_2"
+        android:textSize="@dimen/dimen_sp_medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_password_caption" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_code_peigiri"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen_dp_small"
+        android:fontFamily="@font/iran_sans_light"
+        android:gravity="center"
+        android:padding="@dimen/dimen_dp_small"
+        android:text="@string/text_tracking_code"
+        android:textColor="@color/colorRedStep_1"
+        android:textSize="@dimen/dimen_sp_small"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_payer" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/et_code_peigiri"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_dp_small"
+        android:layout_marginEnd="@dimen/dimen_dp_small"
+        android:layout_marginBottom="@dimen/dimen_dp_small"
+        android:background="@drawable/box_for_edits"
+        android:fontFamily="@font/iran_sans_medium"
+        android:gravity="center"
+        android:padding="@dimen/dimen_dp_medium"
+        android:textColorHint="@color/colorBackGrayStep_2"
+        android:textSize="@dimen/dimen_sp_medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_code_peigiri" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_pay_money_caption"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen_dp_small"
+        android:fontFamily="@font/iran_sans_light"
+        android:gravity="center"
+        android:padding="@dimen/dimen_dp_small"
+        android:text="@string/text_pay_money_offline"
+        android:textColor="@color/colorRedStep_1"
+        android:textSize="@dimen/dimen_sp_small"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_code_peigiri" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/et_pay_money"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_dp_small"
+        android:layout_marginEnd="@dimen/dimen_dp_small"
+        android:layout_marginBottom="@dimen/dimen_dp_small"
+        android:background="@drawable/box_for_edits"
+        android:fontFamily="@font/iran_sans_medium"
+        android:gravity="center"
+        android:padding="@dimen/dimen_dp_medium"
+        android:textColorHint="@color/colorBackGrayStep_2"
+        android:textSize="@dimen/dimen_sp_medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pay_money_caption" />
+
+
+    <!--</android.support.constraint.ConstraintLayout>-->
+
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/dimen_dp_zero"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_dp_small"
+        android:background="@drawable/button_style_red_light"
+        android:fontFamily="@font/iran_sans_bold"
+        android:text="@string/text_register"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/dimen_sp_small"
+        app:layout_constraintBottom_toTopOf="@+id/tv_warning_pay_money"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_warning_pay_money"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen_dp_small"
+        android:fontFamily="@font/iran_sans_bold"
+        android:padding="@dimen/dimen_dp_small"
+        android:text="@string/text_confirmation"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/dimen_sp_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
