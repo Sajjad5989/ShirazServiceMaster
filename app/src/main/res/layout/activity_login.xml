@@ -1,175 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    tools:ignore="Autofill,LabelFor">
+<android.support.constraint.ConstraintLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+                                             xmlns:app = "http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools = "http://schemas.android.com/tools"
+                                             android:layout_width = "match_parent"
+                                             android:layout_height = "match_parent"
+                                             android:background = "@color/colorWhite"
+                                             tools:ignore = "Autofill,LabelFor">
 
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorBlackStep_5"
-        android:fontFamily="@font/iran_sans_bold"
-        android:gravity="center"
-        android:padding="@dimen/dimen_dp_medium"
-        android:text="@string/welcome_text"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/dimen_sp_very_large"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id = "@+id/tv_title"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:background = "@color/colorBlackStep_5"
+        android:fontFamily = "@font/iran_sans_black"
+        android:gravity = "center"
+        android:padding = "@dimen/dimen_dp_medium"
+        android:text = "@string/app_name"
+        android:textColor = "@color/colorWhite"
+        android:textSize = "@dimen/dimen_sp_very_large"
+        app:layout_constraintLeft_toLeftOf = "parent"
+        app:layout_constraintRight_toRightOf = "parent"
+        app:layout_constraintTop_toTopOf = "parent" />
+
 
 
     <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/image_icon"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_margin="@dimen/dimen_dp_very_large"
-        android:src="@drawable/unlock"
+        android:id="@+id/image_view_user_element"
+        android:layout_width = "128dp"
+        android:layout_height = "128dp"
+        app:srcCompat="@drawable/splash_b"
+        android:layout_margin="@dimen/dimen_dp_small"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        />
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/const_views"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_dp_medium"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:id = "@+id/const_views"
+        android:layout_width = "0dp"
+        android:layout_height = "wrap_content"
+        android:layout_margin = "@dimen/dimen_dp_medium"
+        app:layout_constraintLeft_toLeftOf = "parent"
+        app:layout_constraintRight_toRightOf = "parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_user_element"
+
+        >
 
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/tv_username_caption"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/dimen_dp_very_large"
-            android:fontFamily="@font/iran_sans_light"
-            android:gravity="center"
-            android:padding="@dimen/dimen_dp_small"
-            android:text="@string/text_enter_user_name"
-            android:textColor="@color/colorRedStep_1"
-            android:textSize="@dimen/dimen_sp_small"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id = "@+id/tv_username_caption"
+            android:layout_width = "wrap_content"
+            android:layout_height = "0dp"
+            android:layout_marginTop = "@dimen/dimen_dp_very_large"
+            android:fontFamily = "@font/iran_sans_light"
+            android:gravity = "center"
+            android:padding = "@dimen/dimen_dp_small"
+            android:text = "@string/text_enter_user_name"
+            android:textColor = "@color/colorRedStep_1"
+            android:textSize = "@dimen/dimen_sp_small"
+            app:layout_constraintRight_toRightOf = "parent"
+            app:layout_constraintTop_toTopOf = "parent" />
 
         <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_username"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_dp_small"
-            android:layout_marginEnd="@dimen/dimen_dp_small"
-            android:layout_marginBottom="@dimen/dimen_dp_small"
-            android:background="@drawable/box_for_edits"
-            android:fontFamily="@font/iran_sans_medium"
-            android:gravity="center"
-            android:hint="@string/text_user_name_mobile_number"
-            android:inputType="number"
-            android:padding="@dimen/dimen_dp_medium"
-            android:textColorHint="@color/colorBackGrayStep_2"
-            android:textSize="@dimen/dimen_sp_medium"
-            app:layout_constraintLeft_toLeftOf="parent"
-
-
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_username_caption" />
-
+            android:id = "@+id/et_username"
+            android:layout_width = "0dp"
+            android:layout_height = "wrap_content"
+            android:layout_marginStart = "@dimen/dimen_dp_small"
+            android:layout_marginEnd = "@dimen/dimen_dp_small"
+            android:layout_marginBottom = "@dimen/dimen_dp_small"
+            android:background = "@drawable/box_for_edits"
+            android:fontFamily = "@font/iran_sans_medium"
+            android:gravity = "center"
+            android:inputType = "number"
+            android:padding = "@dimen/dimen_dp_medium"
+            android:textSize = "@dimen/dimen_sp_medium"
+            app:layout_constraintLeft_toLeftOf = "parent"
+            app:layout_constraintRight_toRightOf = "parent"
+            app:layout_constraintTop_toBottomOf = "@id/tv_username_caption" />
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/tv_password_caption"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/dimen_dp_small"
-            android:fontFamily="@font/iran_sans_light"
-            android:gravity="center"
-            android:padding="@dimen/dimen_dp_small"
-            android:text="@string/text_enter_password"
-            android:textColor="@color/colorRedStep_1"
-            android:textSize="@dimen/dimen_sp_small"
+            android:id = "@+id/tv_username_guide"
+            android:layout_width = "wrap_content"
+            android:layout_height = "0dp"
+            android:fontFamily = "@font/iran_sans_light"
+            android:gravity = "center"
+            android:text = "@string/text_user_name_mobile_number"
+            android:textColor = "@color/colorBackGrayStep_2"
+            android:textSize = "@dimen/dimen_sp_small"
+            app:layout_constraintLeft_toLeftOf="@id/et_username"
+            app:layout_constraintRight_toRightOf="@id/et_username"
+            app:layout_constraintTop_toBottomOf="@id/et_username"
+            />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id = "@+id/tv_password_caption"
+            android:layout_width = "wrap_content"
+            android:layout_height = "0dp"
+            android:layout_marginTop = "@dimen/dimen_dp_medium"
+            android:fontFamily = "@font/iran_sans_light"
+            android:gravity = "center"
+            android:padding = "@dimen/dimen_dp_small"
+            android:text = "@string/text_enter_password"
+            android:textColor = "@color/colorRedStep_1"
+            android:textSize = "@dimen/dimen_sp_small"
 
 
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_username" />
+            app:layout_constraintRight_toRightOf = "parent"
+            app:layout_constraintTop_toBottomOf = "@id/tv_username_guide" />
 
         <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_dp_small"
-            android:layout_marginEnd="@dimen/dimen_dp_small"
-            android:layout_marginBottom="@dimen/dimen_dp_small"
-            android:background="@drawable/box_for_edits"
-            android:fontFamily="@font/iran_sans_medium"
-            android:gravity="center"
-            android:hint="@string/text_pass"
-            android:inputType="numberPassword"
-            android:padding="@dimen/dimen_dp_medium"
-            android:textColorHint="@color/colorBackGrayStep_2"
-            android:textSize="@dimen/dimen_sp_medium"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_password_caption" />
+            android:id = "@+id/et_password"
+            android:layout_width = "0dp"
+            android:layout_height = "wrap_content"
+            android:layout_marginStart = "@dimen/dimen_dp_small"
+            android:layout_marginEnd = "@dimen/dimen_dp_small"
+            android:layout_marginBottom = "@dimen/dimen_dp_small"
+            android:background = "@drawable/box_for_edits"
+            android:fontFamily = "@font/iran_sans_medium"
+            android:gravity = "center"
+            android:inputType = "numberPassword"
+            android:padding = "@dimen/dimen_dp_medium"
+            android:textSize = "@dimen/dimen_sp_medium"
+            app:layout_constraintLeft_toLeftOf = "parent"
+            app:layout_constraintRight_toRightOf = "parent"
+            app:layout_constraintTop_toBottomOf = "@+id/tv_password_caption" />
 
         <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/image_view_pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_dp_medium"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/eye_off"
-            app:layout_constraintBottom_toBottomOf="@+id/et_password"
-            app:layout_constraintLeft_toLeftOf="@+id/et_password"
-            app:layout_constraintTop_toTopOf="@+id/et_password" />
+            android:id = "@+id/image_view_pass"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:layout_marginStart = "@dimen/dimen_dp_medium"
+            android:background = "?attr/selectableItemBackgroundBorderless"
+            android:src = "@drawable/eye"
+            app:layout_constraintBottom_toBottomOf = "@+id/et_password"
+            app:layout_constraintLeft_toLeftOf = "@+id/et_password"
+            app:layout_constraintTop_toTopOf = "@+id/et_password" />
 
 
         <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/chk_remember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/tv_remember"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_remember"
+            android:id = "@+id/chk_remember"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            app:layout_constraintBottom_toBottomOf = "@id/tv_remember"
+            app:layout_constraintRight_toRightOf = "parent"
+            app:layout_constraintTop_toTopOf = "@id/tv_remember"
 
             />
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/tv_remember"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/dimen_dp_very_large"
-            android:fontFamily="@font/iran_sans_medium"
-            android:gravity="center"
-            android:padding="@dimen/dimen_dp_small"
-            android:text="@string/text_chk_remember_me"
-            android:textColor="@color/colorBlackStep_5"
-            android:textSize="@dimen/dimen_sp_small"
+            android:id = "@+id/tv_remember"
+            android:layout_width = "wrap_content"
+            android:layout_height = "0dp"
+            android:layout_marginTop = "@dimen/dimen_dp_very_large"
+            android:fontFamily = "@font/iran_sans_medium"
+            android:gravity = "center"
+            android:padding = "@dimen/dimen_dp_small"
+            android:text = "@string/text_chk_remember_me"
+            android:textColor = "@color/colorBlackStep_5"
+            android:textSize = "@dimen/dimen_sp_small"
 
 
-            app:layout_constraintRight_toLeftOf="@id/chk_remember"
-            app:layout_constraintTop_toBottomOf="@id/et_password" />
+            app:layout_constraintRight_toLeftOf = "@id/chk_remember"
+            app:layout_constraintTop_toBottomOf = "@id/et_password" />
 
 
     </android.support.constraint.ConstraintLayout>
 
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_login"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="@dimen/dimen_dp_zero"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_style_red_light"
-        android:fontFamily="@font/iran_sans_bold"
-        android:text="@string/text_fix_login_pass"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/dimen_sp_small"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:id = "@+id/btn_login"
+        style = "?android:attr/borderlessButtonStyle"
+        android:layout_width = "@dimen/dimen_dp_zero"
+        android:layout_height = "wrap_content"
+        android:background = "@drawable/button_style_red_light"
+        android:fontFamily = "@font/iran_sans_bold"
+        android:text = "@string/text_fix_login_pass"
+        android:textColor = "@color/colorWhite"
+        android:textSize = "@dimen/dimen_sp_medium"
+        app:layout_constraintBottom_toBottomOf = "parent"
+        app:layout_constraintLeft_toLeftOf = "parent"
+        app:layout_constraintRight_toRightOf = "parent" />
 
 </android.support.constraint.ConstraintLayout>
