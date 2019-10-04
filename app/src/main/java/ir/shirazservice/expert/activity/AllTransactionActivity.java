@@ -32,6 +32,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class AllTransactionActivity extends AppCompatActivity implements Serializable, IRtl, IDefault {
 
 
+    //
+    private int sajjad = 21;
     @BindView(R.id.toolbar)
     protected Toolbar toolbar;
 
