@@ -32,6 +32,10 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class AllTransactionActivity extends AppCompatActivity implements Serializable, IRtl, IDefault {
 
 
+    //
+
+    private int gholi = 1;
+
     @BindView(R.id.toolbar)
     protected Toolbar toolbar;
 
