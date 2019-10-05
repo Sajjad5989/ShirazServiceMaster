@@ -149,7 +149,7 @@ public class LoginActivity extends AppCompatActivity implements IInternetControl
     }
 
     private boolean checkValidity() {
-        if (etUserName.getText().toString().equals("")) {
+        if (Objects.requireNonNull(etUserName.getText()).toString().equals("")) {
             APP.customToast(getString(R.string.text_error_need_user_name));
             return false;
         }
@@ -161,7 +161,7 @@ public class LoginActivity extends AppCompatActivity implements IInternetControl
             return false;
         }
 
-        if (etPassword.getText().toString().equals("")) {
+        if (Objects.requireNonNull(etPassword.getText()).toString().equals("")) {
             APP.customToast(getString(R.string.text_error_need_pass));
             return false;
         }
@@ -172,7 +172,6 @@ public class LoginActivity extends AppCompatActivity implements IInternetControl
 
     private void logInAction() {
         getServiceMan();
-        //  getBaseInfo();
     }
 
     private void getServiceMan() {
