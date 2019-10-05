@@ -73,8 +73,8 @@ public class LoginActivity extends AppCompatActivity implements IInternetControl
                             updateWarning(response.getAndroidAppDlLink(), response.getAndroidServiceManAppForceUpdate());
                         } else {
                             if (chkRemember.isChecked()) {
-                                GeneralPreferences.getInstance(LoginActivity.this).putString(ShirazServiceApi.USER_NAME, etUserName.getText().toString());
-                                GeneralPreferences.getInstance(LoginActivity.this).putString(ShirazServiceApi.USER_PASS, etPassword.getText().toString());
+                                GeneralPreferences.getInstance(LoginActivity.this).putString(ShirazServiceApi.USER_NAME, Objects.requireNonNull(etUserName.getText()).toString());
+                                GeneralPreferences.getInstance(LoginActivity.this).putString(ShirazServiceApi.USER_PASS, Objects.requireNonNull(etPassword.getText()).toString());
                             }
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             LoginActivity.this.finish();
@@ -95,8 +95,6 @@ public class LoginActivity extends AppCompatActivity implements IInternetControl
                     if (successful) {
                         GeneralPreferences.getInstance(LoginActivity.this).putServiceManInfo(response);
                         getBaseInfo();
-//                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//                        LoginActivity.this.finish();
                     }
                 }
 
@@ -109,8 +107,6 @@ public class LoginActivity extends AppCompatActivity implements IInternetControl
 
     @OnClick(R.id.btn_login)
     void logIn() {
-
-        APP.customToast( "سلام برنامه نویس عزیز" );
         if (!checkValidity())
             return;
         logInAction();
@@ -226,8 +222,8 @@ public class LoginActivity extends AppCompatActivity implements IInternetControl
     private ServiceManSavedInfo getServiceManIno() {
 
         ServiceManSavedInfo serviceManFirstInfo = new ServiceManSavedInfo();
-        serviceManFirstInfo.setUsername(etUserName.getText().toString());
-        serviceManFirstInfo.setPass(etPassword.getText().toString());
+        serviceManFirstInfo.setUsername(Objects.requireNonNull(etUserName.getText()).toString());
+        serviceManFirstInfo.setPass(Objects.requireNonNull(etPassword.getText()).toString());
 
         String appVersion = String.valueOf(new VersionUtils().getAppVersionCode(APP.context));
         serviceManFirstInfo.setApplicationVersion(appVersion);
