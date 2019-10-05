@@ -109,6 +109,8 @@ public class LoginActivity extends AppCompatActivity implements IInternetControl
 
     @OnClick(R.id.btn_login)
     void logIn() {
+
+        APP.customToast( "سلام برنامه نویس عزیز" );
         if (!checkValidity())
             return;
         logInAction();

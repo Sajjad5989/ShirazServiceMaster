@@ -57,8 +57,9 @@ public class APP extends Application {
         TextView localTextView = new TextView(context);
         localTextView.setText(paramString);
         localTextView.setGravity(Gravity.CENTER_HORIZONTAL);
-        localTextView.setTextColor(Color.parseColor("#FFFFFFFF"));
-//        localTextView.setTextColor(Color.parseColor(String.valueOf(R.color.colorWhite)));
+        //localTextView.setTextColor(Color.parseColor("#FFFFFFFF"));
+        //localTextView.setTextColor(Color.parseColor(String.valueOf(R.color.colorWhite)));
+        localTextView.setTextColor(context.getResources().getColor(R.color.colorWhite));
         localTextView.setTextSize(14.0F);
         localTextView.setPadding(16, 1, 16, 1);
         localTextView.setTypeface(defaultFont);
@@ -129,6 +130,8 @@ public class APP extends Application {
         LocaleUtils.updateConfig( this, getBaseContext().getResources().getConfiguration() );
 
         context = getApplicationContext();
+
+        defaultFont = Typeface.createFromAsset( context.getAssets(), "fonts/iran_sans.ttf" );
 
         setFonts( );
         setPersianUi( );
