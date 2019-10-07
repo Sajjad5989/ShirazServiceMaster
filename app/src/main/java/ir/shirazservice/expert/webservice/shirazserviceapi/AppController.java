@@ -2,6 +2,7 @@ package ir.shirazservice.expert.webservice.shirazserviceapi;
 
 import java.util.concurrent.TimeUnit;
 
+import ir.shirazservice.expert.BuildConfig;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -20,12 +21,12 @@ public class AppController {
 
     public Retrofit getRetrofitObject ( ) {
         return new Retrofit.Builder( )
-                .baseUrl( ShirazServiceApi.BASE_URL )
+                .baseUrl( BuildConfig.baseUrl )
                 .addConverterFactory( GsonConverterFactory.create( ) )
                 .client( new OkHttpClient.Builder( )
-                        .connectTimeout( ShirazServiceApi.CONNECTION_TIMEOUT, TimeUnit.SECONDS )
-                        .writeTimeout( ShirazServiceApi.WRITE_TIMEOUT, TimeUnit.SECONDS )
-                        .readTimeout( ShirazServiceApi.READ_TIMEOUT, TimeUnit.SECONDS )
+                        .connectTimeout( BuildConfig.connectionTimeOut, TimeUnit.SECONDS )
+                        .writeTimeout( BuildConfig.writeTimeOut, TimeUnit.SECONDS )
+                        .readTimeout( BuildConfig.readTimeOut, TimeUnit.SECONDS )
 
                         .build( ) )
                 .build( );

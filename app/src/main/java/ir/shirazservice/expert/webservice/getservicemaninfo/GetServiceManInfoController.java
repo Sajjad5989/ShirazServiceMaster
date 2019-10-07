@@ -3,10 +3,10 @@ package ir.shirazservice.expert.webservice.getservicemaninfo;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.preferences.GeneralPreferences;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.shirazserviceapi.AppController;
-import ir.shirazservice.expert.webservice.shirazserviceapi.ShirazServiceApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,8 +24,8 @@ public class GetServiceManInfoController {
 
     public void start(ServiceManSavedInfo serviceManFirstInfo)
     {
-        int userId = GeneralPreferences.getInstance(context).getInt(ShirazServiceApi.USER_ID);
-        String token = GeneralPreferences.getInstance(context).getString(ShirazServiceApi.ACCESS_TOKEN);
+        int userId = GeneralPreferences.getInstance(context).getInt(BuildConfig.userId);
+        String token = GeneralPreferences.getInstance(context).getString(BuildConfig.accessToken);
 
         Retrofit retrofit= AppController.getInstance().getRetrofitObject();
         GetServiceManInfoApi getServiceManInfoApi = retrofit.create(GetServiceManInfoApi.class);

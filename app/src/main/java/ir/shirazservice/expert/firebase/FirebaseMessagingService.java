@@ -15,9 +15,10 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.Map;
 import java.util.Objects;
 
+import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.activity.MainActivity;
-import ir.shirazservice.expert.fragment.RequestLimitFragment;
+import ir.shirazservice.expert.activity.ServiceRequestDetailActivity;
 
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
 
@@ -29,9 +30,11 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
     private String requestId;
     private String url;
 
+//ToDo
+    //bebaram gradle
 
-    private final String channelId = "ir.shirazservice.expert.firebase.SHZ_EXPERT_CHANNEL";
-    private final String channelName = "SHZ_EXPERT_CHANNEL";
+  //  private final String channelId = "ir.shirazservice.expert.firebase.SHZ_EXPERT_CHANNEL";
+  //  private final String channelName = "SHZ_EXPERT_CHANNEL";
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -54,13 +57,13 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         PendingIntent pendingIntent = PendingIntent.getActivity( this, 0 /* Request code */,
                 intent, PendingIntent.FLAG_ONE_SHOT );
 
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder( this, channelId )
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder( this, BuildConfig.channelId)
                 .setContentIntent( pendingIntent )
                 .setStyle( new NotificationCompat.BigTextStyle( ).bigText( body ) )
                 .setDefaults( Notification.DEFAULT_ALL )
                 .setPriority( Notification.PRIORITY_HIGH )
                 .setWhen( System.currentTimeMillis( ) )
-                .setSmallIcon( R.drawable.ic_charge )
+                .setSmallIcon( R.mipmap.ic_launcher )
                 .setTicker( title )
                 .setContentTitle( title )
                 .setContentText( body )
@@ -73,10 +76,10 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         if ( android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O ) {
 
-            Objects.requireNonNull(notificationManager).deleteNotificationChannel( channelId );
+            Objects.requireNonNull(notificationManager).deleteNotificationChannel(  BuildConfig.channelId );
 
 //            Uri notification = Uri.parse( SoundProcessor.getSoundPath( mod, getPackageName( ) ) );
-            NotificationChannel channel = new NotificationChannel( channelId, channelName, NotificationManager.IMPORTANCE_HIGH );
+            NotificationChannel channel = new NotificationChannel(  BuildConfig.channelId,  BuildConfig.channelName, NotificationManager.IMPORTANCE_HIGH );
             channel.setLockscreenVisibility( Notification.VISIBILITY_SECRET );
             channel.setShowBadge( true );
             channel.enableLights( true );
@@ -126,8 +129,10 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
     private Intent getDestinationIntent()
     {
+        //ToDo
+        //بایستی کد و فلگ لازم  رو به اکتیویتی پاس بدم که بفهمه کدوم فرگمنت رو باز کنه.
         if (mod.toLowerCase().equals("New"))
-            return new Intent(this, RequestLimitFragment.class);
+            return new Intent(this, ServiceRequestDetailActivity.class);
         else
             return new Intent(this,MainActivity.class);
     }

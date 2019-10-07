@@ -4,7 +4,6 @@ import java.util.List;
 
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
-import ir.shirazservice.expert.webservice.shirazserviceapi.ShirazServiceApi;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
@@ -17,8 +16,8 @@ public interface GetWorkmanFinancialTransactionsApi {
 
     @Headers({BuildConfig.contentType, BuildConfig.deviceType })
     @POST("workman/getWorkmanFinancialTransactions")
-    Call<List<WorkmanFinancialTransaction>> execute(@Header(ShirazServiceApi.USER_ID) int userId,
-                                                    @Header(ShirazServiceApi.ACCESS_TOKEN) String accessToken,
+    Call<List<WorkmanFinancialTransaction>> execute(@Header(BuildConfig.userId) int userId,
+                                                    @Header(BuildConfig.accessToken) String accessToken,
                                                     @Body WorkmanFinancialTransactionReq workmanFinancialTransactionReq);
 
 

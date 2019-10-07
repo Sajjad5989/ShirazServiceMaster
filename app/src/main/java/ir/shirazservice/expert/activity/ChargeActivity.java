@@ -1,6 +1,5 @@
 package ir.shirazservice.expert.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -24,6 +23,7 @@ import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.dialog.IncreaseAccountChargeDialog;
 import ir.shirazservice.expert.interfaces.IDefault;
@@ -44,8 +44,6 @@ import ir.shirazservice.expert.webservice.getgiftchargeformula.GetGiftChargeForm
 import ir.shirazservice.expert.webservice.getgiftchargeformula.GetGiftChargeFormulaController;
 import ir.shirazservice.expert.webservice.getgiftchargeformula.GiftChargeFormula;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
-import ir.shirazservice.expert.webservice.shirazserviceapi.ShirazServiceApi;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static ir.shirazservice.expert.utils.APP.context;
 
@@ -284,11 +282,11 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
     private void onlinePayment(Long amount) {
         ZarinPal za = ZarinPal.getPurchase(ChargeActivity.this);
         PaymentRequest paymentRequest = ZarinPal.getPaymentRequest();
-        paymentRequest.setMerchantID(ShirazServiceApi.PAYMENT_MERCHANT);
+        paymentRequest.setMerchantID(BuildConfig.paymentMerchant);
         paymentRequest.setAmount(amount);
         paymentRequest.setDescription(getString(R.string.text_online_payment_description));
 
-        paymentRequest.setCallbackURL(ShirazServiceApi.PAYMENT_URL);
+        paymentRequest.setCallbackURL(BuildConfig.paymentUrl);
 
         za.startPayment(paymentRequest, (status, authority, paymentGatewayUri, intent) -> {
                     if (status == 100) {

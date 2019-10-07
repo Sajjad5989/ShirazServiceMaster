@@ -3,7 +3,6 @@ package ir.shirazservice.expert.webservice.depositmoney;
 
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
-import ir.shirazservice.expert.webservice.shirazserviceapi.ShirazServiceApi;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
@@ -16,8 +15,8 @@ public interface InsrtDepositMoneyApi {
 
     @Headers({BuildConfig.contentType, BuildConfig.deviceType })
     @POST("workman/insrtDepositMoney")
-    Call<DepositMoney> execute(@Header(ShirazServiceApi.USER_ID) int userId,
-                                  @Header(ShirazServiceApi.ACCESS_TOKEN) String accessToken,
+    Call<DepositMoney> execute(@Header(BuildConfig.userId) int userId,
+                                  @Header(BuildConfig.accessToken) String accessToken,
                                   @Body DepositMoneyReq depositMoneyReq);
 
 

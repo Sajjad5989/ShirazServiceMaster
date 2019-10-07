@@ -4,7 +4,6 @@ import java.util.List;
 
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
-import ir.shirazservice.expert.webservice.shirazserviceapi.ShirazServiceApi;
 import retrofit2.Call;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
@@ -15,8 +14,8 @@ public interface GetAdsSliderApi {
 
     @Headers({BuildConfig.contentType, BuildConfig.deviceType })
     @POST("workman/getAdsSliders")
-    Call<List<AdsSlider>> execute(@Header(ShirazServiceApi.USER_ID) int userId,
-                                 @Header(ShirazServiceApi.ACCESS_TOKEN) String accessToken);
+    Call<List<AdsSlider>> execute(@Header(BuildConfig.userId) int userId,
+                                 @Header(BuildConfig.accessToken) String accessToken);
 
 
     interface getAdsSliderCallback{

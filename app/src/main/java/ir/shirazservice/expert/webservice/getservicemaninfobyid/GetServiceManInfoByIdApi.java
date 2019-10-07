@@ -2,7 +2,6 @@ package ir.shirazservice.expert.webservice.getservicemaninfobyid;
 
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
-import ir.shirazservice.expert.webservice.shirazserviceapi.ShirazServiceApi;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
@@ -14,8 +13,8 @@ public interface GetServiceManInfoByIdApi {
 
     @Headers({BuildConfig.contentType, BuildConfig.deviceType })
     @POST("workman/getServiceManInfoById")
-    Call<ServiceManInfoDetail> execute(@Header(ShirazServiceApi.USER_ID) int userId,
-                                       @Header(ShirazServiceApi.ACCESS_TOKEN) String accessToken,
+    Call<ServiceManInfoDetail> execute(@Header(BuildConfig.userId) int userId,
+                                       @Header(BuildConfig.accessToken) String accessToken,
                                        @Body ServiceManInfoById servicemaninfobyid);
 
 

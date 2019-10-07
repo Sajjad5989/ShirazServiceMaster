@@ -25,15 +25,15 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class APP extends Application {
 
-
-    public static final int REQUEST_LIMIT = 1;
-    public static final int REQUEST_FULL = 2;
-    public static final int SERVICE_LIMIT = 3;
-    public static final int SERVICE_FULL = 4;
-    public static final int SERVICE_INFO = 5;
-    public static final int SERVICE_INFO_Status = 100;
-    public static final int OFFLINE_CHARGE = 101;
-    public static final int IMMEDIATE_CODE = 5;
+//
+//    public static final int REQUEST_LIMIT = 1;
+//    public static final int REQUEST_FULL = 2;
+//    public static final int SERVICE_LIMIT = 3;
+//    public static final int SERVICE_FULL = 4;
+//    public static final int SERVICE_INFO = 5;
+//    public static final int SERVICE_INFO_Status = 100;
+//    public static final int OFFLINE_CHARGE = 101;
+//    public static final int IMMEDIATE_CODE = 5;
 
 
     @SuppressLint("StaticFieldLeak")

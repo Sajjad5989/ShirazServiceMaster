@@ -25,6 +25,7 @@ import com.google.firebase.FirebaseApp;
 import java.util.Locale;
 import java.util.Objects;
 
+import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.dialog.UpdateDialog;
 import ir.shirazservice.expert.interfaces.IInternetController;
@@ -42,8 +43,6 @@ import ir.shirazservice.expert.webservice.getservicemaninfo.GetServiceManInfoApi
 import ir.shirazservice.expert.webservice.getservicemaninfo.GetServiceManInfoController;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceManSavedInfo;
-import ir.shirazservice.expert.webservice.shirazserviceapi.ShirazServiceApi;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static ir.shirazservice.expert.utils.APP.context;
 
@@ -145,8 +144,8 @@ public class SplashActivity extends AppCompatActivity implements IInternetContro
         boolean showedSlider = GeneralPreferences.getInstance(this).getBoolean(getString(R.string.text_preference_slider_is_show));
 
         if (showedSlider) {
-            String userName = GeneralPreferences.getInstance(SplashActivity.this).getString(ShirazServiceApi.USER_NAME);
-            String userPass = GeneralPreferences.getInstance(SplashActivity.this).getString(ShirazServiceApi.USER_PASS);
+            String userName = GeneralPreferences.getInstance(SplashActivity.this).getString(BuildConfig.userName);
+            String userPass = GeneralPreferences.getInstance(SplashActivity.this).getString(BuildConfig.userPass);
 
             if (userName == null || userPass == null) {
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
@@ -211,8 +210,8 @@ public class SplashActivity extends AppCompatActivity implements IInternetContro
 
     private ServiceManSavedInfo getServiceManIno() {
 
-        String userName = GeneralPreferences.getInstance(SplashActivity.this).getString(ShirazServiceApi.USER_NAME);
-        String userPass = GeneralPreferences.getInstance(SplashActivity.this).getString(ShirazServiceApi.USER_PASS);
+        String userName = GeneralPreferences.getInstance(SplashActivity.this).getString(BuildConfig.userName);
+        String userPass = GeneralPreferences.getInstance(SplashActivity.this).getString(BuildConfig.userPass);
 
         ServiceManSavedInfo serviceManFirstInfo = new ServiceManSavedInfo();
         serviceManFirstInfo.setUsername(userName);

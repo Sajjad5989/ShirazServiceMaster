@@ -30,6 +30,22 @@ android {
            it.buildConfigField("long","connectionTimeOut", CONNECTION_TIMEOUT);
            it.buildConfigField("long","writeTimeOut", WRITE_TIMEOUT);
            it.buildConfigField("long","readTimeOut", READ_TIMEOUT);
+           it.buildConfigField("String","channelId", CHANNEL_ID);
+           it.buildConfigField("String","channelName", CHANNEL_NAME);
+           it.buildConfigField("String","userId", USER_ID);
+           it.buildConfigField("String","userName", USER_NAME);
+           it.buildConfigField("String","userPass", USER_PASS);
+           it.buildConfigField("String","accessToken", ACCESS_TOKEN);
+           it.buildConfigField("int","requestLimit", REQUEST_LIMIT);
+           it.buildConfigField("int","requestFull", REQUEST_FULL);
+           it.buildConfigField("int","serviceLimit", SERVICE_LIMIT);
+           it.buildConfigField("int","serviceFull", SERVICE_FULL);
+           it.buildConfigField("int","serviceInfo", SERVICE_INFO);
+           it.buildConfigField("int","serviceInfoStaus", SERVICE_INFO_Status);
+           it.buildConfigField("int","offlineCharge", OFFLINE_CHARGE);
+           it.buildConfigField("int","immediateCode", IMMEDIATE_CODE);
+
+
         }
     }
     compileOptions {

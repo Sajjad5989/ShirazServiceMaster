@@ -28,6 +28,7 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.dialog.UpdateDialog;
 import ir.shirazservice.expert.interfaces.IInternetController;
@@ -45,7 +46,6 @@ import ir.shirazservice.expert.webservice.getservicemaninfo.GetServiceManInfoApi
 import ir.shirazservice.expert.webservice.getservicemaninfo.GetServiceManInfoController;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceManSavedInfo;
-import ir.shirazservice.expert.webservice.shirazserviceapi.ShirazServiceApi;
 
 import static ir.shirazservice.expert.utils.APP.context;
 
@@ -73,8 +73,8 @@ public class LoginActivity extends AppCompatActivity implements IInternetControl
                             updateWarning(response.getAndroidAppDlLink(), response.getAndroidServiceManAppForceUpdate());
                         } else {
                             if (chkRemember.isChecked()) {
-                                GeneralPreferences.getInstance(LoginActivity.this).putString(ShirazServiceApi.USER_NAME, Objects.requireNonNull(etUserName.getText()).toString());
-                                GeneralPreferences.getInstance(LoginActivity.this).putString(ShirazServiceApi.USER_PASS, Objects.requireNonNull(etPassword.getText()).toString());
+                                GeneralPreferences.getInstance(LoginActivity.this).putString(BuildConfig.userName, Objects.requireNonNull(etUserName.getText()).toString());
+                                GeneralPreferences.getInstance(LoginActivity.this).putString(BuildConfig.userPass, Objects.requireNonNull(etPassword.getText()).toString());
                             }
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             LoginActivity.this.finish();
