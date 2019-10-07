@@ -20,6 +20,7 @@ import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.interfaces.IInternetController;
 import ir.shirazservice.expert.internetutils.ConnectionInternetDialog;
@@ -136,7 +137,7 @@ public class ServiceLimitFragment extends Fragment implements IInternetControlle
             tvRequestDetailCalculatedPrice.setText(new UsefulFunction().attachCamma(String.valueOf(requestInfo.getCalculatedPrice())));
             tvRequestDetailDateRegister.setText(requestInfo.getDateToPersian());
 
-            if (requestInfo.getTime() == APP.IMMEDIATE_CODE) {
+            if (requestInfo.getTime() == BuildConfig.immediateCode) {
                 tvRequestDetailDateValue.setText(R.string.text_imidiately);
                 tvRequestDetailTimeValue.setText(R.string.text_imidiately);
             } else {

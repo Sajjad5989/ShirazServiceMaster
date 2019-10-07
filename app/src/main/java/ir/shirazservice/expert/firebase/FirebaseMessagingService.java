@@ -30,12 +30,6 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
     private String requestId;
     private String url;
 
-//ToDo
-    //bebaram gradle
-
-  //  private final String channelId = "ir.shirazservice.expert.firebase.SHZ_EXPERT_CHANNEL";
-  //  private final String channelName = "SHZ_EXPERT_CHANNEL";
-
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         if ( remoteMessage.getData( ).size( ) > 0 ) {

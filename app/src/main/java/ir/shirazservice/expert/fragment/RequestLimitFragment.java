@@ -25,6 +25,7 @@ import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.activity.ServiceRequestDetailActivity;
 import ir.shirazservice.expert.dialog.ChooseRequestDialog;
@@ -245,7 +246,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
         Intent intent = new Intent(getActivity(), ServiceRequestDetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(getString(R.string.text_bundle_req_id), currentRequest.getServiceId());
-        bundle.putInt(getString(R.string.text_bundle_service_status), APP.SERVICE_INFO_Status);
+        bundle.putInt(getString(R.string.text_bundle_service_status), BuildConfig.serviceInfoStaus);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -302,7 +303,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
             tvRequestDetailCalculatedPrice.setText(new UsefulFunction().attachCamma(String.valueOf(currentRequest.getCalculatedPrice())));
             requestDetailCalculatedPrice = currentRequest.getCalculatedPrice();
 
-            if (currentRequest.getTime() == APP.IMMEDIATE_CODE) {
+            if (currentRequest.getTime() == BuildConfig.immediateCode) {
                 tvRequestDetailDateValue.setText(R.string.text_imidiately);
                 tvRequestDetailTimeValue.setText(R.string.text_imidiately);
             } else {

@@ -26,6 +26,7 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.activity.ServiceRequestDetailActivity;
 import ir.shirazservice.expert.dialog.CancelRequestDialog;
@@ -200,7 +201,7 @@ public class RequestFullFragment extends Fragment implements IInternetController
             tvMobile.setText(requestDetails.getMobile());
 
 
-            if (requestDetails.getTime() == APP.IMMEDIATE_CODE) {
+            if (requestDetails.getTime() == BuildConfig.immediateCode) {
                 tvRequestDetailDateValue.setText(R.string.text_imidiately);
                 tvRequestDetailTimeValue.setText(R.string.text_imidiately);
             } else {
@@ -312,7 +313,7 @@ public class RequestFullFragment extends Fragment implements IInternetController
         Bundle bundle = new Bundle();
         bundle.putInt(getString(R.string.text_bundle_req_id), requestDetails.getServiceId());
 
-        bundle.putInt(getString(R.string.text_bundle_service_status), APP.SERVICE_INFO_Status);
+        bundle.putInt(getString(R.string.text_bundle_service_status), BuildConfig.serviceInfoStaus);
         intent.putExtras(bundle);
         startActivity(intent);
     }
