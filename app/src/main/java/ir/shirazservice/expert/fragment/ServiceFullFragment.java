@@ -43,7 +43,7 @@ import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 import static ir.shirazservice.expert.utils.APP.context;
 
-public class ServiceFullFragment extends Fragment implements IInternetController {
+public class ServiceFullFragment extends Fragment  {
 
 
     private static int requestId;
@@ -76,29 +76,29 @@ public class ServiceFullFragment extends Fragment implements IInternetController
     @BindView(R.id.const_not_found_info)
     ConstraintLayout constNotFound;
 
-    private RequestDetails requestDetails;
-    private final GetRequestDetailsApi.getRequestDetailsCallback getRequestDetailsCallback = new GetRequestDetailsApi.getRequestDetailsCallback() {
-        @Override
-        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestDetails response) {
-            if (successful) {
-                requestDetails = response;
-                fillViews();
-            } else {
-                requestDetails = null;
-                fillViews();
-            }
+    private static RequestDetails requestDetails;
+//    private final GetRequestDetailsApi.getRequestDetailsCallback getRequestDetailsCallback = new GetRequestDetailsApi.getRequestDetailsCallback() {
+//        @Override
+//        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestDetails response) {
+//            if (successful) {
+//                requestDetails = response;
+//                fillViews();
+//            } else {
+//                requestDetails = null;
+//                fillViews();
+//            }
+//
+//        }
+//
+//        @Override
+//        public void onFailure(String cause) {
+//            requestDetails = null;
+//            fillViews();
+//        }
+//    };
 
-        }
-
-        @Override
-        public void onFailure(String cause) {
-            requestDetails = null;
-            fillViews();
-        }
-    };
-
-    public static ServiceFullFragment newInstance(int reqId) {
-        requestId = reqId;
+    public static ServiceFullFragment newInstance(RequestDetails requestDetail) {
+        requestDetails = requestDetail;
         return new ServiceFullFragment();
     }
 
@@ -110,9 +110,6 @@ public class ServiceFullFragment extends Fragment implements IInternetController
         callIntent.setData ( Uri.parse ( "tel:" + phone.trim ( ) ) );
         callIntent.addFlags ( Intent.FLAG_ACTIVITY_NEW_TASK );
         startActivity ( callIntent );
-
-//        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + tvPhoneNumber.getText().toString()));
-//        startActivity(intent);
     }
 
     @OnClick(R.id.img_call_by_mobile)
@@ -145,24 +142,24 @@ public class ServiceFullFragment extends Fragment implements IInternetController
 
     }
 
+//    private void loadRequestDetail() {
+//        if (!isOnline()) {
+//            openInternetCheckingDialog();
+//        }
+//        if (requestId != 0) {
+//            ServiceMan serviceMan = GeneralPreferences.getInstance(getActivity()).getServiceManInfo();
+//            RequestDetailsReq requestDetailsReq = new RequestDetailsReq();
+//            requestDetailsReq.setRequestId(requestId);
+//            requestDetailsReq.setServicemanId(serviceMan.getServicemanId());
+//
+//            GetRequestDetailsController getRequestDetailsController =
+//                    new GetRequestDetailsController(getActivity(), getRequestDetailsCallback);
+//            getRequestDetailsController.start(serviceMan.getServicemanId(), serviceMan.getAccessToken(), requestDetailsReq);
+//        } else
+//            getActivity().finish();
+//    }
+
     private void loadRequestDetail() {
-        if (!isOnline()) {
-            openInternetCheckingDialog();
-        }
-        if (requestId != 0) {
-            ServiceMan serviceMan = GeneralPreferences.getInstance(getActivity()).getServiceManInfo();
-            RequestDetailsReq requestDetailsReq = new RequestDetailsReq();
-            requestDetailsReq.setRequestId(requestId);
-            requestDetailsReq.setServicemanId(serviceMan.getServicemanId());
-
-            GetRequestDetailsController getRequestDetailsController =
-                    new GetRequestDetailsController(getActivity(), getRequestDetailsCallback);
-            getRequestDetailsController.start(serviceMan.getServicemanId(), serviceMan.getAccessToken(), requestDetailsReq);
-        } else
-            getActivity().finish();
-    }
-
-    private void fillViews() {
         if (requestDetails != null) {
 
             String picAddress = requestDetails.getServicePicAddress();
@@ -201,39 +198,39 @@ public class ServiceFullFragment extends Fragment implements IInternetController
 
     }
 
-    @Override
-    public boolean isOnline() {
-        return OnlineCheck.getInstance(getActivity()).isOnline();
-    }
+//    @Override
+//    public boolean isOnline() {
+//        return OnlineCheck.getInstance(getActivity()).isOnline();
+//    }
 
-    private void openInternetCheckingDialog() {
-        ConnectionInternetDialog dialog = new ConnectionInternetDialog(getActivity(), new InternetConnectionListener() {
-            @Override
-            public void onInternet() {
-                context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-            }
-
-            @Override
-            public void onFinish() {
-                APP.killApp();
-            }
-
-            @Override
-            public void OnRetry() {
-                fillViews();
-            }
-        });
-
-        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
-        dialog.show();
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        width = (int) ((width) * 0.8);
-        dialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
-    }
+//    private void openInternetCheckingDialog() {
+//        ConnectionInternetDialog dialog = new ConnectionInternetDialog(getActivity(), new InternetConnectionListener() {
+//            @Override
+//            public void onInternet() {
+//                context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                APP.killApp();
+//            }
+//
+//            @Override
+//            public void OnRetry() {
+//                fillViews();
+//            }
+//        });
+//
+//        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+//        dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
+//        dialog.show();
+//        Display display = getActivity().getWindowManager().getDefaultDisplay();
+//        Point size = new Point();
+//        display.getSize(size);
+//        int width = size.x;
+//        width = (int) ((width) * 0.8);
+//        dialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+//    }
 
     private void showHideWaitingProgress(boolean hide) {
         constWaiting.setVisibility(hide ? View.GONE : View.VISIBLE);

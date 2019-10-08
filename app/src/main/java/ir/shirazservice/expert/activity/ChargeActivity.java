@@ -200,7 +200,6 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
         Intent intent = new Intent(ChargeActivity.this, ServiceRequestDetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(getString(R.string.text_bundle_req_id), 0);
-        bundle.putInt(getString(R.string.text_bundle_service_status), BuildConfig.offlineCharge);
         intent.putExtras(bundle);
         startActivity(intent);
     }

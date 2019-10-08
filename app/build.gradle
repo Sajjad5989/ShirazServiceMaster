@@ -36,15 +36,17 @@ android {
            it.buildConfigField("String","userName", USER_NAME);
            it.buildConfigField("String","userPass", USER_PASS);
            it.buildConfigField("String","accessToken", ACCESS_TOKEN);
-           it.buildConfigField("int","requestLimit", REQUEST_LIMIT);
-           it.buildConfigField("int","requestFull", REQUEST_FULL);
-           it.buildConfigField("int","serviceLimit", SERVICE_LIMIT);
-           it.buildConfigField("int","serviceFull", SERVICE_FULL);
            it.buildConfigField("int","serviceInfo", SERVICE_INFO);
            it.buildConfigField("int","serviceInfoStaus", SERVICE_INFO_Status);
            it.buildConfigField("int","offlineCharge", OFFLINE_CHARGE);
            it.buildConfigField("int","immediateCode", IMMEDIATE_CODE);
-
+            it.buildConfigField("int","requestLimit", REQUEST_LIMIT);
+            it.buildConfigField("int","requestSelect",REQUEST_SELECT );
+            it.buildConfigField("int","requestDeleteCancel",REQUEST_DELETE_CANCEL );
+            it.buildConfigField("int","requestAccept", REQUEST_ACCEPT);
+            it.buildConfigField("int","requestNotExists", REQUEST_NOT_EXISTS);
+            it.buildConfigField("int","requestFinished", REQUEST_FINISHED);
+            it.buildConfigField("int","requestExpired", REQUEST_EXPIRED);
 
         }
     }

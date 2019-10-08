@@ -40,10 +40,9 @@ import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 import static ir.shirazservice.expert.utils.APP.context;
 
-public class ServiceInfoFragment extends Fragment implements IInternetController {
+public class ServiceInfoFragment extends Fragment  {
 
 
-    private static int myServiceId;
     @BindView(R.id.img_request_Detail)
     AppCompatImageView imgRequestDetail;
     @BindView(R.id.tv_request_detail_service_title)
@@ -63,45 +62,45 @@ public class ServiceInfoFragment extends Fragment implements IInternetController
     AppCompatTextView tvServiceDescription;
     @BindView(R.id.const_waiting_main_fragment)
     ConstraintLayout constWaiting;
-    private ServiceInfo serviceInfo;
-    private final GetServiceInfoApi.getServiceInfoCallBack getServiceInfoCallBack = new
-            GetServiceInfoApi.getServiceInfoCallBack() {
-                @Override
-                public void onResponse(boolean successful, ErrorResponseSimple errorResponse, ServiceInfo response) {
-                    if (successful) {
-                        serviceInfo = response;
-                    } else
-                        serviceInfo = null;
+    private static ServiceInfo serviceInfoS;
+//    private final GetServiceInfoApi.getServiceInfoCallBack getServiceInfoCallBack = new
+//            GetServiceInfoApi.getServiceInfoCallBack() {
+//                @Override
+//                public void onResponse(boolean successful, ErrorResponseSimple errorResponse, ServiceInfo response) {
+//                    if (successful) {
+//                        serviceInfo = response;
+//                    } else
+//                        serviceInfo = null;
+//
+//                    setServiceInfo();
+//                }
+//
+//                @Override
+//                public void onFailure(String cause) {
+//                    serviceInfo = null;
+//                    setServiceInfo();
+//                }
+//            };
 
-                    setServiceInfo();
-                }
-
-                @Override
-                public void onFailure(String cause) {
-                    serviceInfo = null;
-                    setServiceInfo();
-                }
-            };
-
-    public static ServiceInfoFragment newInstance(int serviceId) {
-        myServiceId = serviceId;
+    public static ServiceInfoFragment newInstance(ServiceInfo serviceInfo) {
+        serviceInfoS= serviceInfo;
         return new ServiceInfoFragment();
     }
 
-    private void setServiceInfo() {
-        if (serviceInfo != null) {
-            tvRequestDetailServiceTitle.setText(serviceInfo.getServiceTitle());
+    private void loadServiceDetail() {
 
-            tvExtraTitle1.setText(serviceInfo.getExtraTitle1());
-            tvExtraField1.setText(serviceInfo.getExtraField1());
+            tvRequestDetailServiceTitle.setText(serviceInfoS.getServiceTitle());
 
-            tvExtraTitle2.setText(serviceInfo.getExtraTitle2());
-            tvExtraField2.setText(serviceInfo.getExtraField2());
+            tvExtraTitle1.setText(serviceInfoS.getExtraTitle1());
+            tvExtraField1.setText(serviceInfoS.getExtraField1());
 
-            tvServiceDescriptionTitle.setText(serviceInfo.getServiceTitle());
-            tvServiceDescription.setText(serviceInfo.getBody());
+            tvExtraTitle2.setText(serviceInfoS.getExtraTitle2());
+            tvExtraField2.setText(serviceInfoS.getExtraField2());
 
-            String picAddress = serviceInfo.getPicAddress();
+            tvServiceDescriptionTitle.setText(serviceInfoS.getServiceTitle());
+            tvServiceDescription.setText(serviceInfoS.getBody());
+
+            String picAddress = serviceInfoS.getPicAddress();
             if (null == picAddress || picAddress.equals("")) {
                 imgRequestDetail.setImageResource(R.drawable.img_no_icon);
             } else {
@@ -112,10 +111,7 @@ public class ServiceInfoFragment extends Fragment implements IInternetController
                         .placeholder(R.drawable.img_loading)
                         .into(imgRequestDetail);
             }
-
-            showHideWaitingProgress(true);
-        } else
-            getActivity().finish();
+        showHideWaitingProgress(true);
     }
 
     @Nullable
@@ -136,55 +132,55 @@ public class ServiceInfoFragment extends Fragment implements IInternetController
 
     }
 
-    private void loadServiceDetail() {
-
-        if (!isOnline())
-            openInternetCheckingDialog();
-
-        ServiceMan serviceMan = GeneralPreferences.getInstance(getActivity()).getServiceManInfo();
-
-        GetServiceInfoController getServiceInfoController = new GetServiceInfoController(getServiceInfoCallBack);
-
-
-        ReceptionService receptionService = new ReceptionService();
-        receptionService.setServiceId(myServiceId);
-        getServiceInfoController.start(serviceMan.getServicemanId(), serviceMan.getAccessToken(), receptionService
-        );
-    }
-
-    @Override
-    public boolean isOnline() {
-        return OnlineCheck.getInstance(getActivity()).isOnline();
-    }
-
-    private void openInternetCheckingDialog() {
-        ConnectionInternetDialog dialog = new ConnectionInternetDialog(getActivity(), new InternetConnectionListener() {
-            @Override
-            public void onInternet() {
-                context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-            }
-
-            @Override
-            public void onFinish() {
-                APP.killApp();
-            }
-
-            @Override
-            public void OnRetry() {
-                loadServiceDetail();
-            }
-        });
-
-        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
-        dialog.show();
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        width = (int) ((width) * 0.8);
-        dialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
-    }
+//    private void loadServiceDetail() {
+//
+//        if (!isOnline())
+//            openInternetCheckingDialog();
+//
+//        ServiceMan serviceMan = GeneralPreferences.getInstance(getActivity()).getServiceManInfo();
+//
+//        GetServiceInfoController getServiceInfoController = new GetServiceInfoController(getServiceInfoCallBack);
+//
+//
+//        ReceptionService receptionService = new ReceptionService();
+//        receptionService.setServiceId(myServiceId);
+//        getServiceInfoController.start(serviceMan.getServicemanId(), serviceMan.getAccessToken(), receptionService
+//        );
+//    }
+//
+//    @Override
+//    public boolean isOnline() {
+//        return OnlineCheck.getInstance(getActivity()).isOnline();
+//    }
+//
+//    private void openInternetCheckingDialog() {
+//        ConnectionInternetDialog dialog = new ConnectionInternetDialog(getActivity(), new InternetConnectionListener() {
+//            @Override
+//            public void onInternet() {
+//                context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                APP.killApp();
+//            }
+//
+//            @Override
+//            public void OnRetry() {
+//                loadServiceDetail();
+//            }
+//        });
+//
+//        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
+//        dialog.show();
+//        Display display = getActivity().getWindowManager().getDefaultDisplay();
+//        Point size = new Point();
+//        display.getSize(size);
+//        int width = size.x;
+//        width = (int) ((width) * 0.8);
+//        dialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+//    }
 
     private void showHideWaitingProgress(boolean hide) {
         constWaiting.setVisibility(hide ? View.GONE : View.VISIBLE);

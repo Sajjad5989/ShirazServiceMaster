@@ -61,7 +61,9 @@ public class RequestFullFragment extends Fragment implements IInternetController
     private static final int FINISH_REQUEST = 1;
     private static final int CANCEL_REQUEST = 2;
     private static final int LOAD_REQUEST = 3;
-    private static int requestId;
+    private static RequestDetails requestDetailsFull;
+private int requestId;
+
     private final CancelRequestByWorkmanApi.cancelRequestByWorkmanCallback cancelRequestByWorkmanCallback
             = new CancelRequestByWorkmanApi.cancelRequestByWorkmanCallback() {
         @Override
@@ -128,31 +130,31 @@ public class RequestFullFragment extends Fragment implements IInternetController
     @BindView(R.id.btn_login)
     AppCompatButton btnLogin;
     private int whichMethod;
-    private RequestDetails requestDetails;
-    private final GetRequestDetailsApi.getRequestDetailsCallback getRequestDetailsCallback = new GetRequestDetailsApi.getRequestDetailsCallback() {
-        @Override
-        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestDetails response) {
-            if (successful) {
-                requestDetails = response;
-                setRequestDetail();
-            } else {
-                requestDetails = null;
-                setRequestDetail();
-            }
-        }
 
-        @Override
-        public void onFailure(String cause) {
-            requestDetails = null;
-            setRequestDetail();
-        }
-    };
+//    private final GetRequestDetailsApi.getRequestDetailsCallback getRequestDetailsCallback = new GetRequestDetailsApi.getRequestDetailsCallback() {
+//        @Override
+//        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestDetails response) {
+//            if (successful) {
+//                requestDetails = response;
+//                setRequestDetail();
+//            } else {
+//                requestDetails = null;
+//                setRequestDetail();
+//            }
+//        }
+//
+//        @Override
+//        public void onFailure(String cause) {
+//            requestDetails = null;
+//            setRequestDetail();
+//        }
+//    };
     private int servicemanId;
     private String accessToken;
 
-    public static RequestFullFragment newInstance(int reqId) {
+    public static RequestFullFragment newInstance(RequestDetails requestDetails) {
 
-        requestId = reqId;
+        requestDetailsFull = requestDetails;
         return new RequestFullFragment();
     }
 
@@ -176,9 +178,10 @@ public class RequestFullFragment extends Fragment implements IInternetController
 
     private void setRequestDetail() {
 
-        if (requestDetails != null) {
+        if (requestDetailsFull != null) {
+            requestId = requestDetailsFull.getServiceId();
             //***************************************
-            String picAddress = requestDetails.getServicePicAddress();
+            String picAddress = requestDetailsFull.getServicePicAddress();
             if (null == picAddress || picAddress.equals("")) {
                 imgRequestDetail.setImageResource(R.drawable.img_no_icon);
             } else {
@@ -190,29 +193,29 @@ public class RequestFullFragment extends Fragment implements IInternetController
                         .into(imgRequestDetail);
             }
 
-            tvRequestDetailServiceTitle.setText(requestDetails.getServiceTitle());
-            tvReceiverName.setText(requestDetails.getReceiverMan());
-            tvRequestDetailCalculatedPrice.setText(new UsefulFunction().attachCamma(requestDetails.getCalculatedPrice()));
-            tvPositionAddress.setText(requestDetails.getAreaTitle());
-            tvFullAddress.setText(requestDetails.getAddress());
-            tvDiscountCode.setText(requestDetails.getDiscountCode());
-            tvDiscountAlarm.setText(requestDetails.getDiscountDesc());
-            tvPhoneNumber.setText(requestDetails.getPhone());
-            tvMobile.setText(requestDetails.getMobile());
+            tvRequestDetailServiceTitle.setText(requestDetailsFull.getServiceTitle());
+            tvReceiverName.setText(requestDetailsFull.getReceiverMan());
+            tvRequestDetailCalculatedPrice.setText(new UsefulFunction().attachCamma(requestDetailsFull.getCalculatedPrice()));
+            tvPositionAddress.setText(requestDetailsFull.getAreaTitle());
+            tvFullAddress.setText(requestDetailsFull.getAddress());
+            tvDiscountCode.setText(requestDetailsFull.getDiscountCode());
+            tvDiscountAlarm.setText(requestDetailsFull.getDiscountDesc());
+            tvPhoneNumber.setText(requestDetailsFull.getPhone());
+            tvMobile.setText(requestDetailsFull.getMobile());
 
 
-            if (requestDetails.getTime() == BuildConfig.immediateCode) {
+            if (requestDetailsFull.getTime() == BuildConfig.immediateCode) {
                 tvRequestDetailDateValue.setText(R.string.text_imidiately);
                 tvRequestDetailTimeValue.setText(R.string.text_imidiately);
             } else {
-                tvRequestDetailDateValue.setText(requestDetails.getDateToPersian());
-                tvRequestDetailTimeValue.setText(requestDetails.getTimeDesc());
+                tvRequestDetailDateValue.setText(requestDetailsFull.getDateToPersian());
+                tvRequestDetailTimeValue.setText(requestDetailsFull.getTimeDesc());
             }
-            if ("".equals(requestDetails.getDiscountCode())) {
+            if ("".equals(requestDetailsFull.getDiscountCode())) {
                 constDiscount.setVisibility(View.GONE);
             }
 
-            tvRequestDetailTrackingCode.setText(requestDetails.getTrackingCode());
+            tvRequestDetailTrackingCode.setText(requestDetailsFull.getTrackingCode());
 
             //***************************************
             showHideWaitingProgress(true);
@@ -236,7 +239,8 @@ public class RequestFullFragment extends Fragment implements IInternetController
 
         showHideWaitingProgress(false);
         setNeededIds();
-        loadRequestDetail();
+//        loadRequestDetail();
+        setRequestDetail();
         onClickConfig();
 
     }
@@ -311,29 +315,28 @@ public class RequestFullFragment extends Fragment implements IInternetController
     private void openServiceInfo() {
         Intent intent = new Intent(getActivity(), ServiceRequestDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt(getString(R.string.text_bundle_req_id), requestDetails.getServiceId());
-
-        bundle.putInt(getString(R.string.text_bundle_service_status), BuildConfig.serviceInfoStaus);
+        bundle.putInt(getString(R.string.text_bundle_req_id), requestDetailsFull.getServiceId()*-1);
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
     private void loadRequestDetail() {
 
-        whichMethod = LOAD_REQUEST;
-        if (!isOnline()) {
-            openInternetCheckingDialog();
-        }
-
-        ServiceMan serviceMan = GeneralPreferences.getInstance(getActivity()).getServiceManInfo();
-
-        RequestDetailsReq requestDetailsReception = new RequestDetailsReq();
-        requestDetailsReception.setRequestId(requestId);
-        requestDetailsReception.setServicemanId(serviceMan.getServicemanId());
-
-        GetRequestDetailsController getRequestDetailsController = new GetRequestDetailsController(getActivity(),
-                getRequestDetailsCallback);
-        getRequestDetailsController.start(serviceMan.getServicemanId(), serviceMan.getAccessToken(), requestDetailsReception);
+        setRequestDetail();
+//        whichMethod = LOAD_REQUEST;
+//        if (!isOnline()) {
+//            openInternetCheckingDialog();
+//        }
+//
+//        ServiceMan serviceMan = GeneralPreferences.getInstance(getActivity()).getServiceManInfo();
+//
+//        RequestDetailsReq requestDetailsReception = new RequestDetailsReq();
+//        requestDetailsReception.setRequestId(requestId);
+//        requestDetailsReception.setServicemanId(serviceMan.getServicemanId());
+//
+//        GetRequestDetailsController getRequestDetailsController = new GetRequestDetailsController(getActivity(),
+//                getRequestDetailsCallback);
+//        getRequestDetailsController.start(serviceMan.getServicemanId(), serviceMan.getAccessToken(), requestDetailsReception);
     }
 
     @Override
@@ -364,7 +367,8 @@ public class RequestFullFragment extends Fragment implements IInternetController
                         cancelRequest();
                         break;
                     case LOAD_REQUEST:
-                        loadRequestDetail();
+//                        loadRequestDetail();
+                        setRequestDetail();
                         break;
                     default:
                         getActivity().finish();//TODO

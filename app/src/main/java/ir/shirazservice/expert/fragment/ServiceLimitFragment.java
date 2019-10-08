@@ -64,29 +64,31 @@ public class ServiceLimitFragment extends Fragment implements IInternetControlle
     ConstraintLayout constWaiting;
     @BindView(R.id.const_not_found_info)
     ConstraintLayout constNotFound;
-    private RequestInfo requestInfo;
-    private final RequestInfoApi.GetRequestInfoCallback getRequestInfoCallback = new RequestInfoApi.GetRequestInfoCallback() {
-        @Override
-        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestInfo response) {
-            if (successful) {
-                requestInfo = response;
-                fillViews();
-            } else {
-                requestInfo = null;
-                fillViews();
-            }
-        }
+    private static RequestInfo requestInfo;
+   // private RequestInfo requestInfo;
+//    private final RequestInfoApi.GetRequestInfoCallback getRequestInfoCallback = new RequestInfoApi.GetRequestInfoCallback() {
+//        @Override
+//        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestInfo response) {
+//            if (successful) {
+//                requestInfo = response;
+//                fillViews();
+//            } else {
+//                requestInfo = null;
+//                fillViews();
+//            }
+//        }
+//
+//        @Override
+//        public void onFailure(String cause) {
+//            requestInfo = null;
+//            fillViews();
+//
+//        }
+//    };
 
-        @Override
-        public void onFailure(String cause) {
-            requestInfo = null;
-            fillViews();
 
-        }
-    };
-
-    public static ServiceLimitFragment newInstance(int reqId) {
-        requestId = reqId;
+    public static ServiceLimitFragment newInstance(RequestInfo requestInfoInput) {
+        requestInfo = requestInfoInput ;
         return new ServiceLimitFragment();
     }
 
@@ -108,25 +110,25 @@ public class ServiceLimitFragment extends Fragment implements IInternetControlle
 
     }
 
+//    private void loadRequestDetail() {
+//        if (!isOnline()) {
+//            openInternetCheckingDialog();
+//        }
+//
+//        if (requestId != 0) {
+//
+//            ServiceMan serviceMan = GeneralPreferences.getInstance(getActivity()).getServiceManInfo();
+//            RequestInfoInput requestInfoInput = new RequestInfoInput();
+//            requestInfoInput.setRequestId(requestId);
+//            requestInfoInput.setServicemanId(serviceMan.getServicemanId());
+//
+////            RequestInfoController requestInfoController = new RequestInfoController(getRequestInfoCallback);
+////            requestInfoController.start(serviceMan.getServicemanId(), serviceMan.getAccessToken(), requestInfoInput);
+//        } else
+//            getActivity().finish();
+//    }
+
     private void loadRequestDetail() {
-        if (!isOnline()) {
-            openInternetCheckingDialog();
-        }
-
-        if (requestId != 0) {
-
-            ServiceMan serviceMan = GeneralPreferences.getInstance(getActivity()).getServiceManInfo();
-            RequestInfoInput requestInfoInput = new RequestInfoInput();
-            requestInfoInput.setRequestId(requestId);
-            requestInfoInput.setServicemanId(serviceMan.getServicemanId());
-
-            RequestInfoController requestInfoController = new RequestInfoController(getRequestInfoCallback);
-            requestInfoController.start(serviceMan.getServicemanId(), serviceMan.getAccessToken(), requestInfoInput);
-        } else
-            getActivity().finish();
-    }
-
-    private void fillViews() {
         if (requestInfo != null) {
             tvRequestDetailServiceTitle.setText(requestInfo.getServiceTitle());
             tvRequestDetailTrackingCode.setText(requestInfo.getTrackingCode());

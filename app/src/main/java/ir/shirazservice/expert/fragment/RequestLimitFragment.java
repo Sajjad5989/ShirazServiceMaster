@@ -71,6 +71,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
 
                 }
             };
+
     private final InsrtRequestVisitApi.insrtRequestVisitCallback insrtRequestVisitCallback =
             new InsrtRequestVisitApi.insrtRequestVisitCallback() {
                 @Override
@@ -245,8 +246,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
     private void openServiceInfo() {
         Intent intent = new Intent(getActivity(), ServiceRequestDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt(getString(R.string.text_bundle_req_id), currentRequest.getServiceId());
-        bundle.putInt(getString(R.string.text_bundle_service_status), BuildConfig.serviceInfoStaus);
+        bundle.putInt(getString(R.string.text_bundle_req_id), currentRequest.getServiceId() * -1);
         intent.putExtras(bundle);
         startActivity(intent);
     }
