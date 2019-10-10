@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="service_man_avatar_size">72dp</dimen>
+    <dimen name="service_man_avatar_size">96dp</dimen>
 </resources>

@@ -98,5 +98,9 @@ dependencies {
     //multidex
     implementation 'com.android.support:multidex:1.0.3'
 
+    // CircularProgressBar
+    implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
+
+
 }
 apply plugin: 'com.google.gms.google-services'

@@ -8,6 +8,7 @@
     <color name="colorAccent">#d32f2f</color>
     <color name="colorGreen">#38833C</color>
     <color name="colorGrayBorder">#E0E0E0</color>
+    <color name="colorGrayBorderLight">#48EBEBEB</color>
 
     <color name="colorBlackStep_1">#8F8F8F</color>
     <color name="colorBlackStep_2">#545454</color>

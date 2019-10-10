@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
@@ -54,8 +55,11 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
 
         }
     };
+
     private BottomNavigationView bottomNavigation;
+
     private boolean doubleBackToExitPressedOnce = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
         setButtonNavigation();
 
         bottomNavigation.setSelectedItemId(R.id.navigation_home);
-        openHomeFragment();
+        openMainFragment();
 
 
         if (!isOnline()) {
@@ -75,6 +79,49 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
         }
 
         saveTokenKey();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        APP.currentActivity = MainActivity.this;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (doubleBackToExitPressedOnce) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finishAffinity();
+            finish();
+            System.exit(0);
+            MainActivity.this.finish();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        APP.customToast(getString(R.string.text_all_tap_back_button));
+        new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000 );
+    }
+
+    @Override
+    public void OnActivityDefaultSetting() {
+        OnPageRight();
+    }
+
+    @Override
+    public void OnPageRight() {
+        if (getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR) {
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        }
+    }
+
+    @Override
+    public boolean isOnline() {
+        return OnlineCheck.getInstance(MainActivity.this).isOnline();
     }
 
     private void setButtonNavigation() {
@@ -85,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
 
             switch (id) {
                 case R.id.navigation_home:
-                    openHomeFragment();
+                    openMainFragment();
                     break;
                 case R.id.navigation_my_service:
                     openMyServiceFragment();
@@ -118,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
                 .commit();
     }
 
-    private void openHomeFragment() {
+    private void openMainFragment( ) {
         MainFragment mainFragment = MainFragment.newInstance();
         getFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, mainFragment)
@@ -140,54 +187,6 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
                 .add(R.id.fragment_container, myTransactionFragment)
                 .addToBackStack(null)
                 .commit();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        APP.currentActivity = MainActivity.this;
-    }
-//
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//
-//    }
-//
-//    @Override
-//    public void onBackPressed() {
-//
-//        if (doubleBackToExitPressedOnce) {
-//            Intent intent = new Intent(Intent.ACTION_MAIN);
-//            intent.addCategory(Intent.CATEGORY_HOME);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
-//            finishAffinity();
-//            finish();
-//            System.exit(0);
-//            MainActivity.this.finish();
-//            return;
-//        }
-//
-//        this.doubleBackToExitPressedOnce = true;
-//        APP.customToast(getString(R.string.text_all_tap_back_button));
-//        new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
-//    }
-    @Override
-    public void OnActivityDefaultSetting() {
-        OnPageRight();
-    }
-
-    @Override
-    public void OnPageRight() {
-        if (getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR) {
-            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-        }
-    }
-
-    @Override
-    public boolean isOnline() {
-        return OnlineCheck.getInstance(MainActivity.this).isOnline();
     }
 
     private void saveTokenKey() {
@@ -235,6 +234,5 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
         width = (int) ((width) * 0.8);
         dialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
     }
-
 
 }
