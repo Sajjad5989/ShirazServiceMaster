@@ -182,7 +182,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dimen_dp_small"
                     android:fontFamily="@font/iran_sans"
-                    android:text="@string/text_cost_request"
+                    android:text="@string/text_select_request"
                     android:textColor="@color/colorBlackStep_5"
                     android:textSize="@dimen/dimen_sp_tiny"
                     app:layout_constraintBottom_toBottomOf="parent"

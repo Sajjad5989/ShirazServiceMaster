@@ -157,7 +157,6 @@ public class MyTransactionFragment extends Fragment implements Serializable, IIn
 
     private void getWorkManCredit() {
 
-
         if (!isOnline()) {
             openInternetCheckingDialog();
         }

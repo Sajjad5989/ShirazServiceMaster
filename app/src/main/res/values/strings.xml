@@ -83,7 +83,6 @@
     <string name="text_tracking_code">کد پیگیری</string>
     <string name="text_requester">درخواست دهنده</string>
     <string name="text_request_status">وضعیت درخواست</string>
-    <string name="text_cost_request">هزینه ی این درخواست</string>
     <string name="text_address">آدرس</string>
     <string name="text_customer_explaination">توضیحات مشتری</string>
     <string name="text_phone">تلفن ثابت</string>
@@ -107,6 +106,7 @@
     <string name="text_optional_update">نسخه ی جدیدی وجود دارد، آیا مایل به بروزرسانی هستید؟</string>
     <string name="text_imidiately">فوری</string>
     <string name="text_all_tap_back_button">لطفا برای خروج کلید بازگشت را مجددا فشار دهید.</string>
+    <string name="text_select_request">هزینه ی انتخاب این درخواست</string>
 
 
 </resources>

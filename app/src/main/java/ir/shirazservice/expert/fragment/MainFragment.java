@@ -57,6 +57,10 @@ import ir.shirazservice.expert.webservice.requestlist.RequestListInputs;
 import ir.shirazservice.expert.webservice.slider.AdsSlider;
 import ir.shirazservice.expert.webservice.slider.GetAdsSliderApi;
 import ir.shirazservice.expert.webservice.slider.GetAdsSliderController;
+import ir.shirazservice.expert.webservice.workmancredit.GetWorkmanCreditApi;
+import ir.shirazservice.expert.webservice.workmancredit.GetWorkmanCreditController;
+import ir.shirazservice.expert.webservice.workmancredit.WorkmanCredit;
+import ir.shirazservice.expert.webservice.workmancredit.WorkmanCreditReq;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 import static ir.shirazservice.expert.utils.APP.context;
@@ -67,8 +71,10 @@ public class MainFragment extends Fragment implements IInternetController {
     private static final int METHOD_TYPE_SLIDER = 1;
     private static final int METHOD_TYPE_REQUEST = 2;
     private static final int METHOD_TYPE_NEWS = 3;
+    private static final int METHOD_TYPE_WORKMAN_CREDIT = 4;
     private final RequestDetailList requestDetailList = new RequestDetailList();
     private AppCompatTextView tvExpertName;
+    private AppCompatTextView tvExpRate;
     private AppCompatTextView tvExpertCredit;
     private AppCompatTextView tvExpertDiscount;
     private AppCompatTextView tvRatingBar;
@@ -84,6 +90,7 @@ public class MainFragment extends Fragment implements IInternetController {
     private List< Request > selectedRequestList;
     private List< WorkmanNews > workmanNews;
     private List< AdsSlider > adsSliders;
+
 
     private final GetWorkmanNewsApi.getWorkmanNewsCallback getWorkmanNewsCallback = new GetWorkmanNewsApi.getWorkmanNewsCallback() {
         @Override
@@ -102,7 +109,7 @@ public class MainFragment extends Fragment implements IInternetController {
 
         }
     };
-    private int userId;
+    private int servicemanId;
     private String accessToken;
     private final RequestListApi.GetRequestListCallback getRequestListCallback = new RequestListApi.GetRequestListCallback() {
         @Override
@@ -159,6 +166,7 @@ public class MainFragment extends Fragment implements IInternetController {
     private void findViews( View view ){
 
         tvExpertName = view.findViewById( R.id.tv_expert_name );
+        tvExpRate = view.findViewById( R.id.tv_exp_rate );
         tvRetry = view.findViewById( R.id.tv_retry );
         tvExpertCredit = view.findViewById( R.id.tv_expert_Credit );
         tvExpertDiscount = view.findViewById( R.id.tv_expert_discount );
@@ -216,9 +224,10 @@ public class MainFragment extends Fragment implements IInternetController {
             return;
         }
 
+        tvExpRate.setText(String.valueOf(serviceManInfo.getTotalPoint()));
         tvExpertCredit.setText( new UsefulFunction().attachCamma( serviceManInfo.getTempCredit() ) );
         tvExpertName.setText( serviceManInfo.getFullName() );
-        tvExpertDiscount.setText( String.valueOf( serviceManInfo.getDiscountPercent() )+"%" );
+        tvExpertDiscount.setText(String.format("%s%%", String.valueOf(serviceManInfo.getDiscountPercent())));
 
         tvRatingBar.setText( String.valueOf( serviceManInfo.getRating() ) );
         ratingBar.setRating( ( float ) serviceManInfo.getRating() );
@@ -269,7 +278,7 @@ public class MainFragment extends Fragment implements IInternetController {
     private void loadNeeded( ){
         ServiceMan serviceMan = GeneralPreferences.getInstance( context ).getServiceManInfo();
 
-        userId = serviceMan.getServicemanId();
+        servicemanId = serviceMan.getServicemanId();
         accessToken = serviceMan.getAccessToken();
 
     }
@@ -279,7 +288,7 @@ public class MainFragment extends Fragment implements IInternetController {
 
         //ToDo  مقادیر زیر را بایستی پر کنم
         RequestListInputs requestListInputs = new RequestListInputs();
-        requestListInputs.setServicemanId( userId );
+        requestListInputs.setServicemanId( servicemanId );
         requestListInputs.setServiceTitle( "" );
         requestListInputs.setServiceId( 0 );
         requestListInputs.setServiceSubCatId( 0 );
@@ -298,7 +307,7 @@ public class MainFragment extends Fragment implements IInternetController {
         }
 
         GetWorkmanNewsController getWorkmanNewsController = new GetWorkmanNewsController( getWorkmanNewsCallback );
-        getWorkmanNewsController.start( userId, accessToken );
+        getWorkmanNewsController.start( servicemanId, accessToken );
     }
 
     private void callGetSliderAds( ){
@@ -307,7 +316,7 @@ public class MainFragment extends Fragment implements IInternetController {
         }
 
         GetAdsSliderController getAdsSliderController = new GetAdsSliderController( getAdsSliderCallback );
-        getAdsSliderController.start( userId, accessToken );
+        getAdsSliderController.start( servicemanId, accessToken );
     }
 
     private void getRequestList( ){
@@ -318,7 +327,7 @@ public class MainFragment extends Fragment implements IInternetController {
 
         RequestListController requestListController = new RequestListController( getActivity(),
                 getRequestListCallback );
-        requestListController.start( userId, accessToken, getListInput() );
+        requestListController.start( servicemanId, accessToken, getListInput() );
 
     }
 

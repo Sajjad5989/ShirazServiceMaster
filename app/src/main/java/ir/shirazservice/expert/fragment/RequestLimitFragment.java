@@ -13,6 +13,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,9 +62,11 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
             new PickRequestByServiceManApi.pickRequestByServiceManCallback() {
                 @Override
                 public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestByServiceMan response) {
-                    if (successful) {
-                        getActivity().finish();
-                    }
+//                    if (successful) {
+//                        getActivity().finish();
+                    //}
+                    if (successful)
+                        APP.customToast("گرفته شد");
                 }
 
                 @Override
@@ -76,7 +79,8 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
             new InsrtRequestVisitApi.insrtRequestVisitCallback() {
                 @Override
                 public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestVisit response) {
-
+                    if (successful)
+                        APP.customToast("دیده شد");
                 }
 
                 @Override
@@ -239,7 +243,6 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
 
     private void onClickConfig() {
         btnAcceptRequest.setOnClickListener(view -> acceptRequest());
-
         tvServiceInfo.setOnClickListener(view -> openServiceInfo());
     }
 
@@ -297,7 +300,6 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
                         .into(imgRequestDetail);
             }
 
-
             requestId = currentRequest.getRequestId();
             tvRequestDetailServiceTitle.setText(currentRequest.getServiceTitle());
             tvRequestDetailCalculatedPrice.setText(new UsefulFunction().attachCamma(String.valueOf(currentRequest.getCalculatedPrice())));
@@ -322,8 +324,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
                 tvDiscountAlarm.setText(currentRequest.getDiscountDesc());
             }
 
-            tvRequestDetailTracking_code.setVisibility(View.GONE);
-            tvRequestDetailTrackingCaption.setVisibility(View.GONE);
+            //tvRequestDetailTracking_code.setText(currentRequest.getTrackingCode());
 
 
             callWorkmanCredit();
