@@ -4,6 +4,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 28
     defaultConfig {
+        multiDexEnabled true
         applicationId "ir.shirazservice.expert"
         minSdkVersion 19
         targetSdkVersion 28
@@ -93,6 +94,9 @@ dependencies {
     implementation 'com.zarinpal:purchase:0.0.8-beta'
 
     implementation 'com.mohamadamin:persianmaterialdatetimepicker:1.2.1'
+
+    //multidex
+    implementation 'com.android.support:multidex:1.0.3'
 
 }
 apply plugin: 'com.google.gms.google-services'

@@ -10,6 +10,8 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.Display;
@@ -23,7 +25,7 @@ import java.util.Locale;
 import ir.shirazservice.expert.R;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
-public class APP extends Application {
+public class APP extends MultiDexApplication {
 
 
     @SuppressLint("StaticFieldLeak")
@@ -60,12 +62,12 @@ public class APP extends Application {
         localToast.show();
     }
 
-
     public static void killApp() {
         currentActivity.finishAffinity();
         ActivityCompat.finishAffinity(currentActivity);
         android.os.Process.killProcess(android.os.Process.myPid());
     }
+
     public static void setPersianUi( ){
         Locale localeNew = new Locale( "fa" );
         Locale.setDefault( localeNew );
@@ -98,7 +100,6 @@ public class APP extends Application {
 //        new Geocoder(currentActivity, new Locale(languageToLoad));
     }
 
-
     private void setFonts( ){
         FontManager.setDefaultFont( this, "DEFAULT", "fonts/iran_sans.ttf" );
         FontManager.setDefaultFont( this, "MONOSPACE", "fonts/iran_sans.ttf" );
@@ -127,5 +128,12 @@ public class APP extends Application {
         setPersianUi( );
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        //https://github.com/dandar3/android-support-multidex/blob/master/README.md
+        // https://developer.android.com/studio/build/multidex
+        super.attachBaseContext(base);
+        MultiDex.install(this );
+    }
 
 }
