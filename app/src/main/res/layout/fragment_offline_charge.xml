@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/dimen_dp_medium"
@@ -34,6 +35,7 @@
         android:padding="@dimen/dimen_dp_medium"
         android:textColorHint="@color/colorBackGrayStep_2"
         android:textSize="@dimen/dimen_sp_medium"
+        android:inputType="number"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_username_caption" />
@@ -111,7 +113,7 @@
         android:fontFamily="@font/iran_sans_bold"
         android:text="@string/text_choose_date_button"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/dimen_sp_small"
+        android:textSize="@dimen/dimen_sp_medium"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear_pay_type" />
@@ -170,6 +172,7 @@
         android:layout_marginBottom="@dimen/dimen_dp_small"
         android:background="@drawable/box_for_edits"
         android:fontFamily="@font/iran_sans_medium"
+        android:inputType="number"
         android:gravity="center"
         android:padding="@dimen/dimen_dp_medium"
         android:textColorHint="@color/colorBackGrayStep_2"
@@ -202,15 +205,13 @@
         android:background="@drawable/box_for_edits"
         android:fontFamily="@font/iran_sans_medium"
         android:gravity="center"
+        android:inputType="number"
         android:padding="@dimen/dimen_dp_medium"
         android:textColorHint="@color/colorBackGrayStep_2"
         android:textSize="@dimen/dimen_sp_medium"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_pay_money_caption" />
-
-
-    <!--</android.support.constraint.ConstraintLayout>-->
 
 
     <android.support.v7.widget.AppCompatButton

@@ -13,7 +13,6 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +41,7 @@ import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
 import ir.shirazservice.expert.webservice.pickrequestbyserviceman.PickRequestByServiceManApi;
 import ir.shirazservice.expert.webservice.pickrequestbyserviceman.PickRequestByServiceManController;
 import ir.shirazservice.expert.webservice.pickrequestbyserviceman.RequestByServiceMan;
-import ir.shirazservice.expert.webservice.requestlist.Request;
+import ir.shirazservice.expert.webservice.requestinfo.RequestInfo;
 import ir.shirazservice.expert.webservice.requestvisit.InsrtRequestVisitApi;
 import ir.shirazservice.expert.webservice.requestvisit.InsrtRequestVisitController;
 import ir.shirazservice.expert.webservice.requestvisit.RequestVisit;
@@ -57,16 +56,14 @@ import static ir.shirazservice.expert.utils.APP.context;
 
 public class RequestLimitFragment extends Fragment implements Serializable, IInternetController {
 
-    private static Request currentRequest;
+    private static RequestInfo currentRequest;
     private final PickRequestByServiceManApi.pickRequestByServiceManCallback pickRequestByServiceManCallback =
             new PickRequestByServiceManApi.pickRequestByServiceManCallback() {
                 @Override
                 public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestByServiceMan response) {
-//                    if (successful) {
-//                        getActivity().finish();
-                    //}
-                    if (successful)
-                        APP.customToast("گرفته شد");
+                    if (successful) {
+                        getActivity().finish();
+                    }
                 }
 
                 @Override
@@ -79,8 +76,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
             new InsrtRequestVisitApi.insrtRequestVisitCallback() {
                 @Override
                 public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestVisit response) {
-                    if (successful)
-                        APP.customToast("دیده شد");
+
                 }
 
                 @Override
@@ -125,7 +121,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
     @BindView(R.id.tv_service_info)
     AppCompatTextView tvServiceInfo;
     private int requestId = 0;
-    private int requestDetailCalculatedPrice;
+    private String requestDetailCalculatedPrice;
     private String accessToken;
     private int servicemanId;
     private final GetWorkmanCreditApi.getWorkmanCreditCallback getWorkmanCreditCallback = new GetWorkmanCreditApi.getWorkmanCreditCallback() {
@@ -135,7 +131,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
                 String currentAmount = response.getTempCredit();
                 tvCurrentAccount.setText(new UsefulFunction().attachCamma(currentAmount));
                 if (Integer.valueOf(currentAmount) > 0) {
-                    int finalAmount = Integer.valueOf(currentAmount) - requestDetailCalculatedPrice;
+                    int finalAmount = Integer.valueOf(currentAmount) - Integer.valueOf(requestDetailCalculatedPrice);
                     String stringFinalAmount = String.valueOf(finalAmount);
                     tvSubtractAccount.setText(new UsefulFunction().attachCamma(stringFinalAmount));
                 }
@@ -154,7 +150,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
         }
     };
 
-    public static RequestLimitFragment newInstance(Request request) {
+    public static RequestLimitFragment newInstance(RequestInfo request) {
         currentRequest = request;
         return new RequestLimitFragment();
     }
@@ -302,7 +298,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
 
             requestId = currentRequest.getRequestId();
             tvRequestDetailServiceTitle.setText(currentRequest.getServiceTitle());
-            tvRequestDetailCalculatedPrice.setText(new UsefulFunction().attachCamma(String.valueOf(currentRequest.getCalculatedPrice())));
+            tvRequestDetailCalculatedPrice.setText(new UsefulFunction().attachCamma(currentRequest.getCalculatedPrice()));
             requestDetailCalculatedPrice = currentRequest.getCalculatedPrice();
 
             if (currentRequest.getTime() == BuildConfig.immediateCode) {
@@ -324,12 +320,11 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
                 tvDiscountAlarm.setText(currentRequest.getDiscountDesc());
             }
 
-            //tvRequestDetailTracking_code.setText(currentRequest.getTrackingCode());
+            tvRequestDetailTracking_code.setText(currentRequest.getTrackingCode());
 
 
             callWorkmanCredit();
-        } else
-            showNotFoundInfoLayout();
+        }
     }
 
     @Override

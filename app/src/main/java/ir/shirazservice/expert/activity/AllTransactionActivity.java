@@ -1,6 +1,5 @@
 package ir.shirazservice.expert.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
@@ -27,14 +26,8 @@ import ir.shirazservice.expert.interfaces.IDefault;
 import ir.shirazservice.expert.interfaces.IRtl;
 import ir.shirazservice.expert.utils.APP;
 import ir.shirazservice.expert.webservice.workmanfinancial.TransactionList;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AllTransactionActivity extends AppCompatActivity implements Serializable, IRtl, IDefault {
-
-
-    //
-
-    private int gholi = 1;
 
     @BindView(R.id.toolbar)
     protected Toolbar toolbar;
@@ -97,7 +90,8 @@ public class AllTransactionActivity extends AppCompatActivity implements Seriali
         myTransactionAdapter = new MyTransactionAdapter(transactionList.getWorkmanFinancialTransactions(), 0, (v, position) -> {
 
             TransactionDetailDialog transactionDetailDialog =
-                    new TransactionDetailDialog(AllTransactionActivity.this, transactionList.getWorkmanFinancialTransactions().get(position));
+                    new TransactionDetailDialog(AllTransactionActivity.this,
+                            transactionList.getWorkmanFinancialTransactions().get(position));
 
             Objects.requireNonNull(transactionDetailDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             transactionDetailDialog.getWindow().setBackgroundDrawable(this.getResources().getDrawable(R.drawable.dialog_bg));

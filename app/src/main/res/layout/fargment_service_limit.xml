@@ -31,6 +31,13 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/toolbar">
 
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/img_request_Detail"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tv_request_detail_service_title"
@@ -42,7 +49,7 @@
                     android:textColor="@color/colorBlackStep_5"
                     android:textSize="@dimen/dimen_sp_large"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/img_request_Detail"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <android.support.v7.widget.AppCompatTextView
@@ -70,19 +77,33 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_request_detail_service_title"
                     app:layout_constraintTop_toTopOf="@id/tv_request_detail_tracking_caption" />
 
-                <RatingBar
-                    android:id="@+id/ratingBar"
-                    style="@style/Widget.AppCompat.RatingBar.Small"
+                <!--<RatingBar-->
+                    <!--android:id="@+id/ratingBar"-->
+                    <!--style="@style/Widget.AppCompat.RatingBar.Small"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layoutDirection="ltr"-->
+                    <!--android:numStars="5"-->
+                    <!--android:rating="2.5"-->
+                    <!--android:stepSize="0.1"-->
+                    <!--android:theme="@style/smallRatingBar"-->
+                    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@id/tv_request_detail_service_title" />-->
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_service_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layoutDirection="ltr"
-                    android:numStars="5"
-                    android:rating="2.5"
-                    android:stepSize="0.1"
-                    android:theme="@style/smallRatingBar"
+                    android:background="@drawable/text_view_round_corner"
+                    android:fontFamily="@font/iran_sans"
+                    android:padding="@dimen/dimen_dp_very_tiny"
+                    android:paddingStart="@dimen/dimen_dp_small"
+                    android:paddingEnd="@dimen/dimen_dp_small"
+                    android:text="جزئیات سرویس"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/dimen_sp_tiny"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_request_detail_service_title" />
-
 
             </android.support.constraint.ConstraintLayout>
 
@@ -520,6 +541,16 @@
             app:layout_constraintTop_toBottomOf="@id/tv_not_found" />
 
     </android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/img_request_cancel"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="@dimen/dimen_dp_tiny"
+        android:src="@drawable/ic_go_last_page"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </android.support.constraint.ConstraintLayout>

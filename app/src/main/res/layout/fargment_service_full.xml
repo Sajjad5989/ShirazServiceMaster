@@ -78,16 +78,18 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_request_detail_service_title"
                     app:layout_constraintTop_toTopOf="@id/tv_request_detail_tracking_caption" />
 
-                <RatingBar
-                    android:id="@+id/ratingBar"
-                    style="@style/Widget.AppCompat.RatingBar.Small"
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_service_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layoutDirection="ltr"
-                    android:numStars="5"
-                    android:rating="2.5"
-                    android:stepSize="0.1"
-                    android:theme="@style/smallRatingBar"
+                    android:background="@drawable/text_view_round_corner"
+                    android:fontFamily="@font/iran_sans"
+                    android:padding="@dimen/dimen_dp_very_tiny"
+                    android:paddingStart="@dimen/dimen_dp_small"
+                    android:paddingEnd="@dimen/dimen_dp_small"
+                    android:text="جزئیات سرویس"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/dimen_sp_tiny"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_request_detail_service_title" />
 

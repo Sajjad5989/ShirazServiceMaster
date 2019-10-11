@@ -1,18 +1,21 @@
-package ir.shirazservice.expert.activity;
+package ir.shirazservice.expert.fragment;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.Toolbar;
 import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.zarinpal.ewallets.purchase.PaymentRequest;
 import com.zarinpal.ewallets.purchase.ZarinPal;
@@ -25,10 +28,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
+import ir.shirazservice.expert.activity.ServiceRequestDetailActivity;
 import ir.shirazservice.expert.dialog.IncreaseAccountChargeDialog;
-import ir.shirazservice.expert.interfaces.IDefault;
 import ir.shirazservice.expert.interfaces.IInternetController;
-import ir.shirazservice.expert.interfaces.IRtl;
 import ir.shirazservice.expert.internetutils.ConnectionInternetDialog;
 import ir.shirazservice.expert.internetutils.InternetConnectionListener;
 import ir.shirazservice.expert.preferences.GeneralPreferences;
@@ -46,18 +48,15 @@ import ir.shirazservice.expert.webservice.getgiftchargeformula.GiftChargeFormula
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
 
 import static ir.shirazservice.expert.utils.APP.context;
+import static ir.shirazservice.expert.utils.APP.currentActivity;
 
-public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault, IInternetController {
+public class ChargeFragment extends Fragment implements  IInternetController {
 
 
     private static final int METHOD_TYPE_SAVE_MONEY_TO_SITE = 1;
     private static final int METHOD_TYPE_FORMULA_CHARGE = 2;
 
-
-    @BindView(R.id.toolbar)
-    protected Toolbar toolbar;
-
-    @BindView(R.id.tv_pay_online)
+   @BindView(R.id.tv_pay_online)
     protected AppCompatTextView tvPayOnline;
 
     @BindView(R.id.btn_increase_charge)
@@ -139,8 +138,7 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
                 @Override
                 public void onResponse(boolean successful, ErrorResponseSimple errorResponse, DepositMoney response) {
                     if (successful) {
-                        APP.customToast(getString(R.string.text_successful_operation));
-                        ChargeActivity.this.finish();
+                        getActivity().finish();
                     } else
                         APP.customToast(errorResponse.getMessage());
                 }
@@ -154,25 +152,32 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
     private String accessToken;
     private String currentRefId;
 
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fargment_charge, container, false);
+        ButterKnife.bind(this, view);
+        currentActivity = getActivity();
+        assert container != null;
+        context = container.getContext();
+        return view;
+    }
 
-        setContentView(R.layout.activity_charge);
-        ButterKnife.bind(this);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        OnActivityDefaultSetting();
-        prepareToolbar();
-        toolbar.setNavigationOnClickListener(v -> onBackPressed());
         makeAppCompatTextViewList();
         setNeededIds();
         btnClickConfig();
         fillNumbers();
         callFormulaCharge();
 
-        if (getIntent().getData() != null) {
+        if (getActivity().getIntent().getData() != null) {
 
-            ZarinPal.getPurchase(this).verificationPayment(getIntent().getData(), (isPaymentSuccess, refID, paymentRequest) -> {
+            ZarinPal.getPurchase(getActivity()).verificationPayment(getActivity().getIntent().getData(),
+                    (isPaymentSuccess, refID, paymentRequest) -> {
 
                 currentRefId = refID;
                 sendPayMoneyToSite();
@@ -197,7 +202,7 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
     }
 
     private void openPayFragment() {
-        Intent intent = new Intent(ChargeActivity.this, ServiceRequestDetailActivity.class);
+        Intent intent = new Intent(getActivity(), ServiceRequestDetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(getString(R.string.text_bundle_req_id), 0);
         intent.putExtras(bundle);
@@ -260,7 +265,7 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
         }
         Long payMoney = getMoneyForPay();
         IncreaseAccountChargeDialog chooseRequestDialog =
-                new IncreaseAccountChargeDialog(this, makeConfirmMessage(), done -> {
+                new IncreaseAccountChargeDialog(getActivity(), makeConfirmMessage(), done -> {
                     if (done)
                         onlinePayment(payMoney);
                 });
@@ -269,7 +274,7 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
         chooseRequestDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
         chooseRequestDialog.setCancelable(false);
         chooseRequestDialog.show();
-        Display display = this.getWindowManager().getDefaultDisplay();
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
@@ -279,7 +284,7 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
     }
 
     private void onlinePayment(Long amount) {
-        ZarinPal za = ZarinPal.getPurchase(ChargeActivity.this);
+        ZarinPal za = ZarinPal.getPurchase(getActivity());
         PaymentRequest paymentRequest = ZarinPal.getPaymentRequest();
         paymentRequest.setMerchantID(BuildConfig.paymentMerchant);
         paymentRequest.setAmount(amount);
@@ -317,35 +322,6 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
                 InsrtDepositMoneyController(insrtDepositMoneyCallback);
         insrtDepositMoneyController.start(servicemanId, accessToken, getValues());
     }
-
-    private void prepareToolbar() {
-        toolbar.setTitle(getResources().getString(R.string.text_increase_charge));
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_right);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        APP.currentActivity = ChargeActivity.this;
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    @Override
-    public void OnActivityDefaultSetting() {
-        OnPageRight();
-    }
-
-    @Override
-    public void OnPageRight() {
-        if (getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR) {
-            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-        }
-    }
-
     private void setNeededIds() {
         ServiceMan serviceMan = GeneralPreferences.getInstance(context).getServiceManInfo();
 
@@ -418,12 +394,12 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
 
     private String setValues(int value) {
         String curValue = String.valueOf(value);
-        curValue = new UsefulFunction().attachCamma(curValue) + "ریال";
+        curValue = new UsefulFunction().attachCamma(curValue) + getResources().getString(R.string.text_currency_symbol);
         return curValue;
     }
 
     private void openInternetCheckingDialog(int typeCallDialog) {
-        ConnectionInternetDialog dialog = new ConnectionInternetDialog(this, new InternetConnectionListener() {
+        ConnectionInternetDialog dialog = new ConnectionInternetDialog(getActivity(), new InternetConnectionListener() {
             @Override
             public void onInternet() {
                 context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
@@ -451,7 +427,7 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
         dialog.show();
-        Display display = this.getWindowManager().getDefaultDisplay();
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
@@ -461,7 +437,7 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
 
     @Override
     public boolean isOnline() {
-        return OnlineCheck.getInstance(this).isOnline();
+        return OnlineCheck.getInstance(getActivity()).isOnline();
     }
 
     private void showHideWaitingProgress(boolean hide) {
@@ -472,5 +448,10 @@ public class ChargeActivity extends AppCompatActivity implements IRtl, IDefault,
         showHideWaitingProgress(true);
         constNotFound.setVisibility((giftChargeFormulas == null) ? View.VISIBLE : View.GONE);
     }
+
+    public static ChargeFragment newInstance() {
+        return new ChargeFragment();
+    }
+
 
 }

@@ -35,7 +35,7 @@
         <activity android:name=".activity.LoginActivity"  android:screenOrientation = "portrait"/>
         <activity android:name=".activity.MainActivity"  android:screenOrientation = "portrait"/>
         <activity android:name=".activity.AllTransactionActivity"  android:screenOrientation = "portrait"/>
-        <activity android:name=".activity.ChargeActivity"  android:screenOrientation = "portrait">
+        <activity android:name=".fragment.ChargeFragment"  android:screenOrientation = "portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

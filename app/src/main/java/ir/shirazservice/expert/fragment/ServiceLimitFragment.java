@@ -10,11 +10,14 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
@@ -22,6 +25,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
+import ir.shirazservice.expert.activity.ServiceRequestDetailActivity;
+import ir.shirazservice.expert.dialog.CancelRequestDialog;
 import ir.shirazservice.expert.interfaces.IInternetController;
 import ir.shirazservice.expert.internetutils.ConnectionInternetDialog;
 import ir.shirazservice.expert.internetutils.InternetConnectionListener;
@@ -29,19 +34,43 @@ import ir.shirazservice.expert.preferences.GeneralPreferences;
 import ir.shirazservice.expert.utils.APP;
 import ir.shirazservice.expert.utils.OnlineCheck;
 import ir.shirazservice.expert.utils.UsefulFunction;
+import ir.shirazservice.expert.webservice.canclerequest.CancelRequestByWorkmanApi;
+import ir.shirazservice.expert.webservice.canclerequest.CancelRequestByWorkmanController;
+import ir.shirazservice.expert.webservice.canclerequest.CancelRequestByWorkmanRequest;
+import ir.shirazservice.expert.webservice.canclerequest.PickupResponse;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
 import ir.shirazservice.expert.webservice.requestinfo.RequestInfo;
-import ir.shirazservice.expert.webservice.requestinfo.RequestInfoApi;
-import ir.shirazservice.expert.webservice.requestinfo.RequestInfoController;
-import ir.shirazservice.expert.webservice.requestinfo.RequestInfoInput;
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 import static ir.shirazservice.expert.utils.APP.context;
 
 public class ServiceLimitFragment extends Fragment implements IInternetController {
 
 
-    private static int requestId;
+    private static RequestInfo requestInfo;
+    private final CancelRequestByWorkmanApi.cancelRequestByWorkmanCallback cancelRequestByWorkmanCallback
+            = new CancelRequestByWorkmanApi.cancelRequestByWorkmanCallback() {
+        @Override
+        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, PickupResponse response) {
+            if (successful)
+                getActivity().finish();
+            else
+                APP.customToast(errorResponse.getMessage());
+        }
+
+        @Override
+        public void onFailure(String cause) {
+
+        }
+    };
+
+    @BindView(R.id.tv_service_info)
+    AppCompatTextView tvServiceInfo;
+    @BindView(R.id.img_request_Detail)
+    protected AppCompatImageView imgRequestDetail;
+    @BindView(R.id.img_request_cancel)
+    AppCompatImageView imgRequestCancel;
     @BindView(R.id.tv_request_detail_service_title)
     AppCompatTextView tvRequestDetailServiceTitle;
     @BindView(R.id.tv_request_detail_tracking_code)
@@ -64,31 +93,9 @@ public class ServiceLimitFragment extends Fragment implements IInternetControlle
     ConstraintLayout constWaiting;
     @BindView(R.id.const_not_found_info)
     ConstraintLayout constNotFound;
-    private static RequestInfo requestInfo;
-   // private RequestInfo requestInfo;
-//    private final RequestInfoApi.GetRequestInfoCallback getRequestInfoCallback = new RequestInfoApi.GetRequestInfoCallback() {
-//        @Override
-//        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestInfo response) {
-//            if (successful) {
-//                requestInfo = response;
-//                fillViews();
-//            } else {
-//                requestInfo = null;
-//                fillViews();
-//            }
-//        }
-//
-//        @Override
-//        public void onFailure(String cause) {
-//            requestInfo = null;
-//            fillViews();
-//
-//        }
-//    };
-
 
     public static ServiceLimitFragment newInstance(RequestInfo requestInfoInput) {
-        requestInfo = requestInfoInput ;
+        requestInfo = requestInfoInput;
         return new ServiceLimitFragment();
     }
 
@@ -105,34 +112,80 @@ public class ServiceLimitFragment extends Fragment implements IInternetControlle
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        onClickConfig();
         showHideWaitingProgress(false);
         loadRequestDetail();
 
     }
 
-//    private void loadRequestDetail() {
-//        if (!isOnline()) {
-//            openInternetCheckingDialog();
-//        }
-//
-//        if (requestId != 0) {
-//
-//            ServiceMan serviceMan = GeneralPreferences.getInstance(getActivity()).getServiceManInfo();
-//            RequestInfoInput requestInfoInput = new RequestInfoInput();
-//            requestInfoInput.setRequestId(requestId);
-//            requestInfoInput.setServicemanId(serviceMan.getServicemanId());
-//
-////            RequestInfoController requestInfoController = new RequestInfoController(getRequestInfoCallback);
-////            requestInfoController.start(serviceMan.getServicemanId(), serviceMan.getAccessToken(), requestInfoInput);
-//        } else
-//            getActivity().finish();
-//    }
+    private void onClickConfig()
+    {
+        imgRequestCancel.setOnClickListener(view -> cancelRequest());
+        tvServiceInfo.setOnClickListener(view -> openServiceInfo());
+    }
+    private void openServiceInfo() {
+        Intent intent = new Intent(getActivity(), ServiceRequestDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(getString(R.string.text_bundle_req_id), requestInfo.getServiceId() * -1);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+
+    private void cancelRequest() {
+
+        CancelRequestDialog chooseRequestDialog = new CancelRequestDialog(getActivity(), done -> {
+            if (done)
+                cancelRequestByWorkman();
+        });
+
+        Objects.requireNonNull(chooseRequestDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        chooseRequestDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
+        chooseRequestDialog.setCancelable(false);
+        chooseRequestDialog.show();
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        width = (int) ((width) * 0.9);
+        chooseRequestDialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+
+    }
+
+    private void cancelRequestByWorkman() {
+
+        if (!isOnline()) {
+            openInternetCheckingDialog();
+        }
+
+        CancelRequestByWorkmanRequest cancelRequestByWorkmanRequest = new CancelRequestByWorkmanRequest();
+        cancelRequestByWorkmanRequest.setRequestId(requestInfo.getRequestId());
+
+        ServiceMan serviceMan = GeneralPreferences.getInstance(context).getServiceManInfo();
+        CancelRequestByWorkmanController cancelRequestByWorkmanController
+                = new CancelRequestByWorkmanController(cancelRequestByWorkmanCallback);
+        cancelRequestByWorkmanController.start(serviceMan.getServicemanId(), serviceMan.getAccessToken(),
+                cancelRequestByWorkmanRequest);
+    }
 
     private void loadRequestDetail() {
         if (requestInfo != null) {
+
+            String picAddress = requestInfo.getServicePicAddress();
+            if (null == picAddress || picAddress.equals("")) {
+                imgRequestDetail.setImageResource(R.drawable.img_no_icon);
+            } else {
+                Picasso.with(getActivity())
+                        .load(picAddress)  //Url of the image to load.
+                        .transform(new CropCircleTransformation())
+                        .error(R.drawable.img_no_icon)
+                        .placeholder(R.drawable.img_loading)
+                        .into(imgRequestDetail);
+            }
+
             tvRequestDetailServiceTitle.setText(requestInfo.getServiceTitle());
             tvRequestDetailTrackingCode.setText(requestInfo.getTrackingCode());
-            //ratingBar.setRating(response.get);
+            //ratingBar.setRating(requestInfo.get);
             tvRequestStatus.setText(requestInfo.getStateTitle());
             tvPositionAddress.setText(requestInfo.getAreaTitle());
             tvRequestDetailDescValue.setText(requestInfo.getDesc());
@@ -147,9 +200,7 @@ public class ServiceLimitFragment extends Fragment implements IInternetControlle
                 tvRequestDetailTimeValue.setText(requestInfo.getTimeDesc());
             }
             showHideWaitingProgress(true);
-        } else
-            showNotFoundInfoLayout();
-
+        }
     }
 
     @Override
@@ -171,7 +222,7 @@ public class ServiceLimitFragment extends Fragment implements IInternetControlle
 
             @Override
             public void OnRetry() {
-                loadRequestDetail();
+                cancelRequestByWorkman();
             }
         });
 
@@ -188,12 +239,6 @@ public class ServiceLimitFragment extends Fragment implements IInternetControlle
 
     private void showHideWaitingProgress(boolean hide) {
         constWaiting.setVisibility(hide ? View.GONE : View.VISIBLE);
-    }
-
-    private void showNotFoundInfoLayout() {
-
-        showHideWaitingProgress(true);
-        constNotFound.setVisibility((requestId == 0) ? View.VISIBLE : View.GONE);
     }
 
 

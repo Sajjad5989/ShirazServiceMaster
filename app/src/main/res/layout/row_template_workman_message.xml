@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorWhite"
+    android:background="@drawable/const_border_line"
     android:padding="@dimen/dimen_dp_small">
 
     <android.support.v7.widget.AppCompatTextView
@@ -11,7 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/iran_sans"
-        android:text="خبر جدید"
         android:textColor="@color/color_black"
         android:textSize="@dimen/dimen_sp_medium"
         app:layout_constraintRight_toRightOf="parent"
@@ -19,14 +18,15 @@
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/tv_message_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dimen_dp_small"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/dimen_dp_very_tiny"
         android:fontFamily="@font/iran_sans"
-        android:text="خبر فوری"
-        android:textColor="@color/colorBlackStep_2"
-        android:textSize="@dimen/dimen_sp_small"
+        android:textColor="@color/colorBlackStep_1"
+        android:textSize="@dimen/dimen_sp_tiny"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_message_title" />
 
 

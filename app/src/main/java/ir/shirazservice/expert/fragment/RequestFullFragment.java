@@ -2,7 +2,6 @@ package ir.shirazservice.expert.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -29,7 +28,6 @@ import butterknife.OnClick;
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.activity.ServiceRequestDetailActivity;
-import ir.shirazservice.expert.dialog.CancelRequestDialog;
 import ir.shirazservice.expert.interfaces.IInternetController;
 import ir.shirazservice.expert.internetutils.ConnectionInternetDialog;
 import ir.shirazservice.expert.internetutils.InternetConnectionListener;
@@ -37,20 +35,13 @@ import ir.shirazservice.expert.preferences.GeneralPreferences;
 import ir.shirazservice.expert.utils.APP;
 import ir.shirazservice.expert.utils.OnlineCheck;
 import ir.shirazservice.expert.utils.UsefulFunction;
-import ir.shirazservice.expert.webservice.canclerequest.CancelRequestByWorkmanApi;
-import ir.shirazservice.expert.webservice.canclerequest.CancelRequestByWorkmanController;
-import ir.shirazservice.expert.webservice.canclerequest.CancelRequestByWorkmanRequest;
-import ir.shirazservice.expert.webservice.canclerequest.PickupResponse;
 import ir.shirazservice.expert.webservice.finishrequest.FinishRequestByWorkmanApi;
 import ir.shirazservice.expert.webservice.finishrequest.FinishRequestByWorkmanController;
 import ir.shirazservice.expert.webservice.finishrequest.FinishRequestByWorkmanRequest;
 import ir.shirazservice.expert.webservice.finishrequest.SuccessIdResponse;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
-import ir.shirazservice.expert.webservice.requestdetails.GetRequestDetailsApi;
-import ir.shirazservice.expert.webservice.requestdetails.GetRequestDetailsController;
 import ir.shirazservice.expert.webservice.requestdetails.RequestDetails;
-import ir.shirazservice.expert.webservice.requestdetails.RequestDetailsReq;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 import static ir.shirazservice.expert.utils.APP.context;
@@ -59,23 +50,8 @@ public class RequestFullFragment extends Fragment implements IInternetController
 
 
     private static final int FINISH_REQUEST = 1;
-    private static final int CANCEL_REQUEST = 2;
-    private static final int LOAD_REQUEST = 3;
+    private static final int LOAD_REQUEST = 2;
     private static RequestDetails requestDetailsFull;
-private int requestId;
-
-    private final CancelRequestByWorkmanApi.cancelRequestByWorkmanCallback cancelRequestByWorkmanCallback
-            = new CancelRequestByWorkmanApi.cancelRequestByWorkmanCallback() {
-        @Override
-        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, PickupResponse response) {
-
-        }
-
-        @Override
-        public void onFailure(String cause) {
-
-        }
-    };
     private final FinishRequestByWorkmanApi.finishRequestByWorkmanCallback finishRequestByWorkmanCallback =
             new FinishRequestByWorkmanApi.finishRequestByWorkmanCallback() {
                 @Override
@@ -97,8 +73,6 @@ private int requestId;
     protected ConstraintLayout constNotFound;
     @BindView(R.id.img_request_Detail)
     AppCompatImageView imgRequestDetail;
-    @BindView(R.id.img_request_cancel)
-    AppCompatImageView imgRequestCancel;
     @BindView(R.id.tv_request_detail_service_title)
     AppCompatTextView tvRequestDetailServiceTitle;
     @BindView(R.id.tv_receiver_name)
@@ -129,45 +103,33 @@ private int requestId;
     AppCompatTextView tvRequestDetailTrackingCode;
     @BindView(R.id.btn_login)
     AppCompatButton btnLogin;
+    private int requestId;
     private int whichMethod;
-
-//    private final GetRequestDetailsApi.getRequestDetailsCallback getRequestDetailsCallback = new GetRequestDetailsApi.getRequestDetailsCallback() {
-//        @Override
-//        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestDetails response) {
-//            if (successful) {
-//                requestDetails = response;
-//                setRequestDetail();
-//            } else {
-//                requestDetails = null;
-//                setRequestDetail();
-//            }
-//        }
-//
-//        @Override
-//        public void onFailure(String cause) {
-//            requestDetails = null;
-//            setRequestDetail();
-//        }
-//    };
     private int servicemanId;
     private String accessToken;
 
     public static RequestFullFragment newInstance(RequestDetails requestDetails) {
-
         requestDetailsFull = requestDetails;
         return new RequestFullFragment();
     }
 
     @OnClick(R.id.img_call_by_phone)
     void callPhone() {
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + tvPhoneNumber.getText().toString()));
-        startActivity(intent);
+        String phone = tvPhoneNumber.getText().toString();
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:" + phone.trim()));
+        callIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(callIntent);
+
     }
 
     @OnClick(R.id.img_call_by_mobile)
     void callMobile() {
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + tvMobile.getText().toString()));
-        startActivity(intent);
+        String phone = tvMobile.getText().toString();
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:" + phone.trim()));
+        callIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(callIntent);
     }
 
     @OnClick(R.id.img_send_sms)
@@ -239,7 +201,6 @@ private int requestId;
 
         showHideWaitingProgress(false);
         setNeededIds();
-//        loadRequestDetail();
         setRequestDetail();
         onClickConfig();
 
@@ -248,7 +209,7 @@ private int requestId;
     private void onClickConfig() {
         tvServiceInfo.setOnClickListener(view -> openServiceInfo());
         btnLogin.setOnClickListener(view -> callFinishRequest());
-        imgRequestCancel.setOnClickListener(view -> cancelRequest());
+
     }
 
     private void setNeededIds() {
@@ -259,43 +220,6 @@ private int requestId;
 
     }
 
-    private void cancelRequest() {
-
-        CancelRequestDialog chooseRequestDialog = new CancelRequestDialog(getActivity(), done -> {
-            if (done)
-                cancelRequestByWorkman();
-        });
-
-        Objects.requireNonNull(chooseRequestDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        chooseRequestDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
-        chooseRequestDialog.setCancelable(false);
-        chooseRequestDialog.show();
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        width = (int) ((width) * 0.9);
-        chooseRequestDialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
-
-    }
-
-    private void cancelRequestByWorkman() {
-
-        whichMethod = CANCEL_REQUEST;
-        if (!isOnline()) {
-            openInternetCheckingDialog();
-        }
-
-
-        CancelRequestByWorkmanRequest cancelRequestByWorkmanRequest = new CancelRequestByWorkmanRequest();
-        cancelRequestByWorkmanRequest.setRequestId(requestId);
-
-
-        CancelRequestByWorkmanController cancelRequestByWorkmanController
-                = new CancelRequestByWorkmanController(cancelRequestByWorkmanCallback);
-        cancelRequestByWorkmanController.start(servicemanId, accessToken,
-                cancelRequestByWorkmanRequest);
-    }
 
     private void callFinishRequest() {
 
@@ -315,7 +239,7 @@ private int requestId;
     private void openServiceInfo() {
         Intent intent = new Intent(getActivity(), ServiceRequestDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt(getString(R.string.text_bundle_req_id), requestDetailsFull.getServiceId()*-1);
+        bundle.putInt(getString(R.string.text_bundle_req_id), requestDetailsFull.getServiceId() * -1);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -363,11 +287,7 @@ private int requestId;
                     case FINISH_REQUEST:
                         callFinishRequest();
                         break;
-                    case CANCEL_REQUEST:
-                        cancelRequest();
-                        break;
                     case LOAD_REQUEST:
-//                        loadRequestDetail();
                         setRequestDetail();
                         break;
                     default:

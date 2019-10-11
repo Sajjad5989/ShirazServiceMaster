@@ -23,6 +23,7 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
+import ir.shirazservice.expert.fragment.ChargeFragment;
 import ir.shirazservice.expert.fragment.MainFragment;
 import ir.shirazservice.expert.fragment.MyServiceFragment;
 import ir.shirazservice.expert.fragment.MyTransactionFragment;
@@ -181,8 +182,11 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
     }
 
     private void openChargeActivity( ){
-        Intent intent = new Intent( MainActivity.this, ChargeActivity.class );
-        startActivity( intent );
+        ChargeFragment chargeFragment = ChargeFragment.newInstance();
+        getFragmentManager().beginTransaction()
+                .add( R.id.fragment_container, chargeFragment )
+                .addToBackStack( null )
+                .commit();
     }
 
     private void openMessageFragment( ){

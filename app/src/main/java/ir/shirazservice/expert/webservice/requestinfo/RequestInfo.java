@@ -1,56 +1,92 @@
 package ir.shirazservice.expert.webservice.requestinfo;
 
 
+import com.squareup.moshi.Json;
+
 public class RequestInfo {
 
-
-    private int requestId;
-    private int personId;
+    @Json(name = "requestId")
+    private Integer requestId;
+    @Json(name = "personId")
+    private Integer personId;
+    @Json(name = "personName")
     private String personName;
-    private int serviceId;
+    @Json(name = "serviceId")
+    private Integer serviceId;
+    @Json(name = "serviceTitle")
     private String serviceTitle;
-    private int catId;
+    @Json(name = "servicePicAddress")
+    private String servicePicAddress;
+    @Json(name = "catId")
+    private Integer catId;
+    @Json(name = "catTitle")
     private String catTitle;
-    private int subCatId;
+    @Json(name = "subCatId")
+    private Integer subCatId;
+    @Json(name = "subCatTitle")
     private String subCatTitle;
-    private int areaId;
+    @Json(name = "areaId")
+    private Integer areaId;
+    @Json(name = "areaTitle")
     private String areaTitle;
+    @Json(name = "desc")
     private String desc;
-    private int dateFrom;
+    @Json(name = "dateFrom")
+    private Integer dateFrom;
+    @Json(name = "dateFromPersian")
     private String dateFromPersian;
-    private int dateTo;
+    @Json(name = "dateTo")
+    private Integer dateTo;
+    @Json(name = "dateToPersian")
     private String dateToPersian;
-    private int time;
+    @Json(name = "time")
+    private Integer time;
+    @Json(name = "timeDesc")
     private String timeDesc;
-    private int insrtTime;
+    @Json(name = "insrtTime")
+    private Integer insrtTime;
+    @Json(name = "insrtTimePersian")
     private String insrtTimePersian;
+    @Json(name = "insrtTimeSimple")
     private String insrtTimeSimple;
-    private int updteTime;
+    @Json(name = "updteTime")
+    private Integer updteTime;
+    @Json(name = "updteTimePersian")
     private String updteTimePersian;
+    @Json(name = "trackingCode")
     private String trackingCode;
-    private int state;
+    @Json(name = "state")
+    private Integer state;
+    @Json(name = "stateTitle")
     private String stateTitle;
-    private int priority;
+    @Json(name = "priority")
+    private Integer priority;
+    @Json(name = "priorityTitle")
     private String priorityTitle;
-    private int calculatedPrice;
-    private int finishByWorkman;
-    private int finishTime;
+    @Json(name = "calculatedPrice")
+    private String calculatedPrice;
+    @Json(name = "finishByWorkman")
+    private Integer finishByWorkman;
+    @Json(name = "finishTime")
+    private Integer finishTime;
+    @Json(name = "discountCode")
     private String discountCode;
+    @Json(name = "discountDesc")
     private String discountDesc;
 
-    public int getRequestId() {
+    public Integer getRequestId() {
         return requestId;
     }
 
-    public void setRequestId(int requestId) {
+    public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    public int getPersonId() {
+    public Integer getPersonId() {
         return personId;
     }
 
-    public void setPersonId(int personId) {
+    public void setPersonId(Integer personId) {
         this.personId = personId;
     }
 
@@ -62,11 +98,11 @@ public class RequestInfo {
         this.personName = personName;
     }
 
-    public int getServiceId() {
+    public Integer getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(int serviceId) {
+    public void setServiceId(Integer serviceId) {
         this.serviceId = serviceId;
     }
 
@@ -78,11 +114,19 @@ public class RequestInfo {
         this.serviceTitle = serviceTitle;
     }
 
-    public int getCatId() {
+    public String getServicePicAddress() {
+        return servicePicAddress;
+    }
+
+    public void setServicePicAddress(String servicePicAddress) {
+        this.servicePicAddress = servicePicAddress;
+    }
+
+    public Integer getCatId() {
         return catId;
     }
 
-    public void setCatId(int catId) {
+    public void setCatId(Integer catId) {
         this.catId = catId;
     }
 
@@ -94,11 +138,11 @@ public class RequestInfo {
         this.catTitle = catTitle;
     }
 
-    public int getSubCatId() {
+    public Integer getSubCatId() {
         return subCatId;
     }
 
-    public void setSubCatId(int subCatId) {
+    public void setSubCatId(Integer subCatId) {
         this.subCatId = subCatId;
     }
 
@@ -110,11 +154,11 @@ public class RequestInfo {
         this.subCatTitle = subCatTitle;
     }
 
-    public int getAreaId() {
+    public Integer getAreaId() {
         return areaId;
     }
 
-    public void setAreaId(int areaId) {
+    public void setAreaId(Integer areaId) {
         this.areaId = areaId;
     }
 
@@ -134,11 +178,11 @@ public class RequestInfo {
         this.desc = desc;
     }
 
-    public int getDateFrom() {
+    public Integer getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(int dateFrom) {
+    public void setDateFrom(Integer dateFrom) {
         this.dateFrom = dateFrom;
     }
 
@@ -150,11 +194,11 @@ public class RequestInfo {
         this.dateFromPersian = dateFromPersian;
     }
 
-    public int getDateTo() {
+    public Integer getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(int dateTo) {
+    public void setDateTo(Integer dateTo) {
         this.dateTo = dateTo;
     }
 
@@ -166,11 +210,11 @@ public class RequestInfo {
         this.dateToPersian = dateToPersian;
     }
 
-    public int getTime() {
+    public Integer getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 
@@ -182,11 +226,11 @@ public class RequestInfo {
         this.timeDesc = timeDesc;
     }
 
-    public int getInsrtTime() {
+    public Integer getInsrtTime() {
         return insrtTime;
     }
 
-    public void setInsrtTime(int insrtTime) {
+    public void setInsrtTime(Integer insrtTime) {
         this.insrtTime = insrtTime;
     }
 
@@ -206,11 +250,11 @@ public class RequestInfo {
         this.insrtTimeSimple = insrtTimeSimple;
     }
 
-    public int getUpdteTime() {
+    public Integer getUpdteTime() {
         return updteTime;
     }
 
-    public void setUpdteTime(int updteTime) {
+    public void setUpdteTime(Integer updteTime) {
         this.updteTime = updteTime;
     }
 
@@ -230,11 +274,11 @@ public class RequestInfo {
         this.trackingCode = trackingCode;
     }
 
-    public int getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 
@@ -246,11 +290,11 @@ public class RequestInfo {
         this.stateTitle = stateTitle;
     }
 
-    public int getPriority() {
+    public Integer getPriority() {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(Integer priority) {
         this.priority = priority;
     }
 
@@ -262,27 +306,27 @@ public class RequestInfo {
         this.priorityTitle = priorityTitle;
     }
 
-    public int getCalculatedPrice() {
+    public String getCalculatedPrice() {
         return calculatedPrice;
     }
 
-    public void setCalculatedPrice(int calculatedPrice) {
+    public void setCalculatedPrice(String calculatedPrice) {
         this.calculatedPrice = calculatedPrice;
     }
 
-    public int getFinishByWorkman() {
+    public Integer getFinishByWorkman() {
         return finishByWorkman;
     }
 
-    public void setFinishByWorkman(int finishByWorkman) {
+    public void setFinishByWorkman(Integer finishByWorkman) {
         this.finishByWorkman = finishByWorkman;
     }
 
-    public int getFinishTime() {
+    public Integer getFinishTime() {
         return finishTime;
     }
 
-    public void setFinishTime(int finishTime) {
+    public void setFinishTime(Integer finishTime) {
         this.finishTime = finishTime;
     }
 

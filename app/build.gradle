@@ -48,6 +48,7 @@ android {
             it.buildConfigField("int","requestNotExists", REQUEST_NOT_EXISTS);
             it.buildConfigField("int","requestFinished", REQUEST_FINISHED);
             it.buildConfigField("int","requestExpired", REQUEST_EXPIRED);
+            it.buildConfigField("int","newsCode", NEWS_CODE);
 
         }
     }

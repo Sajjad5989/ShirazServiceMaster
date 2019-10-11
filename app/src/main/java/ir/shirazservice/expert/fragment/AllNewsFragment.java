@@ -135,7 +135,7 @@ public class AllNewsFragment extends Fragment implements IInternetController {
         WorkManNewsAdapter workManNewsAdapter = new WorkManNewsAdapter(getActivity(), workmanNews, 0,
                 (v, position) -> openUrl(workmanNews.get(position).getUrl()));
 
-        LinearLayoutManager gridLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,
+        LinearLayoutManager gridLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,
                 false);
 
         recyclerNews.setLayoutManager(gridLayoutManager);
@@ -168,5 +168,7 @@ public class AllNewsFragment extends Fragment implements IInternetController {
         constNotFoundInfo.setVisibility(workmanNews == null ? View.VISIBLE : View.GONE);
     }
 
-
+    public static AllNewsFragment newInstance() {
+        return new AllNewsFragment();
+    }
 }

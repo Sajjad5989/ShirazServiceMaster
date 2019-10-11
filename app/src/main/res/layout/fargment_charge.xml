@@ -6,16 +6,6 @@
     android:background="@color/colorWhite"
     >
 
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <android.support.constraint.ConstraintLayout
         android:id="@+id/const_current_amount"
         android:layout_width="0dp"
@@ -25,50 +15,7 @@
         android:padding="@dimen/dimen_dp_small"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/tv_current_amount_caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dimen_dp_small"
-            android:fontFamily="@font/iran_sans_light"
-            android:gravity="center"
-            android:text="@string/text_current_amount"
-            android:textColor="@color/color_black"
-            android:textSize="@dimen/dimen_sp_tiny"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/tv_current_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dimen_dp_small"
-            android:fontFamily="@font/iran_sans_bold"
-            android:gravity="center"
-            android:text="18,754"
-            android:textColor="@color/color_black"
-            android:textSize="@dimen/dimen_sp_medium"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/tv_current_amount_caption"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/tv_currency_symbol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dimen_dp_tiny"
-            android:fontFamily="@font/iran_sans_light"
-            android:gravity="center"
-            android:text="@string/text_currency_symbol"
-            android:textColor="@color/colorBlackStep_1"
-            android:textSize="@dimen/dimen_sp_tiny"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/tv_current_amount"
-            app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_third_money_extra_charge"
@@ -77,10 +24,9 @@
             android:layout_marginEnd="@dimen/dimen_dp_small"
             android:fontFamily="@font/iran_sans"
             android:padding="@dimen/dimen_dp_small"
-            android:text="راهنمای شارژ شگفت انگیز"
-
+            android:text="@string/text_charge_help"
             android:textColor="@color/color_black"
-            android:textSize="@dimen/dimen_sp_medium"
+            android:textSize="@dimen/dimen_sp_tiny"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -442,6 +388,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/dimen_sp_small"
+            android:inputType="number"
+            android:maxLength="8"
+            android:gravity="center"
             app:layout_constraintLeft_toRightOf="@+id/tv_currency_symbol_money"
             app:layout_constraintRight_toLeftOf="@+id/tv_caption_money"
             app:layout_constraintTop_toTopOf="parent" />

@@ -17,8 +17,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
+import ir.shirazservice.expert.fragment.AllNewsFragment;
 import ir.shirazservice.expert.fragment.OfflineChargeFragment;
 import ir.shirazservice.expert.fragment.RequestFullFragment;
+import ir.shirazservice.expert.fragment.RequestLimitFragment;
 import ir.shirazservice.expert.fragment.ServiceFullFragment;
 import ir.shirazservice.expert.fragment.ServiceInfoFragment;
 import ir.shirazservice.expert.fragment.ServiceLimitFragment;
@@ -57,6 +59,7 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
     protected Toolbar toolbar;
     private int chooseCorrectFragment;
     private int reqId;
+    private String isNews;
     private String toolbarTitle;
     private RequestDetails requestDetails;
     private final GetRequestDetailsApi.getRequestDetailsCallback getRequestDetailsCallback = new GetRequestDetailsApi.getRequestDetailsCallback() {
@@ -119,7 +122,10 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
 
     private void callCorrectFragment() {
         if (reqId == 0) {
-            chooseCorrectFragment = BuildConfig.offlineCharge;
+            if (isNews.equals("news"))
+                chooseCorrectFragment = BuildConfig.newsCode;
+            else
+                chooseCorrectFragment = BuildConfig.offlineCharge;
             openCorrectFragment();
         } else if (reqId < 0) {
             chooseCorrectFragment = BuildConfig.serviceInfo;
@@ -143,6 +149,7 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
         getIds();
         callCorrectFragment();
 
+
         prepareToolbar();
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
     }
@@ -159,6 +166,7 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
         Bundle bundle = in.getExtras();
         if (bundle != null) {
             reqId = bundle.getInt(getString(R.string.text_bundle_req_id));
+            isNews = bundle.getString("news");
         } else this.finish();
     }
 
@@ -193,61 +201,48 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
     }
 
     private void openCorrectFragment() {
-        /*
-  public static final int requestLimit = 1;
-  public static final int requestSelect = 2;
-  public static final int requestDeleteCancel = 3;
-  public static final int requestAccept = 4;
-  public static final int requestNotExists = 5;
-  public static final int requestFinished = 6;
-  public static final int requestExpired = 7;
-        * */
+
+        toolbarTitle = getResources().getString(R.string.text_service_detail);
+        prepareToolbar();
         switch (chooseCorrectFragment) {
-            case BuildConfig.requestSelect:
+            case BuildConfig.requestLimit:
                 openRequestlimit();
+                break;
+            case BuildConfig.requestSelect:
+                openServicelimit();
                 break;
             case BuildConfig.requestFinished:
             case BuildConfig.requestAccept:
                 getRequestDetails(reqId);
                 break;
             case BuildConfig.serviceInfo:
+                toolbarTitle =getString(R.string.text_service_information);
+                prepareToolbar();
                 getServiceInfo(reqId);
                 break;
             case BuildConfig.offlineCharge:
-                OpenOfflineCharge();
+                toolbarTitle = getResources().getString(R.string.text_payment_detail);
+                prepareToolbar();
+                openOfflineCharge();
                 break;
-
-//            case BuildConfig.requestFull:
-//                toolbarTitle = getString(R.string.text_request_detail_title);
-//                openServicelimit();
-////                getRequestDetails(reqId);
-////                if (chooseCorrectFragment == BuildConfig.requestFull)
-////                    openRequestFull();
-////
-////openServiceFull();
-//                break;
-//            case BuildConfig.serviceLimit:
-//                toolbarTitle = getString(R.string.text_service_detail_title);
-//                openServicelimit();
-//                break;
-//            case BuildConfig.requestFinished:
-//            case BuildConfig.serviceFull:
-//                toolbarTitle = getString(R.string.text_service_detail_title);
-//  1
-//                break;
-//
-//            case BuildConfig.serviceInfo:
-//                toolbarTitle = getString(R.string.text_service_detail_title);
-//                getServiceInfo(reqId);
-//                break;
-//            case BuildConfig.offlineCharge:
-//                toolbarTitle = getString(R.string.text_payment_detail);
-//                OpenOfflineCharge();
-//                break;
+            case BuildConfig.newsCode:
+                toolbarTitle = getString(R.string.text_all_news);
+                prepareToolbar();
+                openAllNews();
+                break;
         }
     }
 
-    private void OpenOfflineCharge() {
+    private void openAllNews() {
+        AllNewsFragment allNewsFragment = AllNewsFragment.newInstance();
+        getFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, allNewsFragment)
+                .addToBackStack(null)
+                .commit();
+
+    }
+
+    private void openOfflineCharge() {
         OfflineChargeFragment offlineChargeFragment = OfflineChargeFragment.newInstance();
         getFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, offlineChargeFragment)
@@ -263,7 +258,16 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
                 .commit();
     }
 
+
     private void openRequestlimit() {
+        RequestLimitFragment serviceLimitFragment = RequestLimitFragment.newInstance(requestInfo);
+        getFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, serviceLimitFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private void openServicelimit() {
         ServiceLimitFragment serviceLimitFragment = ServiceLimitFragment.newInstance(requestInfo);
         getFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, serviceLimitFragment)

@@ -107,16 +107,13 @@ public class WorkManMessageFragment extends Fragment implements IInternetControl
     }
 
     private void fillMessageRecyclerView() {
-        if (workmanMessages == null)
-            showNotFoundInfoLayout();
-        else {
+        if (workmanMessages != null) {
             WorkManMessageAdapter workManMessageAdapter = new WorkManMessageAdapter(workmanMessages);
             GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
             recyclerMessage.setLayoutManager(gridLayoutManager);
             recyclerMessage.setAdapter(workManMessageAdapter);
-            showHideWaitingProgress(true);
         }
-
+        showHideWaitingProgress(true);
     }
 
     @Override

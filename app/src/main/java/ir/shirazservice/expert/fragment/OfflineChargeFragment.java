@@ -224,7 +224,7 @@ public class OfflineChargeFragment extends Fragment implements Serializable, IIn
         String mStr = monthOfYear < 10 ? "0" + monthOfYear : "" + monthOfYear;
         String dStr = dayOfMonth < 10 ? "0" + dayOfMonth : "" + dayOfMonth;
         String textDate = year + "/" + mStr + "/" + dStr;
-        btnDate.setText(String.format(getString(R.string.text_string_format), btnDate.getText().toString(), textDate));
+        btnDate.setText( textDate);
         day = dayOfMonth;
         month = monthOfYear + 1;
         this.year = year;

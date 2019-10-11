@@ -25,7 +25,6 @@ import java.util.Objects;
 
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.activity.AllTransactionActivity;
-import ir.shirazservice.expert.activity.ChargeActivity;
 import ir.shirazservice.expert.adapter.MyTransactionAdapter;
 import ir.shirazservice.expert.dialog.TransactionDetailDialog;
 import ir.shirazservice.expert.interfaces.IInternetController;
@@ -281,7 +280,7 @@ public class MyTransactionFragment extends Fragment implements Serializable, IIn
             startActivity(intent);
         });
         btnIncreaseCharge.setOnClickListener(view12 -> {
-            Intent intent = new Intent(getActivity(), ChargeActivity.class);
+            Intent intent = new Intent(getActivity(), ChargeFragment.class);
             startActivity(intent);
         });
     }

@@ -33,7 +33,6 @@
     <string name="title_home">خانه</string>
     <string name="all_transaction_text">لیست تمام تراکنش ها</string>
     <string name="error_no_whats_up">واتس آپ نصب نمی باشد</string>
-    <string name="text_request_detail">جزییات درخواست</string>
     <string name="error_net_title">اینترنت درستگاه شما قطع می باشد</string>
     <string name="text_waiting">لطفا منتظر بمانید</string>
     <string name="text_no_request_found">اطلاعاتی جهت نمایش یافت نشد</string>
@@ -62,7 +61,7 @@
     <string name="text_request_detail_title">جزئیات درخواست</string>
     <string name="text_service_detail_title">جزئیات سرویس</string>
     <string name="text_payment_detail">اطلاعات واریز</string>
-    <string name="text_error_need_value">پر کردن تمامی فیلدها الزامی می باشد</string>
+    <string name="text_error_need_value">پر کردن تمامی مقادیر الزامی می باشد</string>
     <string name="text_error_select_payment_type">انتخاب نوع واریز الزامی می باشد</string>
     <string name="text_error_select_date">انتخاب تاریخ واریز الزامی می باشد</string>
     <string name="text_currency_symbol">ریال</string>
@@ -107,6 +106,10 @@
     <string name="text_imidiately">فوری</string>
     <string name="text_all_tap_back_button">لطفا برای خروج کلید بازگشت را مجددا فشار دهید.</string>
     <string name="text_select_request">هزینه ی انتخاب این درخواست</string>
+    <string name="text_your_rate">امتیاز شما</string>
+    <string name="text_charge_help">راهنمای شارژ شگفت انگیز</string>
+    <string name="text_all_news">اخبار</string>
+    <string name="text_service_information">مشخصات سرویس</string>
 
 
 </resources>

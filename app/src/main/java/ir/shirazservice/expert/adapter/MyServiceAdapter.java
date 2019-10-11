@@ -51,7 +51,7 @@ public class MyServiceAdapter extends RecyclerView.Adapter<MyServiceAdapter.View
     public void onBindViewHolder(@NonNull MyServiceAdapter.ViewHolder holder, int position) {
 
         holder.tvServiceTitle.setText(items.get(position).getServiceTitle());
-        holder.tvServiceTime.setText(items.get(position).getInsrtTimePersian());
+        holder.tvServiceTime.setText(items.get(position).getInsrtDatePersian1());
         holder.tvServiceStatus.setText(items.get(position).getStateTitle());
         holder.ratingBar.setRating(
                 items.get(position).getState() == 6 ? items.get(position).getRate() : 0);
