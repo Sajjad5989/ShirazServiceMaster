@@ -53,10 +53,17 @@ public class WorkManNewsAdapter extends RecyclerView.Adapter<WorkManNewsAdapter.
     public void onBindViewHolder(@NonNull WorkManNewsAdapter.ViewHolder holder, int position) {
 
         holder.tvNewTitle.setText(items.get(position).getTitle());
-        holder.tvNewsDesc.setText(String.valueOf(items.get(position).getDesc()));
-        Picasso.with(context)
-                .load(items.get(position).getPicAddress())  //Url of the image to load.
-                .into(holder.imageNews);
+        String sliderImage = items.get(position).getPicAddress();
+
+        if (sliderImage != null && !"".equals(sliderImage)) {
+            Picasso.with(context).load(sliderImage)
+                    .error(R.drawable.image_default_mag)
+                    .placeholder(R.drawable.image_default_mag)
+                    .into(holder.imageNews);
+        } else {
+            holder.imageNews.setImageResource(R.drawable.image_default_mag);
+        }
+
     }
 
     @Override

@@ -43,7 +43,6 @@ import ir.shirazservice.expert.internetutils.InternetConnectionListener;
 import ir.shirazservice.expert.preferences.GeneralPreferences;
 import ir.shirazservice.expert.utils.APP;
 import ir.shirazservice.expert.utils.OnlineCheck;
-import ir.shirazservice.expert.utils.UsefulFunction;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
 import ir.shirazservice.expert.webservice.news.GetWorkmanNewsApi;
@@ -57,10 +56,6 @@ import ir.shirazservice.expert.webservice.requestlist.RequestListInputs;
 import ir.shirazservice.expert.webservice.slider.AdsSlider;
 import ir.shirazservice.expert.webservice.slider.GetAdsSliderApi;
 import ir.shirazservice.expert.webservice.slider.GetAdsSliderController;
-import ir.shirazservice.expert.webservice.workmancredit.GetWorkmanCreditApi;
-import ir.shirazservice.expert.webservice.workmancredit.GetWorkmanCreditController;
-import ir.shirazservice.expert.webservice.workmancredit.WorkmanCredit;
-import ir.shirazservice.expert.webservice.workmancredit.WorkmanCreditReq;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 import static ir.shirazservice.expert.utils.APP.context;
@@ -75,7 +70,6 @@ public class MainFragment extends Fragment implements IInternetController {
     private final RequestDetailList requestDetailList = new RequestDetailList();
     private AppCompatTextView tvExpertName;
     private AppCompatTextView tvExpRate;
-    private AppCompatTextView tvExpertCredit;
     private AppCompatTextView tvExpertDiscount;
     private AppCompatTextView tvRatingBar;
     private RatingBar ratingBar;
@@ -90,8 +84,6 @@ public class MainFragment extends Fragment implements IInternetController {
     private List< Request > selectedRequestList;
     private List< WorkmanNews > workmanNews;
     private List< AdsSlider > adsSliders;
-
-
     private final GetWorkmanNewsApi.getWorkmanNewsCallback getWorkmanNewsCallback = new GetWorkmanNewsApi.getWorkmanNewsCallback() {
         @Override
         public void onResponse( boolean successful, ErrorResponseSimple errorResponse, List< WorkmanNews > response ){
@@ -109,6 +101,7 @@ public class MainFragment extends Fragment implements IInternetController {
 
         }
     };
+    private CircularProgressBar circularProgressBar;
     private int servicemanId;
     private String accessToken;
     private final RequestListApi.GetRequestListCallback getRequestListCallback = new RequestListApi.GetRequestListCallback() {
@@ -168,7 +161,6 @@ public class MainFragment extends Fragment implements IInternetController {
         tvExpertName = view.findViewById( R.id.tv_expert_name );
         tvExpRate = view.findViewById( R.id.tv_exp_rate );
         tvRetry = view.findViewById( R.id.tv_retry );
-        tvExpertCredit = view.findViewById( R.id.tv_expert_Credit );
         tvExpertDiscount = view.findViewById( R.id.tv_expert_discount );
         tvRatingBar = view.findViewById( R.id.tv_ratingBar );
         ratingBar = view.findViewById( R.id.ratingBar );
@@ -182,10 +174,8 @@ public class MainFragment extends Fragment implements IInternetController {
         constraintLayout = view.findViewById( R.id.const_waiting_main_fragment );
         constNotFoundInfo = view.findViewById( R.id.const_not_found_info );
 
-        CircularProgressBar circularProgressBar = view.findViewById( R.id.circularProgressBar );
-        circularProgressBar.setProgress( 42f );
-        circularProgressBar.setProgressWithAnimation( 65f, 1000L ); // =1s
-        circularProgressBar.setProgressMax( 100f );
+        circularProgressBar = view.findViewById( R.id.circularProgressBar );
+
     }
 
     private void btnClickConfig( ){
@@ -224,12 +214,15 @@ public class MainFragment extends Fragment implements IInternetController {
             return;
         }
 
-        tvExpRate.setText(String.valueOf(serviceManInfo.getTotalPoint()));
-        tvExpertCredit.setText( new UsefulFunction().attachCamma( serviceManInfo.getTempCredit() ) );
-        tvExpertName.setText( serviceManInfo.getFullName() );
-        tvExpertDiscount.setText(String.format("%s%%", String.valueOf(serviceManInfo.getDiscountPercent())));
+        tvExpRate.setText( String.valueOf( serviceManInfo.getTotalPoint() ) );
+        circularProgressBar.setProgress( serviceManInfo.getTotalPoint() );
+        circularProgressBar.setProgressWithAnimation( 65f, 1000L ); // =1s
+        circularProgressBar.setProgressMax( 100f );
 
-        tvRatingBar.setText( String.valueOf( serviceManInfo.getRating() ) );
+        tvExpertName.setText( serviceManInfo.getNameFamily() );
+        tvExpertDiscount.setText( String.format( "%s%%", String.valueOf( serviceManInfo.getDiscountPercent() ) ) );
+
+        tvRatingBar.setText( " امتیاز شما " + serviceManInfo.getRating() );
         ratingBar.setRating( ( float ) serviceManInfo.getRating() );
 
         String picAddress = serviceManInfo.getPicAddress();

@@ -22,7 +22,7 @@
 
             <include
                 android:id = "@+id/top_main"
-                layout = "@layout/top_main_template"
+                layout = "@layout/top_main_template_new"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
                 android:layout_margin = "@dimen/dimen_dp_tiny"
@@ -33,8 +33,7 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width = "match_parent"
                 android:layout_height = "200dp"
-                android:layout_margin = "@dimen/dimen_dp_tiny"
-                android:background = "@drawable/box_for_simple">
+                android:layout_margin = "@dimen/dimen_dp_tiny">
 
                 <android.support.v4.view.ViewPager
                     android:id = "@+id/view_pager_slider"
@@ -62,12 +61,99 @@
 
             </android.support.constraint.ConstraintLayout>
 
+            <android.support.constraint.ConstraintLayout
+                android:id = "@+id/layout_mag"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:gravity = "center_vertical"
+                android:orientation = "horizontal"
+                android:padding = "4dp"
+                android:background="@color/color_more_back"
+                app:layout_constraintLeft_toLeftOf = "parent"
+                app:layout_constraintRight_toRightOf = "parent"
+                app:layout_constraintTop_toTopOf = "parent">
+
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:fontFamily = "@font/iran_sans_bold"
+                    android:gravity = "start"
+                    android:text = "جدید ترین درخواست ها"
+                    android:textColor = "@color/colorPrimary"
+                    android:textIsSelectable = "false"
+                    android:textSize = "12sp"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintRight_toRightOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent"/>
+
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:fontFamily = "@font/iran_sans_light"
+                    android:gravity = "start"
+                    android:text = "مشاهده همه"
+                    android:textColor = "@color/colorDarkGrey"
+                    android:textIsSelectable = "false"
+                    android:textSize = "10sp"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintLeft_toLeftOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent"/>
+
+
+            </android.support.constraint.ConstraintLayout>
+
             <android.support.v7.widget.RecyclerView
                 android:id = "@+id/recycler_request"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
                 android:layout_margin = "@dimen/dimen_dp_tiny"
                 android:layout_marginBottom = "@dimen/dimen_dp_tiny" />
+
+
+            <android.support.constraint.ConstraintLayout
+                android:id = "@+id/layout_news"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:gravity = "center_vertical"
+                android:orientation = "horizontal"
+                android:padding = "4dp"
+                android:background="@color/color_more_back"
+                app:layout_constraintLeft_toLeftOf = "parent"
+                app:layout_constraintRight_toRightOf = "parent"
+                app:layout_constraintTop_toTopOf = "parent">
+
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:fontFamily = "@font/iran_sans_bold"
+                    android:gravity = "start"
+                    android:text = "اخبار شیراز سرویس"
+                    android:textColor = "@color/colorPrimary"
+                    android:textIsSelectable = "false"
+                    android:textSize = "12sp"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintRight_toRightOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent"/>
+
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:fontFamily = "@font/iran_sans_light"
+                    android:gravity = "start"
+                    android:text = "مشاهده همه"
+                    android:textColor = "@color/colorDarkGrey"
+                    android:textIsSelectable = "false"
+                    android:textSize = "10sp"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintLeft_toLeftOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent"/>
+
+
+            </android.support.constraint.ConstraintLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id = "@+id/recycler_news"

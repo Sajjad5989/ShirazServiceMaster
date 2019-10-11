@@ -399,4 +399,9 @@ public class ServiceMan {
         return String.format("%s %s %s", getTitle(),getFirstName(), getLastName());
 
     }
+    public String getNameFamily()
+    {
+        return String.format("%s %s", getFirstName(), getLastName());
+
+    }
 }

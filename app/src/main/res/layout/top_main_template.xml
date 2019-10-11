@@ -40,23 +40,6 @@
             app:layout_constraintLeft_toLeftOf = "parent"
             app:layout_constraintRight_toRightOf = "parent" />
 
-        <android.support.v7.widget.AppCompatTextView
-            android:id = "@+id/tv_expert_Credit"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:layout_marginStart = "@dimen/dimen_dp_tiny"
-            android:layout_marginEnd = "@dimen/dimen_dp_tiny"
-            android:fontFamily = "@font/iran_sans_bold"
-            android:gravity = "center"
-            android:text = "2,500,521"
-            android:textColor = "@color/colorAccent"
-            android:textSize = "@dimen/dimen_sp_medium"
-
-            app:layout_constraintLeft_toLeftOf = "parent"
-            app:layout_constraintRight_toRightOf = "parent"
-            app:layout_constraintTop_toBottomOf = "@id/tv_expert_name" />
-
-
     </android.support.constraint.ConstraintLayout>
 
     <com.mikhaellopez.circularprogressbar.CircularProgressBar

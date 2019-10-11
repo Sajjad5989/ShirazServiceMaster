@@ -57,11 +57,11 @@ public class SessionSliderAdapter extends PagerAdapter {
         AppCompatImageView myImg = view.findViewById(R.id.session_slider_image);
         if (sliderImage != null && !"".equals(sliderImage)) {
             Picasso.with(context).load(sliderImage)
-                    .error(R.drawable.img_no_icon)
-                    .placeholder(R.drawable.img_loading)
+                    .error(R.drawable.image_default_slider)
+                    .placeholder(R.drawable.image_default_slider)
                     .into(myImg);
         } else {
-            myImg.setImageResource(R.drawable.img_no_icon);
+            myImg.setImageResource(R.drawable.image_default_slider);
         }
 
         final Handler handler = new Handler();
