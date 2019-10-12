@@ -176,7 +176,7 @@
                 android:background = "@drawable/btn_slider_order"
                 android:fontFamily = "@font/iran_sans_bold"
                 android:gravity = "center"
-                android:text = "رتبه شما"
+                android:text = "فعالیت شما"
                 android:textColor = "@color/colorWhite"
                 android:textSize = "@dimen/dimen_sp_small"
                 app:layout_constraintBottom_toBottomOf = "parent"
