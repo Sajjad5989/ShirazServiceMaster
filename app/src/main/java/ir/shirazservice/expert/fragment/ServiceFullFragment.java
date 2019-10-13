@@ -150,7 +150,7 @@ public class ServiceFullFragment extends Fragment {
             tvPositionAddress.setText(requestDetails.getAreaTitle());
             tvRequestDetailDescValue.setText(requestDetails.getDesc());
             tvRequestDetailCalculatedPrice.setText(new UsefulFunction().attachCamma(String.valueOf(requestDetails.getCalculatedPrice())));
-            tvRequestDetailDateRegister.setText(requestDetails.getDateToPersian());
+            tvRequestDetailDateRegister.setText(requestDetails.getInsrtTimeSimple());
             if (requestDetails.getTime() == BuildConfig.immediateCode) {
                 tvRequestDetailDateValue.setText(R.string.text_imidiately);
                 tvRequestDetailTimeValue.setText(R.string.text_imidiately);

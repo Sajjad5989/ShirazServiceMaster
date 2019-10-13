@@ -95,6 +95,8 @@ public class RequestFullFragment extends Fragment implements IInternetController
     AppCompatTextView tvMobile;
     @BindView(R.id.tv_request_detail_date_value)
     AppCompatTextView tvRequestDetailDateValue;
+    @BindView(R.id.tv_request_detail_date_register)
+    AppCompatTextView tvRequestDateRegister;
     @BindView(R.id.tv_service_info)
     AppCompatTextView tvServiceInfo;
     @BindView(R.id.tv_request_detail_time_value)
@@ -164,7 +166,7 @@ public class RequestFullFragment extends Fragment implements IInternetController
             tvDiscountAlarm.setText(requestDetailsFull.getDiscountDesc());
             tvPhoneNumber.setText(requestDetailsFull.getPhone());
             tvMobile.setText(requestDetailsFull.getMobile());
-
+            tvRequestDateRegister.setText(requestDetailsFull.getInsrtTimeSimple());
 
             if (requestDetailsFull.getTime() == BuildConfig.immediateCode) {
                 tvRequestDetailDateValue.setText(R.string.text_imidiately);

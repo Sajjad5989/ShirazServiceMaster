@@ -102,6 +102,8 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
     protected AppCompatTextView tvRequestDetailCalculatedPrice;
     @BindView(R.id.tv_request_detail_date_value)
     protected AppCompatTextView tvRequestDetailDateValue;
+    @BindView(R.id.tv_request_detail_date_register)
+    protected AppCompatTextView tvRequestDateRegister;
     @BindView(R.id.tv_request_detail_time_value)
     protected AppCompatTextView tvRequestDetailTimeValue;
     @BindView(R.id.tv_position_address)
@@ -299,8 +301,8 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
             requestId = currentRequest.getRequestId();
             tvRequestDetailServiceTitle.setText(currentRequest.getServiceTitle());
             tvRequestDetailCalculatedPrice.setText(new UsefulFunction().attachCamma(currentRequest.getCalculatedPrice()));
+            tvRequestDateRegister.setText(currentRequest.getInsrtTimeSimple());
             requestDetailCalculatedPrice = currentRequest.getCalculatedPrice();
-
             if (currentRequest.getTime() == BuildConfig.immediateCode) {
                 tvRequestDetailDateValue.setText(R.string.text_imidiately);
                 tvRequestDetailTimeValue.setText(R.string.text_imidiately);

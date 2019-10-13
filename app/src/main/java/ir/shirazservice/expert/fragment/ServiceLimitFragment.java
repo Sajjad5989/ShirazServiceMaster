@@ -190,7 +190,7 @@ public class ServiceLimitFragment extends Fragment implements IInternetControlle
             tvPositionAddress.setText(requestInfo.getAreaTitle());
             tvRequestDetailDescValue.setText(requestInfo.getDesc());
             tvRequestDetailCalculatedPrice.setText(new UsefulFunction().attachCamma(String.valueOf(requestInfo.getCalculatedPrice())));
-            tvRequestDetailDateRegister.setText(requestInfo.getDateToPersian());
+            tvRequestDetailDateRegister.setText(requestInfo.getInsrtTimeSimple());
 
             if (requestInfo.getTime() == BuildConfig.immediateCode) {
                 tvRequestDetailDateValue.setText(R.string.text_imidiately);
