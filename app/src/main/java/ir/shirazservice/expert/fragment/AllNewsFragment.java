@@ -24,7 +24,7 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
-import ir.shirazservice.expert.adapter.WorkManNewsAdapter;
+import ir.shirazservice.expert.adapter.WorkManAllNewsAdapter;
 import ir.shirazservice.expert.interfaces.IInternetController;
 import ir.shirazservice.expert.internetutils.ConnectionInternetDialog;
 import ir.shirazservice.expert.internetutils.InternetConnectionListener;
@@ -132,7 +132,7 @@ public class AllNewsFragment extends Fragment implements IInternetController {
     }
 
     private void fillNewsList() {
-        WorkManNewsAdapter workManNewsAdapter = new WorkManNewsAdapter(getActivity(), workmanNews, 0,
+        WorkManAllNewsAdapter workManNewsAdapter = new WorkManAllNewsAdapter(getActivity(), workmanNews, 0,
                 (v, position) -> openUrl(workmanNews.get(position).getUrl()));
 
         LinearLayoutManager gridLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,

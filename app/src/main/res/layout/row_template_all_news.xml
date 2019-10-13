@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="4dp"
+    android:background="@drawable/box_for_simple"
+    android:layoutDirection="rtl">
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_news_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/iran_sans_bold"
+        android:background="@drawable/const_border_light"
+        android:gravity="start"
+        android:padding="@dimen/dimen_dp_tiny"
+        android:layout_marginBottom="@dimen/dimen_dp_tiny"
+        android:text="دوستون دارم"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/dimen_sp_small"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/image_news"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        android:src="@drawable/image_default_mag"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_news_title" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_news_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/dimen_dp_tiny"
+        android:background="@drawable/btn_slider_order"
+        android:fontFamily="@font/iran_sans_light"
+        android:gravity="start"
+        android:text="مشاهده"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/dimen_sp_tiny"
+        app:layout_constraintBottom_toBottomOf="@+id/image_news"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

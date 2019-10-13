@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/dimen_dp_tiny"
-    android:background="@drawable/const_border_light">
+    android:background="@drawable/const_border_line">
 
 
     <android.support.v7.widget.AppCompatImageView

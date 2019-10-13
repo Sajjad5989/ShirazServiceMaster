@@ -122,7 +122,7 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
 
     private void callCorrectFragment() {
         if (reqId == 0) {
-            if (isNews.equals("news"))
+            if ("news".equals(isNews))
                 chooseCorrectFragment = BuildConfig.newsCode;
             else
                 chooseCorrectFragment = BuildConfig.offlineCharge;

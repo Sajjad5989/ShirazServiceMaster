@@ -57,6 +57,10 @@ import ir.shirazservice.expert.webservice.requestlist.RequestListInputs;
 import ir.shirazservice.expert.webservice.slider.AdsSlider;
 import ir.shirazservice.expert.webservice.slider.GetAdsSliderApi;
 import ir.shirazservice.expert.webservice.slider.GetAdsSliderController;
+import ir.shirazservice.expert.webservice.workmanpoint.WorkManPoint;
+import ir.shirazservice.expert.webservice.workmanpoint.WorkManPointInput;
+import ir.shirazservice.expert.webservice.workmanpoint.WorkmanActivityPointApi;
+import ir.shirazservice.expert.webservice.workmanpoint.WorkmanActivityPointController;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 import static ir.shirazservice.expert.utils.APP.context;
@@ -67,7 +71,7 @@ public class MainFragment extends Fragment implements IInternetController {
     private static final int METHOD_TYPE_SLIDER = 1;
     private static final int METHOD_TYPE_REQUEST = 2;
     private static final int METHOD_TYPE_NEWS = 3;
-    private static final int METHOD_TYPE_WORKMAN_CREDIT = 4;
+    private static final int METHOD_TYPE_WORKMAN_POINT = 4;
     private final RequestDetailList requestDetailList = new RequestDetailList();
     private AppCompatTextView tvExpertName;
     private AppCompatTextView tvExpRate;
@@ -141,6 +145,30 @@ public class MainFragment extends Fragment implements IInternetController {
             setAndShowSlidersPhoto();
         }
     };
+    private WorkmanActivityPointApi.getWorkmanActivityPointCallback getWorkmanActivityPointCallback =
+            new WorkmanActivityPointApi.getWorkmanActivityPointCallback() {
+                @Override
+                public void onResponse(boolean successful, ErrorResponseSimple errorResponse, WorkManPoint response) {
+                    if (successful) {
+                        setWorkmanPoint(response.getActivityPoint());
+                    }else setWorkmanPoint(0);
+                }
+
+                @Override
+                public void onFailure(String cause) {
+                    setWorkmanPoint(0);
+                }
+            };
+
+    private void setWorkmanPoint(int point)
+    {
+        tvExpRate.setText(String.valueOf(point));
+        circularProgressBar.setProgress(point);
+        circularProgressBar.setProgressWithAnimation(65f, 1000L); // =1s
+        circularProgressBar.setProgressMax(100f);
+
+        callGetSliderAds();
+    }
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -189,7 +217,7 @@ public class MainFragment extends Fragment implements IInternetController {
     private void openAllNewsActivity() {
         Intent intent = new Intent(getActivity(), ServiceRequestDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt(getString(R.string.text_bundle_req_id),0 );
+        bundle.putInt(getString(R.string.text_bundle_req_id), 0);
         bundle.putString("news", "news");
         intent.putExtras(bundle);
         startActivity(intent);
@@ -224,11 +252,11 @@ public class MainFragment extends Fragment implements IInternetController {
             getActivity().finish();
             return;
         }
-
-        tvExpRate.setText(String.valueOf(serviceManInfo.getTotalPoint()));
-        circularProgressBar.setProgress(serviceManInfo.getTotalPoint());
-        circularProgressBar.setProgressWithAnimation(65f, 1000L); // =1s
-        circularProgressBar.setProgressMax(100f);
+//
+//        tvExpRate.setText(String.valueOf(serviceManInfo.getTotalPoint()));
+//        circularProgressBar.setProgress(serviceManInfo.getTotalPoint());
+//        circularProgressBar.setProgressWithAnimation(65f, 1000L); // =1s
+//        circularProgressBar.setProgressMax(100f);
 
         tvExpertName.setText(serviceManInfo.getNameFamily());
         tvExpertDiscount.setText(String.format("%s%%", String.valueOf(serviceManInfo.getDiscountPercent())));
@@ -247,7 +275,9 @@ public class MainFragment extends Fragment implements IInternetController {
                     .placeholder(R.drawable.img_loading)
                     .into(imageExpert);
         }
-        callGetSliderAds();
+
+        getWorkmanPoint();
+
     }
 
     private void openRequestLimitDetail(Request request) {
@@ -272,7 +302,6 @@ public class MainFragment extends Fragment implements IInternetController {
 
         callGetNews();
     }
-
 
     private void loadNeeded() {
         ServiceMan serviceMan = GeneralPreferences.getInstance(context).getServiceManInfo();
@@ -353,6 +382,9 @@ public class MainFragment extends Fragment implements IInternetController {
                     case METHOD_TYPE_NEWS:
                         callGetNews();
                         break;
+                    case METHOD_TYPE_WORKMAN_POINT:
+                        getWorkmanPoint();
+                        break;
                 }
             }
         });
@@ -399,7 +431,6 @@ public class MainFragment extends Fragment implements IInternetController {
             }
         });
     }
-
 
     private void showDots(int pageNumber) {
 
@@ -460,12 +491,10 @@ public class MainFragment extends Fragment implements IInternetController {
         showNotFoundInfoLayout();
     }
 
-
     @Override
     public boolean isOnline() {
         return OnlineCheck.getInstance(getActivity()).isOnline();
     }
-
 
     private void showHideWaitingProgress(boolean hide) {
         constraintLayout.setVisibility(hide ? View.GONE : View.VISIBLE);
@@ -476,5 +505,15 @@ public class MainFragment extends Fragment implements IInternetController {
         constNotFoundInfo.setVisibility((selectedRequestList == null && workmanNews == null && adsSliders == null) ? View.VISIBLE : View.GONE);
     }
 
+    private void getWorkmanPoint() {
+        if (!isOnline()) {
+            openInternetCheckingDialog(METHOD_TYPE_WORKMAN_POINT);
+        }
+        WorkManPointInput workManPointInput = new WorkManPointInput();
+        workManPointInput.setId(servicemanId);
+
+        WorkmanActivityPointController workmanActivityPointController = new WorkmanActivityPointController(getWorkmanActivityPointCallback);
+        workmanActivityPointController.start(servicemanId, accessToken, workManPointInput);
+    }
 
 }
