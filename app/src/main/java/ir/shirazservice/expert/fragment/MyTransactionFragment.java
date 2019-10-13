@@ -37,9 +37,7 @@ import ir.shirazservice.expert.utils.UsefulFunction;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
 import ir.shirazservice.expert.webservice.workmancredit.GetWorkmanCreditApi;
-import ir.shirazservice.expert.webservice.workmancredit.GetWorkmanCreditController;
 import ir.shirazservice.expert.webservice.workmancredit.WorkmanCredit;
-import ir.shirazservice.expert.webservice.workmancredit.WorkmanCreditReq;
 import ir.shirazservice.expert.webservice.workmanfinancial.GetWorkmanFinancialTransactionsApi;
 import ir.shirazservice.expert.webservice.workmanfinancial.GetWorkmanFinancialTransactionsController;
 import ir.shirazservice.expert.webservice.workmanfinancial.TransactionList;
@@ -56,7 +54,6 @@ public class MyTransactionFragment extends Fragment implements Serializable, IIn
     private RecyclerView myTransactionListRecycler;
     private ConstraintLayout consWaiting;
     private ConstraintLayout constNotFoundInfo;
-    private AppCompatTextView tvCurrentAmount;
     private AppCompatTextView tvGetMoney;
     private AppCompatTextView tvPayMoney;
     private WorkmanCredit workmanCredit;
@@ -108,10 +105,6 @@ public class MyTransactionFragment extends Fragment implements Serializable, IIn
     }
 
     private void setCredit() {
-        if (workmanCredit == null)
-            return;
-        else
-            tvCurrentAmount.setText(new UsefulFunction().attachCamma(workmanCredit.getTempCredit()));
 
 
         getMyTransaction();
@@ -132,15 +125,19 @@ public class MyTransactionFragment extends Fragment implements Serializable, IIn
 
         findViews(view);
         setNeededIds();
-        getWorkManCredit();
+        showHideWaitingProgress(false);
+        getMyTransaction();
+
 
     }
 
     private void getMyTransaction() {
 
+
         if (!isOnline()) {
             openInternetCheckingDialog();
         }
+
 
         WorkmanFinancialTransactionReq workmanFinancialTransactionReq = new WorkmanFinancialTransactionReq();
         workmanFinancialTransactionReq.setInsrtDateShamsi("");
@@ -154,21 +151,6 @@ public class MyTransactionFragment extends Fragment implements Serializable, IIn
         getWorkmanFinancialTransactionsController.start(servicemanId, accessToken, workmanFinancialTransactionReq);
     }
 
-    private void getWorkManCredit() {
-
-        if (!isOnline()) {
-            openInternetCheckingDialog();
-        }
-        showHideWaitingProgress(false);
-
-
-        WorkmanCreditReq workmanCreditReq = new WorkmanCreditReq();
-        workmanCreditReq.setId(servicemanId);
-
-        GetWorkmanCreditController getWorkmanCreditController =
-                new GetWorkmanCreditController(getWorkmanCreditCallback);
-        getWorkmanCreditController.start(servicemanId, accessToken, workmanCreditReq);
-    }
 
     private void setNeededIds() {
         ServiceMan serviceMan = GeneralPreferences.getInstance(context).getServiceManInfo();
@@ -268,7 +250,6 @@ public class MyTransactionFragment extends Fragment implements Serializable, IIn
 
         consWaiting = view.findViewById(R.id.const_waiting_main_fragment);
         constNotFoundInfo = view.findViewById(R.id.const_not_found_info);
-        tvCurrentAmount = view.findViewById(R.id.tv_current_amount);
         tvGetMoney = view.findViewById(R.id.tv_get_money);
         tvPayMoney = view.findViewById(R.id.tv_pay);
 
