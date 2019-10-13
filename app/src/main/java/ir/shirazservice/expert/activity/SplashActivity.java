@@ -113,7 +113,7 @@ public class SplashActivity extends AppCompatActivity implements IInternetContro
 
     private void findViews() {
         AppCompatTextView tvVersion = findViewById(R.id.tv_app_version);
-        tvVersion.setText(new VersionUtils().getAppVersionName(SplashActivity.this));
+        tvVersion.setText("بسته متخصصین، نسخه "+new VersionUtils().getAppVersionName(SplashActivity.this));
     }
 
     @Override
