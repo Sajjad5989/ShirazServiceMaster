@@ -73,7 +73,7 @@
                     android:fontFamily="@font/iran_sans_bold"
                     android:text="توضیحات سرویس"
                     android:textColor="@color/color_black"
-                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    android:textSize="@dimen/dimen_sp_large"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -87,7 +87,7 @@
                     android:fontFamily="@font/iran_sans_bold"
                     android:text="بیا بگیر و ببر"
                     android:textColor="@color/colorBlackStep_1"
-                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_service_description_title" />
 
@@ -115,7 +115,7 @@
                     android:fontFamily="@font/iran_sans_bold"
                     android:text="نرخنامه خدمات تعمیر لوازم برقی"
                     android:textColor="@color/color_black"
-                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    android:textSize="@dimen/dimen_sp_large"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -128,7 +128,7 @@
                     android:fontFamily="@font/iran_sans_bold"
                     android:text="تشخیص عیب دستگاه های گردنده بزرگ و سرد کننده ها: 30،000 تومان"
                     android:textColor="@color/colorBlackStep_1"
-                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_extraTitle" />
 
@@ -141,7 +141,7 @@
                     android:fontFamily="@font/iran_sans_bold"
                     android:text="*توجه توجه*"
                     android:textColor="@color/color_black"
-                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    android:textSize="@dimen/dimen_sp_large"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_extraField" />
 
@@ -155,7 +155,7 @@
                     android:paddingBottom="@dimen/dimen_dp_large"
                     android:text="در صورتی که متخصص درمحل حضور یابد و عیب یابی کند مبلغ 7،000 تومان تا 30،000 تومان با توجه به طول مسیر(شهرک های گوشواره ای شهر و ...) دریافت می گردد."
                     android:textColor="@color/colorBlackStep_1"
-                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_extraTitle2" />
 
