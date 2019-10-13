@@ -37,7 +37,7 @@
     <string name="text_waiting">لطفا منتظر بمانید</string>
     <string name="text_no_request_found">اطلاعاتی جهت نمایش یافت نشد</string>
     <string name="text_try_again">فراخوانی مجدد</string>
-    <string name="text_show_all_transaction">تمام تراکنش ها</string>
+    <string name="text_show_all_transaction">مشاهده همه</string>
     <string name="text_amount">موجودی</string>
     <string name="text_increase_charge">افزایش شارژ</string>
     <string name="text_current_amount">موجودی فعلی:</string>
