@@ -34,11 +34,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_dp_medium"
-        android:background="@drawable/button_style_red_light"
         android:text="@string/start_app_button_text"
-        android:fontFamily="@font/iran_sans"
+        android:background = "@drawable/button_slider_rounded"
+
+        android:paddingStart = "40dp"
+        android:paddingEnd = "40dp"
+        android:fontFamily="@font/iran_sans_medium"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/dimen_sp_small"
+        android:textSize="@dimen/dimen_sp_large"
         app:layout_constraintBottom_toTopOf="@id/layout_bottoms"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
