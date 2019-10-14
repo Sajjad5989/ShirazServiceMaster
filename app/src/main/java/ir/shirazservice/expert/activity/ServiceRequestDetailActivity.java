@@ -21,9 +21,7 @@ import ir.shirazservice.expert.fragment.AllNewsFragment;
 import ir.shirazservice.expert.fragment.OfflineChargeFragment;
 import ir.shirazservice.expert.fragment.RequestFullFragment;
 import ir.shirazservice.expert.fragment.RequestLimitFragment;
-import ir.shirazservice.expert.fragment.ServiceFullFragment;
 import ir.shirazservice.expert.fragment.ServiceInfoFragment;
-import ir.shirazservice.expert.fragment.ServiceLimitFragment;
 import ir.shirazservice.expert.interfaces.IDefault;
 import ir.shirazservice.expert.interfaces.IInternetController;
 import ir.shirazservice.expert.interfaces.IRtl;
@@ -216,7 +214,7 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
                 getRequestDetails(reqId);
                 break;
             case BuildConfig.serviceInfo:
-                toolbarTitle =getString(R.string.text_service_information);
+                toolbarTitle = getString(R.string.text_service_information);
                 prepareToolbar();
                 getServiceInfo(reqId);
                 break;
@@ -251,7 +249,7 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
     }
 
     private void openRequestFull() {
-        RequestFullFragment requestFullFragment = RequestFullFragment.newInstance(requestDetails);
+        RequestFullFragment requestFullFragment = RequestFullFragment.newInstance(requestDetails,BuildConfig.openRequest);
         getFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, requestFullFragment)
                 .addToBackStack(null)
@@ -260,7 +258,7 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
 
 
     private void openRequestlimit() {
-        RequestLimitFragment serviceLimitFragment = RequestLimitFragment.newInstance(requestInfo);
+        RequestLimitFragment serviceLimitFragment = RequestLimitFragment.newInstance(requestInfo, BuildConfig.openRequest);
         getFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, serviceLimitFragment)
                 .addToBackStack(null)
@@ -268,7 +266,7 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
     }
 
     private void openServicelimit() {
-        ServiceLimitFragment serviceLimitFragment = ServiceLimitFragment.newInstance(requestInfo);
+        RequestLimitFragment serviceLimitFragment = RequestLimitFragment.newInstance(requestInfo, BuildConfig.openService);
         getFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, serviceLimitFragment)
                 .addToBackStack(null)
@@ -276,9 +274,9 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
     }
 
     private void openServiceFull() {
-        ServiceFullFragment serviceFullFragment = ServiceFullFragment.newInstance(requestDetails);
+        RequestFullFragment requestFullFragment = RequestFullFragment.newInstance(requestDetails, BuildConfig.openService);
         getFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, serviceFullFragment)
+                .add(R.id.fragment_container, requestFullFragment)
                 .addToBackStack(null)
                 .commit();
     }

@@ -44,7 +44,6 @@
             android:fontFamily = "@font/iran_sans_bold"
             android:gravity = "center"
             android:padding="8dp"
-            android:text="dsvzdfvdfvbxdfbfdb"
             android:textColor = "@color/colorPrimary"
             android:textSize = "@dimen/dimen_sp_large"
             android:background = "@drawable/box_search_complete"

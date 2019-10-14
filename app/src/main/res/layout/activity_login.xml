@@ -104,8 +104,6 @@
             android:text = "@string/text_enter_password"
             android:textColor = "@color/colorRedStep_1"
             android:textSize = "@dimen/dimen_sp_small"
-
-
             app:layout_constraintRight_toRightOf = "parent"
             app:layout_constraintTop_toBottomOf = "@id/tv_username_guide" />
 
