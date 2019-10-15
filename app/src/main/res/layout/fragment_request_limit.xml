@@ -21,226 +21,235 @@
 
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/const_request_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_dp_very_tiny"
-                android:background="@drawable/const_border_light"
-                android:padding="@dimen/dimen_dp_large"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar">
+                android:id = "@+id/const_request_title"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_margin = "@dimen/dimen_dp_small"
+                android:background = "@drawable/const_border_light"
+                android:padding = "@dimen/dimen_dp_large"
+                app:layout_constraintLeft_toLeftOf = "parent"
+                app:layout_constraintRight_toRightOf = "parent">
+
 
                 <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/img_request_Detail"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:id = "@+id/img_request_Detail"
+                    android:layout_width = "64dp"
+                    android:layout_height = "64dp"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintRight_toRightOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_request_detail_service_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_medium"
-                    android:fontFamily="@font/iran_sans_bold"
-                    android:text="شستشوی مبل با بخار"
-                    android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_large"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/img_request_Detail"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:id = "@+id/tv_request_detail_service_title"
+                    android:layout_width = "0dp"
+                    android:layout_height = "wrap_content"
+                    android:layout_marginEnd = "@dimen/dimen_dp_medium"
+                    android:fontFamily = "@font/iran_sans_bold"
+                    android:text = "شستشوی مبل با بخار"
+                    android:textColor = "@color/colorBlackStep_5"
+                    android:textSize = "@dimen/dimen_sp_large"
+                    app:layout_constraintLeft_toLeftOf = "parent"
+                    app:layout_constraintRight_toLeftOf = "@id/img_request_Detail"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_request_detail_tracking_caption"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_dp_small"
-                    android:fontFamily="@font/iran_sans"
-                    android:text="کد پیگیری"
-                    android:textColor="@color/colorBlackStep_1"
-                    android:textSize="@dimen/dimen_sp_small"
-                    app:layout_constraintRight_toRightOf="@id/tv_request_detail_service_title"
-                    app:layout_constraintTop_toBottomOf="@id/tv_request_detail_service_title" />
+                    android:id = "@+id/tv_request_detail_tracking_caption"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:layout_marginTop = "@dimen/dimen_dp_small"
+                    android:fontFamily = "@font/iran_sans"
+                    android:text = "کد پیگیری"
+                    android:textColor = "@color/colorBlackStep_1"
+                    android:textSize = "@dimen/dimen_sp_small"
+                    app:layout_constraintRight_toRightOf = "@id/tv_request_detail_service_title"
+                    app:layout_constraintTop_toBottomOf = "@id/tv_request_detail_service_title" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_request_detail_tracking_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_very_tiny"
-                    android:fontFamily="@font/iran_sans"
-                    android:text="666666"
-                    android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_small"
-                    app:layout_constraintRight_toLeftOf="@id/tv_request_detail_tracking_caption"
-                    app:layout_constraintTop_toBottomOf="@id/tv_request_detail_service_title"
-                    app:layout_constraintTop_toTopOf="@id/tv_request_detail_tracking_caption" />
+                    android:id = "@+id/tv_request_detail_tracking_code"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:layout_marginEnd = "@dimen/dimen_dp_very_tiny"
+                    android:fontFamily = "@font/iran_sans"
+                    android:text = "8888"
+                    android:textColor = "@color/colorBlackStep_5"
+                    android:textSize = "@dimen/dimen_sp_medium"
+                    app:layout_constraintRight_toLeftOf = "@id/tv_request_detail_tracking_caption"
+                    app:layout_constraintTop_toBottomOf = "@id/tv_request_detail_service_title"
+                    app:layout_constraintTop_toTopOf = "@id/tv_request_detail_tracking_caption" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_service_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/text_view_round_corner"
-                    android:fontFamily="@font/iran_sans"
-                    android:padding="@dimen/dimen_dp_very_tiny"
-                    android:paddingStart="@dimen/dimen_dp_small"
-                    android:paddingEnd="@dimen/dimen_dp_small"
-                    android:text="جزئیات سرویس"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/dimen_sp_small"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_request_detail_service_title" />
+                    android:id = "@+id/tv_service_info"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:background = "@drawable/text_view_round_corner"
+                    android:fontFamily = "@font/iran_sans"
+                    android:padding = "@dimen/dimen_dp_very_tiny"
+                    android:paddingStart = "@dimen/dimen_dp_small"
+                    android:paddingEnd = "@dimen/dimen_dp_small"
+                    android:text = "جزئیات سرویس"
+                    android:textColor = "@color/colorWhite"
+                    android:textSize = "@dimen/dimen_sp_small"
+                    app:layout_constraintLeft_toLeftOf = "parent"
+                    app:layout_constraintTop_toBottomOf = "@id/tv_request_detail_service_title" />
 
 
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/const_request_receiver"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_dp_very_tiny"
-                android:background="@drawable/const_border_line"
-                android:paddingBottom="@dimen/dimen_dp_tiny"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/const_request_title">
+                android:id = "@+id/const_request_receiver"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_margin = "@dimen/dimen_dp_small"
+                android:background = "@drawable/const_border_light"
+                android:padding = "@dimen/dimen_dp_tiny"
+                app:layout_constraintLeft_toLeftOf = "parent"
+                app:layout_constraintRight_toRightOf = "parent"
+                app:layout_constraintTop_toBottomOf = "@id/const_request_title">
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_receiver_caption"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_small"
-                    android:fontFamily="@font/iran_sans"
-                    android:text="@string/text_requester"
-                    android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_small"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:id = "@+id/tv_receiver_caption"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:layout_marginEnd = "@dimen/dimen_dp_small"
+                    android:fontFamily = "@font/iran_sans"
+                    android:text = "درخواست دهنده"
+                    android:textColor = "@color/colorBlackStep_5"
+                    android:textSize = "@dimen/dimen_sp_small"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintRight_toRightOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id = "@+id/tv_receiver_name"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
+                    android:layout_marginStart = "@dimen/dimen_dp_small"
                     android:fontFamily = "@font/iran_sans_medium"
                     android:text = "سعید گودرزیان"
                     android:textColor = "@color/color_red"
                     android:textSize = "@dimen/dimen_sp_medium"
-                    app:layout_constraintRight_toLeftOf = "@+id/tv_receiver_caption"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf = "parent" />
 
 
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/const_request_status"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_dp_very_tiny"
-                android:background="@drawable/const_border_line"
-                android:paddingBottom="@dimen/dimen_dp_tiny"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/const_request_title">
+                android:id = "@+id/const_request_status"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_margin = "@dimen/dimen_dp_small"
+                android:background = "@drawable/const_border_line"
+                android:padding = "@dimen/dimen_dp_tiny"
+                app:layout_constraintLeft_toLeftOf = "parent"
+                app:layout_constraintRight_toRightOf = "parent"
+                app:layout_constraintTop_toBottomOf = "@id/const_request_title">
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_request_caption_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_small"
-                    android:fontFamily="@font/iran_sans"
-                    android:text="@string/text_request_status"
-                    android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_small"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:id = "@+id/tv_request_caption_status"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:layout_marginEnd = "@dimen/dimen_dp_small"
+                    android:fontFamily = "@font/iran_sans"
+                    android:text = "@string/text_request_status"
+                    android:textColor = "@color/colorBlackStep_5"
+                    android:textSize = "@dimen/dimen_sp_small"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintRight_toRightOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_request_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_tiny"
-                    android:fontFamily="@font/iran_sans_medium"
-                    android:text="انجام شده"
-                    android:textColor="@color/color_red"
-                    android:textSize="@dimen/dimen_sp_medium"
-                    app:layout_constraintRight_toLeftOf="@+id/tv_request_caption_status"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:id = "@+id/tv_request_status"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:layout_marginStart = "@dimen/dimen_dp_small"
+                    android:fontFamily = "@font/iran_sans_medium"
+                    android:text = "انجام شده"
+                    android:textColor = "@color/color_red"
+                    android:textSize = "@dimen/dimen_sp_medium"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
 
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/const_request_cost"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_dp_very_tiny"
-                android:background="@drawable/const_border_light"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/const_request_title">
+                android:id = "@+id/const_request_cost"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_margin = "@dimen/dimen_dp_small"
+                android:background = "@drawable/const_border_light"
+                android:padding = "@dimen/dimen_dp_tiny"
+                app:layout_constraintLeft_toLeftOf = "parent"
+                app:layout_constraintRight_toRightOf = "parent"
+                app:layout_constraintTop_toBottomOf = "@id/const_request_receiver">
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_cost_first_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_small"
-                    android:fontFamily="@font/iran_sans"
-                    android:text="@string/text_select_request"
-                    android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_small"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:id = "@+id/tv_cost_first_title"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:layout_marginEnd = "@dimen/dimen_dp_small"
+                    android:fontFamily = "@font/iran_sans"
+                    android:text = "@string/text_select_request"
+                    android:textColor = "@color/colorBlackStep_5"
+                    android:textSize = "@dimen/dimen_sp_small"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintRight_toRightOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_request_detail_calculated_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_tiny"
-                    android:fontFamily="@font/iran_sans"
-                    android:text="5000"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen_sp_medium"
-                    app:layout_constraintRight_toLeftOf="@+id/tv_cost_first_title"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:id = "@+id/tv_request_detail_calculated_price"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:layout_marginStart = "@dimen/dimen_dp_small"
+                    android:layout_marginEnd = "@dimen/dimen_dp_small"
+                    android:fontFamily = "@font/iran_sans"
+                    android:text = "5000"
+                    android:textColor = "@color/colorPrimary"
+                    android:textSize = "@dimen/dimen_sp_medium"
+                    app:layout_constraintRight_toLeftOf = "@+id/tv_cost_first_title"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_cost_third_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_tiny"
-                    android:fontFamily="@font/iran_sans"
-                    android:text="ریال"
-                    android:textColor="@color/colorBlackStep_1"
-                    android:textSize="@dimen/dimen_sp_small"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:id = "@+id/tv_cost_third_title"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:layout_marginStart = "@dimen/dimen_dp_small"
+                    android:fontFamily = "@font/iran_sans"
+                    android:text = "ریال"
+                    android:textColor = "@color/colorBlackStep_1"
+                    android:textSize = "@dimen/dimen_sp_small"
+                    app:layout_constraintBottom_toBottomOf = "parent"
 
-                    app:layout_constraintRight_toLeftOf="@id/tv_request_detail_calculated_price"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintRight_toLeftOf = "@id/tv_request_detail_calculated_price"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_cost_forth_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_tiny"
-                    android:fontFamily="@font/iran_sans"
-                    android:text="می باشد."
-                    android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_small"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/tv_cost_third_title"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:id = "@+id/tv_cost_forth_title"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:layout_marginEnd = "@dimen/dimen_dp_tiny"
+                    android:fontFamily = "@font/iran_sans"
+                    android:text = "می باشد."
+                    android:textColor = "@color/colorBlackStep_5"
+                    android:textSize = "@dimen/dimen_sp_small"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintRight_toLeftOf = "@id/tv_cost_third_title"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
             </android.support.constraint.ConstraintLayout>
+
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:id="@+id/linear_credit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_margin = "@dimen/dimen_dp_small"
+                android:background = "@drawable/const_border_light"
+                android:padding = "@dimen/dimen_dp_tiny"
                 app:layout_constraintTop_toBottomOf="@+id/const_request_cost">
 
 
@@ -249,8 +258,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dimen_dp_very_tiny"
+                    android:padding="@dimen/dimen_dp_small"
                     android:layout_weight="1"
-                    android:background="@drawable/const_border_light"
                     app:layout_constraintLeft_toRightOf="@+id/const_request_subtract_account"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/const_request_cost">
@@ -259,7 +268,6 @@
                         android:id="@+id/tv_current_account"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_dp_small"
                         android:fontFamily="@font/iran_sans"
                         android:text="174,0000"
                         android:textColor="@color/colorBlackStep_5"
@@ -276,9 +284,9 @@
                         android:text="ریال"
                         android:textColor="@color/colorBlackStep_1"
                         android:textSize="@dimen/dimen_sp_small"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_current_account"
                         app:layout_constraintRight_toLeftOf="@+id/tv_current_account"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="@id/tv_current_account" />
 
                     <android.support.v7.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -300,8 +308,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dimen_dp_very_tiny"
+                    android:padding="@dimen/dimen_dp_small"
                     android:layout_weight="1"
-                    android:background="@drawable/const_border_light"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/const_request_current_account"
                     app:layout_constraintTop_toBottomOf="@id/const_request_cost">
@@ -310,7 +318,6 @@
                         android:id="@+id/tv_subtract_account"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_dp_small"
                         android:fontFamily="@font/iran_sans"
                         android:text="170,0000"
                         android:textColor="@color/colorPrimary"
@@ -322,14 +329,14 @@
                     <android.support.v7.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/dimen_dp_tiny"
                         android:fontFamily="@font/iran_sans"
+                        android:layout_marginEnd="@dimen/dimen_dp_tiny"
                         android:text="ریال"
                         android:textColor="@color/colorBlackStep_1"
                         android:textSize="@dimen/dimen_sp_small"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_subtract_account"
                         app:layout_constraintRight_toLeftOf="@+id/tv_subtract_account"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="@id/tv_subtract_account" />
 
                     <android.support.v7.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -353,7 +360,8 @@
                 android:id="@+id/const_discount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_dp_very_tiny"
+                android:layout_margin = "@dimen/dimen_dp_small"
+                android:padding="@dimen/dimen_dp_small"
                 android:background="@drawable/const_border_light_back_color"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -395,149 +403,133 @@
 
             </android.support.constraint.ConstraintLayout>
 
-            <android.support.v7.widget.LinearLayoutCompat
-                android:id="@+id/linear_hour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/const_discount">
+            <LinearLayout
+                android:id = "@+id/linear_hour"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_margin = "@dimen/dimen_dp_small"
+                android:background = "@drawable/const_border_light"
+                android:orientation = "vertical"
+                app:layout_constraintTop_toBottomOf = "@+id/linear_phone">
 
                 <android.support.constraint.ConstraintLayout
-                    android:id="@+id/const_request_date_register"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen_dp_very_tiny"
-                    android:layout_weight="1"
-                    android:background="@drawable/const_border_light"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@+id/const_request_date"
-                    app:layout_constraintTop_toBottomOf="@id/const_discount"
-
+                    android:id = "@+id/const_request_date_register"
+                    android:layout_width = "match_parent"
+                    android:layout_height = "wrap_content"
+                    android:padding = "@dimen/dimen_dp_tiny"
                     >
 
 
                     <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/tv_date_caption_register"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_dp_small"
-                        android:layout_marginEnd="@dimen/dimen_dp_tiny"
-                        android:fontFamily="@font/iran_sans"
-                        android:text="@string/text_register_date"
-                        android:textColor="@color/colorBlackStep_1"
-                        android:textSize="@dimen/dimen_sp_small"
-                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:id = "@+id/tv_date_caption_register"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:fontFamily = "@font/iran_sans"
+                        android:text = "@string/text_register_date"
+                        android:textColor = "@color/colorBlackStep_1"
+                        android:textSize = "@dimen/dimen_sp_small"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        />
 
                     <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/tv_request_detail_date_register"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/iran_sans_bold"
-                        android:text="16 - 20"
-                        android:textColor="@color/colorBlackStep_5"
-                        android:textSize="@dimen/dimen_sp_medium"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_date_caption_register" />
-
-
-                </android.support.constraint.ConstraintLayout>
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/const_request_date"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen_dp_very_tiny"
-                    android:layout_weight="1"
-                    android:background="@drawable/const_border_light"
-                    app:layout_constraintLeft_toRightOf="@+id/const_request_time"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/const_discount">
-
-
-                    <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/tv_date_caption"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_dp_small"
-                        android:layout_marginEnd="@dimen/dimen_dp_tiny"
-                        android:fontFamily="@font/iran_sans"
-                        android:text="تاریخ سرویس دهی"
-                        android:textColor="@color/colorBlackStep_1"
-                        android:textSize="@dimen/dimen_sp_small"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/tv_request_detail_date_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/iran_sans_bold"
-                        android:text="دوشنبه، 10 مرداد 1398"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/dimen_sp_medium"
+                        android:id = "@+id/tv_request_detail_date_register"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:fontFamily = "@font/iran_sans_bold"
+                        android:text = "16 - 20"
+                        android:textColor = "@color/colorBlackStep_5"
+                        android:textSize = "@dimen/dimen_sp_medium"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_date_caption" />
+                        />
 
 
                 </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
-                    android:id="@+id/const_request_time"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen_dp_very_tiny"
-                    android:layout_weight="1"
-                    android:background="@drawable/const_border_light"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@+id/const_request_date"
-                    app:layout_constraintTop_toBottomOf="@id/const_discount">
+                    android:id = "@+id/const_request_date"
+                    android:layout_width = "match_parent"
+                    android:layout_marginTop="@dimen/dimen_dp_small"
+                    android:layout_marginBottom="@dimen/dimen_dp_small"
+                    android:padding = "@dimen/dimen_dp_tiny"
+                    android:layout_height = "wrap_content">
 
 
                     <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/tv_time_caption"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_dp_small"
-                        android:layout_marginEnd="@dimen/dimen_dp_tiny"
-                        android:fontFamily="@font/iran_sans"
-                        android:text="ساعت سرویس دهی"
-                        android:textColor="@color/colorBlackStep_1"
-                        android:textSize="@dimen/dimen_sp_small"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:id = "@+id/tv_date_caption"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:fontFamily = "@font/iran_sans"
+                        android:text = "تاریخ سرویس دهی"
+                        android:textColor = "@color/colorBlackStep_1"
+                        android:textSize = "@dimen/dimen_sp_small"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
 
                     <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/tv_request_detail_time_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/iran_sans_bold"
-                        android:text="16 - 20"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/dimen_sp_medium"
+                        android:id = "@+id/tv_request_detail_date_value"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:fontFamily = "@font/iran_sans_bold"
+                        android:text = "دوشنبه، 10 مرداد 1398"
+                        android:textColor = "@color/colorPrimary"
+                        android:textSize = "@dimen/dimen_sp_medium"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_time_caption" />
+                        />
 
 
                 </android.support.constraint.ConstraintLayout>
 
+                <android.support.constraint.ConstraintLayout
+                    android:id = "@+id/const_request_time"
+                    android:layout_width = "match_parent"
+                    android:padding = "@dimen/dimen_dp_tiny"
+                    android:layout_height = "wrap_content">
 
-            </android.support.v7.widget.LinearLayoutCompat>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id = "@+id/tv_time_caption"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:fontFamily = "@font/iran_sans"
+                        android:text = "ساعت سرویس دهی"
+                        android:textColor = "@color/colorBlackStep_1"
+                        android:textSize = "@dimen/dimen_sp_small"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id = "@+id/tv_request_detail_time_value"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:fontFamily = "@font/iran_sans_bold"
+                        android:text = "16 - 20"
+                        android:textColor = "@color/colorPrimary"
+                        android:textSize = "@dimen/dimen_sp_medium"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+            </LinearLayout>
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_dp_very_tiny"
-                android:background="@drawable/const_border_light"
+                android:layout_margin = "@dimen/dimen_dp_small"
+                android:background = "@drawable/const_border_light"
+
+                android:padding = "@dimen/dimen_dp_tiny"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linear_hour"
@@ -548,8 +540,7 @@
                     android:id="@+id/tv_position_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:layout_marginEnd="@dimen/dimen_dp_small"
+                    android:layout_marginEnd="@dimen/dimen_dp_large"
                     android:fontFamily="@font/iran_sans"
                     android:text="محدوده درخواست"
                     android:textColor="@color/colorBlackStep_1"
@@ -562,21 +553,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:layout_marginEnd="@dimen/dimen_dp_small"
+                    android:layout_marginStart = "@dimen/dimen_dp_large"
+                    android:layout_marginEnd = "@dimen/dimen_dp_large"
                     android:fontFamily="@font/iran_sans_bold"
                     android:text="کوی زهرا"
                     android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_medium"
-                    app:layout_constraintRight_toLeftOf="@+id/tv_position_title"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textSize = "@dimen/dimen_sp_medium"
+                    app:layout_constraintRight_toRightOf = "@id/tv_position_title"
+                    app:layout_constraintTop_toBottomOf = "@id/tv_position_title" />
 
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tv_request_detail_desc_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:layout_marginEnd="@dimen/dimen_dp_small"
+                    android:layout_marginTop="@dimen/dimen_dp_large"
                     android:fontFamily="@font/iran_sans"
                     android:text=" توضیحات مشتری"
                     android:textColor="@color/colorBlackStep_1"
@@ -590,7 +581,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:layout_marginEnd="@dimen/dimen_dp_medium"
+                    android:layout_marginStart = "@dimen/dimen_dp_large"
+                    android:layout_marginEnd = "@dimen/dimen_dp_large"
                     android:fontFamily="@font/iran_sans_bold"
                     android:text="عجله دارم"
                     android:textColor="@color/colorPrimary"
