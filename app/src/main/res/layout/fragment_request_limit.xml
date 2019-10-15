@@ -60,7 +60,7 @@
                     android:fontFamily="@font/iran_sans"
                     android:text="کد پیگیری"
                     android:textColor="@color/colorBlackStep_1"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintRight_toRightOf="@id/tv_request_detail_service_title"
                     app:layout_constraintTop_toBottomOf="@id/tv_request_detail_service_title" />
 
@@ -72,7 +72,7 @@
                     android:fontFamily="@font/iran_sans"
                     android:text="666666"
                     android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintRight_toLeftOf="@id/tv_request_detail_tracking_caption"
                     app:layout_constraintTop_toBottomOf="@id/tv_request_detail_service_title"
                     app:layout_constraintTop_toTopOf="@id/tv_request_detail_tracking_caption" />
@@ -88,7 +88,7 @@
                     android:paddingEnd="@dimen/dimen_dp_small"
                     android:text="جزئیات سرویس"
                     android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_request_detail_service_title" />
 
@@ -114,22 +114,21 @@
                     android:fontFamily="@font/iran_sans"
                     android:text="@string/text_requester"
                     android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_receiver_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_tiny"
-                    android:fontFamily="@font/iran_sans"
-                    android:text="سعید گودرزیان"
-                    android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_small"
-                    app:layout_constraintRight_toLeftOf="@+id/tv_receiver_caption"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:id = "@+id/tv_receiver_name"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:fontFamily = "@font/iran_sans_medium"
+                    android:text = "سعید گودرزیان"
+                    android:textColor = "@color/color_red"
+                    android:textSize = "@dimen/dimen_sp_medium"
+                    app:layout_constraintRight_toLeftOf = "@+id/tv_receiver_caption"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
 
             </android.support.constraint.ConstraintLayout>
@@ -153,7 +152,7 @@
                     android:fontFamily="@font/iran_sans"
                     android:text="@string/text_request_status"
                     android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -163,10 +162,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dimen_dp_tiny"
-                    android:fontFamily="@font/iran_sans"
+                    android:fontFamily="@font/iran_sans_medium"
                     android:text="انجام شده"
                     android:textColor="@color/color_red"
-                    android:textSize="@dimen/dimen_sp_small"
+                    android:textSize="@dimen/dimen_sp_medium"
                     app:layout_constraintRight_toLeftOf="@+id/tv_request_caption_status"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -191,7 +190,7 @@
                     android:fontFamily="@font/iran_sans"
                     android:text="@string/text_select_request"
                     android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -216,7 +215,7 @@
                     android:fontFamily="@font/iran_sans"
                     android:text="ریال"
                     android:textColor="@color/colorBlackStep_1"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintBottom_toBottomOf="parent"
 
                     app:layout_constraintRight_toLeftOf="@id/tv_request_detail_calculated_price"
@@ -230,7 +229,7 @@
                     android:fontFamily="@font/iran_sans"
                     android:text="می باشد."
                     android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/tv_cost_third_title"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -276,7 +275,7 @@
                         android:fontFamily="@font/iran_sans"
                         android:text="ریال"
                         android:textColor="@color/colorBlackStep_1"
-                        android:textSize="@dimen/dimen_sp_tiny"
+                        android:textSize="@dimen/dimen_sp_small"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toLeftOf="@+id/tv_current_account"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -287,7 +286,7 @@
                         android:fontFamily="@font/iran_sans"
                         android:text="اعتبار شما"
                         android:textColor="@color/colorBlackStep_1"
-                        android:textSize="@dimen/dimen_sp_tiny"
+                        android:textSize="@dimen/dimen_sp_small"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
@@ -327,7 +326,7 @@
                         android:fontFamily="@font/iran_sans"
                         android:text="ریال"
                         android:textColor="@color/colorBlackStep_1"
-                        android:textSize="@dimen/dimen_sp_tiny"
+                        android:textSize="@dimen/dimen_sp_small"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toLeftOf="@+id/tv_subtract_account"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -338,7 +337,7 @@
                         android:fontFamily="@font/iran_sans"
                         android:text="اعتبار شما پس از انتخاب"
                         android:textColor="@color/colorBlackStep_1"
-                        android:textSize="@dimen/dimen_sp_tiny"
+                        android:textSize="@dimen/dimen_sp_small"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
@@ -367,7 +366,7 @@
                     android:fontFamily="@font/iran_sans_bold"
                     android:text="کد تخفیف"
                     android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -378,7 +377,7 @@
                     android:fontFamily="@font/iran_sans_bold"
                     android:text="Hello"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -409,6 +408,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dimen_dp_very_tiny"
                     android:layout_weight="1"
+                    android:background="@drawable/const_border_light"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/const_request_date"
                     app:layout_constraintTop_toBottomOf="@id/const_discount"
@@ -425,7 +425,7 @@
                         android:fontFamily="@font/iran_sans"
                         android:text="@string/text_register_date"
                         android:textColor="@color/colorBlackStep_1"
-                        android:textSize="@dimen/dimen_sp_tiny"
+                        android:textSize="@dimen/dimen_sp_small"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -438,7 +438,7 @@
                         android:fontFamily="@font/iran_sans_bold"
                         android:text="16 - 20"
                         android:textColor="@color/colorBlackStep_5"
-                        android:textSize="@dimen/dimen_sp_small"
+                        android:textSize="@dimen/dimen_sp_medium"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_date_caption_register" />
@@ -467,7 +467,7 @@
                         android:fontFamily="@font/iran_sans"
                         android:text="تاریخ سرویس دهی"
                         android:textColor="@color/colorBlackStep_1"
-                        android:textSize="@dimen/dimen_sp_tiny"
+                        android:textSize="@dimen/dimen_sp_small"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -479,7 +479,7 @@
                         android:fontFamily="@font/iran_sans_bold"
                         android:text="دوشنبه، 10 مرداد 1398"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/dimen_sp_small"
+                        android:textSize="@dimen/dimen_sp_medium"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
@@ -509,7 +509,7 @@
                         android:fontFamily="@font/iran_sans"
                         android:text="ساعت سرویس دهی"
                         android:textColor="@color/colorBlackStep_1"
-                        android:textSize="@dimen/dimen_sp_tiny"
+                        android:textSize="@dimen/dimen_sp_small"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -522,7 +522,7 @@
                         android:fontFamily="@font/iran_sans_bold"
                         android:text="16 - 20"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/dimen_sp_small"
+                        android:textSize="@dimen/dimen_sp_medium"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_time_caption" />
@@ -553,7 +553,7 @@
                     android:fontFamily="@font/iran_sans"
                     android:text="محدوده درخواست"
                     android:textColor="@color/colorBlackStep_1"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -566,7 +566,7 @@
                     android:fontFamily="@font/iran_sans_bold"
                     android:text="کوی زهرا"
                     android:textColor="@color/colorBlackStep_5"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_medium"
                     app:layout_constraintRight_toLeftOf="@+id/tv_position_title"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -580,7 +580,7 @@
                     android:fontFamily="@font/iran_sans"
                     android:text=" توضیحات مشتری"
                     android:textColor="@color/colorBlackStep_1"
-                    android:textSize="@dimen/dimen_sp_tiny"
+                    android:textSize="@dimen/dimen_sp_small"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_position_address" />
 
@@ -594,7 +594,7 @@
                     android:fontFamily="@font/iran_sans_bold"
                     android:text="عجله دارم"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/dimen_sp_very_tiny"
+                    android:textSize="@dimen/dimen_sp_medium"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_request_detail_desc_title" />
 
@@ -649,7 +649,7 @@
             android:fontFamily="@font/iran_sans_light"
             android:text="@string/text_waiting"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/dimen_sp_tiny"
+            android:textSize="@dimen/dimen_sp_small"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/progressBar" />
