@@ -9,8 +9,9 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_accept_request"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,8 +25,8 @@
                 android:id = "@+id/const_request_title"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
-                android:background = "@drawable/const_border_light"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
+                android:background = "@drawable/const_border_line"
                 android:padding = "@dimen/dimen_dp_large"
                 app:layout_constraintLeft_toLeftOf = "parent"
                 app:layout_constraintRight_toRightOf = "parent">
@@ -99,8 +100,8 @@
                 android:id = "@+id/const_request_receiver"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
-                android:background = "@drawable/const_border_light"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
+                android:background = "@drawable/const_border_line"
                 android:padding = "@dimen/dimen_dp_tiny"
                 app:layout_constraintLeft_toLeftOf = "parent"
                 app:layout_constraintRight_toRightOf = "parent"
@@ -126,7 +127,7 @@
                     android:layout_marginStart = "@dimen/dimen_dp_small"
                     android:fontFamily = "@font/iran_sans_medium"
                     android:text = "سعید گودرزیان"
-                    android:textColor = "@color/color_red"
+                    android:textColor = "@color/color_black"
                     android:textSize = "@dimen/dimen_sp_medium"
                     app:layout_constraintBottom_toBottomOf = "parent"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -139,7 +140,7 @@
                 android:id = "@+id/const_request_status"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
                 android:background = "@drawable/const_border_line"
                 android:padding = "@dimen/dimen_dp_tiny"
                 app:layout_constraintLeft_toLeftOf = "parent"
@@ -179,8 +180,8 @@
                 android:id = "@+id/const_request_cost"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
-                android:background = "@drawable/const_border_light"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
+                android:background = "@drawable/const_border_line"
                 android:padding = "@dimen/dimen_dp_tiny"
                 app:layout_constraintLeft_toLeftOf = "parent"
                 app:layout_constraintRight_toRightOf = "parent"
@@ -240,15 +241,14 @@
                     app:layout_constraintTop_toTopOf = "parent" />
 
             </android.support.constraint.ConstraintLayout>
-
-
             <android.support.v7.widget.LinearLayoutCompat
                 android:id="@+id/linear_credit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_margin = "@dimen/dimen_dp_small"
-                android:background = "@drawable/const_border_light"
+                android:layout_marginStart= "@dimen/dimen_dp_small"
+                android:layout_marginEnd= "@dimen/dimen_dp_small"
+                android:background = "@drawable/const_border_line"
                 android:padding = "@dimen/dimen_dp_tiny"
                 app:layout_constraintTop_toBottomOf="@+id/const_request_cost">
 
@@ -355,12 +355,11 @@
 
 
             </android.support.v7.widget.LinearLayoutCompat>
-
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/const_discount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
                 android:padding="@dimen/dimen_dp_small"
                 android:background="@drawable/const_border_light_back_color"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -402,13 +401,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_discount_alarm_title" />
 
             </android.support.constraint.ConstraintLayout>
-
             <LinearLayout
                 android:id = "@+id/linear_hour"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
-                android:background = "@drawable/const_border_light"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
+                android:background = "@drawable/const_border_line"
                 android:orientation = "vertical"
                 app:layout_constraintTop_toBottomOf = "@+id/linear_phone">
 
@@ -452,8 +450,6 @@
                 <android.support.constraint.ConstraintLayout
                     android:id = "@+id/const_request_date"
                     android:layout_width = "match_parent"
-                    android:layout_marginTop="@dimen/dimen_dp_small"
-                    android:layout_marginBottom="@dimen/dimen_dp_small"
                     android:padding = "@dimen/dimen_dp_tiny"
                     android:layout_height = "wrap_content">
 
@@ -522,12 +518,11 @@
                 </android.support.constraint.ConstraintLayout>
 
             </LinearLayout>
-
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
-                android:background = "@drawable/const_border_light"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
+                android:background = "@drawable/const_border_line"
 
                 android:padding = "@dimen/dimen_dp_tiny"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -540,7 +535,7 @@
                     android:id="@+id/tv_position_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_large"
+                    android:layout_marginEnd="@dimen/dimen_dp_small"
                     android:fontFamily="@font/iran_sans"
                     android:text="محدوده درخواست"
                     android:textColor="@color/colorBlackStep_1"
@@ -552,15 +547,14 @@
                     android:id="@+id/tv_position_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
                     android:layout_marginStart = "@dimen/dimen_dp_large"
                     android:layout_marginEnd = "@dimen/dimen_dp_large"
                     android:fontFamily="@font/iran_sans_bold"
                     android:text="کوی زهرا"
-                    android:textColor="@color/colorBlackStep_5"
+                    android:textColor="@color/color_red"
                     android:textSize = "@dimen/dimen_sp_medium"
-                    app:layout_constraintRight_toRightOf = "@id/tv_position_title"
-                    app:layout_constraintTop_toBottomOf = "@id/tv_position_title" />
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
 
                 <android.support.v7.widget.AppCompatTextView

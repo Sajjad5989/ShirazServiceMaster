@@ -25,9 +25,9 @@ import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.fragment.ChargeFragment;
 import ir.shirazservice.expert.fragment.MainFragment;
-import ir.shirazservice.expert.fragment.MyServiceFragment;
+import ir.shirazservice.expert.packedactivity.MyServicesActivity;
 import ir.shirazservice.expert.fragment.MyTransactionFragment;
-import ir.shirazservice.expert.fragment.WorkManMessageFragment;
+import ir.shirazservice.expert.packedactivity.WorkmanMessageActivity;
 import ir.shirazservice.expert.interfaces.IDefault;
 import ir.shirazservice.expert.interfaces.IInternetController;
 import ir.shirazservice.expert.interfaces.IRtl;
@@ -57,23 +57,23 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
     private static final int METHOD_TYPE_WORKMAN_CREDIT = 2;
     private final SaveTokenKeyApi.saveTokenKeyCallback saveTokenKeyCallback = new SaveTokenKeyApi.saveTokenKeyCallback() {
         @Override
-        public void onResponse( boolean successful, ErrorResponseSimple errorResponse, SaveTokenKeyResponse response ){
+        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, SaveTokenKeyResponse response) {
 
         }
 
         @Override
-        public void onFailure( String cause ){
+        public void onFailure(String cause) {
 
         }
     };
-    @BindView( R.id.text_cr )
+    @BindView(R.id.text_cr)
     protected AppCompatTextView textCr;
     private WorkmanCredit workmanCredit;
     private final GetWorkmanCreditApi.getWorkmanCreditCallback getWorkmanCreditCallback =
             new GetWorkmanCreditApi.getWorkmanCreditCallback() {
                 @Override
-                public void onResponse( boolean successful, ErrorResponseSimple errorResponse, WorkmanCredit response ){
-                    if ( successful ) {
+                public void onResponse(boolean successful, ErrorResponseSimple errorResponse, WorkmanCredit response) {
+                    if (successful) {
                         workmanCredit = response;
 
                     } else workmanCredit = null;
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
                 }
 
                 @Override
-                public void onFailure( String cause ){
+                public void onFailure(String cause) {
                     workmanCredit = null;
                     setCredit();
                 }
@@ -93,23 +93,23 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
     private String accessToken;
 
     @Override
-    protected void onCreate( Bundle savedInstanceState ){
-        super.onCreate( savedInstanceState );
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        setContentView( R.layout.activity_main );
-        ButterKnife.bind( this );
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         OnActivityDefaultSetting();
         setButtonNavigation();
 
-        bottomNavigation.setSelectedItemId( R.id.navigation_home );
+        bottomNavigation.setSelectedItemId(R.id.navigation_home);
         openMainFragment();
 
         saveTokenKey();
     }
 
     @Override
-    protected void onResume( ){
+    protected void onResume() {
         super.onResume();
         APP.currentActivity = MainActivity.this;
         neededId();
@@ -118,49 +118,49 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
     }
 
     @Override
-    public void onBackPressed( ){
+    public void onBackPressed() {
 
-        if ( doubleBackToExitPressedOnce ) {
-            Intent intent = new Intent( Intent.ACTION_MAIN );
-            intent.addCategory( Intent.CATEGORY_HOME );
-            intent.setFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP );
-            startActivity( intent );
+        if (doubleBackToExitPressedOnce) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
             finishAffinity();
             finish();
-            System.exit( 0 );
+            System.exit(0);
             MainActivity.this.finish();
             return;
         }
 
         this.doubleBackToExitPressedOnce = true;
-        APP.customToast( getString( R.string.text_all_tap_back_button ) );
-        new Handler().postDelayed( ( ) -> doubleBackToExitPressedOnce = false, 2000 );
+        APP.customToast(getString(R.string.text_all_tap_back_button));
+        new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
     }
 
     @Override
-    public void OnActivityDefaultSetting( ){
+    public void OnActivityDefaultSetting() {
         OnPageRight();
     }
 
     @Override
-    public void OnPageRight( ){
-        if ( getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR ) {
-            getWindow().getDecorView().setLayoutDirection( View.LAYOUT_DIRECTION_RTL );
+    public void OnPageRight() {
+        if (getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR) {
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
     }
 
     @Override
-    public boolean isOnline( ){
-        return OnlineCheck.getInstance( MainActivity.this ).isOnline();
+    public boolean isOnline() {
+        return OnlineCheck.getInstance(MainActivity.this).isOnline();
     }
 
-    private void setButtonNavigation( ){
+    private void setButtonNavigation() {
 
-        bottomNavigation = findViewById( R.id.navigation );
-        bottomNavigation.setOnNavigationItemSelectedListener( menuItem -> {
+        bottomNavigation = findViewById(R.id.navigation);
+        bottomNavigation.setOnNavigationItemSelectedListener(menuItem -> {
             int id = menuItem.getItemId();
 
-            switch ( id ) {
+            switch (id) {
                 case R.id.navigation_home:
                     openMainFragment();
                     break;
@@ -178,90 +178,84 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
                     break;
             }
             return true;
-        } );
+        });
     }
 
-    private void openChargeActivity( ){
+    private void openChargeActivity() {
         ChargeFragment chargeFragment = ChargeFragment.newInstance();
         getFragmentManager().beginTransaction()
-                .add( R.id.fragment_container, chargeFragment )
-                .addToBackStack( null )
+                .add(R.id.fragment_container, chargeFragment)
+                .addToBackStack(null)
                 .commit();
     }
 
-    private void openMessageFragment( ){
-        WorkManMessageFragment workManMessageFragment = WorkManMessageFragment.newInstance();
-        getFragmentManager().beginTransaction()
-                .add( R.id.fragment_container, workManMessageFragment )
-                .addToBackStack( null )
-                .commit();
+    private void openMessageFragment() {
+        Intent intent = new Intent(this, WorkmanMessageActivity.class);
+        startActivity(intent);
     }
 
-    private void openMainFragment( ){
+    private void openMainFragment() {
         MainFragment mainFragment = MainFragment.newInstance();
         getFragmentManager().beginTransaction()
-                .add( R.id.fragment_container, mainFragment )
-                .addToBackStack( null )
+                .add(R.id.fragment_container, mainFragment)
+                .addToBackStack(null)
                 .commit();
     }
 
-    private void openMyServiceFragment( ){
-        MyServiceFragment myServiceFragment = MyServiceFragment.newInstance();
-        getFragmentManager().beginTransaction()
-                .add( R.id.fragment_container, myServiceFragment )
-                .addToBackStack( null )
-                .commit();
+    private void openMyServiceFragment() {
+        Intent intent = new Intent(this, MyServicesActivity.class);
+        startActivity(intent);
     }
 
-    private void openMyTransactionFragment( ){
+    private void openMyTransactionFragment() {
         MyTransactionFragment myTransactionFragment = MyTransactionFragment.newInstance();
         getFragmentManager().beginTransaction()
-                .add( R.id.fragment_container, myTransactionFragment )
-                .addToBackStack( null )
+                .add(R.id.fragment_container, myTransactionFragment)
+                .addToBackStack(null)
                 .commit();
     }
 
-    private void neededId( ){
-        ServiceMan serviceMan = GeneralPreferences.getInstance( this ).getServiceManInfo();
+    private void neededId() {
+        ServiceMan serviceMan = GeneralPreferences.getInstance(this).getServiceManInfo();
         servicemanId = serviceMan.getServicemanId();
         accessToken = serviceMan.getAccessToken();
     }
 
-    private void saveTokenKey( ){
+    private void saveTokenKey() {
 
-        if ( !isOnline() ) {
-            openInternetCheckingDialog( METHOD_TYPE_SAVE_TOKEN );
+        if (!isOnline()) {
+            openInternetCheckingDialog(METHOD_TYPE_SAVE_TOKEN);
         }
 
         SaveTokenKey saveTokenKey = new SaveTokenKey();
-        saveTokenKey.setPersonId( servicemanId );
-        saveTokenKey.setDeviceTokenKey( getToken() );
+        saveTokenKey.setPersonId(servicemanId);
+        saveTokenKey.setDeviceTokenKey(getToken());
 
-        SaveTokenKeyController saveTokenKeyController = new SaveTokenKeyController( saveTokenKeyCallback );
-        saveTokenKeyController.start( servicemanId, accessToken, saveTokenKey );
+        SaveTokenKeyController saveTokenKeyController = new SaveTokenKeyController(saveTokenKeyCallback);
+        saveTokenKeyController.start(servicemanId, accessToken, saveTokenKey);
 
     }
 
-    private String getToken( ){
-        FirebaseMessaging.getInstance().subscribeToTopic( getString( R.string.text_fire_base_news ) );
+    private String getToken() {
+        FirebaseMessaging.getInstance().subscribeToTopic(getString(R.string.text_fire_base_news));
         return FirebaseInstanceId.getInstance().getToken();
     }
 
-    private void openInternetCheckingDialog( int methodType ){
-        ConnectionInternetDialog dialog = new ConnectionInternetDialog( MainActivity.this, new InternetConnectionListener() {
+    private void openInternetCheckingDialog(int methodType) {
+        ConnectionInternetDialog dialog = new ConnectionInternetDialog(MainActivity.this, new InternetConnectionListener() {
             @Override
-            public void onInternet( ){
-                context.startActivity( new Intent( Settings.ACTION_WIFI_SETTINGS ) );
+            public void onInternet() {
+                context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
             }
 
             @Override
-            public void onFinish( ){
+            public void onFinish() {
                 APP.killApp();
             }
 
             @Override
-            public void OnRetry( ){
-                switch ( methodType ) {
+            public void OnRetry() {
+                switch (methodType) {
                     case METHOD_TYPE_SAVE_TOKEN:
                         saveTokenKey();
                         break;
@@ -270,37 +264,37 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
                         break;
                 }
             }
-        } );
+        });
 
-        Objects.requireNonNull( dialog.getWindow() ).setBackgroundDrawable( new ColorDrawable( android.graphics.Color.TRANSPARENT ) );
-        dialog.getWindow().setBackgroundDrawable( context.getResources().getDrawable( R.drawable.dialog_bg ) );
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
         dialog.show();
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
-        display.getSize( size );
+        display.getSize(size);
         int width = size.x;
-        width = ( int ) ( ( width ) * 0.8 );
-        dialog.getWindow().setLayout( width, ConstraintLayout.LayoutParams.WRAP_CONTENT );
+        width = (int) ((width) * 0.8);
+        dialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
     }
 
-    private void getWorkManCredit( ){
+    private void getWorkManCredit() {
 
-        if ( !isOnline() ) {
-            openInternetCheckingDialog( METHOD_TYPE_WORKMAN_CREDIT );
+        if (!isOnline()) {
+            openInternetCheckingDialog(METHOD_TYPE_WORKMAN_CREDIT);
         }
 
         WorkmanCreditReq workmanCreditReq = new WorkmanCreditReq();
-        workmanCreditReq.setId( servicemanId );
+        workmanCreditReq.setId(servicemanId);
 
         GetWorkmanCreditController getWorkmanCreditController =
-                new GetWorkmanCreditController( getWorkmanCreditCallback );
-        getWorkmanCreditController.start( servicemanId, accessToken, workmanCreditReq );
+                new GetWorkmanCreditController(getWorkmanCreditCallback);
+        getWorkmanCreditController.start(servicemanId, accessToken, workmanCreditReq);
     }
 
-    private void setCredit( ){
+    private void setCredit() {
         UsefulFunction usefulFunction = new UsefulFunction();
-        String crd = "اعتبار شما  <span style=\"color: #d32f2f\">" + usefulFunction.attachCamma( workmanCredit.getTempCredit() ) + "</span> ریال";
-        textCr.setText( Html.fromHtml( crd ), AppCompatTextView.BufferType.SPANNABLE );
+        String crd = "اعتبار شما  <span style=\"color: #d32f2f\">" + usefulFunction.attachCamma(workmanCredit.getTempCredit()) + "</span> ریال";
+        textCr.setText(Html.fromHtml(crd), AppCompatTextView.BufferType.SPANNABLE);
     }
 
 }

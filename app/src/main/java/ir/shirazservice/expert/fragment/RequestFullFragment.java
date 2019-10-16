@@ -226,7 +226,7 @@ public class RequestFullFragment extends Fragment implements IInternetController
                 tvRequestDetailDateValue.setText(R.string.text_imidiately);
                 tvRequestDetailTimeValue.setText(R.string.text_imidiately);
             } else {
-                tvRequestDetailDateValue.setText(requestDetailsFull.getDateToPersian());
+                tvRequestDetailDateValue.setText(requestDetailsFull.getDateFromPersian());
                 tvRequestDetailTimeValue.setText(requestDetailsFull.getTimeDesc());
             }
             if ("".equals(requestDetailsFull.getDiscountCode())) {

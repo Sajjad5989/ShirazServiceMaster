@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Objects;
 
 import ir.shirazservice.expert.R;
-import ir.shirazservice.expert.activity.AllTransactionActivity;
+import ir.shirazservice.expert.packedactivity.AllTransactionActivity;
 import ir.shirazservice.expert.adapter.MyTransactionAdapter;
 import ir.shirazservice.expert.dialog.TransactionDetailDialog;
 import ir.shirazservice.expert.interfaces.IInternetController;

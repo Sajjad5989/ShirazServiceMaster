@@ -1,21 +1,20 @@
-package ir.shirazservice.expert.fragment;
+package ir.shirazservice.expert.packedactivity;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Display;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.adapter.WorkManAllNewsAdapter;
+import ir.shirazservice.expert.interfaces.IDefault;
 import ir.shirazservice.expert.interfaces.IInternetController;
+import ir.shirazservice.expert.interfaces.IRtl;
 import ir.shirazservice.expert.internetutils.ConnectionInternetDialog;
 import ir.shirazservice.expert.internetutils.InternetConnectionListener;
 import ir.shirazservice.expert.preferences.GeneralPreferences;
@@ -38,16 +39,22 @@ import ir.shirazservice.expert.webservice.news.GetWorkmanNewsController;
 import ir.shirazservice.expert.webservice.news.WorkmanNews;
 
 import static ir.shirazservice.expert.utils.APP.context;
-import static ir.shirazservice.expert.utils.APP.currentActivity;
 
-public class AllNewsFragment extends Fragment implements IInternetController {
+public class AllNewsActivity extends AppCompatActivity implements IInternetController, IRtl, IDefault {
 
-    @BindView(R.id.recycler_news)
-    protected RecyclerView recyclerNews;
+
+    @BindView(R.id.toolbar)
+    protected Toolbar toolbar;
+
+    @BindView(R.id.all_transaction_list)
+    protected RecyclerView allTransactionListRecycler;
+
     @BindView(R.id.const_waiting_main_fragment)
-    protected ConstraintLayout constraintLayout;
+    protected ConstraintLayout constWaiting;
     @BindView(R.id.const_not_found_info)
-    protected ConstraintLayout constNotFoundInfo;
+    protected ConstraintLayout constNotFound;
+
+
     private List<WorkmanNews> workmanNews;
     private final GetWorkmanNewsApi.getWorkmanNewsCallback getWorkmanNewsCallback = new GetWorkmanNewsApi.getWorkmanNewsCallback() {
         @Override
@@ -67,23 +74,54 @@ public class AllNewsFragment extends Fragment implements IInternetController {
         }
     };
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_all_news, container, false);
-
-        currentActivity = getActivity();
-        ButterKnife.bind(this, view);
-        return view;
+    public static AllNewsActivity newInstance() {
+        return new AllNewsActivity();
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_all_transaction);
+
+        ButterKnife.bind(this);
+        prepareToolbar();
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
         showHideWaitingProgress(false);
         callGetNews();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        APP.currentActivity = AllNewsActivity.this;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    public void OnActivityDefaultSetting() {
+        OnPageRight();
+    }
+
+    @Override
+    public void OnPageRight() {
+        if (getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR) {
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        }
+    }
+
+    private void prepareToolbar() {
+        toolbar.setTitle(R.string.title_all_news);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_right);
     }
 
     private void callGetNews() {
@@ -101,9 +139,8 @@ public class AllNewsFragment extends Fragment implements IInternetController {
         getWorkmanNewsController.start(servicemanId, accessToken);
     }
 
-
     private void openInternetCheckingDialog() {
-        ConnectionInternetDialog dialog = new ConnectionInternetDialog(getActivity(), new InternetConnectionListener() {
+        ConnectionInternetDialog dialog = new ConnectionInternetDialog(this, new InternetConnectionListener() {
             @Override
             public void onInternet() {
                 context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
@@ -123,7 +160,7 @@ public class AllNewsFragment extends Fragment implements IInternetController {
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
         dialog.show();
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Display display = this.getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
@@ -132,14 +169,14 @@ public class AllNewsFragment extends Fragment implements IInternetController {
     }
 
     private void fillNewsList() {
-        WorkManAllNewsAdapter workManNewsAdapter = new WorkManAllNewsAdapter(getActivity(), workmanNews, 0,
+        WorkManAllNewsAdapter workManNewsAdapter = new WorkManAllNewsAdapter(this, workmanNews, 0,
                 (v, position) -> openUrl(workmanNews.get(position).getUrl()));
 
-        LinearLayoutManager gridLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,
+        LinearLayoutManager gridLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,
                 false);
 
-        recyclerNews.setLayoutManager(gridLayoutManager);
-        recyclerNews.setAdapter(workManNewsAdapter);
+        allTransactionListRecycler.setLayoutManager(gridLayoutManager);
+        allTransactionListRecycler.setAdapter(workManNewsAdapter);
 
         showHideWaitingProgress(true);
         showNotFoundInfoLayout();
@@ -155,20 +192,15 @@ public class AllNewsFragment extends Fragment implements IInternetController {
 
     @Override
     public boolean isOnline() {
-        return OnlineCheck.getInstance(getActivity()).isOnline();
+        return OnlineCheck.getInstance(this).isOnline();
     }
 
-
     private void showHideWaitingProgress(boolean hide) {
-        constraintLayout.setVisibility(hide ? View.GONE : View.VISIBLE);
+        constWaiting.setVisibility(hide ? View.GONE : View.VISIBLE);
     }
 
     private void showNotFoundInfoLayout() {
 
-        constNotFoundInfo.setVisibility(workmanNews == null ? View.VISIBLE : View.GONE);
-    }
-
-    public static AllNewsFragment newInstance() {
-        return new AllNewsFragment();
+        constNotFound.setVisibility(workmanNews == null ? View.VISIBLE : View.GONE);
     }
 }

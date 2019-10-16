@@ -41,6 +41,7 @@ import ir.shirazservice.expert.adapter.WorkManNewsAdapter;
 import ir.shirazservice.expert.interfaces.IInternetController;
 import ir.shirazservice.expert.internetutils.ConnectionInternetDialog;
 import ir.shirazservice.expert.internetutils.InternetConnectionListener;
+import ir.shirazservice.expert.packedactivity.AllNewsActivity;
 import ir.shirazservice.expert.preferences.GeneralPreferences;
 import ir.shirazservice.expert.utils.APP;
 import ir.shirazservice.expert.utils.OnlineCheck;
@@ -215,11 +216,7 @@ public class MainFragment extends Fragment implements IInternetController {
     }
 
     private void openAllNewsActivity() {
-        Intent intent = new Intent(getActivity(), ServiceRequestDetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt(getString(R.string.text_bundle_req_id), 0);
-        bundle.putString("news", "news");
-        intent.putExtras(bundle);
+        Intent intent = new Intent(getActivity(), AllNewsActivity.class);
         startActivity(intent);
     }
 

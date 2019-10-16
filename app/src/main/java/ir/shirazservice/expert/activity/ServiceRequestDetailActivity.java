@@ -17,7 +17,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
-import ir.shirazservice.expert.fragment.AllNewsFragment;
 import ir.shirazservice.expert.fragment.OfflineChargeFragment;
 import ir.shirazservice.expert.fragment.RequestFullFragment;
 import ir.shirazservice.expert.fragment.RequestLimitFragment;
@@ -223,22 +222,9 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
                 prepareToolbar();
                 openOfflineCharge();
                 break;
-            case BuildConfig.newsCode:
-                toolbarTitle = getString(R.string.text_all_news);
-                prepareToolbar();
-                openAllNews();
-                break;
         }
     }
 
-    private void openAllNews() {
-        AllNewsFragment allNewsFragment = AllNewsFragment.newInstance();
-        getFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, allNewsFragment)
-                .addToBackStack(null)
-                .commit();
-
-    }
 
     private void openOfflineCharge() {
         OfflineChargeFragment offlineChargeFragment = OfflineChargeFragment.newInstance();

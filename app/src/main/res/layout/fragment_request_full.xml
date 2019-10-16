@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-                                             xmlns:app = "http://schemas.android.com/apk/res-auto"
-                                             android:layout_width = "match_parent"
-                                             android:layout_height = "match_parent"
-                                             android:background = "@color/colorWhite"
-                                             android:layoutDirection = "rtl">
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    android:background = "@color/colorWhite"
+    android:layoutDirection = "rtl">
 
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
+        android:layout_height = "match_parent"
         app:layout_constraintLeft_toLeftOf = "parent"
         app:layout_constraintRight_toRightOf = "parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_finish_service"
         app:layout_constraintTop_toTopOf = "parent">
 
         <android.support.v7.widget.LinearLayoutCompat
@@ -24,9 +25,10 @@
                 android:id = "@+id/const_request_title"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
-                android:background = "@drawable/const_border_light"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
+                android:background = "@drawable/const_border_line"
                 android:padding = "@dimen/dimen_dp_large"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf = "parent"
                 app:layout_constraintRight_toRightOf = "parent">
 
@@ -99,8 +101,8 @@
                 android:id = "@+id/const_request_receiver"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
-                android:background = "@drawable/const_border_light"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
+                android:background = "@drawable/const_border_line"
                 android:padding = "@dimen/dimen_dp_tiny"
                 app:layout_constraintLeft_toLeftOf = "parent"
                 app:layout_constraintRight_toRightOf = "parent"
@@ -124,10 +126,10 @@
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
                     android:layout_marginStart = "@dimen/dimen_dp_small"
-                    android:fontFamily = "@font/iran_sans_medium"
+                    android:fontFamily = "@font/iran_sans"
                     android:text = "سعید گودرزیان"
-                    android:textColor = "@color/color_red"
-                    android:textSize = "@dimen/dimen_sp_medium"
+                    android:textColor = "@color/color_black"
+                    android:textSize = "@dimen/dimen_sp_small"
                     app:layout_constraintBottom_toBottomOf = "parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf = "parent" />
@@ -139,7 +141,7 @@
                 android:id = "@+id/const_request_status"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
                 android:background = "@drawable/const_border_line"
                 android:padding = "@dimen/dimen_dp_tiny"
                 app:layout_constraintLeft_toLeftOf = "parent"
@@ -179,8 +181,8 @@
                 android:id = "@+id/const_request_cost"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
-                android:background = "@drawable/const_border_light"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
+                android:background = "@drawable/const_border_line"
                 android:padding = "@dimen/dimen_dp_tiny"
                 app:layout_constraintLeft_toLeftOf = "parent"
                 app:layout_constraintRight_toRightOf = "parent"
@@ -244,8 +246,8 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
-                android:background = "@drawable/const_border_light"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
+                android:background = "@drawable/const_border_line"
                 android:padding = "@dimen/dimen_dp_tiny"
                 app:layout_constraintLeft_toLeftOf = "parent"
                 app:layout_constraintRight_toRightOf = "parent"
@@ -268,23 +270,25 @@
                     android:id = "@+id/tv_position_address"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
+                    android:layout_marginStart = "@dimen/dimen_dp_small"
                     android:fontFamily = "@font/iran_sans_bold"
                     android:text = "کوی زهرا"
                     android:textColor = "@color/colorBlackStep_5"
-                    android:textSize = "@dimen/dimen_sp_medium"
-                    app:layout_constraintRight_toRightOf = "@id/tv_position_title"
-                    app:layout_constraintTop_toBottomOf = "@id/tv_position_title" />
+                    android:textSize = "@dimen/dimen_sp_small"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf = "@id/tv_position_title" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id = "@+id/tv_full_address"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
+                    android:layout_marginTop="@dimen/dimen_dp_very_tiny"
                     android:layout_marginStart = "@dimen/dimen_dp_large"
                     android:layout_marginEnd = "@dimen/dimen_dp_large"
-                    android:fontFamily = "@font/iran_sans_bold"
+                    android:fontFamily = "@font/iran_sans"
                     android:text = "35 متری مقر صاحب الزمان، خ شهید صدق گو، روبروی کوچه ی 17 . پلاک 8"
                     android:textColor = "@color/colorPrimary"
-                    android:textSize = "@dimen/dimen_sp_medium"
+                    android:textSize = "@dimen/dimen_sp_small"
                     app:layout_constraintRight_toRightOf = "parent"
                     app:layout_constraintTop_toBottomOf = "@+id/tv_position_address" />
 
@@ -305,10 +309,10 @@
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
                     android:layout_marginStart = "@dimen/dimen_dp_large"
-                    android:fontFamily = "@font/iran_sans_bold"
+                    android:fontFamily = "@font/iran_sans"
                     android:text = "عجله دارم"
                     android:textColor = "@color/colorPrimary"
-                    android:textSize = "@dimen/dimen_sp_medium"
+                    android:textSize = "@dimen/dimen_sp_small"
                     app:layout_constraintRight_toRightOf = "parent"
                     app:layout_constraintTop_toBottomOf = "@+id/tv_request_detail_desc_title" />
 
@@ -320,7 +324,7 @@
                 android:id = "@+id/const_discount"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
                 android:padding="@dimen/dimen_dp_small"
                 android:background = "@drawable/const_border_light_back_color"
                 app:layout_constraintLeft_toLeftOf = "parent"
@@ -367,7 +371,7 @@
                 android:id = "@+id/linear_phone"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
                 android:orientation = "horizontal"
                 app:layout_constraintTop_toBottomOf = "@+id/const_discount">
 
@@ -377,7 +381,7 @@
                     android:layout_height = "wrap_content"
                     android:layout_weight = "1"
                     android:layout_marginEnd="@dimen/dimen_dp_tiny"
-                    android:background = "@drawable/const_border_light">
+                    android:background = "@drawable/const_border_line">
 
                     <android.support.v7.widget.AppCompatImageView
                         android:id = "@+id/img_call_by_phone"
@@ -406,7 +410,7 @@
                         android:id = "@+id/tv_phone_number"
                         android:layout_width = "wrap_content"
                         android:layout_height = "wrap_content"
-                        android:fontFamily = "@font/iran_sans_bold"
+                        android:fontFamily = "@font/iran_sans"
                         android:layout_marginTop = "@dimen/dimen_dp_small"
                         android:text = "07136362514"
                         android:textColor = "@color/colorPrimary"
@@ -425,7 +429,7 @@
                     android:layout_height = "wrap_content"
                     android:layout_weight = "1"
                     android:layout_marginStart="@dimen/dimen_dp_tiny"
-                    android:background = "@drawable/const_border_light">
+                    android:background = "@drawable/const_border_line">
 
                     <android.support.v7.widget.AppCompatImageView
                         android:id = "@+id/img_call_by_mobile"
@@ -468,7 +472,7 @@
                         android:layout_width = "wrap_content"
                         android:layout_height = "wrap_content"
                         android:layout_marginTop = "@dimen/dimen_dp_small"
-                        android:fontFamily = "@font/iran_sans_bold"
+                        android:fontFamily = "@font/iran_sans"
                         android:text = "09177196066"
                         android:textColor = "@color/colorPrimary"
                         android:textSize = "@dimen/dimen_sp_medium"
@@ -486,8 +490,8 @@
                 android:id = "@+id/linear_hour"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_small"
-                android:background = "@drawable/const_border_light"
+                android:layout_margin = "@dimen/dimen_dp_very_tiny"
+                android:background = "@drawable/const_border_line"
                 android:orientation = "vertical"
                 app:layout_constraintTop_toBottomOf = "@+id/linear_phone">
 
@@ -495,8 +499,7 @@
                     android:id = "@+id/const_request_date_register"
                     android:layout_width = "match_parent"
                     android:layout_height = "wrap_content"
-                    android:padding = "@dimen/dimen_dp_tiny"
-                    >
+                    android:padding = "@dimen/dimen_dp_tiny"     >
 
 
                     <android.support.v7.widget.AppCompatTextView
@@ -516,7 +519,7 @@
                         android:id = "@+id/tv_request_detail_date_register"
                         android:layout_width = "wrap_content"
                         android:layout_height = "wrap_content"
-                        android:fontFamily = "@font/iran_sans_bold"
+                        android:fontFamily = "@font/iran_sans"
                         android:text = "16 - 20"
                         android:textColor = "@color/colorBlackStep_5"
                         android:textSize = "@dimen/dimen_sp_medium"
@@ -531,8 +534,6 @@
                 <android.support.constraint.ConstraintLayout
                     android:id = "@+id/const_request_date"
                     android:layout_width = "match_parent"
-                    android:layout_marginTop="@dimen/dimen_dp_small"
-                    android:layout_marginBottom="@dimen/dimen_dp_small"
                     android:padding = "@dimen/dimen_dp_tiny"
                     android:layout_height = "wrap_content">
 
@@ -553,7 +554,7 @@
                         android:id = "@+id/tv_request_detail_date_value"
                         android:layout_width = "wrap_content"
                         android:layout_height = "wrap_content"
-                        android:fontFamily = "@font/iran_sans_bold"
+                        android:fontFamily = "@font/iran_sans"
                         android:text = "دوشنبه، 10 مرداد 1398"
                         android:textColor = "@color/colorPrimary"
                         android:textSize = "@dimen/dimen_sp_medium"
@@ -588,7 +589,7 @@
                         android:id = "@+id/tv_request_detail_time_value"
                         android:layout_width = "wrap_content"
                         android:layout_height = "wrap_content"
-                        android:fontFamily = "@font/iran_sans_bold"
+                        android:fontFamily = "@font/iran_sans"
                         android:text = "16 - 20"
                         android:textColor = "@color/colorPrimary"
                         android:textSize = "@dimen/dimen_sp_medium"

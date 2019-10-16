@@ -110,6 +110,9 @@
     <string name="text_charge_help">راهنمای شارژ شگفت انگیز</string>
     <string name="text_all_news">اخبار</string>
     <string name="text_service_information">مشخصات سرویس</string>
+    <string name="title_my_services">سرویس های من</string>
+    <string name="title_all_news">لیست اخبار</string>
+    <string name="title_all_message">پیـام ها</string>
 
 
 </resources>

@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
 import com.google.firebase.messaging.RemoteMessage;
@@ -123,10 +124,14 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
     private Intent getDestinationIntent()
     {
-        //ToDo
-        //بایستی کد و فلگ لازم  رو به اکتیویتی پاس بدم که بفهمه کدوم فرگمنت رو باز کنه.
         if (mod.toLowerCase().equals("New"))
-            return new Intent(this, ServiceRequestDetailActivity.class);
+        {
+            Intent intent = new Intent(this, ServiceRequestDetailActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt(getString(R.string.text_bundle_req_id),Integer.valueOf(requestId));
+            intent.putExtras(bundle);
+            return intent;
+        }
         else
             return new Intent(this,MainActivity.class);
     }

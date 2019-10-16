@@ -1,21 +1,20 @@
-package ir.shirazservice.expert.fragment;
+package ir.shirazservice.expert.packedactivity;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Display;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.adapter.WorkManMessageAdapter;
+import ir.shirazservice.expert.interfaces.IDefault;
 import ir.shirazservice.expert.interfaces.IInternetController;
+import ir.shirazservice.expert.interfaces.IRtl;
 import ir.shirazservice.expert.internetutils.ConnectionInternetDialog;
 import ir.shirazservice.expert.internetutils.InternetConnectionListener;
 import ir.shirazservice.expert.preferences.GeneralPreferences;
@@ -39,16 +40,19 @@ import ir.shirazservice.expert.webservice.workmanmessages.WorkmanMessages;
 
 import static ir.shirazservice.expert.utils.APP.context;
 
-public class WorkManMessageFragment extends Fragment implements IInternetController {
+public class WorkmanMessageActivity extends AppCompatActivity implements IInternetController, IRtl, IDefault {
 
+
+    @BindView(R.id.toolbar)
+    protected Toolbar toolbar;
+
+    @BindView(R.id.all_transaction_list)
+    protected RecyclerView allTransactionListRecycler;
 
     @BindView(R.id.const_waiting_main_fragment)
-    ConstraintLayout constWaitingMainFragment;
+    protected ConstraintLayout constWaiting;
     @BindView(R.id.const_not_found_info)
-    ConstraintLayout constNotFoundInfo;
-    @BindView(R.id.recycler_message)
-    RecyclerView recyclerMessage;
-
+    protected ConstraintLayout constNotFound;
 
     private List<WorkmanMessages> workmanMessages;
     private final GetWorkmanMessagesApi.getWorkmanMessagesCallback getWorkmanMessagesCallback =
@@ -71,27 +75,56 @@ public class WorkManMessageFragment extends Fragment implements IInternetControl
                 }
             };
 
-    public static WorkManMessageFragment newInstance() {
-        return new WorkManMessageFragment();
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_workman_message, container, false);
-        ButterKnife.bind(this, view);
-
-        return view;
+    public static WorkmanMessageActivity newInstance() {
+        return new WorkmanMessageActivity();
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_all_transaction);
+
+        ButterKnife.bind(this);
+        prepareToolbar();
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
         showHideWaitingProgress(false);
         loadMessage();
-
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        APP.currentActivity = WorkmanMessageActivity.this;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    public void OnActivityDefaultSetting() {
+        OnPageRight();
+    }
+
+    @Override
+    public void OnPageRight() {
+        if (getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR) {
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        }
+    }
+
+    private void prepareToolbar() {
+        toolbar.setTitle(R.string.title_all_message);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_right);
+    }
+
 
     private void loadMessage() {
 
@@ -109,26 +142,26 @@ public class WorkManMessageFragment extends Fragment implements IInternetControl
     private void fillMessageRecyclerView() {
         if (workmanMessages != null) {
             WorkManMessageAdapter workManMessageAdapter = new WorkManMessageAdapter(workmanMessages);
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
-            recyclerMessage.setLayoutManager(gridLayoutManager);
-            recyclerMessage.setAdapter(workManMessageAdapter);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
+            allTransactionListRecycler.setLayoutManager(gridLayoutManager);
+            allTransactionListRecycler.setAdapter(workManMessageAdapter);
         }
         showHideWaitingProgress(true);
     }
 
     @Override
     public boolean isOnline() {
-        return OnlineCheck.getInstance(getActivity()).isOnline();
+        return OnlineCheck.getInstance(this).isOnline();
     }
 
 
     private void showHideWaitingProgress(boolean hide) {
-        constWaitingMainFragment.setVisibility(hide ? View.GONE : View.VISIBLE);
+        constWaiting.setVisibility(hide ? View.GONE : View.VISIBLE);
     }
 
 
     private void openInternetCheckingDialog() {
-        ConnectionInternetDialog dialog = new ConnectionInternetDialog(getActivity(), new InternetConnectionListener() {
+        ConnectionInternetDialog dialog = new ConnectionInternetDialog(this, new InternetConnectionListener() {
             @Override
             public void onInternet() {
                 context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
@@ -148,7 +181,7 @@ public class WorkManMessageFragment extends Fragment implements IInternetControl
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
         dialog.show();
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Display display = this.getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
@@ -160,7 +193,7 @@ public class WorkManMessageFragment extends Fragment implements IInternetControl
     private void showNotFoundInfoLayout() {
 
         showHideWaitingProgress(true);
-        constNotFoundInfo.setVisibility((workmanMessages == null) ? View.VISIBLE : View.GONE);
+        constNotFound.setVisibility((workmanMessages == null) ? View.VISIBLE : View.GONE);
     }
 
 

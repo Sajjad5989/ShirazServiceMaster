@@ -1,4 +1,4 @@
-package ir.shirazservice.expert.activity;
+package ir.shirazservice.expert.packedactivity;
 
 import android.content.Intent;
 import android.graphics.Point;
@@ -34,6 +34,11 @@ public class AllTransactionActivity extends AppCompatActivity implements Seriali
 
     @BindView(R.id.all_transaction_list)
     protected RecyclerView allTransactionListRecycler;
+    @BindView(R.id.const_waiting_main_fragment)
+    protected ConstraintLayout constWaiting;
+    @BindView(R.id.const_not_found_info)
+    protected ConstraintLayout constNotFound;
+
 
     private TransactionList transactionList;
 
@@ -48,13 +53,20 @@ public class AllTransactionActivity extends AppCompatActivity implements Seriali
         ButterKnife.bind(this);
         prepareToolbar();
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
+
         Intent in = getIntent();
         Bundle bundle = in.getExtras();
         if (bundle != null)
             transactionList = (TransactionList) bundle.getSerializable(getString(R.string.text_financial_transaction_serialize));
+
+        showHideWaitingProgress(false);
         fillTransactionList();
     }
 
+
+    private void showHideWaitingProgress(boolean hide) {
+        constWaiting.setVisibility(hide ? View.GONE : View.VISIBLE);
+    }
 
     @Override
     protected void onResume() {
@@ -108,6 +120,7 @@ public class AllTransactionActivity extends AppCompatActivity implements Seriali
         allTransactionListRecycler.setLayoutManager(gridLayoutManager);
         allTransactionListRecycler.setAdapter(myTransactionAdapter);
 
+        showHideWaitingProgress(true);
     }
 
 }
