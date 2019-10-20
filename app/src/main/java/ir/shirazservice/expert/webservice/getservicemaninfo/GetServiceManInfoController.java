@@ -44,7 +44,7 @@ public class GetServiceManInfoController {
 
             @Override
             public void onFailure(@NonNull Call<ServiceMan> call,@NonNull  Throwable t) {
-                callback.onFailure( t.getCause( ).getMessage( ));
+               // callback.onFailure( t.getCause( ).getMessage( ));
             }
         });
     }

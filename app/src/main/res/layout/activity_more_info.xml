@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dimen_dp_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_dp_tiny"
+                android:layout_marginTop="@dimen/dimen_dp_very_large">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image_profile"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="@dimen/dimen_dp_very_very_huge"
+                    android:src="@drawable/ic_user_profile"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_view_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_dp_medium"
+                    android:fontFamily="@font/iran_sans_light"
+                    android:text="مشاهده پروفایل"
+                    android:textSize="@dimen/dimen_sp_small"
+                    app:layout_constraintRight_toLeftOf="@id/image_profile"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_dp_tiny"
+                android:layout_marginTop="@dimen/dimen_dp_tiny">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image_message"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="@dimen/dimen_dp_very_very_huge"
+                    android:src="@drawable/ic_message_circle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_view_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_dp_medium"
+                    android:fontFamily="@font/iran_sans_light"
+                    android:text="پیام"
+                    android:textSize="@dimen/dimen_sp_small"
+                    app:layout_constraintRight_toLeftOf="@id/image_message"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_dp_tiny"
+                android:layout_marginTop="@dimen/dimen_dp_tiny">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image_roll"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="@dimen/dimen_dp_very_very_huge"
+                    android:src="@drawable/ic_rolls"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_view_rolls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_dp_medium"
+                    android:fontFamily="@font/iran_sans_light"
+                    android:text="قوانین و مقررات"
+                    android:textSize="@dimen/dimen_sp_small"
+                    app:layout_constraintRight_toLeftOf="@id/image_roll"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_dp_tiny"
+                android:layout_marginTop="@dimen/dimen_dp_tiny">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image_about_us"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="@dimen/dimen_dp_very_very_huge"
+                    android:src="@drawable/ic_info"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_view_about_us"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_dp_medium"
+                    android:fontFamily="@font/iran_sans_light"
+                    android:text="درباره ما"
+                    android:textSize="@dimen/dimen_sp_small"
+                    app:layout_constraintRight_toLeftOf="@id/image_about_us"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_dp_tiny"
+                android:layout_marginTop="@dimen/dimen_dp_tiny">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image_contact_us"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="@dimen/dimen_dp_very_very_huge"
+                    android:src="@drawable/ic_call_us"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_view_contact_us"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_dp_medium"
+                    android:fontFamily="@font/iran_sans_light"
+                    android:text="تمـاس با ما"
+                    android:textSize="@dimen/dimen_sp_small"
+                    app:layout_constraintRight_toLeftOf="@id/image_contact_us"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_dp_tiny"
+                android:layout_marginTop="@dimen/dimen_dp_tiny">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image_follow_us"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="@dimen/dimen_dp_very_very_huge"
+                    android:src="@drawable/ic_follow_us"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_view_follow_us"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_dp_medium"
+                    android:fontFamily="@font/iran_sans_light"
+                    android:text="ما را در شبکه های اجتماعی دنبال کنید"
+                    android:textSize="@dimen/dimen_sp_small"
+                    app:layout_constraintRight_toLeftOf="@id/image_follow_us"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_dp_tiny"
+                android:layout_marginTop="@dimen/dimen_dp_tiny">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image_exit"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="@dimen/dimen_dp_very_very_huge"
+                    android:src="@drawable/ic_exit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_view_exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_dp_medium"
+                    android:fontFamily="@font/iran_sans_light"
+                    android:textColor="@color/color_red"
+                    android:text="خروج از حساب کاربری"
+                    android:textSize="@dimen/dimen_sp_small"
+                    app:layout_constraintRight_toLeftOf="@id/image_exit"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.constraint.ConstraintLayout>

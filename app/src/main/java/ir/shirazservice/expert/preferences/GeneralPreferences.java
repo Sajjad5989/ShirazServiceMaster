@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 
 import ir.shirazservice.expert.R;
+import ir.shirazservice.expert.webservice.getbaseinfo.BaseInfoOfApp;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
 
 public class GeneralPreferences {
@@ -70,6 +71,29 @@ public class GeneralPreferences {
         editor.apply();
 
     }
+
+
+
+    public void putBaseInfoOfApp(BaseInfoOfApp baseInfoOfApp) {
+
+        String tag = context.getString(R.string.text_base_info);
+        remove(tag);
+        editor.putString(tag, new Gson().toJson(baseInfoOfApp, BaseInfoOfApp.class));
+        editor.apply();
+
+    }
+
+    public BaseInfoOfApp getBaseInfoOfApp() {
+        String serviceManString = sharedPreferences.getString(context.getString(R.string.text_base_info), null);
+        if (serviceManString == null)
+            return new BaseInfoOfApp();
+
+
+        Gson gson = new Gson();
+        return gson.fromJson(serviceManString, BaseInfoOfApp.class);
+
+    }
+
 
 
     private void putServiceManString(String serviceMan) {

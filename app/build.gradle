@@ -105,5 +105,9 @@ dependencies {
     implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
 
 
+    // lombok
+//    implementation 'org.projectlombok:lombok:1.18.10'
+//    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+
 }
 apply plugin: 'com.google.gms.google-services'

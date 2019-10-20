@@ -2,6 +2,10 @@
 <resources>
 
 
+
+    <color name="mdtp_accent_color_dark">#d32f2f</color>
+    <color name="mdtp_accent_color">#d32f2f</color>
+
     <color name="color_toast_solid_color">#d21d1d1d</color>
     <color name="colorPrimary">#1c1d24</color>
     <color name="colorPrimaryDark">#1c1d24</color>

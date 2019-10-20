@@ -1,19 +1,20 @@
-package ir.shirazservice.expert.packedactivity;
+package ir.shirazservice.expert.fragment;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +25,7 @@ import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.activity.ServiceRequestDetailActivity;
 import ir.shirazservice.expert.adapter.MyServiceAdapter;
-import ir.shirazservice.expert.interfaces.IDefault;
 import ir.shirazservice.expert.interfaces.IInternetController;
-import ir.shirazservice.expert.interfaces.IRtl;
 import ir.shirazservice.expert.internetutils.ConnectionInternetDialog;
 import ir.shirazservice.expert.internetutils.InternetConnectionListener;
 import ir.shirazservice.expert.preferences.GeneralPreferences;
@@ -41,14 +40,10 @@ import ir.shirazservice.expert.webservice.myservice.ReceptionMyService;
 
 import static ir.shirazservice.expert.utils.APP.context;
 
-public class MyServicesActivity extends AppCompatActivity implements IInternetController, IRtl, IDefault {
+public class MyServicesFragment extends Fragment implements IInternetController {
 
-
-    @BindView(R.id.toolbar)
-    protected Toolbar toolbar;
-
-    @BindView(R.id.all_transaction_list)
-    protected RecyclerView allTransactionListRecycler;
+    @BindView(R.id.all_service_list)
+    protected RecyclerView allServiceRecycler;
     @BindView(R.id.const_waiting_main_fragment)
     protected ConstraintLayout constWaiting;
     @BindView(R.id.const_not_found_info)
@@ -72,70 +67,89 @@ public class MyServicesActivity extends AppCompatActivity implements IInternetCo
         }
     };
 
-    public static MyServicesActivity newInstance() {
-        return new MyServicesActivity();
+    public static MyServicesFragment newInstance() {
+        return new MyServicesFragment();
+    }
+
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_myservice, container, false);
+
+        APP.currentActivity = getActivity();
+        return view;
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_all_transaction);
-
-        ButterKnife.bind(this);
-        prepareToolbar();
-        toolbar.setNavigationOnClickListener(v -> onBackPressed());
-
-
+        ButterKnife.bind(this,view);
+//        findViews(view);
+//        setNeededIds();
+        showHideWaitingProgress(false);
         getMyServices();
 
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        APP.currentActivity = MyServicesActivity.this;
     }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
-
-    @Override
-    public void OnActivityDefaultSetting() {
-        OnPageRight();
-    }
-
-    @Override
-    public void OnPageRight() {
-        if (getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR) {
-            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-        }
-    }
-
-    private void prepareToolbar() {
-        toolbar.setTitle(R.string.title_my_services);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_right);
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        setContentView(R.layout.activity_all_transaction);
+//
+//        ButterKnife.bind(this);
+//        prepareToolbar();
+//        toolbar.setNavigationOnClickListener(v -> onBackPressed());
+//        getMyServices();
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        APP.currentActivity = MyServicesFragment.this;
+//    }
+//
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        finish();
+//    }
+//
+//    @Override
+//    public void OnActivityDefaultSetting() {
+//        OnPageRight();
+//    }
+//
+//    @Override
+//    public void OnPageRight() {
+//        if (getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR) {
+//            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+//        }
+//    }
+//
+//    private void prepareToolbar() {
+//        toolbar.setTitle(R.string.title_my_services);
+//        toolbar.setNavigationIcon(R.drawable.ic_arrow_right);
+//    }
 
 
     private void fillMyServiceList() {
-        MyServiceAdapter myServiceAdapter = new MyServiceAdapter(this, myServices, (v, position) -> {
-            Intent intent = new Intent(this, ServiceRequestDetailActivity.class);
+        MyServiceAdapter myServiceAdapter = new MyServiceAdapter(getActivity(), myServices, (v, position) -> {
+            Intent intent = new Intent(getActivity(), ServiceRequestDetailActivity.class);
             Bundle bundle = new Bundle();
             bundle.putInt(getString(R.string.text_bundle_req_id), myServices.get(position).getReqId());
             intent.putExtras(bundle);
             startActivity(intent);
         });
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
 
-        allTransactionListRecycler.setLayoutManager(gridLayoutManager);
-        allTransactionListRecycler.setAdapter(myServiceAdapter);
+        allServiceRecycler.setLayoutManager(gridLayoutManager);
+        allServiceRecycler.setAdapter(myServiceAdapter);
         showHideWaitingProgress(true);
         showNotFoundInfoLayout();
     }
@@ -163,7 +177,7 @@ public class MyServicesActivity extends AppCompatActivity implements IInternetCo
 
     @Override
     public boolean isOnline() {
-        return OnlineCheck.getInstance(this).isOnline();
+        return OnlineCheck.getInstance(getActivity()).isOnline();
     }
 
 
@@ -177,7 +191,7 @@ public class MyServicesActivity extends AppCompatActivity implements IInternetCo
     }
 
     private void openInternetCheckingDialog() {
-        ConnectionInternetDialog dialog = new ConnectionInternetDialog(this, new InternetConnectionListener() {
+        ConnectionInternetDialog dialog = new ConnectionInternetDialog(getActivity(), new InternetConnectionListener() {
             @Override
             public void onInternet() {
                 context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
@@ -197,7 +211,7 @@ public class MyServicesActivity extends AppCompatActivity implements IInternetCo
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
         dialog.show();
-        Display display = this.getWindowManager().getDefaultDisplay();
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int width = size.x;

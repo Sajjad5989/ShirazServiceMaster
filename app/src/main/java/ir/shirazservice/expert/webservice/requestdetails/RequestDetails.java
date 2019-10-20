@@ -1,54 +1,10 @@
 package ir.shirazservice.expert.webservice.requestdetails;
 
-public class RequestDetails {
+import java.io.Serializable;
+
+public class RequestDetails implements Serializable {
     private int personId;
     private String personName;
-    private int workmanId;
-    private String workmanName;
-    private String workmanMobile;
-    private int serviceId;
-    private String serviceTitle;
-    private String servicePicAddress;
-    private int catId;
-    private String catTitle;
-    private int subCatId;
-    private String subCatTitle;
-    private int areaId;
-    private String areaTitle;
-    private String lastName;
-    private String firstName;
-    private String mobile;
-    private String phone;
-    private String address;
-    private String longtiude;
-    private String latitiude;
-    private String desc;
-    private int dateFrom;
-    private String dateFromPersian;
-    private String dateFromYear;
-    private String dateFromMonth;
-    private String dateFromDay;
-    private int dateTo;
-    private String dateToPersian;
-    private int time;
-    private String timeDesc;
-    private int insrtTime;
-    private String insrtTimePersian;
-    private String insrtTimeSimple;
-    private int updteTime;
-    private String updteTimePersian;
-    private String trackingCode;
-    private int state;
-    private String stateTitle;
-    private int priority;
-    private String priorityTitle;
-    private String calculatedPrice;
-    private int finishByWorkman;
-    private int finishTime;
-    private String visitCount;
-    private String workmanCount;
-    private String discountCode;
-    private String discountDesc;
 
     public int getPersonId() {
         return personId;
@@ -162,7 +118,7 @@ public class RequestDetails {
         this.areaTitle = areaTitle;
     }
 
-    private String getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
@@ -170,7 +126,7 @@ public class RequestDetails {
         this.lastName = lastName;
     }
 
-    private String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
@@ -433,6 +389,53 @@ public class RequestDetails {
     public void setDiscountDesc(String discountDesc) {
         this.discountDesc = discountDesc;
     }
+
+    private int workmanId;
+    private String workmanName;
+    private String workmanMobile;
+    private int serviceId;
+    private String serviceTitle;
+    private String servicePicAddress;
+    private int catId;
+    private String catTitle;
+    private int subCatId;
+    private String subCatTitle;
+    private int areaId;
+    private String areaTitle;
+    private String lastName;
+    private String firstName;
+    private String mobile;
+    private String phone;
+    private String address;
+    private String longtiude;
+    private String latitiude;
+    private String desc;
+    private int dateFrom;
+    private String dateFromPersian;
+    private String dateFromYear;
+    private String dateFromMonth;
+    private String dateFromDay;
+    private int dateTo;
+    private String dateToPersian;
+    private int time;
+    private String timeDesc;
+    private int insrtTime;
+    private String insrtTimePersian;
+    private String insrtTimeSimple;
+    private int updteTime;
+    private String updteTimePersian;
+    private String trackingCode;
+    private int state;
+    private String stateTitle;
+    private int priority;
+    private String priorityTitle;
+    private String calculatedPrice;
+    private int finishByWorkman;
+    private int finishTime;
+    private String visitCount;
+    private String workmanCount;
+    private String discountCode;
+    private String discountDesc;
 
     public String getReceiverMan() {
         return String.format("%s %s", getFirstName(), getLastName());

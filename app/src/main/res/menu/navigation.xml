@@ -16,20 +16,20 @@
         android:icon="@drawable/ic_my_service"
         android:title="@string/title_my_service" />
 
-    <item
-        android:id="@+id/navigation_message"
-        android:icon="@drawable/item_message"
-        android:title="@string/title_message" />
+    <!--<item-->
+    <!--android:id="@+id/navigation_message"-->
+    <!--android:icon="@drawable/item_message"-->
+    <!--android:title="@string/title_message"/>-->
 
     <item
         android:id="@+id/navigation_charge"
         android:icon="@drawable/ic_charge"
         android:title="@string/title_charge" />
 
-
-
-
-
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/ic_more"
+        android:title="@string/title_more" />
 
 
 </menu>

@@ -36,10 +36,10 @@
         <activity android:name=".activity.MainActivity"  android:screenOrientation = "portrait"/>
         <activity android:name=".packedactivity.AllTransactionActivity"  android:screenOrientation = "portrait"/>
         <activity android:name=".packedactivity.AllNewsActivity"  android:screenOrientation = "portrait"/>
-        <activity android:name=".packedactivity.MyServicesActivity"  android:screenOrientation = "portrait"/>
         <activity android:name=".packedactivity.WorkmanMessageActivity"  android:screenOrientation = "portrait"/>
         <activity android:name=".activity.ServiceRequestDetailActivity"  android:screenOrientation = "portrait"/>
         <activity android:name=".activity.ProfileActivity"  android:screenOrientation = "portrait"/>
+        <activity android:name=".activity.MoreInfoActivity"  android:screenOrientation = "portrait"/>
 
         <!--<fragment android:name=".fragment.ChargeFragment"  android:screenOrientation = "portrait">-->
 

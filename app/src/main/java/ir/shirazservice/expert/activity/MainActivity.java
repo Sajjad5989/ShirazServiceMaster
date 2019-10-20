@@ -25,9 +25,8 @@ import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.fragment.ChargeFragment;
 import ir.shirazservice.expert.fragment.MainFragment;
-import ir.shirazservice.expert.packedactivity.MyServicesActivity;
+import ir.shirazservice.expert.fragment.MyServicesFragment;
 import ir.shirazservice.expert.fragment.MyTransactionFragment;
-import ir.shirazservice.expert.packedactivity.WorkmanMessageActivity;
 import ir.shirazservice.expert.interfaces.IDefault;
 import ir.shirazservice.expert.interfaces.IInternetController;
 import ir.shirazservice.expert.interfaces.IRtl;
@@ -170,11 +169,12 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
                 case R.id.navigation_transaction:
                     openMyTransactionFragment();
                     break;
-                case R.id.navigation_message:
-                    openMessageFragment();
-                    break;
+
                 case R.id.navigation_charge:
                     openChargeActivity();
+                    break;
+                case R.id.navigation_more:
+                    openMoreInfoActivity();
                     break;
             }
             return true;
@@ -189,8 +189,8 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
                 .commit();
     }
 
-    private void openMessageFragment() {
-        Intent intent = new Intent(this, WorkmanMessageActivity.class);
+    private void openMoreInfoActivity() {
+        Intent intent = new Intent(this, MoreInfoActivity.class);
         startActivity(intent);
     }
 
@@ -203,8 +203,12 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
     }
 
     private void openMyServiceFragment() {
-        Intent intent = new Intent(this, MyServicesActivity.class);
-        startActivity(intent);
+        MyServicesFragment myServicesFragment = MyServicesFragment.newInstance();
+        getFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, myServicesFragment)
+                .addToBackStack(null)
+                .commit();
+
     }
 
     private void openMyTransactionFragment() {

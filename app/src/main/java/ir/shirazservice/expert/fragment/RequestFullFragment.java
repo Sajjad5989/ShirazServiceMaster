@@ -149,6 +149,7 @@ public class RequestFullFragment extends Fragment implements IInternetController
 
 
     private void loadRequestDetailInServiceFull() {
+
         if (requestDetailsFull != null) {
 
             String picAddress = requestDetailsFull.getServicePicAddress();

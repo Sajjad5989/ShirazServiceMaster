@@ -1,6 +1,9 @@
 package ir.shirazservice.expert.webservice.canclerequest;
 
-public class PickupResponse {
+
+import java.io.Serializable;
+
+public class PickupResponse implements Serializable {
     private int requestId;
 
     public int getRequestId() {

@@ -66,6 +66,7 @@
     <string name="text_error_select_date">انتخاب تاریخ واریز الزامی می باشد</string>
     <string name="text_currency_symbol">ریال</string>
     <string name="text_service_man">ServiceMan</string>
+    <string name="text_base_info">baseInfoOfApp</string>
     <string name="text_float_point">%.0f</string>
     <string name="text_string_format">%s [%s]</string>
     <string name="text_string_format_2">%s / %s</string>
@@ -113,6 +114,7 @@
     <string name="title_my_services">سرویس های من</string>
     <string name="title_all_news">لیست اخبار</string>
     <string name="title_all_message">پیـام ها</string>
+    <string name="title_more">بیشتر</string>
 
 
 </resources>

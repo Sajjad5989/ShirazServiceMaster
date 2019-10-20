@@ -61,6 +61,7 @@ public class SplashActivity extends AppCompatActivity implements IInternetContro
                                 updateWarning(response.getAndroidAppDlLink(), response.getAndroidServiceManAppForceUpdate());
                             }
                         }
+                        GeneralPreferences.getInstance(SplashActivity.this).putBaseInfoOfApp(response);
                         startActivity(new Intent(SplashActivity.this, MainActivity.class));
                         SplashActivity.this.finish();
                     }
@@ -79,8 +80,6 @@ public class SplashActivity extends AppCompatActivity implements IInternetContro
                     if (successful) {
                         GeneralPreferences.getInstance(SplashActivity.this).putServiceManInfo(response);
                         getBaseInfo();
-//                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-//                        SplashActivity.this.finish();
                     }
                 }
 
