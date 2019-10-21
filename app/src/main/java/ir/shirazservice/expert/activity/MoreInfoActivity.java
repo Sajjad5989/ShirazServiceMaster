@@ -1,17 +1,25 @@
 package ir.shirazservice.expert.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
+import android.view.Display;
 import android.view.View;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ir.shirazservice.expert.R;
+import ir.shirazservice.expert.dialog.ExitAppDialog;
 import ir.shirazservice.expert.interfaces.IDefault;
 import ir.shirazservice.expert.interfaces.IInternetController;
 import ir.shirazservice.expert.interfaces.IRtl;
@@ -20,6 +28,8 @@ import ir.shirazservice.expert.preferences.GeneralPreferences;
 import ir.shirazservice.expert.utils.APP;
 import ir.shirazservice.expert.utils.OnlineCheck;
 import ir.shirazservice.expert.webservice.getbaseinfo.BaseInfoOfApp;
+
+import static ir.shirazservice.expert.utils.APP.context;
 
 public class MoreInfoActivity extends AppCompatActivity implements IRtl, IDefault, IInternetController {
 
@@ -113,6 +123,7 @@ public class MoreInfoActivity extends AppCompatActivity implements IRtl, IDefaul
             case R.id.tv_view_follow_us:
                 break;
             case R.id.tv_view_exit:
+                ExitApp();
                 break;
         }
     }
@@ -143,6 +154,28 @@ public class MoreInfoActivity extends AppCompatActivity implements IRtl, IDefaul
         callIntent.setData(Uri.parse("tel:" + supportTeamPhone.trim()));
         callIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(callIntent);
+    }
+
+    private void ExitApp()
+    {
+
+        ExitAppDialog chooseRequestDialog = new ExitAppDialog(MoreInfoActivity.this,
+                done -> {
+               if (done)
+                   APP.killApp();
+                });
+
+        Objects.requireNonNull(chooseRequestDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        chooseRequestDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
+        chooseRequestDialog.setCancelable(false);
+        chooseRequestDialog.show();
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        width = (int) ((width) * 0.9);
+        chooseRequestDialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+
     }
 }
 

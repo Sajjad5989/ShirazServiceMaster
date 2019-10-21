@@ -115,6 +115,7 @@
     <string name="title_all_news">لیست اخبار</string>
     <string name="title_all_message">پیـام ها</string>
     <string name="title_more">بیشتر</string>
+    <string name="text_exit_title">خروج از حساب کاربری</string>
 
 
 </resources>
