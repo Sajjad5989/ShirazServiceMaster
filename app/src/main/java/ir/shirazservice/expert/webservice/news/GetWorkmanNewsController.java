@@ -1,6 +1,6 @@
 package ir.shirazservice.expert.webservice.news;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.List;
 

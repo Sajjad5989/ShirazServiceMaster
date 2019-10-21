@@ -1,6 +1,6 @@
 package ir.shirazservice.expert.webservice.depositmoney;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.shirazserviceapi.AppController;

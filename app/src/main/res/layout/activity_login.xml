@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-                                             xmlns:app = "http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools = "http://schemas.android.com/tools"
-                                             android:layout_width = "match_parent"
-                                             android:layout_height = "match_parent"
-                                             android:background = "@color/colorWhite"
-                                             tools:ignore = "Autofill,LabelFor">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+                                                   xmlns:app = "http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools = "http://schemas.android.com/tools"
+                                                   android:layout_width = "match_parent"
+                                                   android:layout_height = "match_parent"
+                                                   android:background = "@color/colorWhite"
+                                                   tools:ignore = "Autofill,LabelFor">
 
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id = "@+id/tv_title"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
@@ -25,7 +25,7 @@
 
 
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_view_user_element"
         android:layout_width = "128dp"
         android:layout_height = "128dp"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_title"
         />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id = "@+id/const_views"
         android:layout_width = "0dp"
         android:layout_height = "wrap_content"
@@ -48,7 +48,7 @@
         >
 
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id = "@+id/tv_username_caption"
             android:layout_width = "wrap_content"
             android:layout_height = "0dp"
@@ -62,7 +62,7 @@
             app:layout_constraintRight_toRightOf = "parent"
             app:layout_constraintTop_toTopOf = "parent" />
 
-        <android.support.v7.widget.AppCompatEditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id = "@+id/et_username"
             android:layout_width = "0dp"
             android:layout_height = "wrap_content"
@@ -79,7 +79,7 @@
             app:layout_constraintRight_toRightOf = "parent"
             app:layout_constraintTop_toBottomOf = "@id/tv_username_caption" />
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id = "@+id/tv_username_guide"
             android:layout_width = "wrap_content"
             android:layout_height = "0dp"
@@ -93,7 +93,7 @@
             app:layout_constraintTop_toBottomOf="@id/et_username"
             />
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id = "@+id/tv_password_caption"
             android:layout_width = "wrap_content"
             android:layout_height = "0dp"
@@ -107,7 +107,7 @@
             app:layout_constraintRight_toRightOf = "parent"
             app:layout_constraintTop_toBottomOf = "@id/tv_username_guide" />
 
-        <android.support.v7.widget.AppCompatEditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id = "@+id/et_password"
             android:layout_width = "0dp"
             android:layout_height = "wrap_content"
@@ -124,7 +124,7 @@
             app:layout_constraintRight_toRightOf = "parent"
             app:layout_constraintTop_toBottomOf = "@+id/tv_password_caption" />
 
-        <android.support.v7.widget.AppCompatImageButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id = "@+id/image_view_pass"
             android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
@@ -136,7 +136,7 @@
             app:layout_constraintTop_toTopOf = "@+id/et_password" />
 
 
-        <android.support.v7.widget.AppCompatCheckBox
+        <androidx.appcompat.widget.AppCompatCheckBox
             android:id = "@+id/chk_remember"
             android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
@@ -146,7 +146,7 @@
 
             />
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id = "@+id/tv_remember"
             android:layout_width = "wrap_content"
             android:layout_height = "0dp"
@@ -161,10 +161,10 @@
             app:layout_constraintTop_toBottomOf = "@id/et_password" />
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <android.support.v7.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id = "@+id/btn_login"
         style = "?android:attr/borderlessButtonStyle"
         android:layout_width = "@dimen/dimen_dp_zero"
@@ -178,4 +178,4 @@
         app:layout_constraintLeft_toLeftOf = "parent"
         app:layout_constraintRight_toRightOf = "parent" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

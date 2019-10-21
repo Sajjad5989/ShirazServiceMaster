@@ -1,16 +1,15 @@
 package ir.shirazservice.expert.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.text.Html;
 import android.util.TypedValue;
 import android.view.View;
@@ -23,7 +22,6 @@ import java.util.Objects;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.adapter.IntroSliderAdapter;
 import ir.shirazservice.expert.preferences.GeneralPreferences;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class IntroSliderActivity extends AppCompatActivity {
 

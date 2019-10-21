@@ -1,17 +1,16 @@
 package ir.shirazservice.expert.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.view.Display;
 import android.view.View;
@@ -40,7 +39,6 @@ import ir.shirazservice.expert.webservice.getservicemaninfobyid.GetServiceManInf
 import ir.shirazservice.expert.webservice.getservicemaninfobyid.ServiceManInfoById;
 import ir.shirazservice.expert.webservice.getservicemaninfobyid.ServiceManInfoDetail;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static ir.shirazservice.expert.utils.APP.context;
 
@@ -195,7 +193,7 @@ public class ProfileActivity extends AppCompatActivity implements IRtl, IDefault
             if (null == picAddress || picAddress.equals("")) {
                 imageExpert.setImageResource(R.drawable.img_no_icon);
             } else {
-                Picasso.with(this)
+                Picasso.get()
                         .load(picAddress)  //Url of the image to load.
                         .transform(new CropCircleTransformation())
                         .error(R.drawable.img_no_icon)

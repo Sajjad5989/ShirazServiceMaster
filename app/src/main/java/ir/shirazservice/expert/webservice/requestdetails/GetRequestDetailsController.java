@@ -1,7 +1,7 @@
 package ir.shirazservice.expert.webservice.requestdetails;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.shirazserviceapi.AppController;

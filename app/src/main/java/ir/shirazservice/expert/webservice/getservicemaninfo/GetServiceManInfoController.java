@@ -1,7 +1,7 @@
 package ir.shirazservice.expert.webservice.getservicemaninfo;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.preferences.GeneralPreferences;

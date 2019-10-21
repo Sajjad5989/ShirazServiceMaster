@@ -1,10 +1,10 @@
 package ir.shirazservice.expert.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +56,7 @@ public class WorkManNewsAdapter extends RecyclerView.Adapter<WorkManNewsAdapter.
         String sliderImage = items.get(position).getPicAddress();
 
         if (sliderImage != null && !"".equals(sliderImage)) {
-            Picasso.with(context).load(sliderImage)
+            Picasso.get().load(sliderImage)
                     .error(R.drawable.image_default_mag)
                     .placeholder(R.drawable.image_default_mag)
                     .into(holder.imageNews);

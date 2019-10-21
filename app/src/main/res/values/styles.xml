@@ -62,4 +62,12 @@
         <item name = "fontFamily">@font/iran_sans_medium</item >
     </style >
 
+
+    <style name = "DarkFlatButton" parent = "Theme.AppCompat.Light">
+        <item name = "android:buttonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item >
+        <item name = "colorControlHighlight">@color/colorDarkGrey</item >
+        <item name = "colorAccent">@color/colorLightGrey</item >
+        <item name = "android:padding">@dimen/dimen_dp_very_tiny</item >
+    </style >
+
 </resources>

@@ -1,10 +1,10 @@
 package ir.shirazservice.expert.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +59,7 @@ public class MyServiceAdapter extends RecyclerView.Adapter<MyServiceAdapter.View
         if (null == picAddress || picAddress.equals("")) {
             holder.imageService.setImageResource(R.drawable.img_no_icon);
         } else {
-            Picasso.with(context)
+            Picasso.get()
                     .load(picAddress)  //Url of the image to load.
                     .transform(new CropCircleTransformation())
                     .error(R.drawable.img_no_icon)

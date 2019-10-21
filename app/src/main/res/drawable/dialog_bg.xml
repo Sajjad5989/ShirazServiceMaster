@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-
-    <solid android:color="@color/color_red" />
-    <corners android:radius="@dimen/dimen_card_corner" />
+    <solid android:color="@color/colorWhite"/>
+    <corners android:radius="4dp"/>
+    <padding
+        android:bottom="@dimen/dimen_dp_small"
+        android:left="@dimen/dimen_dp_small"
+        android:right="@dimen/dimen_dp_small"
+        android:top="@dimen/dimen_dp_small"/>
 
 </shape>

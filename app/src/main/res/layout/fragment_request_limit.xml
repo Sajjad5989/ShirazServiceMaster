@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    android:layoutDirection="rtl">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:background="@color/colorWhite"
+                                                   android:layoutDirection="rtl">
 
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -15,13 +15,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.v7.widget.LinearLayoutCompat
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id = "@+id/const_request_title"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
@@ -32,7 +32,7 @@
                 app:layout_constraintRight_toRightOf = "parent">
 
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id = "@+id/img_request_Detail"
                     android:layout_width = "64dp"
                     android:layout_height = "64dp"
@@ -40,7 +40,7 @@
                     app:layout_constraintRight_toRightOf = "parent"
                     app:layout_constraintTop_toTopOf = "parent" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id = "@+id/tv_request_detail_service_title"
                     android:layout_width = "0dp"
                     android:layout_height = "wrap_content"
@@ -53,7 +53,7 @@
                     app:layout_constraintRight_toLeftOf = "@id/img_request_Detail"
                     app:layout_constraintTop_toTopOf = "parent" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id = "@+id/tv_request_detail_tracking_caption"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
@@ -65,7 +65,7 @@
                     app:layout_constraintRight_toRightOf = "@id/tv_request_detail_service_title"
                     app:layout_constraintTop_toBottomOf = "@id/tv_request_detail_service_title" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id = "@+id/tv_request_detail_tracking_code"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
@@ -78,7 +78,7 @@
                     app:layout_constraintTop_toBottomOf = "@id/tv_request_detail_service_title"
                     app:layout_constraintTop_toTopOf = "@id/tv_request_detail_tracking_caption" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id = "@+id/tv_service_info"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
@@ -94,9 +94,9 @@
                     app:layout_constraintTop_toBottomOf = "@id/tv_request_detail_service_title" />
 
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id = "@+id/const_request_receiver"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
@@ -107,7 +107,7 @@
                 app:layout_constraintRight_toRightOf = "parent"
                 app:layout_constraintTop_toBottomOf = "@id/const_request_title">
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id = "@+id/tv_receiver_caption"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
@@ -120,7 +120,7 @@
                     app:layout_constraintRight_toRightOf = "parent"
                     app:layout_constraintTop_toTopOf = "parent" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id = "@+id/tv_receiver_name"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
@@ -134,9 +134,9 @@
                     app:layout_constraintTop_toTopOf = "parent" />
 
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id = "@+id/const_request_status"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
@@ -147,7 +147,7 @@
                 app:layout_constraintRight_toRightOf = "parent"
                 app:layout_constraintTop_toBottomOf = "@id/const_request_title">
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id = "@+id/tv_request_caption_status"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
@@ -160,7 +160,7 @@
                     app:layout_constraintRight_toRightOf = "parent"
                     app:layout_constraintTop_toTopOf = "parent" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id = "@+id/tv_request_status"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
@@ -174,9 +174,9 @@
                     app:layout_constraintTop_toTopOf = "parent" />
 
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id = "@+id/const_request_cost"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
@@ -187,7 +187,7 @@
                 app:layout_constraintRight_toRightOf = "parent"
                 app:layout_constraintTop_toBottomOf = "@id/const_request_receiver">
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id = "@+id/tv_cost_first_title"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
@@ -200,7 +200,7 @@
                     app:layout_constraintRight_toRightOf = "parent"
                     app:layout_constraintTop_toTopOf = "parent" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id = "@+id/tv_request_detail_calculated_price"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
@@ -213,7 +213,7 @@
                     app:layout_constraintRight_toLeftOf = "@+id/tv_cost_first_title"
                     app:layout_constraintTop_toTopOf = "parent" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id = "@+id/tv_cost_third_title"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
@@ -227,7 +227,7 @@
                     app:layout_constraintRight_toLeftOf = "@id/tv_request_detail_calculated_price"
                     app:layout_constraintTop_toTopOf = "parent" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id = "@+id/tv_cost_forth_title"
                     android:layout_width = "wrap_content"
                     android:layout_height = "wrap_content"
@@ -240,8 +240,8 @@
                     app:layout_constraintRight_toLeftOf = "@id/tv_cost_third_title"
                     app:layout_constraintTop_toTopOf = "parent" />
 
-            </android.support.constraint.ConstraintLayout>
-            <android.support.v7.widget.LinearLayoutCompat
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/linear_credit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -253,7 +253,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/const_request_cost">
 
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/const_request_current_account"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -264,7 +264,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/const_request_cost">
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_current_account"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -276,7 +276,7 @@
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/dimen_dp_tiny"
@@ -288,7 +288,7 @@
                         app:layout_constraintRight_toLeftOf="@+id/tv_current_account"
                         app:layout_constraintTop_toTopOf="@id/tv_current_account" />
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/iran_sans"
@@ -301,9 +301,9 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_current_account" />
 
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/const_request_subtract_account"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -314,7 +314,7 @@
                     app:layout_constraintRight_toLeftOf="@+id/const_request_current_account"
                     app:layout_constraintTop_toBottomOf="@id/const_request_cost">
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_subtract_account"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -326,7 +326,7 @@
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/iran_sans"
@@ -338,7 +338,7 @@
                         app:layout_constraintRight_toLeftOf="@+id/tv_subtract_account"
                         app:layout_constraintTop_toTopOf="@id/tv_subtract_account" />
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/iran_sans"
@@ -351,11 +351,11 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_subtract_account" />
 
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            </android.support.v7.widget.LinearLayoutCompat>
-            <android.support.constraint.ConstraintLayout
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/const_discount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -366,7 +366,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linear_credit">
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_discount_alarm_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -377,7 +377,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_discount_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -388,7 +388,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_discount_alarm_title2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -400,7 +400,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_discount_alarm_title" />
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <LinearLayout
                 android:id = "@+id/linear_hour"
                 android:layout_width = "match_parent"
@@ -410,7 +410,7 @@
                 android:orientation = "vertical"
                 app:layout_constraintTop_toBottomOf = "@+id/linear_phone">
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id = "@+id/const_request_date_register"
                     android:layout_width = "match_parent"
                     android:layout_height = "wrap_content"
@@ -418,7 +418,7 @@
                     >
 
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id = "@+id/tv_date_caption_register"
                         android:layout_width = "wrap_content"
                         android:layout_height = "wrap_content"
@@ -431,7 +431,7 @@
                         app:layout_constraintRight_toRightOf="parent"
                         />
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id = "@+id/tv_request_detail_date_register"
                         android:layout_width = "wrap_content"
                         android:layout_height = "wrap_content"
@@ -445,16 +445,16 @@
                         />
 
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id = "@+id/const_request_date"
                     android:layout_width = "match_parent"
                     android:padding = "@dimen/dimen_dp_tiny"
                     android:layout_height = "wrap_content">
 
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id = "@+id/tv_date_caption"
                         android:layout_width = "wrap_content"
                         android:layout_height = "wrap_content"
@@ -466,7 +466,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toRightOf="parent"/>
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id = "@+id/tv_request_detail_date_value"
                         android:layout_width = "wrap_content"
                         android:layout_height = "wrap_content"
@@ -480,16 +480,16 @@
                         />
 
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id = "@+id/const_request_time"
                     android:layout_width = "match_parent"
                     android:padding = "@dimen/dimen_dp_tiny"
                     android:layout_height = "wrap_content">
 
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id = "@+id/tv_time_caption"
                         android:layout_width = "wrap_content"
                         android:layout_height = "wrap_content"
@@ -501,7 +501,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toRightOf="parent"/>
 
-                    <android.support.v7.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id = "@+id/tv_request_detail_time_value"
                         android:layout_width = "wrap_content"
                         android:layout_height = "wrap_content"
@@ -515,10 +515,10 @@
                         />
 
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin = "@dimen/dimen_dp_very_tiny"
@@ -531,7 +531,7 @@
 
                 >
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_position_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -543,7 +543,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_position_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -557,7 +557,7 @@
                     app:layout_constraintTop_toTopOf = "parent" />
 
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_request_detail_desc_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -570,7 +570,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_position_address" />
 
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_request_detail_desc_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -585,14 +585,14 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_request_detail_desc_title" />
 
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </android.support.v7.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
-    <android.support.v7.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_accept_request"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="@dimen/dimen_dp_zero"
@@ -607,7 +607,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const_waiting_main_fragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -628,7 +628,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_dp_tiny"
@@ -641,9 +641,9 @@
             app:layout_constraintTop_toBottomOf="@id/progressBar" />
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const_not_found_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -654,7 +654,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_not_found"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -667,7 +667,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_retry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -684,9 +684,9 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_not_found" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_request_cancel"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -697,4 +697,4 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

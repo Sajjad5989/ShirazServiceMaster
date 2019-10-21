@@ -2,10 +2,10 @@ package ir.shirazservice.expert.adapter;
 
 import android.content.Context;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +56,7 @@ public class SessionSliderAdapter extends PagerAdapter {
 
         AppCompatImageView myImg = view.findViewById(R.id.session_slider_image);
         if (sliderImage != null && !"".equals(sliderImage)) {
-            Picasso.with(context).load(sliderImage)
+            Picasso.get().load(sliderImage)
                     .error(R.drawable.image_default_slider)
                     .placeholder(R.drawable.image_default_slider)
                     .into(myImg);

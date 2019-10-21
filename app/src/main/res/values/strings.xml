@@ -117,5 +117,10 @@
     <string name="title_more">بیشتر</string>
     <string name="text_exit_title">خروج از حساب کاربری</string>
 
+    <string name = "text_name_social_apparat">آپارات</string>
+    <string name = "text_name_social_telegram">تلگرام</string>
+    <string name = "text_name_social_insta">اینستاگرام</string>
 
+    <string name = "nav_social">ما را در شبکه های اجتماعی دنبال کنید</string>
+    <string name = "dlg_title_close_dialog">بستن</string>
 </resources>

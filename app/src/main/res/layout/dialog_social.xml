@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+                                                   xmlns:app = "http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools = "http://schemas.android.com/tools"
+                                                   android:layout_width = "match_parent"
+                                                   android:layout_height = "wrap_content"
+                                                   android:background = "@drawable/dialog_bg"
+                                                   android:layoutDirection="rtl"
+                                                   tools:ignore = "UseCompoundDrawables">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id = "@+id/header_text"
+        android:layout_width = "0dp"
+        android:layout_height = "wrap_content"
+        android:layout_marginBottom = "@dimen/dimen_dp_small"
+        android:gravity = "start"
+        android:text = "@string/nav_social"
+        android:textColor = "@color/colorBlackStep_5"
+        android:textSize = "@dimen/dimen_sp_medium"
+        android:textStyle = "bold"
+        app:layout_constraintLeft_toLeftOf = "parent"
+        app:layout_constraintRight_toRightOf = "parent"
+        app:layout_constraintTop_toTopOf = "parent"/>
+
+    <LinearLayout
+        android:id = "@+id/layout_social_list"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginTop = "@dimen/dimen_dp_small"
+        android:orientation = "vertical"
+        app:layout_constraintLeft_toLeftOf = "parent"
+        app:layout_constraintRight_toRightOf = "parent"
+        app:layout_constraintTop_toBottomOf = "@id/header_text">
+
+        <LinearLayout
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:baselineAligned = "false"
+            android:orientation = "horizontal">
+
+            <LinearLayout
+                android:id = "@+id/layout_social_instagram"
+                android:layout_width = "0dp"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center"
+                android:layout_weight = "1"
+                android:gravity = "center"
+                android:orientation = "vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id = "@+id/image_social_instagram"
+                    android:layout_width = "48dp"
+                    android:layout_height = "48dp"
+                    android:contentDescription = "@string/text_name_social_insta"
+                    android:padding = "@dimen/dimen_dp_small"
+                    app:srcCompat="@drawable/logo_social_com_instagram"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id = "@+id/text_social_instagram"
+                    android:layout_width = "match_parent"
+                    android:layout_height = "wrap_content"
+                    android:layout_marginTop = "@dimen/dimen_dp_tiny"
+                    android:gravity = "center"
+                    android:text = "@string/text_name_social_insta"
+                    android:textColor = "#6B54C4"
+                    android:textSize = "@dimen/dimen_sp_small"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id = "@+id/layout_social_apparat"
+                android:layout_width = "0dp"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center"
+                android:layout_margin = "@dimen/dimen_dp_tiny"
+                android:layout_weight = "1"
+
+                android:gravity = "center"
+                android:orientation = "vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id = "@+id/image_social_apparat"
+                    android:layout_width = "48dp"
+                    android:layout_height = "48dp"
+                    android:contentDescription = "@string/text_name_social_apparat"
+                    android:padding = "@dimen/dimen_dp_small"
+                    app:srcCompat="@drawable/logo_social_com_aparat"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id = "@+id/text_social_apparat"
+                    android:layout_width = "match_parent"
+                    android:layout_height = "wrap_content"
+                    android:gravity = "center"
+                    android:text = "@string/text_name_social_apparat"
+                    android:textColor = "#ED145B"
+                    android:textSize = "@dimen/dimen_sp_small"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id = "@+id/layout_social_telegram"
+                android:layout_width = "0dp"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center"
+                android:layout_weight = "1"
+
+                android:gravity = "center"
+                android:orientation = "vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id = "@+id/image_social_telegram"
+                    android:layout_width = "48dp"
+                    android:layout_height = "48dp"
+                    android:contentDescription = "@string/text_name_social_telegram"
+                    android:padding = "@dimen/dimen_dp_small"
+                    app:srcCompat="@drawable/logo_social_org_telegram"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id = "@+id/text_social_telegram"
+                    android:layout_width = "match_parent"
+                    android:layout_height = "wrap_content"
+                    android:gravity = "center"
+                    android:text = "@string/text_name_social_telegram"
+                    android:textColor = "#21A4E6"
+                    android:textSize = "@dimen/dimen_sp_small"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id = "@+id/button_close_dialog"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_marginTop = "@dimen/dimen_dp_small"
+        android:layout_marginBottom = "@dimen/dimen_dp_small"
+        android:fontFamily = "@font/iran_sans_light"
+        android:gravity = "center_horizontal|center_vertical"
+        android:text = "@string/dlg_title_close_dialog"
+        android:textColor = "@color/background_slider_sepration_line"
+        android:textSize = "@dimen/dimen_sp_small"
+        android:theme = "@style/DarkFlatButton"
+        app:layout_constraintLeft_toLeftOf = "@id/header_text"
+        app:layout_constraintTop_toBottomOf = "@id/layout_social_list"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

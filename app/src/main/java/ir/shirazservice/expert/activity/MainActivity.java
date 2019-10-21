@@ -7,16 +7,19 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.text.Html;
 import android.view.Display;
 import android.view.View;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
 import java.util.Objects;
 
@@ -51,6 +54,8 @@ import static ir.shirazservice.expert.utils.APP.context;
 
 public class MainActivity extends AppCompatActivity implements IRtl, IDefault, IInternetController {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
+    private FirebaseRemoteConfig mFirebaseRemoteConfig;
 
     private static final int METHOD_TYPE_SAVE_TOKEN = 1;
     private static final int METHOD_TYPE_WORKMAN_CREDIT = 2;
@@ -97,6 +102,17 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+
+        mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
+                .setMinimumFetchIntervalInSeconds( 3600 )
+                .build();
+        mFirebaseRemoteConfig.setConfigSettingsAsync( configSettings );
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance( this );
+
+
 
         OnActivityDefaultSetting();
         setButtonNavigation();
