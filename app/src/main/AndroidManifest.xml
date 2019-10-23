@@ -52,6 +52,10 @@
 
         <!--</fragment>-->
 
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="false" />
+
 
     </application>
 
