@@ -1,5 +1,7 @@
 package ir.shirazservice.expert.webservice.getbaseinfo;
 
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
@@ -37,7 +39,7 @@ public class GetBaseInfoOfAppController {
 
             @Override
             public void onFailure(@NonNull Call<BaseInfoOfApp> call,@NonNull  Throwable t) {
-                callback.onFailure(t.getCause().getMessage());
+                callback.onFailure(Objects.requireNonNull(t.getCause()).getMessage());
             }
         });
     }

@@ -1,9 +1,8 @@
 package ir.shirazservice.expert.webservice.getgiftchargeformula;
 
-import androidx.annotation.NonNull;
-
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.shirazserviceapi.AppController;
 import retrofit2.Call;
@@ -20,10 +19,10 @@ public class GetGiftChargeFormulaController {
         this.getGiftChargeFormulaCallback = getGiftChargeFormulaCallback;
     }
 
-    public void start(int userId, String accessToken) {
+    public void start(int userId, String accessToken,GiftChargeInput giftChargeInput) {
         Retrofit retrofit = AppController.getInstance().getRetrofitObject();
         GetGiftChargeFormulaApi getGiftChargeFormulaApi = retrofit.create(GetGiftChargeFormulaApi.class);
-        Call<List<GiftChargeFormula>> listCall = getGiftChargeFormulaApi.execute(userId, accessToken);
+        Call<List<GiftChargeFormula>> listCall = getGiftChargeFormulaApi.execute(userId, accessToken,giftChargeInput);
         listCall.enqueue(new Callback<List<GiftChargeFormula>>() {
             @Override
             public void onResponse(@NonNull Call<List<GiftChargeFormula>> call, @NonNull Response<List<GiftChargeFormula>> response) {

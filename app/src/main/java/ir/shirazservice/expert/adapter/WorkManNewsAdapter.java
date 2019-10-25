@@ -1,10 +1,6 @@
 package ir.shirazservice.expert.adapter;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +9,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.RecyclerView;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.interfaces.RecyclerViewClickListener;
 import ir.shirazservice.expert.webservice.news.WorkmanNews;
@@ -23,7 +23,6 @@ public class WorkManNewsAdapter extends RecyclerView.Adapter<WorkManNewsAdapter.
 
     private final List<WorkmanNews> items;
     private final RecyclerViewClickListener listener;
-    private final Context context;
 
     public WorkManNewsAdapter(Context context, List<WorkmanNews> items, int countNew, RecyclerViewClickListener listener) {
 
@@ -33,7 +32,6 @@ public class WorkManNewsAdapter extends RecyclerView.Adapter<WorkManNewsAdapter.
         } else
             this.items = items;
         this.listener = listener;
-        this.context = context;
     }
 
     @NonNull

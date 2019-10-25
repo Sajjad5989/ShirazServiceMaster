@@ -7,11 +7,6 @@ import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.AppCompatTextView;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.BuildConfig;
@@ -45,6 +45,7 @@ import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.getgiftchargeformula.GetGiftChargeFormulaApi;
 import ir.shirazservice.expert.webservice.getgiftchargeformula.GetGiftChargeFormulaController;
 import ir.shirazservice.expert.webservice.getgiftchargeformula.GiftChargeFormula;
+import ir.shirazservice.expert.webservice.getgiftchargeformula.GiftChargeInput;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
 
 import static ir.shirazservice.expert.utils.APP.context;
@@ -151,7 +152,7 @@ public class ChargeFragment extends Fragment implements  IInternetController {
     private int servicemanId;
     private String accessToken;
     private String currentRefId;
-
+private GiftChargeInput giftChargeInput;
 
     @Nullable
     @Override
@@ -327,7 +328,9 @@ public class ChargeFragment extends Fragment implements  IInternetController {
 
         servicemanId = serviceMan.getServicemanId();
         accessToken = serviceMan.getAccessToken();
-
+        giftChargeInput = new GiftChargeInput();
+        giftChargeInput.setCityId(serviceMan.getCityId());
+        giftChargeInput.setProvinceId(serviceMan.getProvinceId());
     }
 
     private void callFormulaCharge() {
@@ -337,7 +340,7 @@ public class ChargeFragment extends Fragment implements  IInternetController {
         }
         showHideWaitingProgress(false);
         GetGiftChargeFormulaController getGiftChargeFormulaController = new GetGiftChargeFormulaController(getGiftChargeFormulaCallback);
-        getGiftChargeFormulaController.start(servicemanId, accessToken);
+        getGiftChargeFormulaController.start(servicemanId, accessToken,giftChargeInput);
     }
 
     private void calculateGiftCharge() {

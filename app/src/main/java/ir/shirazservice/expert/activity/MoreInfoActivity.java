@@ -1,25 +1,28 @@
 package ir.shirazservice.expert.activity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Display;
 import android.view.View;
 
 import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.dialog.ExitAppDialog;
+import ir.shirazservice.expert.dialog.socialnetworks.SocialNetworkDialog;
+import ir.shirazservice.expert.dialog.socialnetworks.SocialNetworkOnClickListener;
 import ir.shirazservice.expert.interfaces.IDefault;
 import ir.shirazservice.expert.interfaces.IInternetController;
 import ir.shirazservice.expert.interfaces.IRtl;
@@ -53,6 +56,9 @@ public class MoreInfoActivity extends AppCompatActivity implements IRtl, IDefaul
     AppCompatTextView tvViewExit;
 
     private String supportTeamPhone;
+    private String instagramLink;
+    private String aparatLink;
+    private String telegramLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,14 +119,15 @@ public class MoreInfoActivity extends AppCompatActivity implements IRtl, IDefaul
             case R.id.tv_view_message:
                 openMessage();
                 break;
-            case R.id.tv_view_rolls:
-                break;
-            case R.id.tv_view_about_us:
-                break;
+//            case R.id.tv_view_rolls:
+//                break;
+//            case R.id.tv_view_about_us:
+//                break;
             case R.id.tv_view_contact_us:
                 CallSupportTeam();
                 break;
             case R.id.tv_view_follow_us:
+                openSocialNetWork();
                 break;
             case R.id.tv_view_exit:
                 ExitApp();
@@ -138,15 +145,66 @@ public class MoreInfoActivity extends AppCompatActivity implements IRtl, IDefaul
         startActivity(intent);
     }
 
+private void openSocialNetWork()
+{
+    SocialNetworkDialog socialNetworkDialog = new SocialNetworkDialog(MoreInfoActivity.this, new SocialNetworkOnClickListener() {
+        @Override
+        public void onInstagram() {
+            openInstagram();
+        }
 
+        @Override
+        public void onApparat() {
+
+        }
+
+        @Override
+        public void onTelegram() {
+            openTelegram();
+        }
+    });
+
+    Objects.requireNonNull(socialNetworkDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    socialNetworkDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
+    socialNetworkDialog.setCancelable(false);
+    socialNetworkDialog.show();
+    Display display = getWindowManager().getDefaultDisplay();
+    Point size = new Point();
+    display.getSize(size);
+    int width = size.x;
+    width = (int) ((width) * 0.9);
+    socialNetworkDialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+
+}
 
     private void loadLinks() {
         BaseInfoOfApp baseInfoOfApp = GeneralPreferences.getInstance(this).getBaseInfoOfApp();
         if (baseInfoOfApp != null) {
             supportTeamPhone = baseInfoOfApp.getSupportPhone();
-            //baseInfoOfApp.get
+          instagramLink=  baseInfoOfApp.getInstagramLink();
+            telegramLink=baseInfoOfApp.getTelegramLink();
+            aparatLink=baseInfoOfApp.getAparatLink();
         }
     }
+
+    private void openInstagram()
+    {
+        Uri uri = Uri.parse(instagramLink);
+        Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+        likeIng.setPackage("com.instagram.android");
+        try {
+            startActivity(likeIng);
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(instagramLink)));
+        }
+    }
+
+  private void openTelegram()
+  {
+      Intent telegram = new Intent(Intent.ACTION_VIEW , Uri.parse("https://telegram.me/"+telegramLink));
+      startActivity(telegram);
+  }
 
     private void CallSupportTeam()
     {
@@ -159,22 +217,22 @@ public class MoreInfoActivity extends AppCompatActivity implements IRtl, IDefaul
     private void ExitApp()
     {
 
-        ExitAppDialog chooseRequestDialog = new ExitAppDialog(MoreInfoActivity.this,
+        ExitAppDialog  exitAppDialog = new ExitAppDialog(MoreInfoActivity.this,
                 done -> {
                if (done)
                    APP.killApp();
                 });
 
-        Objects.requireNonNull(chooseRequestDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        chooseRequestDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
-        chooseRequestDialog.setCancelable(false);
-        chooseRequestDialog.show();
+        Objects.requireNonNull(exitAppDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        exitAppDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
+        exitAppDialog.setCancelable(false);
+        exitAppDialog.show();
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
         width = (int) ((width) * 0.9);
-        chooseRequestDialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+        exitAppDialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
 
     }
 }

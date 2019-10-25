@@ -1,11 +1,11 @@
 package ir.shirazservice.expert.webservice.news;
 
-import androidx.annotation.NonNull;
-
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.shirazserviceapi.AppController;
+import ir.shirazservice.expert.webservice.shirazserviceapi.GeneralIdsInput;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,12 +20,12 @@ public class GetWorkmanNewsController {
         this.getWorkmanNewsCallback = getWorkmanNewsCallback;
     }
 
-    public void start(int userId,String  accessToken)
+    public void start(int userId, String  accessToken, GeneralIdsInput generalIdsInput)
     {
         Retrofit retrofit = AppController.getInstance().getRetrofitObject();
         GetWorkmanNewsApi getWorkmanNewsApi = retrofit.create(GetWorkmanNewsApi.class);
         Call<List<WorkmanNews>> getWorkmanNewsCall = getWorkmanNewsApi.execute
-                (userId,accessToken);
+                (userId,accessToken,generalIdsInput);
 
         getWorkmanNewsCall.enqueue(new Callback<List<WorkmanNews>>() {
             @Override

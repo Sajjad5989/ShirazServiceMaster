@@ -6,20 +6,21 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.mlsdev.animatedrv.AnimatedRecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
@@ -37,6 +38,7 @@ import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
 import ir.shirazservice.expert.webservice.news.GetWorkmanNewsApi;
 import ir.shirazservice.expert.webservice.news.GetWorkmanNewsController;
 import ir.shirazservice.expert.webservice.news.WorkmanNews;
+import ir.shirazservice.expert.webservice.shirazserviceapi.GeneralIdsInput;
 
 import static ir.shirazservice.expert.utils.APP.context;
 
@@ -47,7 +49,7 @@ public class AllNewsActivity extends AppCompatActivity implements IInternetContr
     protected Toolbar toolbar;
 
     @BindView(R.id.all_transaction_list)
-    protected RecyclerView allTransactionListRecycler;
+    protected AnimatedRecyclerView allTransactionListRecycler;
 
     @BindView(R.id.const_waiting_main_fragment)
     protected ConstraintLayout constWaiting;
@@ -134,9 +136,12 @@ public class AllNewsActivity extends AppCompatActivity implements IInternetContr
 
         int servicemanId = serviceMan.getServicemanId();
         String accessToken = serviceMan.getAccessToken();
+        GeneralIdsInput generalIdsInput = new GeneralIdsInput();
+        generalIdsInput.setCityId(serviceMan.getCityId());
+        generalIdsInput.setProvinceId(serviceMan.getProvinceId());
 
         GetWorkmanNewsController getWorkmanNewsController = new GetWorkmanNewsController(getWorkmanNewsCallback);
-        getWorkmanNewsController.start(servicemanId, accessToken);
+        getWorkmanNewsController.start(servicemanId, accessToken,generalIdsInput);
     }
 
     private void openInternetCheckingDialog() {
@@ -177,6 +182,7 @@ public class AllNewsActivity extends AppCompatActivity implements IInternetContr
 
         allTransactionListRecycler.setLayoutManager(gridLayoutManager);
         allTransactionListRecycler.setAdapter(workManNewsAdapter);
+        allTransactionListRecycler.scheduleLayoutAnimation();
 
         showHideWaitingProgress(true);
         showNotFoundInfoLayout();

@@ -7,16 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,12 +16,22 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
+import com.mlsdev.animatedrv.AnimatedRecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.viewpager.widget.ViewPager;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.activity.ProfileActivity;
 import ir.shirazservice.expert.activity.ServiceRequestDetailActivity;
@@ -55,6 +55,7 @@ import ir.shirazservice.expert.webservice.requestlist.Request;
 import ir.shirazservice.expert.webservice.requestlist.RequestListApi;
 import ir.shirazservice.expert.webservice.requestlist.RequestListController;
 import ir.shirazservice.expert.webservice.requestlist.RequestListInputs;
+import ir.shirazservice.expert.webservice.shirazserviceapi.GeneralIdsInput;
 import ir.shirazservice.expert.webservice.slider.AdsSlider;
 import ir.shirazservice.expert.webservice.slider.GetAdsSliderApi;
 import ir.shirazservice.expert.webservice.slider.GetAdsSliderController;
@@ -82,8 +83,10 @@ public class MainFragment extends Fragment implements IInternetController {
     private RatingBar ratingBar;
     private AppCompatTextView tvRetry;
     private AppCompatImageView imageExpert;
-    private RecyclerView recyclerRequest;
-    private RecyclerView recyclerNews;
+
+    private AnimatedRecyclerView recyclerRequest;
+    private AnimatedRecyclerView recyclerNews;
+
     private ViewPager viewPagerSlider;
     private LinearLayout linearDots;
     private ConstraintLayout constraintLayout;
@@ -111,6 +114,7 @@ public class MainFragment extends Fragment implements IInternetController {
     private CircularProgressBar circularProgressBar;
     private int servicemanId;
     private String accessToken;
+    private GeneralIdsInput generalIdsInput;
     private final RequestListApi.GetRequestListCallback getRequestListCallback = new RequestListApi.GetRequestListCallback() {
         @Override
         public void onResponse(boolean successful, ErrorResponseSimple errorResponse, List<Request> response) {
@@ -286,6 +290,13 @@ public class MainFragment extends Fragment implements IInternetController {
     }
 
     private void fillRequestList() {
+
+        recyclerRequest.setVisibility(selectedRequestList==null?View.GONE:View.VISIBLE);
+
+        if (selectedRequestList==null)
+            return;
+
+
         RequestListAdapter requestListAdapter = new RequestListAdapter(getActivity(), selectedRequestList, (v, position) -> {
 
             requestDetailList.setRequestLists(selectedRequestList.get(position));
@@ -295,7 +306,7 @@ public class MainFragment extends Fragment implements IInternetController {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerRequest.setLayoutManager(gridLayoutManager);
         recyclerRequest.setAdapter(requestListAdapter);
-
+        recyclerRequest.scheduleLayoutAnimation();
 
         callGetNews();
     }
@@ -305,12 +316,14 @@ public class MainFragment extends Fragment implements IInternetController {
 
         servicemanId = serviceMan.getServicemanId();
         accessToken = serviceMan.getAccessToken();
+        generalIdsInput = new GeneralIdsInput();
+        generalIdsInput.setCityId(serviceMan.getCityId());
+        generalIdsInput.setProvinceId(serviceMan.getProvinceId());
 
     }
 
     private RequestListInputs getListInput() {
 
-        //ToDo  مقادیر زیر را بایستی پر کنم
         RequestListInputs requestListInputs = new RequestListInputs();
         requestListInputs.setServicemanId(servicemanId);
         requestListInputs.setServiceTitle("");
@@ -331,7 +344,7 @@ public class MainFragment extends Fragment implements IInternetController {
         }
 
         GetWorkmanNewsController getWorkmanNewsController = new GetWorkmanNewsController(getWorkmanNewsCallback);
-        getWorkmanNewsController.start(servicemanId, accessToken);
+        getWorkmanNewsController.start(servicemanId, accessToken,generalIdsInput);
     }
 
     private void callGetSliderAds() {
@@ -340,7 +353,7 @@ public class MainFragment extends Fragment implements IInternetController {
         }
 
         GetAdsSliderController getAdsSliderController = new GetAdsSliderController(getAdsSliderCallback);
-        getAdsSliderController.start(servicemanId, accessToken);
+        getAdsSliderController.start(servicemanId, accessToken,generalIdsInput);
     }
 
     private void getRequestList() {
@@ -483,6 +496,7 @@ public class MainFragment extends Fragment implements IInternetController {
 
         recyclerNews.setLayoutManager(gridLayoutManager);
         recyclerNews.setAdapter(workManNewsAdapter);
+        recyclerNews.scheduleLayoutAnimation();
 
         showHideWaitingProgress(true);
         showNotFoundInfoLayout();

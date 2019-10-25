@@ -6,20 +6,21 @@ import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mlsdev.animatedrv.AnimatedRecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
@@ -43,7 +44,7 @@ import static ir.shirazservice.expert.utils.APP.context;
 public class MyServicesFragment extends Fragment implements IInternetController {
 
     @BindView(R.id.all_service_list)
-    protected RecyclerView allServiceRecycler;
+    protected AnimatedRecyclerView allServiceRecycler;
     @BindView(R.id.const_waiting_main_fragment)
     protected ConstraintLayout constWaiting;
     @BindView(R.id.const_not_found_info)
@@ -150,6 +151,8 @@ public class MyServicesFragment extends Fragment implements IInternetController 
 
         allServiceRecycler.setLayoutManager(gridLayoutManager);
         allServiceRecycler.setAdapter(myServiceAdapter);
+        allServiceRecycler.scheduleLayoutAnimation();
+
         showHideWaitingProgress(true);
         showNotFoundInfoLayout();
     }

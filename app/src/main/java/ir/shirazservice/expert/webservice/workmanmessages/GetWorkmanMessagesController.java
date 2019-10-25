@@ -1,9 +1,8 @@
 package ir.shirazservice.expert.webservice.workmanmessages;
 
-import androidx.annotation.NonNull;
-
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.shirazserviceapi.AppController;
 import retrofit2.Call;
@@ -19,10 +18,10 @@ public class GetWorkmanMessagesController {
         this.getWorkmanMessagesCallback = getWorkmanMessagesCallback;
     }
 
-    public void start(int userId, String accessToken) {
+    public void start(int userId, String accessToken,WorkmanInput workmanInput) {
         Retrofit retrofit = AppController.getInstance().getRetrofitObject();
         GetWorkmanMessagesApi getWorkmanMessagesApi = retrofit.create(GetWorkmanMessagesApi.class);
-        Call<List<WorkmanMessages>> listCall = getWorkmanMessagesApi.execute(userId, accessToken);
+        Call<List<WorkmanMessages>> listCall = getWorkmanMessagesApi.execute(userId, accessToken,workmanInput);
         listCall.enqueue(new Callback<List<WorkmanMessages>>() {
             @Override
             public void onResponse(@NonNull Call<List<WorkmanMessages>> call, @NonNull Response<List<WorkmanMessages>> response) {

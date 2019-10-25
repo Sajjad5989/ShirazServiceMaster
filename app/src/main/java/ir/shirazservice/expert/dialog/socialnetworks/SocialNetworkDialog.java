@@ -16,11 +16,11 @@ import ir.shirazservice.expert.R;
 public class SocialNetworkDialog extends Dialog {
     private final SocialNetworkOnClickListener listener;
     private LinearLayout layoutSocialInstagram;
-    private LinearLayout layoutSocialApparat;
+    private LinearLayout layoutSocialAparat;
     private LinearLayout layoutSocialTelegram;
 
     private AppCompatImageView imageSocialInstagram;
-    private AppCompatImageView imageSocialApparat;
+    private AppCompatImageView imageSocialAparat;
     private AppCompatImageView imageSocialTelegram;
 
     private AppCompatTextView textSocialInstagram;
@@ -47,11 +47,11 @@ public class SocialNetworkDialog extends Dialog {
     private void findViews ( ) {
 
         layoutSocialInstagram = findViewById( R.id.layout_social_instagram );
-        layoutSocialApparat = findViewById( R.id.layout_social_apparat );
+        layoutSocialAparat = findViewById( R.id.layout_social_apparat );
         layoutSocialTelegram = findViewById( R.id.layout_social_telegram );
 
         imageSocialInstagram = findViewById( R.id.image_social_instagram );
-        imageSocialApparat = findViewById( R.id.image_social_apparat );
+        imageSocialAparat = findViewById( R.id.image_social_apparat );
         imageSocialTelegram = findViewById( R.id.image_social_telegram );
 
         textSocialInstagram = findViewById( R.id.text_social_instagram );
@@ -65,11 +65,11 @@ public class SocialNetworkDialog extends Dialog {
     private void onClickSetting ( ) {
 
         layoutSocialInstagram.setOnClickListener( view -> onInstagram( ) );
-        layoutSocialApparat.setOnClickListener( view -> onApparat( ) );
+        layoutSocialAparat.setOnClickListener( view -> onApparat( ) );
         layoutSocialTelegram.setOnClickListener( view -> onTelegram( ) );
 
         imageSocialInstagram.setOnClickListener( view -> onInstagram( ) );
-        imageSocialApparat.setOnClickListener( view -> onApparat( ) );
+        imageSocialAparat.setOnClickListener( view -> onApparat( ) );
         imageSocialTelegram.setOnClickListener( view -> onTelegram( ) );
 
         textSocialInstagram.setOnClickListener( view -> onInstagram( ) );

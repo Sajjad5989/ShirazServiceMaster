@@ -4,19 +4,20 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.mlsdev.animatedrv.AnimatedRecyclerView;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
@@ -33,7 +34,8 @@ public class AllTransactionActivity extends AppCompatActivity implements Seriali
     protected Toolbar toolbar;
 
     @BindView(R.id.all_transaction_list)
-    protected RecyclerView allTransactionListRecycler;
+    protected AnimatedRecyclerView allTransactionListRecycler;
+
     @BindView(R.id.const_waiting_main_fragment)
     protected ConstraintLayout constWaiting;
     @BindView(R.id.const_not_found_info)
@@ -119,6 +121,7 @@ public class AllTransactionActivity extends AppCompatActivity implements Seriali
         GridLayoutManager gridLayoutManager = new GridLayoutManager(AllTransactionActivity.this, 1);
         allTransactionListRecycler.setLayoutManager(gridLayoutManager);
         allTransactionListRecycler.setAdapter(myTransactionAdapter);
+        allTransactionListRecycler.scheduleLayoutAnimation();
 
         showHideWaitingProgress(true);
     }

@@ -3,9 +3,9 @@ package ir.shirazservice.expert.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import android.view.Window;
 
+import androidx.annotation.NonNull;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ir.shirazservice.expert.R;
@@ -38,7 +38,7 @@ public class ExitAppDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.dialog_choose_request);
+        setContentView(R.layout.dialog_exit_app);
 
         ButterKnife.bind(this);
     }

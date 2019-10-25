@@ -7,12 +7,6 @@ import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.AppCompatRadioButton;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +18,12 @@ import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
 import java.io.Serializable;
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatRadioButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
@@ -220,10 +220,9 @@ public class OfflineChargeFragment extends Fragment implements Serializable, IIn
 
         PersianCalendar now = new PersianCalendar();
         now.setPersianDate(year, monthOfYear, dayOfMonth);
-        monthOfYear = monthOfYear + 1;
-        String mStr = monthOfYear < 10 ? "0" + monthOfYear : "" + monthOfYear;
-        String dStr = dayOfMonth < 10 ? "0" + dayOfMonth : "" + dayOfMonth;
-        String textDate = year + "/" + mStr + "/" + dStr;
+
+        String textDate = now.getPersianWeekDayName()+"، "+now.getPersianDay()+" "+
+                now.getPersianMonthName()+" "+now.getPersianYear();
         btnDate.setText( textDate);
         day = dayOfMonth;
         month = monthOfYear + 1;

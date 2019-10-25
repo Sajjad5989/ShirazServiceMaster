@@ -5,15 +5,15 @@ import com.squareup.moshi.Json;
 public class ServiceInfo {
 
     @Json(name = "catId")
-    private int catId;
+    private Integer catId;
     @Json(name = "catTitle")
     private String catTitle;
     @Json(name = "subCatId")
-    private int subCatId;
+    private Integer subCatId;
     @Json(name = "subCatTitle")
     private String subCatTitle;
     @Json(name = "serviceId")
-    private int serviceId;
+    private Integer serviceId;
     @Json(name = "serviceTitle")
     private String serviceTitle;
     @Json(name = "basePrice")
@@ -31,21 +31,23 @@ public class ServiceInfo {
     @Json(name = "extraField2")
     private String extraField2;
     @Json(name = "tagId")
-    private int tagId;
+    private Integer tagId;
     @Json(name = "tagTitle")
     private String tagTitle;
     @Json(name = "type")
-    private int type;
+    private Integer type;
+    @Json(name = "immediate")
+    private Integer immediate;
     @Json(name = "insrtTime")
-    private int insrtTime;
+    private Integer insrtTime;
     @Json(name = "insrtTimePersian")
     private String insrtTimePersian;
 
-    public int getCatId() {
+    public Integer getCatId() {
         return catId;
     }
 
-    public void setCatId(int catId) {
+    public void setCatId(Integer catId) {
         this.catId = catId;
     }
 
@@ -57,11 +59,11 @@ public class ServiceInfo {
         this.catTitle = catTitle;
     }
 
-    public int getSubCatId() {
+    public Integer getSubCatId() {
         return subCatId;
     }
 
-    public void setSubCatId(int subCatId) {
+    public void setSubCatId(Integer subCatId) {
         this.subCatId = subCatId;
     }
 
@@ -73,11 +75,11 @@ public class ServiceInfo {
         this.subCatTitle = subCatTitle;
     }
 
-    public int getServiceId() {
+    public Integer getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(int serviceId) {
+    public void setServiceId(Integer serviceId) {
         this.serviceId = serviceId;
     }
 
@@ -145,11 +147,11 @@ public class ServiceInfo {
         this.extraField2 = extraField2;
     }
 
-    public int getTagId() {
+    public Integer getTagId() {
         return tagId;
     }
 
-    public void setTagId(int tagId) {
+    public void setTagId(Integer tagId) {
         this.tagId = tagId;
     }
 
@@ -161,19 +163,27 @@ public class ServiceInfo {
         this.tagTitle = tagTitle;
     }
 
-    public int getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
-    public int getInsrtTime() {
+    public Integer getImmediate() {
+        return immediate;
+    }
+
+    public void setImmediate(Integer immediate) {
+        this.immediate = immediate;
+    }
+
+    public Integer getInsrtTime() {
         return insrtTime;
     }
 
-    public void setInsrtTime(int insrtTime) {
+    public void setInsrtTime(Integer insrtTime) {
         this.insrtTime = insrtTime;
     }
 
@@ -184,5 +194,4 @@ public class ServiceInfo {
     public void setInsrtTimePersian(String insrtTimePersian) {
         this.insrtTimePersian = insrtTimePersian;
     }
-
 }

@@ -1,11 +1,11 @@
 package ir.shirazservice.expert.webservice.slider;
 
-import androidx.annotation.NonNull;
-
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.shirazserviceapi.AppController;
+import ir.shirazservice.expert.webservice.shirazserviceapi.GeneralIdsInput;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,12 +19,12 @@ public class GetAdsSliderController {
         this.getAdsSliderCallback = getAdsSliderCallback;
     }
 
-    public void start(int userId, String accessToken) {
+    public void start(int userId, String accessToken, GeneralIdsInput generalIdsInput) {
 
         Retrofit retrofit = AppController.getInstance().getRetrofitObject();
         GetAdsSliderApi getAdsSliderApi = retrofit.create(GetAdsSliderApi.class);
 
-        Call<List<AdsSlider>> adsSliderCall = getAdsSliderApi.execute(userId, accessToken);
+        Call<List<AdsSlider>> adsSliderCall = getAdsSliderApi.execute(userId, accessToken,generalIdsInput);
 
         adsSliderCall.enqueue(new Callback<List<AdsSlider>>() {
             @Override

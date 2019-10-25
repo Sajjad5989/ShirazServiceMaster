@@ -6,20 +6,21 @@ import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.mlsdev.animatedrv.AnimatedRecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
@@ -36,6 +37,7 @@ import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
 import ir.shirazservice.expert.webservice.workmanmessages.GetWorkmanMessagesApi;
 import ir.shirazservice.expert.webservice.workmanmessages.GetWorkmanMessagesController;
+import ir.shirazservice.expert.webservice.workmanmessages.WorkmanInput;
 import ir.shirazservice.expert.webservice.workmanmessages.WorkmanMessages;
 
 import static ir.shirazservice.expert.utils.APP.context;
@@ -47,7 +49,7 @@ public class WorkmanMessageActivity extends AppCompatActivity implements IIntern
     protected Toolbar toolbar;
 
     @BindView(R.id.all_transaction_list)
-    protected RecyclerView allTransactionListRecycler;
+    protected AnimatedRecyclerView allTransactionListRecycler;
 
     @BindView(R.id.const_waiting_main_fragment)
     protected ConstraintLayout constWaiting;
@@ -132,11 +134,15 @@ public class WorkmanMessageActivity extends AppCompatActivity implements IIntern
             openInternetCheckingDialog();
 
         ServiceMan serviceMan = GeneralPreferences.getInstance(context).getServiceManInfo();
+        WorkmanInput workmanInput= new WorkmanInput();
+        workmanInput.setCityId(serviceMan.getCityId());
+        workmanInput.setProvinceId(serviceMan.getProvinceId());
+
 
         GetWorkmanMessagesController getWorkmanMessagesController = new
                 GetWorkmanMessagesController(getWorkmanMessagesCallback);
 
-        getWorkmanMessagesController.start(serviceMan.getServicemanId(), serviceMan.getAccessToken());
+        getWorkmanMessagesController.start(serviceMan.getServicemanId(), serviceMan.getAccessToken(),workmanInput);
     }
 
     private void fillMessageRecyclerView() {
@@ -145,6 +151,7 @@ public class WorkmanMessageActivity extends AppCompatActivity implements IIntern
             GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
             allTransactionListRecycler.setLayoutManager(gridLayoutManager);
             allTransactionListRecycler.setAdapter(workManMessageAdapter);
+            allTransactionListRecycler.scheduleLayoutAnimation();
         }
         showHideWaitingProgress(true);
     }

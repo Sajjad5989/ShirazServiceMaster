@@ -104,12 +104,18 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id = "@+id/recycler_request"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_tiny"
-                android:layout_marginBottom = "@dimen/dimen_dp_tiny" />
+            <com.mlsdev.animatedrv.AnimatedRecyclerView
+                android:id="@+id/recycler_request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:animationDuration="600"
+                app:layoutManagerOrientation="vertical"
+                app:gridLayoutManagerColumns="1"
+                app:layoutManagerReverse="false"
+                app:layoutManagerType="grid"
+                android:layout_margin = "@dimen/dimen_dp_tiny"/>
+
+
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -153,14 +159,19 @@
                     app:layout_constraintLeft_toLeftOf = "parent"
                     app:layout_constraintTop_toTopOf = "parent"/>
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id = "@+id/recycler_news"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:layout_margin = "@dimen/dimen_dp_tiny" />
+            <com.mlsdev.animatedrv.AnimatedRecyclerView
+                android:id="@+id/recycler_news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:animationDuration="600"
+                app:layoutManagerOrientation="vertical"
+                app:gridLayoutManagerColumns="1"
+                app:layoutManagerReverse="false"
+                app:layoutManagerType="grid"
+                android:layout_margin = "@dimen/dimen_dp_tiny"/>
+
 
         </LinearLayout>
 

@@ -7,29 +7,30 @@ import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.mlsdev.animatedrv.AnimatedRecyclerView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import ir.shirazservice.expert.R;
-import ir.shirazservice.expert.packedactivity.AllTransactionActivity;
 import ir.shirazservice.expert.adapter.MyTransactionAdapter;
 import ir.shirazservice.expert.dialog.TransactionDetailDialog;
 import ir.shirazservice.expert.interfaces.IInternetController;
 import ir.shirazservice.expert.internetutils.ConnectionInternetDialog;
 import ir.shirazservice.expert.internetutils.InternetConnectionListener;
+import ir.shirazservice.expert.packedactivity.AllTransactionActivity;
 import ir.shirazservice.expert.preferences.GeneralPreferences;
 import ir.shirazservice.expert.utils.APP;
 import ir.shirazservice.expert.utils.OnlineCheck;
@@ -51,7 +52,7 @@ public class MyTransactionFragment extends Fragment implements Serializable, IIn
 
     private List<WorkmanFinancialTransaction> myWorkmanFinancialTransactionList;
     private final TransactionList transactionList = new TransactionList();
-    private RecyclerView myTransactionListRecycler;
+    private AnimatedRecyclerView myTransactionListRecycler;
     private ConstraintLayout consWaiting;
     private ConstraintLayout constNotFoundInfo;
     private AppCompatTextView tvGetMoney;
@@ -236,7 +237,7 @@ public class MyTransactionFragment extends Fragment implements Serializable, IIn
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
         myTransactionListRecycler.setLayoutManager(gridLayoutManager);
         myTransactionListRecycler.setAdapter(myTransactionAdapter);
-
+        myTransactionListRecycler.scheduleLayoutAnimation();
 
         showHideWaitingProgress(true);
         showNotFoundInfoLayout();
@@ -260,10 +261,15 @@ public class MyTransactionFragment extends Fragment implements Serializable, IIn
             intent.putExtras(bundle);
             startActivity(intent);
         });
-        btnIncreaseCharge.setOnClickListener(view12 -> {
-            Intent intent = new Intent(getActivity(), ChargeFragment.class);
-            startActivity(intent);
-        });
+        btnIncreaseCharge.setOnClickListener(view12 -> openChargeActivity());
+    }
+
+    private void openChargeActivity() {
+        ChargeFragment chargeFragment = ChargeFragment.newInstance();
+        getFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, chargeFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override

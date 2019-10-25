@@ -1,5 +1,7 @@
 package ir.shirazservice.expert.webservice.getservicemaninfobyid;
 
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
@@ -36,7 +38,7 @@ public class GetServiceManInfoByIdController {
 
             @Override
             public void onFailure(@NonNull Call<ServiceManInfoDetail> call, @NonNull Throwable t) {
-                callback.onFailure(t.getCause().getMessage());
+                callback.onFailure(Objects.requireNonNull(t.getCause()).getMessage());
             }
         });
     }

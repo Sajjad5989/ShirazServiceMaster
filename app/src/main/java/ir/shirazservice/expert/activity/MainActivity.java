@@ -1,20 +1,16 @@
 package ir.shirazservice.expert.activity;
 
-
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
 import android.text.Html;
 import android.view.Display;
 import android.view.View;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -23,6 +19,9 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
 import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
@@ -51,6 +50,7 @@ import ir.shirazservice.expert.webservice.workmancredit.WorkmanCredit;
 import ir.shirazservice.expert.webservice.workmancredit.WorkmanCreditReq;
 
 import static ir.shirazservice.expert.utils.APP.context;
+
 
 public class MainActivity extends AppCompatActivity implements IRtl, IDefault, IInternetController {
 

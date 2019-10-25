@@ -6,7 +6,6 @@
     <uses-permission android:name = "android.permission.INTERNET" />
     <uses-permission android:name = "android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
     <application
         android:name="ir.shirazservice.expert.utils.APP"
         android:usesCleartextTraffic = "true"
@@ -33,7 +32,7 @@
 
         <activity android:name=".activity.IntroSliderActivity"  android:screenOrientation = "portrait"/>
         <activity android:name=".activity.LoginActivity"  android:screenOrientation = "portrait"/>
-        <activity android:name=".activity.MainActivity"  android:screenOrientation = "portrait"/>
+<!--        <activity android:name=".activity.MainActivity"  android:screenOrientation = "portrait"/>-->
         <activity android:name=".packedactivity.AllTransactionActivity"  android:screenOrientation = "portrait"/>
         <activity android:name=".packedactivity.AllNewsActivity"  android:screenOrientation = "portrait"/>
         <activity android:name=".packedactivity.WorkmanMessageActivity"  android:screenOrientation = "portrait"/>
@@ -41,16 +40,16 @@
         <activity android:name=".activity.ProfileActivity"  android:screenOrientation = "portrait"/>
         <activity android:name=".activity.MoreInfoActivity"  android:screenOrientation = "portrait"/>
 
-        <!--<fragment android:name=".fragment.ChargeFragment"  android:screenOrientation = "portrait">-->
+        <activity android:name=".activity.MainActivity"  android:screenOrientation = "portrait">
 
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.VIEW" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
-                <!--<category android:name="android.intent.category.BROWSABLE" />-->
-                <!--<data android:host="zarrinpalpayment" android:scheme="return" />-->
-            <!--</intent-filter>-->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:host="zarrinpalpayment" android:scheme="return" />
+            </intent-filter>
 
-        <!--</fragment>-->
+        </activity>
 
         <meta-data
             android:name="firebase_performance_logcat_enabled"
