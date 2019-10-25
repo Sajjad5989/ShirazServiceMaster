@@ -1,89 +1,47 @@
 package ir.shirazservice.expert.webservice.getbaseinfo;
 
-import com.squareup.moshi.Json;
-
 public class BaseInfoOfApp {
 
 
-    @Json(name = "androidAppDlLink")
     private String androidAppDlLink;
-    @Json(name = "androidAppDlLink_Direct")
     private String androidAppDlLinkDirect;
-    @Json(name = "androidAppDlLink_Bazaar")
     private String androidAppDlLinkBazaar;
-    @Json(name = "androidAppDlLink_Googleplay")
     private String androidAppDlLinkGoogleplay;
-    @Json(name = "androidWorkmanAppDlLink_Direct")
     private String androidWorkmanAppDlLinkDirect;
-    @Json(name = "androidWorkmanAppDlLink_Bazaar")
     private String androidWorkmanAppDlLinkBazaar;
-    @Json(name = "androidWorkmanAppDlLink_Googleplay")
     private String androidWorkmanAppDlLinkGoogleplay;
-    @Json(name = "iosWorkmanAppDlLink")
     private String iosWorkmanAppDlLink;
-    @Json(name = "iosAppDlLink")
     private String iosAppDlLink;
-    @Json(name = "instagramLink")
     private String instagramLink;
-    @Json(name = "telegramLink")
     private String telegramLink;
-    @Json(name = "facebookLink")
     private String facebookLink;
-    @Json(name = "twitterLink")
     private String twitterLink;
-    @Json(name = "youtubeLink")
     private String youtubeLink;
-    @Json(name = "googlePlusLink")
     private String googlePlusLink;
-    @Json(name = "eitaaLink")
     private String eitaaLink;
-    @Json(name = "baleLink")
     private String baleLink;
-    @Json(name = "soroushLink")
     private String soroushLink;
-    @Json(name = "aparatLink")
     private String aparatLink;
-    @Json(name = "email")
     private String email;
-    @Json(name = "address")
     private String address;
-    @Json(name = "longitude")
     private Float longitude;
-    @Json(name = "latitude")
     private Float latitude;
-    @Json(name = "NEC_Latitude")
     private Float nECLatitude;
-    @Json(name = "NEC_Longitude")
     private Float nECLongitude;
-    @Json(name = "SWC_Latitude")
     private Float sWCLatitude;
-    @Json(name = "SWC_Longitude")
     private Float sWCLongitude;
-    @Json(name = "phone")
     private String phone;
-    @Json(name = "telegramPhone")
     private String telegramPhone;
-    @Json(name = "whatsappPhone")
     private String whatsappPhone;
-    @Json(name = "supportPhone")
     private String supportPhone;
-    @Json(name = "androidGlobalAppVerCode")
     private String androidGlobalAppVerCode;
-    @Json(name = "androidGlobalAppForceUpdate")
     private int androidGlobalAppForceUpdate;
-    @Json(name = "iosGlobalAppVer")
     private String iosGlobalAppVer;
-    @Json(name = "iosGlobalAppForceUpdate")
     private int iosGlobalAppForceUpdate;
-    @Json(name = "androidServiceManAppVerCode")
     private String androidServiceManAppVerCode;
-    @Json(name = "androidServiceManAppForceUpdate")
     private int androidServiceManAppForceUpdate;
-    @Json(name = "iosServiceManAppVer")
     private String iosServiceManAppVer;
-    @Json(name = "iosServiceManAppForceUpdate")
     private int iosServiceManAppForceUpdate;
-    @Json(name = "appIntroductionText")
     private String appIntroductionText;
 
     public String getAndroidAppDlLink() {

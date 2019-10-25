@@ -1,14 +1,9 @@
 package ir.shirazservice.expert.webservice.workmanmessages;
 
-import com.squareup.moshi.Json;
-
 public class WorkmanInput {
 
-    @Json(name = "workmanId")
     private Integer workmanId;
-    @Json(name = "provinceId")
     private Integer provinceId;
-    @Json(name = "cityId")
     private Integer cityId;
 
     public Integer getWorkmanId() {

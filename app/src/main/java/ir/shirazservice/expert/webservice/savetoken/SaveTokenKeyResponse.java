@@ -1,12 +1,8 @@
 package ir.shirazservice.expert.webservice.savetoken;
 
-import com.squareup.moshi.Json;
-
 public class SaveTokenKeyResponse {
 
-    @Json(name = "code")
     private int code;
-    @Json(name = "message")
     private String message;
 
     public int getCode() {

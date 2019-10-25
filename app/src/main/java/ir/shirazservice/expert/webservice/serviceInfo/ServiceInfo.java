@@ -1,46 +1,25 @@
 package ir.shirazservice.expert.webservice.serviceInfo;
 
-import com.squareup.moshi.Json;
-
 public class ServiceInfo {
 
-    @Json(name = "catId")
     private Integer catId;
-    @Json(name = "catTitle")
     private String catTitle;
-    @Json(name = "subCatId")
     private Integer subCatId;
-    @Json(name = "subCatTitle")
     private String subCatTitle;
-    @Json(name = "serviceId")
     private Integer serviceId;
-    @Json(name = "serviceTitle")
     private String serviceTitle;
-    @Json(name = "basePrice")
     private String basePrice;
-    @Json(name = "picAddress")
     private String picAddress;
-    @Json(name = "body")
     private String body;
-    @Json(name = "extraTitle1")
     private String extraTitle1;
-    @Json(name = "extraField1")
     private String extraField1;
-    @Json(name = "extraTitle2")
     private String extraTitle2;
-    @Json(name = "extraField2")
     private String extraField2;
-    @Json(name = "tagId")
     private Integer tagId;
-    @Json(name = "tagTitle")
     private String tagTitle;
-    @Json(name = "type")
     private Integer type;
-    @Json(name = "immediate")
     private Integer immediate;
-    @Json(name = "insrtTime")
     private Integer insrtTime;
-    @Json(name = "insrtTimePersian")
     private String insrtTimePersian;
 
     public Integer getCatId() {

@@ -1,77 +1,41 @@
 package ir.shirazservice.expert.webservice.getservicemaninfobyid;
 
-import com.squareup.moshi.Json;
-
 public class ServiceManInfoDetail {
 
 
-    @Json(name = "firstName")
     private String firstName;
-    @Json(name = "lastName")
     private String lastName;
-    @Json(name = "servicemanId")
     private int servicemanId;
-    @Json(name = "picAddress")
     private String picAddress;
-    @Json(name = "personTypeIdx")
     private int personTypeIdx;
-    @Json(name = "personType")
     private String personType;
-    @Json(name = "titleId")
     private int titleId;
-    @Json(name = "title")
     private String title;
-    @Json(name = "provinceId")
     private int provinceId;
-    @Json(name = "province")
     private String province;
-    @Json(name = "cityId")
     private int cityId;
-    @Json(name = "city")
     private String city;
-    @Json(name = "areaId")
     private int areaId;
-    @Json(name = "area")
     private String area;
-    @Json(name = "address")
     private String address;
-    @Json(name = "totalPoint")
     private int totalPoint;
-    @Json(name = "rating")
     private Float rating;
-    @Json(name = "commentsCount")
     private int commentsCount;
-    @Json(name = "medalsCount")
     private int medalsCount;
-    @Json(name = "credit")
     private String credit;
-    @Json(name = "tempCredit")
     private String tempCredit;
-    @Json(name = "discountPercent")
     private int discountPercent;
-    @Json(name = "records")
     private String records;
-    @Json(name = "documents")
     private String documents;
-    @Json(name = "lastLoginDate")
     private int lastLoginDate;
-    @Json(name = "lastLoginDatePersian")
     private String lastLoginDatePersian;
-    @Json(name = "lastLoginIP")
     private String lastLoginIP;
-    @Json(name = "membershipTime")
     private int membershipTime;
-    @Json(name = "birthdayTimePersian")
     private String birthdayTimePersian;
-    @Json(name = "birthdayTime")
     private int birthdayTime;
-    @Json(name = "age")
     private int age;
-    @Json(name = "finishedServicesCount")
     private int finishedServicesCount;
-    @Json(name = "insrtTimePersian")
     private String insrtTimePersian;
-    @Json(name = "insrtTime")
     private int insrtTime;
 
     private String getFirstName() {

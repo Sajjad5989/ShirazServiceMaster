@@ -1,69 +1,37 @@
 package ir.shirazservice.expert.webservice.myservice;
 
-import com.squareup.moshi.Json;
 
 public class MyService {
-    @Json(name = "reqId")
     private Integer reqId;
-    @Json(name = "serviceId")
     private Integer serviceId;
-    @Json(name = "serviceTitle")
     private String serviceTitle;
-    @Json(name = "servicePicAddress")
     private String servicePicAddress;
-    @Json(name = "catId")
     private Integer catId;
-    @Json(name = "catTitle")
     private String catTitle;
-    @Json(name = "subCatId")
     private Integer subCatId;
-    @Json(name = "subCatTitle")
     private String subCatTitle;
-    @Json(name = "areaId")
     private Integer areaId;
-    @Json(name = "areaTitle")
     private String areaTitle;
-    @Json(name = "desc")
     private String desc;
-    @Json(name = "insrtTime")
     private Integer insrtTime;
-    @Json(name = "insrtDatePersian")
     private String insrtDatePersian;
-    @Json(name = "insrtDatePersian1")
     private String insrtDatePersian1;
-    @Json(name = "insrtDatePersian2")
     private String insrtDatePersian2;
-    @Json(name = "insrtTimeSimple")
     private String insrtTimeSimple;
-    @Json(name = "insrtTimePersian")
     private String insrtTimePersian;
-    @Json(name = "updteTime")
     private Integer updteTime;
-    @Json(name = "updteDatePersian")
     private String updteDatePersian;
-    @Json(name = "updteDatePersian1")
     private String updteDatePersian1;
-    @Json(name = "updteDatePersian2")
     private String updteDatePersian2;
-    @Json(name = "updteTimeSimple")
     private String updteTimeSimple;
-    @Json(name = "updteTimePersian")
     private String updteTimePersian;
-    @Json(name = "state")
     private Integer state;
-    @Json(name = "stateTitle")
     private String stateTitle;
-    @Json(name = "priority")
     private Integer priority;
-    @Json(name = "priorityTitle")
     private String priorityTitle;
-    @Json(name = "calculatedPrice")
     private String calculatedPrice;
-    @Json(name = "rate")
     private Float rate;
-    @Json(name = "discountCode")
     private String discountCode;
-    @Json(name = "discountDesc")
     private String discountDesc;
 
     public Integer getReqId() {

@@ -1,7 +1,5 @@
 package ir.shirazservice.expert.webservice.workmanfinancial;
 
-import com.squareup.moshi.Json;
-
 import java.io.Serializable;
 
 public class WorkmanFinancialTransaction   implements Serializable {
@@ -27,37 +25,21 @@ public class WorkmanFinancialTransaction   implements Serializable {
     public WorkmanFinancialTransaction() {
     }
 
-    @Json(name = "id")
     private int id;
-    @Json(name = "action")
     private int action;
-    @Json(name = "actionTitle")
     private String actionTitle;
-    @Json(name = "type")
     private int type;
-    @Json(name = "typeTitle")
     private String typeTitle;
-    @Json(name = "requestId")
     private int requestId;
-    @Json(name = "price")
     private String price;
-    @Json(name = "remainCredit")
     private String remainCredit;
-    @Json(name = "desc")
     private String desc;
-    @Json(name = "advanceDesc")
     private String advanceDesc;
-    @Json(name = "insrtFullDateTimePersian")
     private String insrtFullDateTimePersian;
-    @Json(name = "insrtDatePersian")
     private String insrtDatePersian;
-    @Json(name = "insrtDatePersian1")
     private String insrtDatePersian1;
-    @Json(name = "insrtTimePersian")
     private String insrtTimePersian;
-    @Json(name = "insrtTime")
     private int insrtTime;
-    @Json(name = "trackingCode")
     private String trackingCode;
 
     public int getId() {

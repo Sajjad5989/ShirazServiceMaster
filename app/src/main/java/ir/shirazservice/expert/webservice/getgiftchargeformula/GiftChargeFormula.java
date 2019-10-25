@@ -1,19 +1,13 @@
 package ir.shirazservice.expert.webservice.getgiftchargeformula;
 
-import com.squareup.moshi.Json;
-
 import java.io.Serializable;
 
 public class GiftChargeFormula implements Serializable {
 
 
-    @Json(name = "id")
     private int id;
-    @Json(name = "startPeriod")
     private String startPeriod;
-    @Json(name = "endPeriod")
     private String endPeriod;
-    @Json(name = "giftPercent")
     private int giftPercent;
 
     public int getId() {

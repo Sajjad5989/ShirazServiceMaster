@@ -1,12 +1,8 @@
 package ir.shirazservice.expert.webservice.savetoken;
 
-import com.squareup.moshi.Json;
-
 public class SaveTokenKey {
 
-    @Json(name = "personId")
     private int personId;
-    @Json(name = "deviceTokenKey")
     private String deviceTokenKey;
 
     public int getPersonId() {

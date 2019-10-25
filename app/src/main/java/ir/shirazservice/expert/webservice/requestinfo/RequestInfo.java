@@ -1,77 +1,41 @@
 package ir.shirazservice.expert.webservice.requestinfo;
 
 
-import com.squareup.moshi.Json;
-
 public class RequestInfo {
 
-    @Json(name = "requestId")
     private Integer requestId;
-    @Json(name = "personId")
     private Integer personId;
-    @Json(name = "personName")
     private String personName;
-    @Json(name = "serviceId")
     private Integer serviceId;
-    @Json(name = "serviceTitle")
     private String serviceTitle;
-    @Json(name = "servicePicAddress")
     private String servicePicAddress;
-    @Json(name = "catId")
     private Integer catId;
-    @Json(name = "catTitle")
     private String catTitle;
-    @Json(name = "subCatId")
     private Integer subCatId;
-    @Json(name = "subCatTitle")
     private String subCatTitle;
-    @Json(name = "areaId")
     private Integer areaId;
-    @Json(name = "areaTitle")
     private String areaTitle;
-    @Json(name = "desc")
     private String desc;
-    @Json(name = "dateFrom")
     private Integer dateFrom;
-    @Json(name = "dateFromPersian")
     private String dateFromPersian;
-    @Json(name = "dateTo")
     private Integer dateTo;
-    @Json(name = "dateToPersian")
     private String dateToPersian;
-    @Json(name = "time")
     private Integer time;
-    @Json(name = "timeDesc")
     private String timeDesc;
-    @Json(name = "insrtTime")
     private Integer insrtTime;
-    @Json(name = "insrtTimePersian")
     private String insrtTimePersian;
-    @Json(name = "insrtTimeSimple")
     private String insrtTimeSimple;
-    @Json(name = "updteTime")
     private Integer updteTime;
-    @Json(name = "updteTimePersian")
     private String updteTimePersian;
-    @Json(name = "trackingCode")
     private String trackingCode;
-    @Json(name = "state")
     private Integer state;
-    @Json(name = "stateTitle")
     private String stateTitle;
-    @Json(name = "priority")
     private Integer priority;
-    @Json(name = "priorityTitle")
     private String priorityTitle;
-    @Json(name = "calculatedPrice")
     private String calculatedPrice;
-    @Json(name = "finishByWorkman")
     private Integer finishByWorkman;
-    @Json(name = "finishTime")
     private Integer finishTime;
-    @Json(name = "discountCode")
     private String discountCode;
-    @Json(name = "discountDesc")
     private String discountDesc;
 
     public Integer getRequestId() {

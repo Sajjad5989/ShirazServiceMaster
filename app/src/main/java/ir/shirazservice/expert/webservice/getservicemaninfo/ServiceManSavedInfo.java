@@ -1,20 +1,12 @@
 package ir.shirazservice.expert.webservice.getservicemaninfo;
 
-import com.squareup.moshi.Json;
-
 public class ServiceManSavedInfo {
 
-    @Json(name = "username")
     private String username;
-    @Json(name = "pass")
     private String pass;
-    @Json(name = "applicationVersion")
     private String applicationVersion;
-    @Json(name = "sdkVersion")
     private String sdkVersion;
-    @Json(name = "deviceName")
     private String deviceName;
-    @Json(name = "deviceModel")
     private String deviceModel;
 
     public String getUsername() {

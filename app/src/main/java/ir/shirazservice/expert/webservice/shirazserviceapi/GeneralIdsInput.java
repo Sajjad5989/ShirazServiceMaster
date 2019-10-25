@@ -1,12 +1,8 @@
 package ir.shirazservice.expert.webservice.shirazserviceapi;
 
-import com.squareup.moshi.Json;
-
 public class GeneralIdsInput {
     
-    @Json(name = "provinceId")
     private Integer provinceId;
-    @Json(name = "cityId")
     private Integer cityId;
 
     public Integer getProvinceId() {

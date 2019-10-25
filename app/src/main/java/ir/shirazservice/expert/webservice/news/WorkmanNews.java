@@ -1,16 +1,10 @@
 package ir.shirazservice.expert.webservice.news;
 
-import com.squareup.moshi.Json;
-
 public class WorkmanNews {
 
-    @Json(name = "title")
     private String title;
-    @Json(name = "url")
     private String url;
-    @Json(name = "desc")
     private String desc;
-    @Json(name = "picAddress")
     private String picAddress;
 
     public String getTitle() {
