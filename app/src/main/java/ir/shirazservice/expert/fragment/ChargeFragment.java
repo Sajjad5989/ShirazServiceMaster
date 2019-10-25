@@ -45,8 +45,8 @@ import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.getgiftchargeformula.GetGiftChargeFormulaApi;
 import ir.shirazservice.expert.webservice.getgiftchargeformula.GetGiftChargeFormulaController;
 import ir.shirazservice.expert.webservice.getgiftchargeformula.GiftChargeFormula;
-import ir.shirazservice.expert.webservice.getgiftchargeformula.GiftChargeInput;
 import ir.shirazservice.expert.webservice.getservicemaninfo.ServiceMan;
+import ir.shirazservice.expert.webservice.shirazserviceapi.GeneralIdsInput;
 
 import static ir.shirazservice.expert.utils.APP.context;
 import static ir.shirazservice.expert.utils.APP.currentActivity;
@@ -152,7 +152,7 @@ public class ChargeFragment extends Fragment implements  IInternetController {
     private int servicemanId;
     private String accessToken;
     private String currentRefId;
-private GiftChargeInput giftChargeInput;
+private GeneralIdsInput generalIdsInput;
 
     @Nullable
     @Override
@@ -328,9 +328,9 @@ private GiftChargeInput giftChargeInput;
 
         servicemanId = serviceMan.getServicemanId();
         accessToken = serviceMan.getAccessToken();
-        giftChargeInput = new GiftChargeInput();
-        giftChargeInput.setCityId(serviceMan.getCityId());
-        giftChargeInput.setProvinceId(serviceMan.getProvinceId());
+        generalIdsInput = new GeneralIdsInput();
+        generalIdsInput.setCityId(serviceMan.getCityId());
+        generalIdsInput.setProvinceId(serviceMan.getProvinceId());
     }
 
     private void callFormulaCharge() {
@@ -340,7 +340,7 @@ private GiftChargeInput giftChargeInput;
         }
         showHideWaitingProgress(false);
         GetGiftChargeFormulaController getGiftChargeFormulaController = new GetGiftChargeFormulaController(getGiftChargeFormulaCallback);
-        getGiftChargeFormulaController.start(servicemanId, accessToken,giftChargeInput);
+        getGiftChargeFormulaController.start(servicemanId, accessToken,generalIdsInput);
     }
 
     private void calculateGiftCharge() {

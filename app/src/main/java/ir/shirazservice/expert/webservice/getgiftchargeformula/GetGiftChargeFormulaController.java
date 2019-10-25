@@ -5,6 +5,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.shirazserviceapi.AppController;
+import ir.shirazservice.expert.webservice.shirazserviceapi.GeneralIdsInput;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,10 +20,10 @@ public class GetGiftChargeFormulaController {
         this.getGiftChargeFormulaCallback = getGiftChargeFormulaCallback;
     }
 
-    public void start(int userId, String accessToken,GiftChargeInput giftChargeInput) {
+    public void start(int userId, String accessToken, GeneralIdsInput generalIdsInput) {
         Retrofit retrofit = AppController.getInstance().getRetrofitObject();
         GetGiftChargeFormulaApi getGiftChargeFormulaApi = retrofit.create(GetGiftChargeFormulaApi.class);
-        Call<List<GiftChargeFormula>> listCall = getGiftChargeFormulaApi.execute(userId, accessToken,giftChargeInput);
+        Call<List<GiftChargeFormula>> listCall = getGiftChargeFormulaApi.execute(userId, accessToken,generalIdsInput);
         listCall.enqueue(new Callback<List<GiftChargeFormula>>() {
             @Override
             public void onResponse(@NonNull Call<List<GiftChargeFormula>> call, @NonNull Response<List<GiftChargeFormula>> response) {
