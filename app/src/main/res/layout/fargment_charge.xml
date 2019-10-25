@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   android:background="@color/colorWhite"
-    >
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/const_current_amount"
+        android:id="@+id/const_help"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_dp_very_tiny"
-        android:background="@drawable/const_border_line"
         android:padding="@dimen/dimen_dp_small"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_third_money_extra_charge"
@@ -32,380 +30,63 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/const_first"
-        android:layout_width="0dp"
+    <com.mlsdev.animatedrv.AnimatedRecyclerView
+        android:id="@+id/recycler_charge"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/const_border_line"
+        app:animationDuration="600"
+        app:layoutManagerOrientation="vertical"
+        app:gridLayoutManagerColumns="1"
+        app:layoutManagerReverse="false"
+        app:layoutManagerType="grid"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/const_current_amount">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_dp_small"
-            android:padding="@dimen/dimen_dp_tiny"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_first_charge"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_small"
-                    android:background="@drawable/text_red_border_style"
-                    android:fontFamily="@font/iran_sans"
-                    android:gravity="center"
-                    android:padding="@dimen/dimen_dp_small"
-                    android:text="200,000 ریال"
-                    android:textColor="@color/color_black"
-                    android:textSize="@dimen/dimen_sp_medium"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_first_charge"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_marginStart="@dimen/dimen_dp_tiny"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:src="@drawable/ic_gift"
-                    app:layout_constraintLeft_toRightOf="@+id/tv_first_gift"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_first_charge" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_first_gift"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/iran_sans_medium"
-                    android:text="33,000 ریال"
-                    android:textColor="@color/color_red"
-                    android:textSize="@dimen/dimen_sp_tiny"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_first_charge" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_second_charge"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_small"
-                    android:background="@drawable/text_red_border_style"
-                    android:fontFamily="@font/iran_sans"
-                    android:gravity="center"
-                    android:padding="@dimen/dimen_dp_small"
-                    android:text="300,000 ریال"
-                    android:textColor="@color/color_black"
-                    android:textSize="@dimen/dimen_sp_medium"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_second_charge"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_marginStart="@dimen/dimen_dp_tiny"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:src="@drawable/ic_gift"
-                    app:layout_constraintLeft_toRightOf="@+id/tv_second_gift"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_second_charge" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_second_gift"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:fontFamily="@font/iran_sans_medium"
-                    android:text="47,000 ریال"
-                    android:textColor="@color/color_red"
-                    android:textSize="@dimen/dimen_sp_tiny"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_second_charge" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_third_charge"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_small"
-                    android:background="@drawable/text_red_border_style"
-                    android:fontFamily="@font/iran_sans"
-                    android:gravity="center"
-                    android:padding="@dimen/dimen_dp_small"
-                    android:text="400,000 ریال"
-                    android:textColor="@color/color_black"
-                    android:textSize="@dimen/dimen_sp_medium"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_third_charge"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_marginStart="@dimen/dimen_dp_tiny"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:src="@drawable/ic_gift"
-                    app:layout_constraintLeft_toRightOf="@+id/tv_third_gift"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_third_charge" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_third_gift"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/iran_sans_medium"
-                    android:text="59,000 ریال"
-                    android:textColor="@color/color_red"
-                    android:textSize="@dimen/dimen_sp_tiny"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_third_charge" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@+id/const_help" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/const_second"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/const_border_line"
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/const_first">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_dp_small"
-            android:padding="@dimen/dimen_dp_tiny"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_fourth_charge"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_small"
-                    android:background="@drawable/text_red_border_style"
-                    android:fontFamily="@font/iran_sans"
-                    android:gravity="center"
-                    android:padding="@dimen/dimen_dp_small"
-                    android:text="500,000 ریال"
-                    android:textColor="@color/color_black"
-                    android:textSize="@dimen/dimen_sp_medium"
-                    app:layout_constraintLeft_toLeftOf="parent"
-
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_fourth_charge"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_marginStart="@dimen/dimen_dp_tiny"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:src="@drawable/ic_gift"
-                    app:layout_constraintLeft_toRightOf="@+id/tv_fourth_gift"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_fourth_charge" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_fourth_gift"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:fontFamily="@font/iran_sans_medium"
-                    android:text="33,000 ریال"
-                    android:textColor="@color/color_red"
-                    android:textSize="@dimen/dimen_sp_tiny"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_fourth_charge" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_fifth_charge"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_small"
-                    android:background="@drawable/text_red_border_style"
-                    android:fontFamily="@font/iran_sans"
-                    android:gravity="center"
-                    android:padding="@dimen/dimen_dp_small"
-                    android:text="600,000 ریال"
-                    android:textColor="@color/color_black"
-                    android:textSize="@dimen/dimen_sp_medium"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_fifth_charge"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_marginStart="@dimen/dimen_dp_tiny"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:src="@drawable/ic_gift"
-                    app:layout_constraintLeft_toRightOf="@+id/tv_fifth_gift"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_fifth_charge" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_fifth_gift"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:fontFamily="@font/iran_sans_medium"
-                    android:text="47,000 ریال"
-                    android:textColor="@color/color_red"
-                    android:textSize="@dimen/dimen_sp_tiny"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_fifth_charge" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_sixth_charge"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dimen_dp_small"
-                    android:background="@drawable/text_red_border_style"
-                    android:fontFamily="@font/iran_sans"
-                    android:gravity="center"
-                    android:padding="@dimen/dimen_dp_small"
-                    android:text="700,000 ریال"
-                    android:textColor="@color/color_black"
-                    android:textSize="@dimen/dimen_sp_medium"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_sixth_charge"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_marginStart="@dimen/dimen_dp_tiny"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:src="@drawable/ic_gift"
-                    app:layout_constraintLeft_toRightOf="@+id/tv_sixth_gift"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_sixth_charge" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_sixth_gift"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_dp_tiny"
-                    android:fontFamily="@font/iran_sans_medium"
-                    android:text="59,000 ریال"
-                    android:textColor="@color/color_red"
-                    android:textSize="@dimen/dimen_sp_tiny"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_sixth_charge" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/const_third"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/const_border_line"
-        android:paddingStart="@dimen/dimen_dp_small"
-        android:paddingEnd="@dimen/dimen_dp_small"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/const_second">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_caption_money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/iran_sans"
-            android:text="مبلغ دلخواه"
-            android:textColor="@color/color_black"
-            android:textSize="@dimen/dimen_sp_small"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/recycler_charge">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/tv_money"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/dimen_sp_small"
-            android:inputType="number"
-            android:maxLength="8"
-            android:gravity="center"
-            app:layout_constraintLeft_toRightOf="@+id/tv_currency_symbol_money"
-            app:layout_constraintRight_toLeftOf="@+id/tv_caption_money"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_currency_symbol_money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@drawable/const_border"
             android:fontFamily="@font/iran_sans"
-            android:text="@string/text_currency_symbol"
-            android:textColor="@color/color_black"
-            android:textSize="@dimen/dimen_sp_small"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="@dimen/dimen_sp_medium"
+            android:padding="@dimen/dimen_dp_small"
+            android:inputType="number"
+            android:gravity="center"
+            android:hint="مبلغ های دیگر"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_add_charge"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="@dimen/dimen_dp_small"
+            android:src="@drawable/ic_add_charge"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_decrease_charge"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="@dimen/dimen_dp_small"
+            android:src="@drawable/ic_decrease_charge"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -450,8 +131,6 @@
 
 
     </LinearLayout>
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const_waiting_main_fragment"
         android:layout_width="0dp"
@@ -487,7 +166,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const_not_found_info"
         android:layout_width="match_parent"

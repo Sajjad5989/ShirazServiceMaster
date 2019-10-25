@@ -114,24 +114,6 @@ public class MainFragment extends Fragment implements IInternetController {
     private CircularProgressBar circularProgressBar;
     private int servicemanId;
     private String accessToken;
-    private GeneralIdsInput generalIdsInput;
-    private final RequestListApi.GetRequestListCallback getRequestListCallback = new RequestListApi.GetRequestListCallback() {
-        @Override
-        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, List<Request> response) {
-            if (successful) {
-                selectedRequestList = response;
-            } else {
-                selectedRequestList = new ArrayList<>();
-            }
-            fillRequestList();
-        }
-
-        @Override
-        public void onFailure(String cause) {
-            selectedRequestList = new ArrayList<>();
-            fillRequestList();
-        }
-    };
     private final GetAdsSliderApi.getAdsSliderCallback getAdsSliderCallback = new GetAdsSliderApi.getAdsSliderCallback() {
         @Override
         public void onResponse(boolean successful, ErrorResponseSimple errorResponse, List<AdsSlider> response) {
@@ -150,13 +132,31 @@ public class MainFragment extends Fragment implements IInternetController {
             setAndShowSlidersPhoto();
         }
     };
+    private GeneralIdsInput generalIdsInput;
+    private final RequestListApi.GetRequestListCallback getRequestListCallback = new RequestListApi.GetRequestListCallback() {
+        @Override
+        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, List<Request> response) {
+            if (successful) {
+                selectedRequestList = response;
+            } else {
+                selectedRequestList = new ArrayList<>();
+            }
+            fillRequestList();
+        }
+
+        @Override
+        public void onFailure(String cause) {
+            selectedRequestList = new ArrayList<>();
+            fillRequestList();
+        }
+    };
     private WorkmanActivityPointApi.getWorkmanActivityPointCallback getWorkmanActivityPointCallback =
             new WorkmanActivityPointApi.getWorkmanActivityPointCallback() {
                 @Override
                 public void onResponse(boolean successful, ErrorResponseSimple errorResponse, WorkManPoint response) {
                     if (successful) {
                         setWorkmanPoint(response.getActivityPoint());
-                    }else setWorkmanPoint(0);
+                    } else setWorkmanPoint(0);
                 }
 
                 @Override
@@ -165,18 +165,17 @@ public class MainFragment extends Fragment implements IInternetController {
                 }
             };
 
-    private void setWorkmanPoint(int point)
-    {
+    public static MainFragment newInstance() {
+        return new MainFragment();
+    }
+
+    private void setWorkmanPoint(int point) {
         tvExpRate.setText(String.valueOf(point));
         circularProgressBar.setProgress(point);
         circularProgressBar.setProgressWithAnimation(65f, 1000L); // =1s
         circularProgressBar.setProgressMax(100f);
 
         callGetSliderAds();
-    }
-
-    public static MainFragment newInstance() {
-        return new MainFragment();
     }
 
     @Nullable
@@ -291,11 +290,9 @@ public class MainFragment extends Fragment implements IInternetController {
 
     private void fillRequestList() {
 
-        recyclerRequest.setVisibility(selectedRequestList==null?View.GONE:View.VISIBLE);
-
-        if (selectedRequestList==null)
+        recyclerRequest.setVisibility(selectedRequestList == null ? View.GONE : View.VISIBLE);
+        if (selectedRequestList == null)
             return;
-
 
         RequestListAdapter requestListAdapter = new RequestListAdapter(getActivity(), selectedRequestList, (v, position) -> {
 
@@ -344,7 +341,7 @@ public class MainFragment extends Fragment implements IInternetController {
         }
 
         GetWorkmanNewsController getWorkmanNewsController = new GetWorkmanNewsController(getWorkmanNewsCallback);
-        getWorkmanNewsController.start(servicemanId, accessToken,generalIdsInput);
+        getWorkmanNewsController.start(servicemanId, accessToken, generalIdsInput);
     }
 
     private void callGetSliderAds() {
@@ -353,7 +350,7 @@ public class MainFragment extends Fragment implements IInternetController {
         }
 
         GetAdsSliderController getAdsSliderController = new GetAdsSliderController(getAdsSliderCallback);
-        getAdsSliderController.start(servicemanId, accessToken,generalIdsInput);
+        getAdsSliderController.start(servicemanId, accessToken, generalIdsInput);
     }
 
     private void getRequestList() {
