@@ -145,4 +145,5 @@
     <string name="text_view_all">مشاهده همه</string>
     <string name="text_news">اخبار شیراز سرویس</string>
     <string name="text_other_amount">مبلغ های دیگر</string>
+    <string name="text_error_login">خطا در ورود، مجددا تلاش نمایید</string>
 </resources>

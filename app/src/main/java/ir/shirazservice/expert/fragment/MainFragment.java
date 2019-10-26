@@ -254,11 +254,6 @@ public class MainFragment extends Fragment implements IInternetController {
             getActivity().finish();
             return;
         }
-//
-//        tvExpRate.setText(String.valueOf(serviceManInfo.getTotalPoint()));
-//        circularProgressBar.setProgress(serviceManInfo.getTotalPoint());
-//        circularProgressBar.setProgressWithAnimation(65f, 1000L); // =1s
-//        circularProgressBar.setProgressMax(100f);
 
         tvExpertName.setText(serviceManInfo.getNameFamily());
         tvExpertDiscount.setText(String.format("%s%%", String.valueOf(serviceManInfo.getDiscountPercent())));

@@ -49,8 +49,8 @@ public class ChargeAccountAdapter  extends RecyclerView.Adapter<ChargeAccountAda
         UsefulFunction usefulFunction=new UsefulFunction();
 
 
-        holder.tvMainPrice.setText(usefulFunction.attachCamma(String.valueOf(items.get(position).getPrice())));
-        holder.tvNewPrice.setText(usefulFunction.attachCamma(String.valueOf(items.get(position).getNewPrice())));
+        holder.tvChargeAmount.setText(usefulFunction.attachCamma(String.valueOf(items.get(position).getPrice())));
+      //  holder.tvNewPrice.setText(usefulFunction.attachCamma(String.valueOf(items.get(position).getNewPrice())));
 
     }
 
@@ -62,14 +62,14 @@ public class ChargeAccountAdapter  extends RecyclerView.Adapter<ChargeAccountAda
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private final AppCompatTextView tvMainPrice;
-        private final AppCompatTextView tvNewPrice;
+        private final AppCompatTextView tvChargeAmount;
+       // private final AppCompatTextView tvNewPrice;
 
         private ViewHolder(final View itemView) {
             super(itemView);
 
-            tvMainPrice = itemView.findViewById(R.id.tv_main_price);
-            tvNewPrice = itemView.findViewById(R.id.tv_new_price);
+            tvChargeAmount = itemView.findViewById(R.id.tv_charge_amount);
+          //  tvNewPrice = itemView.findViewById(R.id.tv_new_price);
 
 
         }

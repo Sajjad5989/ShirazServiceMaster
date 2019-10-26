@@ -12,11 +12,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatCheckBox;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.AppCompatImageButton;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.Display;
@@ -25,6 +20,11 @@ import android.view.WindowManager;
 
 import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckBox;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -92,9 +92,12 @@ public class LoginActivity extends AppCompatActivity implements IInternetControl
                 @Override
                 public void onResponse(boolean successful, ErrorResponseSimple errorResponse, ServiceMan response) {
 
-                    if (successful) {
+                    if (successful && response.getServicemanId() > 0) {
                         GeneralPreferences.getInstance(LoginActivity.this).putServiceManInfo(response);
                         getBaseInfo();
+                    }
+                    else {
+                        APP.customToast(getString(R.string.text_error_login));
                     }
                 }
 
@@ -178,7 +181,7 @@ public class LoginActivity extends AppCompatActivity implements IInternetControl
         }
 
         GetServiceManInfoController getServiceManInfoController =
-                new GetServiceManInfoController(LoginActivity.this, getServiceManInfoCallback);
+                new GetServiceManInfoController( getServiceManInfoCallback);
 
         getServiceManInfoController.start(getServiceManIno());
     }

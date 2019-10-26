@@ -13,9 +13,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
 import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
@@ -25,6 +22,9 @@ import com.google.firebase.FirebaseApp;
 import java.util.Locale;
 import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.dialog.UpdateDialog;
@@ -77,9 +77,12 @@ public class SplashActivity extends AppCompatActivity implements IInternetContro
                 @Override
                 public void onResponse(boolean successful, ErrorResponseSimple errorResponse, ServiceMan response) {
 
-                    if (successful) {
+                    if (successful && response.getServicemanId() > 0) {
                         GeneralPreferences.getInstance(SplashActivity.this).putServiceManInfo(response);
                         getBaseInfo();
+                    }
+                    else {
+                        APP.customToast(getString(R.string.text_error_login));
                     }
                 }
 
@@ -166,7 +169,7 @@ public class SplashActivity extends AppCompatActivity implements IInternetContro
         }
 
         GetServiceManInfoController getServiceManInfoController =
-                new GetServiceManInfoController(SplashActivity.this, getServiceManInfoCallback);
+                new GetServiceManInfoController( getServiceManInfoCallback);
 
         getServiceManInfoController.start(getServiceManIno());
     }

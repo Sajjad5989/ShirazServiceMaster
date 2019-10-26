@@ -217,7 +217,7 @@ public class ChargeFragment extends Fragment implements IInternetController {
             }
         });
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 4);
         animatedRecyclerView.setLayoutManager(gridLayoutManager);
         animatedRecyclerView.setAdapter(chargeAccountAdapter);
         animatedRecyclerView.scheduleLayoutAnimation();

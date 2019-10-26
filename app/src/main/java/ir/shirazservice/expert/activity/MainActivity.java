@@ -10,10 +10,6 @@ import android.text.Html;
 import android.view.Display;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -23,6 +19,9 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
 import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
@@ -109,7 +108,6 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
                 .setMinimumFetchIntervalInSeconds( 3600 )
                 .build();
         mFirebaseRemoteConfig.setConfigSettingsAsync( configSettings );
-
         mFirebaseAnalytics = FirebaseAnalytics.getInstance( this );
 
 
