@@ -1,6 +1,5 @@
 package ir.shirazservice.expert.utils;
 
-import android.annotation.SuppressLint;
 import android.os.SystemClock;
 
 public class UsefulFunction {
@@ -19,22 +18,21 @@ public class UsefulFunction {
 
     }
 
-    @SuppressLint("DefaultLocale")
     public String attachCamma(String value) {
         String s;
         try {
             // The comma in the format specifier does the trick
-            s = String.format("%,d", Long.parseLong(value));
+            s = String.format("%,d", Integer.parseInt(value));
         } catch (NumberFormatException e) {
             s = "";
         }
         return s;
     }
 
-    @SuppressLint("DefaultLocale")
-    public String deAttachCamma(String value) {
-        return   value.replace(",", "");
 
+    public String deAttachCamma(String value) {
+        String retval = value.replace(",", "").replace("٬", "");
+        return retval;
     }
 
 

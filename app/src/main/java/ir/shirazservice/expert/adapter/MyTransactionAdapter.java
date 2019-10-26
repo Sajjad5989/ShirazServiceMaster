@@ -1,15 +1,15 @@
 package ir.shirazservice.expert.adapter;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.RecyclerView;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.interfaces.RecyclerViewClickListener;
 import ir.shirazservice.expert.utils.APP;
@@ -21,12 +21,17 @@ public class MyTransactionAdapter extends RecyclerView.Adapter<MyTransactionAdap
     private final List<WorkmanFinancialTransaction> items;
     private final RecyclerViewClickListener listener;
 
+    private int recordCount ;
+
     public MyTransactionAdapter(List<WorkmanFinancialTransaction> items, int countRequest, RecyclerViewClickListener listener) {
 
-        if (countRequest != 0) {
-            int topIndex = items.size() > countRequest ? countRequest : items.size();
-            this.items = items.subList(0, topIndex);
-        } else this.items = items;
+        this.recordCount = countRequest;
+        this.items = items;
+//
+//        if (countRequest != 0) {
+//            int topIndex = items.size() > countRequest ? countRequest : items.size();
+//            this.items = items.subList(0, topIndex);
+//        } else this.items = items;
         this.listener = listener;
 
     }
@@ -72,7 +77,7 @@ public class MyTransactionAdapter extends RecyclerView.Adapter<MyTransactionAdap
     @Override
     public int getItemCount() {
 
-        return items.size();
+        return recordCount;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

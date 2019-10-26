@@ -61,7 +61,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id = "@+id/layout_mag"
+                android:id = "@+id/layout_newest_request"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
                 android:gravity = "center_vertical"
@@ -78,7 +78,7 @@
                     android:layout_height = "wrap_content"
                     android:fontFamily = "@font/iran_sans_bold"
                     android:gravity = "start"
-                    android:text = "جدید ترین درخواست ها"
+                    android:text = "@string/text_the_newest_request"
                     android:textColor = "@color/colorPrimary"
                     android:textIsSelectable = "false"
                     android:textSize = "12sp"
@@ -92,11 +92,11 @@
                     android:layout_height = "wrap_content"
                     android:fontFamily = "@font/iran_sans_light"
                     android:gravity = "start"
-                    android:text = "مشاهده همه"
+                    android:text = "@string/text_view_all"
                     android:visibility="gone"
                     android:textColor = "@color/colorDarkGrey"
                     android:textIsSelectable = "false"
-                    android:textSize = "10sp"
+                    android:textSize = "@dimen/dimen_sp_tiny"
                     app:layout_constraintBottom_toBottomOf = "parent"
                     app:layout_constraintLeft_toLeftOf = "parent"
                     app:layout_constraintTop_toTopOf = "parent"/>
@@ -136,10 +136,10 @@
                     android:layout_height = "wrap_content"
                     android:fontFamily = "@font/iran_sans_bold"
                     android:gravity = "start"
-                    android:text = "اخبار شیراز سرویس"
+                    android:text = "@string/text_news"
                     android:textColor = "@color/colorPrimary"
                     android:textIsSelectable = "false"
-                    android:textSize = "12sp"
+                    android:textSize = "@dimen/dimen_sp_small"
                     app:layout_constraintBottom_toBottomOf = "parent"
                     app:layout_constraintRight_toRightOf = "parent"
                     app:layout_constraintTop_toTopOf = "parent"/>
@@ -151,10 +151,10 @@
                     android:layout_height = "wrap_content"
                     android:fontFamily = "@font/iran_sans_light"
                     android:gravity = "start"
-                    android:text = "مشاهده همه"
+                    android:text = "@string/text_view_all"
                     android:textColor = "@color/colorDarkGrey"
                     android:textIsSelectable = "false"
-                    android:textSize = "10sp"
+                    android:textSize = "@dimen/dimen_sp_tiny"
                     app:layout_constraintBottom_toBottomOf = "parent"
                     app:layout_constraintLeft_toLeftOf = "parent"
                     app:layout_constraintTop_toTopOf = "parent"/>

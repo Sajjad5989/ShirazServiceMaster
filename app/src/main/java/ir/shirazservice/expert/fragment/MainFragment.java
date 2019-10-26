@@ -83,7 +83,7 @@ public class MainFragment extends Fragment implements IInternetController {
     private RatingBar ratingBar;
     private AppCompatTextView tvRetry;
     private AppCompatImageView imageExpert;
-
+    private ConstraintLayout   layoutNewRequest;
     private AnimatedRecyclerView recyclerRequest;
     private AnimatedRecyclerView recyclerNews;
 
@@ -210,6 +210,8 @@ public class MainFragment extends Fragment implements IInternetController {
 
         circularProgressBar = view.findViewById(R.id.circularProgressBar);
 
+        layoutNewRequest=view.findViewById(R.id.layout_newest_request);
+
     }
 
     private void btnClickConfig() {
@@ -290,9 +292,8 @@ public class MainFragment extends Fragment implements IInternetController {
 
     private void fillRequestList() {
 
-        recyclerRequest.setVisibility(selectedRequestList == null ? View.GONE : View.VISIBLE);
-        if (selectedRequestList == null)
-            return;
+        recyclerRequest.setVisibility(selectedRequestList.get(0).getRequestId() == 0 ? View.GONE : View.VISIBLE);
+        layoutNewRequest.setVisibility(recyclerRequest.getVisibility());
 
         RequestListAdapter requestListAdapter = new RequestListAdapter(getActivity(), selectedRequestList, (v, position) -> {
 

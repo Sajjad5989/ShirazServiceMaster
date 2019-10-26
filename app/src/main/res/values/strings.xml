@@ -38,7 +38,7 @@
     <string name="text_no_request_found">اطلاعاتی جهت نمایش یافت نشد</string>
     <string name="text_try_again">فراخوانی مجدد</string>
     <string name="text_show_all_transaction">مشاهده همه</string>
-    <string name="text_amount">موجودی</string>
+    <string name="text_amount">مبلغ</string>
     <string name="text_increase_charge">افزایش شارژ</string>
     <string name="text_current_amount">موجودی فعلی:</string>
     <string name="text_charge">افزودن شارژ هدیه به صورت پلکانی جهت متخصصین
@@ -54,7 +54,7 @@
     <string name="text_financial_transaction_serialize">workmanFinancialTransactionList</string>
     <string name="text_bundle_req_id">ReqId</string>
     <string name="text_bundle_service_status">serviceStatus</string>
-    <string name="text_gift_charge">با شارژ مبلغ  %s  ریال   مبلغ %s ریال،هدیه  به حساب شما افزوده خواهد شد. آیا از انجام این عملیات اطمینان دارید؟</string>
+    <string name="text_gift_charge">با شارژ مبلغ  %s  ریال   مبلغ %s  ریال، هدیه  به حساب شما افزوده خواهد شد. آیا از انجام این عملیات اطمینان دارید؟</string>
     <string name="text_preference_slider_is_show">slider_is_show</string>
     <string name="text_fire_base_news">News</string>
     <string name="text_profile_title">اطلاعات شخصی</string>
@@ -106,7 +106,7 @@
     <string name="text_optional_update">نسخه ی جدیدی وجود دارد، آیا مایل به بروزرسانی هستید؟</string>
     <string name="text_imidiately">فوری</string>
     <string name="text_all_tap_back_button">لطفا برای خروج کلید بازگشت را مجددا فشار دهید.</string>
-    <string name="text_select_request">هزینه ی انتخاب این درخواست</string>
+    <string name="text_select_request_cost">هزینه ی انتخاب این درخواست</string>
     <string name="text_your_rate">امتیاز شما</string>
     <string name="text_charge_help">راهنمای شارژ شگفت انگیز</string>
     <string name="text_all_news">اخبار</string>
@@ -123,4 +123,26 @@
 
     <string name = "nav_social">ما را در شبکه های اجتماعی دنبال کنید</string>
     <string name = "dlg_title_close_dialog">بستن</string>
+    <string name="text_min_charge_1">حداقل مبلغ شارژ</string>
+    <string name="text_min_charge_2">ریال می باشد.</string>
+    <string name="text_details">جزییات</string>
+    <string name="text_operation_type">نوع عملیات</string>
+    <string name="text_remain_account">مـانده</string>
+    <string name="text_date">تاریخ</string>
+    <string name="text_time">ساعت</string>
+    <string name="text_explaination">توضیحات</string>
+    <string name="text_cancle_request">لغو درخواست</string>
+    <string name="text_cancle_request_confirmation">آیا از لغو درخواست اطمینان دارید؟</string>
+    <string name="text_select_request">انتخاب درخواست</string>
+    <string name="text_choose_request_1">با انتخاب این درخواست مبلغ</string>
+    <string name="text_choose_request_2">از حساب شما کسر می شود.</string>
+    <string name="text_choose_request_3">آیا برای انتخاب این درخواست اطمینان دارید؟</string>
+    <string name="text_exit_app">پس از خروج از حساب کاربری، بایستی مجددا وارد نرم افزار شوید،</string>
+    <string name="text_exit_app_confirmation">آیا از انجام این عملیات اطمینان دارید؟</string>
+    <string name="text_yes">بـله</string>
+    <string name="text_no">خیر</string>
+    <string name="text_the_newest_request">جدید ترین درخواست ها</string>
+    <string name="text_view_all">مشاهده همه</string>
+    <string name="text_news">اخبار شیراز سرویس</string>
+    <string name="text_other_amount">مبلغ های دیگر</string>
 </resources>

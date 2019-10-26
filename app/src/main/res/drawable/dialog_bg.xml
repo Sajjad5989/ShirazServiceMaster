@@ -4,9 +4,9 @@
     <solid android:color="@color/colorWhite"/>
     <corners android:radius="4dp"/>
     <padding
-        android:bottom="@dimen/dimen_dp_small"
-        android:left="@dimen/dimen_dp_small"
-        android:right="@dimen/dimen_dp_small"
-        android:top="@dimen/dimen_dp_small"/>
+        android:bottom="@dimen/dimen_dp_tiny"
+        android:left="@dimen/dimen_dp_tiny"
+        android:right="@dimen/dimen_dp_tiny"
+        android:top="@dimen/dimen_dp_tiny"/>
 
 </shape>

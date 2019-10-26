@@ -2,22 +2,22 @@ package ir.shirazservice.expert.utils;
 
 public class ChargeAmount {
 
-    private Long price;
-    private Long newPrice;
+    private int price;
+    private int newPrice;
 
-    public Long getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public Long getNewPrice() {
+    public int getNewPrice() {
         return newPrice;
     }
 
-    public void setNewPrice(Long newPrice) {
+    public void setNewPrice(int newPrice) {
         this.newPrice = newPrice;
     }
 }

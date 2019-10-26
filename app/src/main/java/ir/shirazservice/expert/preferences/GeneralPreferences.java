@@ -88,7 +88,6 @@ public class GeneralPreferences {
         if (serviceManString == null)
             return new BaseInfoOfApp();
 
-
         Gson gson = new Gson();
         return gson.fromJson(serviceManString, BaseInfoOfApp.class);
 

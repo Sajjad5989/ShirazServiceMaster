@@ -22,6 +22,8 @@ import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -46,6 +48,7 @@ import ir.shirazservice.expert.webservice.depositmoney.DepositMoneyReq;
 import ir.shirazservice.expert.webservice.depositmoney.InsrtDepositMoneyApi;
 import ir.shirazservice.expert.webservice.depositmoney.InsrtDepositMoneyController;
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
+import ir.shirazservice.expert.webservice.getbaseinfo.BaseInfoOfApp;
 import ir.shirazservice.expert.webservice.getgiftchargeformula.GetGiftChargeFormulaApi;
 import ir.shirazservice.expert.webservice.getgiftchargeformula.GetGiftChargeFormulaController;
 import ir.shirazservice.expert.webservice.getgiftchargeformula.GiftChargeFormula;
@@ -60,7 +63,6 @@ public class ChargeFragment extends Fragment implements IInternetController {
 
     private static final int METHOD_TYPE_SAVE_MONEY_TO_SITE = 1;
     private static final int METHOD_TYPE_FORMULA_CHARGE = 2;
-    private ArrayList<ChargeAmount> chargeAmountList=new ArrayList<ChargeAmount>() ;
     private final InsrtDepositMoneyApi.insrtDepositMoneyCallback insrtDepositMoneyCallback =
             new InsrtDepositMoneyApi.insrtDepositMoneyCallback() {
                 @Override
@@ -76,21 +78,35 @@ public class ChargeFragment extends Fragment implements IInternetController {
 
                 }
             };
+    @BindView(R.id.et_charge_amount)
+    protected AppCompatEditText etChargeAmount;
+    @BindView(R.id.tv_gift_charge)
+    protected AppCompatTextView tvGiftCharge;
+    @BindView(R.id.image_add_charge)
+    protected AppCompatImageView imageIncreaseCharge;
+    @BindView(R.id.image_decrease_charge)
+    protected AppCompatImageView imageDecreaseCharge;
 
-    @BindView( R.id.recycler_charge)
+    @BindView(R.id.recycler_charge)
     protected AnimatedRecyclerView animatedRecyclerView;
-
     @BindView(R.id.tv_pay_online)
     protected AppCompatTextView tvPayOnline;
     @BindView(R.id.btn_increase_charge)
     protected AppCompatTextView tvIncreaseCharge;
-//    @BindView(R.id.tv_money)
+    //    @BindView(R.id.tv_money)
 //    protected AppCompatEditText tvMoney;
     @BindView(R.id.const_waiting_main_fragment)
     protected ConstraintLayout constWaiting;
     @BindView(R.id.const_not_found_info)
     protected ConstraintLayout constNotFound;
+    private ArrayList<ChargeAmount> chargeAmountList = new ArrayList<ChargeAmount>();
     private List<GiftChargeFormula> giftChargeFormulas;
+    private int minAccountChargeAmount;
+    private int servicemanId;
+    private String accessToken;
+    private String currentRefId;
+    private GeneralIdsInput generalIdsInput;
+    private UsefulFunction usefulFunction = new UsefulFunction();
     private final GetGiftChargeFormulaApi.getGiftChargeFormulaCallback getGiftChargeFormulaCallback =
             new GetGiftChargeFormulaApi.getGiftChargeFormulaCallback() {
                 @Override
@@ -109,10 +125,6 @@ public class ChargeFragment extends Fragment implements IInternetController {
                     calculateGiftCharge();
                 }
             };
-    private int servicemanId;
-    private String accessToken;
-    private String currentRefId;
-    private GeneralIdsInput generalIdsInput;
 
     public static ChargeFragment newInstance() {
         return new ChargeFragment();
@@ -134,8 +146,8 @@ public class ChargeFragment extends Fragment implements IInternetController {
         super.onViewCreated(view, savedInstanceState);
 
 
-
         setNeededIds();
+        getMinAccountCharge();
         btnClickConfig();
 
         callFormulaCharge();
@@ -156,6 +168,23 @@ public class ChargeFragment extends Fragment implements IInternetController {
     private void btnClickConfig() {
         tvPayOnline.setOnClickListener(view -> confirmRequest());
         tvIncreaseCharge.setOnClickListener(view -> openPayFragment());
+        imageIncreaseCharge.setOnClickListener(view -> incDecChargeAmount(1));
+        imageDecreaseCharge.setOnClickListener(view -> incDecChargeAmount(2));
+    }
+
+    private void incDecChargeAmount(int incDec) {
+        String priceStr = usefulFunction.deAttachCamma(Objects.requireNonNull(etChargeAmount.getText()).toString());
+
+        int price = "".equals(priceStr) ? 0 : Integer.valueOf(priceStr);
+
+        int newPrice;
+        newPrice = incDec == 1 ? price + 10000 : price - 10000;
+        if (newPrice < 0)
+            newPrice = 0;
+
+        etChargeAmount.setText(usefulFunction.attachCamma(String.valueOf(newPrice)));
+        tvGiftCharge.setText(usefulFunction.attachCamma(String.valueOf(getCorrectPoint(newPrice))));
+
     }
 
     private void openPayFragment() {
@@ -168,27 +197,27 @@ public class ChargeFragment extends Fragment implements IInternetController {
 
     private void getAccountRecommentCharge() {
 
-        Long price = 200000L;
-        Long giftPrice;
-        ChargeAmount chargeAmount ;
-        for (int i = 0; i < 6; i++) {
-
+        int[] price = {100000, 200000, 500000, 1000000};// minAccountChargeAmount;
+        int giftPrice;
+        ChargeAmount chargeAmount;
+        for (int i = 0; i < 4; i++) {
             chargeAmount = new ChargeAmount();
-            chargeAmount.setPrice(price);
-            giftPrice = getCorrectPoint(price);
-            chargeAmount.setNewPrice(giftPrice+price);
+            chargeAmount.setPrice(price[i]);
+            giftPrice = getCorrectPoint(price[i]);
+            chargeAmount.setNewPrice(giftPrice + price[i]);
             chargeAmountList.add(chargeAmount);
-            price += 100000L;
         }
 
         ChargeAccountAdapter chargeAccountAdapter = new ChargeAccountAdapter(chargeAmountList, new RecyclerViewClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                //
+                int price = chargeAmountList.get(position).getPrice();
+                etChargeAmount.setText(usefulFunction.attachCamma(String.valueOf(price)));
+                tvGiftCharge.setText(usefulFunction.attachCamma(String.valueOf(getCorrectPoint(price))));
             }
         });
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         animatedRecyclerView.setLayoutManager(gridLayoutManager);
         animatedRecyclerView.setAdapter(chargeAccountAdapter);
         animatedRecyclerView.scheduleLayoutAnimation();
@@ -200,26 +229,33 @@ public class ChargeFragment extends Fragment implements IInternetController {
 
     private String makeConfirmMessage() {
 
-        UsefulFunction usefulFunction = new UsefulFunction();
-//        String selectedMoney = selectedChargeTextViewInt != -1 ?
-//                String.valueOf(chargeAmount[selectedChargeTextViewInt]) :
-//                Objects.requireNonNull(tvMoney.getText()).toString();
+        String chargeAmount =  usefulFunction.deAttachCamma(Objects.requireNonNull(etChargeAmount.getText()).toString());
+        String giftAmount = String.valueOf(getCorrectPoint(Integer.valueOf(chargeAmount)));
 
-//        String giftMoney = String.valueOf(getCorrectPoint(Integer.valueOf(selectedMoney)));
-//
-//        return String.format(getString(R.string.text_gift_charge),
-//                usefulFunction.attachCamma(selectedMoney), giftMoney);
-        return "";
+        chargeAmount = usefulFunction.attachCamma(chargeAmount);
+        giftAmount = "<span style=\"color: #d32f2f\">"+ usefulFunction.attachCamma(giftAmount)+"</span> ";
+        return String.format(getString(R.string.text_gift_charge), chargeAmount , giftAmount) ;
+
     }
 
     private void confirmRequest() {
-//
-//        if (selectedChargeTextViewInt == -1 && ("".equals(Objects.requireNonNull(tvMoney.getText()).toString())
-//                || "0".equals(tvMoney.getText().toString()))) {
-//            APP.customToast(getString(R.string.error_money_select));
-//            return;
-//        }
-        Long payMoney = 1000L;//getMoneyForPay();
+
+
+        Long payMoney = Long.valueOf(usefulFunction.deAttachCamma(Objects.requireNonNull(etChargeAmount.getText()).toString()));
+
+        if (minAccountChargeAmount > payMoney)
+        {
+            APP.customToast(getString(R.string.text_min_charge_1)+minAccountChargeAmount
+                    + getString(R.string.text_min_charge_2));
+            return;
+        }
+
+        if (payMoney <= 0  )
+        {
+            APP.customToast(getString(R.string.error_money_select));
+            return;
+        }
+
         IncreaseAccountChargeDialog chooseRequestDialog =
                 new IncreaseAccountChargeDialog(getActivity(), makeConfirmMessage(), done -> {
                     if (done)
@@ -287,6 +323,13 @@ public class ChargeFragment extends Fragment implements IInternetController {
         generalIdsInput = new GeneralIdsInput();
         generalIdsInput.setCityId(serviceMan.getCityId());
         generalIdsInput.setProvinceId(serviceMan.getProvinceId());
+
+    }
+
+    private void getMinAccountCharge() {
+        BaseInfoOfApp baseInfoOfApp = GeneralPreferences.getInstance(context).getBaseInfoOfApp();
+        if (baseInfoOfApp != null)
+            minAccountChargeAmount = baseInfoOfApp.getMinChargeCreditAmountForWorkman();
     }
 
     private void callFormulaCharge() {
@@ -308,7 +351,7 @@ public class ChargeFragment extends Fragment implements IInternetController {
     }
 
 
-    private Long getCorrectPoint(Long thisMoney) {
+    private int getCorrectPoint(int thisMoney) {
         double startPeriod;
         double endPeriod;
         int giftPercent;
@@ -322,7 +365,7 @@ public class ChargeFragment extends Fragment implements IInternetController {
                 }
             }
         }
-        return 0L;
+        return 0;
     }
 
     private String setValues(int value) {

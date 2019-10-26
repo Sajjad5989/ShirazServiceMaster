@@ -44,28 +44,28 @@
         app:layout_constraintTop_toBottomOf="@+id/const_help" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/const_charge_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler_charge">
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_charge_amount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/const_border"
             android:fontFamily="@font/iran_sans"
-            android:textSize="@dimen/dimen_sp_medium"
-            android:padding="@dimen/dimen_dp_small"
+            android:textSize="@dimen/dimen_sp_large"
+            android:padding="@dimen/dimen_dp_medium"
             android:inputType="number"
             android:gravity="center"
-            android:hint="مبلغ های دیگر"
+            android:hint="@string/text_other_amount"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
-
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_add_charge"
@@ -76,8 +76,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
-
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_decrease_charge"
             android:layout_width="28dp"
@@ -90,6 +88,46 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_sp_medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/const_charge_amount">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_charge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iran_sans"
+            android:textSize="@dimen/dimen_sp_medium"
+            android:textColor="@color/color_black"
+            android:gravity="end"
+            android:text="شارژ هدیه:"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tv_gift_charge"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_gift_charge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iran_sans"
+            android:textSize="@dimen/dimen_sp_large"
+            android:textColor="@color/color_red"
+            android:padding="@dimen/dimen_dp_medium"
+            android:layout_marginEnd="@dimen/dimen_dp_small"
+            android:gravity="start"
+            app:layout_constraintRight_toLeftOf="@+id/tv_charge"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <LinearLayout
         android:id="@+id/linear_buttons"

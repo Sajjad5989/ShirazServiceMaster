@@ -3,10 +3,11 @@ package ir.shirazservice.expert.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatTextView;
+import android.text.Html;
 import android.view.Window;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -50,13 +51,7 @@ public class IncreaseAccountChargeDialog extends Dialog {
         setContentView(R.layout.dialog_increase_account_charge);
 
         ButterKnife.bind(this);
-
-        tvConfirm.setText(confirmMessage);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//            tvConfirm.setText(Html.fromHtml(confirmMessage, Html.FROM_HTML_MODE_COMPACT));
-//        } else {
-//            tvConfirm.setText(Html.fromHtml(confirmMessage));
-//        }
+        tvConfirm.setText(Html.fromHtml(confirmMessage));
 
     }
 

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content"
-                                                   android:background="@drawable/const_border_light_no_border"
-
-                                                   app:cardCornerRadius="@dimen/dimen_card_corner">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background = "@drawable/dialog_bg"
+    app:cardCornerRadius="@dimen/dimen_card_corner">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title"
@@ -15,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_dp_medium"
         android:fontFamily="@font/iran_sans_bold"
-        android:text="لغو درخواست"
+        android:text="@string/text_cancle_request"
         android:textColor="@color/color_black"
         android:textSize="@dimen/dimen_sp_large"
         app:layout_constraintRight_toRightOf="parent"
@@ -27,10 +26,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_dp_small"
-        android:layout_marginBottom="@dimen/dimen_dp_small"
         android:layout_marginEnd="@dimen/dimen_dp_small"
+        android:layout_marginBottom="@dimen/dimen_dp_small"
         android:fontFamily="@font/iran_sans"
-        android:text="آیا از لغو درخواست اطمینان دارید؟"
+        android:text="@string/text_cancle_request_confirmation"
         android:textColor="@color/colorBlackStep_3"
         app:layout_constraintRight_toRightOf="@+id/tv_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
@@ -48,13 +47,12 @@
         tools:ignore="RtlHardcoded">
 
 
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_yes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/text_red_style"
             android:layout_marginEnd="@dimen/dimen_dp_small"
+            android:background="@drawable/text_red_style"
             android:fontFamily="@font/iran_sans"
             android:paddingLeft="@dimen/dimen_dp_medium"
             android:paddingTop="@dimen/dimen_dp_tiny"
@@ -78,7 +76,6 @@
             android:text="@string/text_cancel"
             android:textColor="@color/color_red"
             android:textSize="@dimen/dimen_sp_small" />
-
 
 
     </LinearLayout>

@@ -101,7 +101,11 @@ public class AllTransactionActivity extends AppCompatActivity implements Seriali
 
     private void fillTransactionList() {
         MyTransactionAdapter myTransactionAdapter;
-        myTransactionAdapter = new MyTransactionAdapter(transactionList.getWorkmanFinancialTransactions(), 0, (v, position) -> {
+        myTransactionAdapter = new MyTransactionAdapter(transactionList.getWorkmanFinancialTransactions(),
+
+
+                transactionList.getWorkmanFinancialTransactions().size()
+                , (v, position) -> {
 
             TransactionDetailDialog transactionDetailDialog =
                     new TransactionDetailDialog(AllTransactionActivity.this,

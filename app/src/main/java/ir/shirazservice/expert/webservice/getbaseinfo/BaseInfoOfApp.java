@@ -1,8 +1,6 @@
 package ir.shirazservice.expert.webservice.getbaseinfo;
 
 public class BaseInfoOfApp {
-
-
     private String androidAppDlLink;
     private String androidAppDlLinkDirect;
     private String androidAppDlLinkBazaar;
@@ -10,7 +8,6 @@ public class BaseInfoOfApp {
     private String androidWorkmanAppDlLinkDirect;
     private String androidWorkmanAppDlLinkBazaar;
     private String androidWorkmanAppDlLinkGoogleplay;
-    private String iosWorkmanAppDlLink;
     private String iosAppDlLink;
     private String instagramLink;
     private String telegramLink;
@@ -43,6 +40,7 @@ public class BaseInfoOfApp {
     private String iosServiceManAppVer;
     private int iosServiceManAppForceUpdate;
     private String appIntroductionText;
+    private int minChargeCreditAmountForWorkman;
 
     public String getAndroidAppDlLink() {
         return androidAppDlLink;
@@ -98,14 +96,6 @@ public class BaseInfoOfApp {
 
     public void setAndroidWorkmanAppDlLinkGoogleplay(String androidWorkmanAppDlLinkGoogleplay) {
         this.androidWorkmanAppDlLinkGoogleplay = androidWorkmanAppDlLinkGoogleplay;
-    }
-
-    public String getIosWorkmanAppDlLink() {
-        return iosWorkmanAppDlLink;
-    }
-
-    public void setIosWorkmanAppDlLink(String iosWorkmanAppDlLink) {
-        this.iosWorkmanAppDlLink = iosWorkmanAppDlLink;
     }
 
     public String getIosAppDlLink() {
@@ -363,4 +353,14 @@ public class BaseInfoOfApp {
     public void setAppIntroductionText(String appIntroductionText) {
         this.appIntroductionText = appIntroductionText;
     }
+
+    public int getMinChargeCreditAmountForWorkman() {
+        return minChargeCreditAmountForWorkman;
+    }
+
+    public void setMinChargeCreditAmountForWorkman(int minChargeCreditAmountForWorkman) {
+        this.minChargeCreditAmountForWorkman = minChargeCreditAmountForWorkman;
+    }
+
+
 }

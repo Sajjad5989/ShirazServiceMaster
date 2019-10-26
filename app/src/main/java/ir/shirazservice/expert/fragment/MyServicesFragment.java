@@ -139,7 +139,7 @@ public class MyServicesFragment extends Fragment implements IInternetController 
 
 
     private void fillMyServiceList() {
-        MyServiceAdapter myServiceAdapter = new MyServiceAdapter(getActivity(), myServices, (v, position) -> {
+        MyServiceAdapter myServiceAdapter = new MyServiceAdapter( myServices, (v, position) -> {
             Intent intent = new Intent(getActivity(), ServiceRequestDetailActivity.class);
             Bundle bundle = new Bundle();
             bundle.putInt(getString(R.string.text_bundle_req_id), myServices.get(position).getReqId());

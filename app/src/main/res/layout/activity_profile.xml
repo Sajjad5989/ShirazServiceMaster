@@ -111,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dimen_dp_tiny"
                     android:fontFamily="@font/iran_sans"
-                    android:text="ریال"
+                    android:text="@string/text_currency_symbol"
                     android:textColor="@color/colorBlackStep_1"
                     android:textSize="@dimen/dimen_sp_tiny"
                     app:layout_constraintBottom_toBottomOf="@id/tv_credit"
@@ -255,39 +255,6 @@
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <!--<android.support.v7.widget.AppCompatTextView-->
-                <!--android:id="@+id/tv_credit_caption"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textColor="@color/color_black"-->
-                <!--android:text="اعتبار شما:"-->
-                <!--android:textSize="@dimen/dimen_sp_small"-->
-                <!--android:fontFamily="@font/iran_sans"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--app:layout_constraintRight_toRightOf="parent"/>-->
-                <!--<android.support.v7.widget.AppCompatTextView-->
-                <!--android:id="@+id/tv_credit"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textColor="@color/color_red"-->
-                <!--android:layout_marginEnd="@dimen/dimen_dp_small"-->
-                <!--android:text="5,000"-->
-                <!--android:textSize="@dimen/dimen_sp_small"-->
-                <!--android:fontFamily="@font/iran_sans"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--app:layout_constraintRight_toLeftOf="@id/tv_credit_caption"/>-->
-                <!--<android.support.v7.widget.AppCompatTextView-->
-                <!--android:id="@+id/tv_currency_symbol"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textColor="@color/colorBlackStep_1"-->
-                <!--android:layout_marginEnd="@dimen/dimen_dp_small"-->
-                <!--android:text="ریال"-->
-                <!--android:textSize="@dimen/dimen_sp_tiny"-->
-                <!--android:fontFamily="@font/iran_sans"-->
-                <!--app:layout_constraintBottom_toBottomOf="@id/tv_credit"-->
-                <!--app:layout_constraintRight_toLeftOf="@id/tv_credit"/>-->
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
