@@ -52,6 +52,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "54285829648-hr7l18lg3ni2s79h1ebqj85f4pvohec0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.shirazservice.expert",
+            "certificate_hash": "200a896e975f9d12824104e75614bdbf66fa869a"
+          }
+        },
+        {
           "client_id": "54285829648-29olbalpcfuifsaq2sg6hoq3pvhlgem4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

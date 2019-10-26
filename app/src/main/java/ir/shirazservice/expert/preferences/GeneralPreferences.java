@@ -27,7 +27,7 @@ public class GeneralPreferences {
         return instance;
     }
 
-    private void remove(String tag) {
+    public void remove(String tag) {
         editor.remove(tag).commit();
     }
 
