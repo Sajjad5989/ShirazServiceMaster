@@ -87,56 +87,10 @@ public class MyServicesFragment extends Fragment implements IInternetController 
         super.onViewCreated(view, savedInstanceState);
 
         ButterKnife.bind(this,view);
-//        findViews(view);
-//        setNeededIds();
         showHideWaitingProgress(false);
         getMyServices();
 
-
     }
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        setContentView(R.layout.activity_all_transaction);
-//
-//        ButterKnife.bind(this);
-//        prepareToolbar();
-//        toolbar.setNavigationOnClickListener(v -> onBackPressed());
-//        getMyServices();
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        APP.currentActivity = MyServicesFragment.this;
-//    }
-//
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//        finish();
-//    }
-//
-//    @Override
-//    public void OnActivityDefaultSetting() {
-//        OnPageRight();
-//    }
-//
-//    @Override
-//    public void OnPageRight() {
-//        if (getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR) {
-//            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-//        }
-//    }
-//
-//    private void prepareToolbar() {
-//        toolbar.setTitle(R.string.title_my_services);
-//        toolbar.setNavigationIcon(R.drawable.ic_arrow_right);
-//    }
-
 
     private void fillMyServiceList() {
         MyServiceAdapter myServiceAdapter = new MyServiceAdapter( myServices, (v, position) -> {
