@@ -33,6 +33,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 import ir.shirazservice.expert.R;
+import ir.shirazservice.expert.activity.MapsActivity;
 import ir.shirazservice.expert.activity.ProfileActivity;
 import ir.shirazservice.expert.activity.ServiceRequestDetailActivity;
 import ir.shirazservice.expert.adapter.RequestListAdapter;
@@ -221,7 +222,8 @@ public class MainFragment extends Fragment implements IInternetController {
     }
 
     private void openAllNewsActivity() {
-        Intent intent = new Intent(getActivity(), AllNewsActivity.class);
+//        Intent intent = new Intent(getActivity(), AllNewsActivity.class);
+        Intent intent = new Intent(getActivity(), MapsActivity.class);
         startActivity(intent);
     }
 

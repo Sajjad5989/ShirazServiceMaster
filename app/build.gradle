@@ -22,35 +22,35 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
-        buildTypes.each{
-            it.buildConfigField("String","baseUrl", BASE_URL);
-           it.buildConfigField("String","contentType", CONTENT_TYPE);
-           it.buildConfigField("String","deviceType", DEVICE_TYPE);
-           it.buildConfigField("String","paymentMerchant", PAYMENT_MERCHANT);
-           it.buildConfigField("String","paymentUrl", PAYMENT_URL);
-           it.buildConfigField("long","connectionTimeOut", CONNECTION_TIMEOUT);
-           it.buildConfigField("long","writeTimeOut", WRITE_TIMEOUT);
-           it.buildConfigField("long","readTimeOut", READ_TIMEOUT);
-           it.buildConfigField("String","channelId", CHANNEL_ID);
-           it.buildConfigField("String","channelName", CHANNEL_NAME);
-           it.buildConfigField("String","userId", USER_ID);
-           it.buildConfigField("String","userName", USER_NAME);
-           it.buildConfigField("String","userPass", USER_PASS);
-           it.buildConfigField("String","accessToken", ACCESS_TOKEN);
-           it.buildConfigField("int","serviceInfo", SERVICE_INFO);
-           it.buildConfigField("int","serviceInfoStaus", SERVICE_INFO_Status);
-           it.buildConfigField("int","offlineCharge", OFFLINE_CHARGE);
-           it.buildConfigField("int","immediateCode", IMMEDIATE_CODE);
-            it.buildConfigField("int","requestLimit", REQUEST_LIMIT);
-            it.buildConfigField("int","requestSelect",REQUEST_SELECT );
-            it.buildConfigField("int","requestDeleteCancel",REQUEST_DELETE_CANCEL );
-            it.buildConfigField("int","requestAccept", REQUEST_ACCEPT);
-            it.buildConfigField("int","requestNotExists", REQUEST_NOT_EXISTS);
-            it.buildConfigField("int","requestFinished", REQUEST_FINISHED);
-            it.buildConfigField("int","requestExpired", REQUEST_EXPIRED);
-            it.buildConfigField("int","newsCode", NEWS_CODE);
-            it.buildConfigField("int","openRequest", OPEN_REQUEST);
-            it.buildConfigField("int","openService", OPEN_SERVICE);
+        buildTypes.each {
+            it.buildConfigField("String", "baseUrl", BASE_URL);
+            it.buildConfigField("String", "contentType", CONTENT_TYPE);
+            it.buildConfigField("String", "deviceType", DEVICE_TYPE);
+            it.buildConfigField("String", "paymentMerchant", PAYMENT_MERCHANT);
+            it.buildConfigField("String", "paymentUrl", PAYMENT_URL);
+            it.buildConfigField("long", "connectionTimeOut", CONNECTION_TIMEOUT);
+            it.buildConfigField("long", "writeTimeOut", WRITE_TIMEOUT);
+            it.buildConfigField("long", "readTimeOut", READ_TIMEOUT);
+            it.buildConfigField("String", "channelId", CHANNEL_ID);
+            it.buildConfigField("String", "channelName", CHANNEL_NAME);
+            it.buildConfigField("String", "userId", USER_ID);
+            it.buildConfigField("String", "userName", USER_NAME);
+            it.buildConfigField("String", "userPass", USER_PASS);
+            it.buildConfigField("String", "accessToken", ACCESS_TOKEN);
+            it.buildConfigField("int", "serviceInfo", SERVICE_INFO);
+            it.buildConfigField("int", "serviceInfoStaus", SERVICE_INFO_Status);
+            it.buildConfigField("int", "offlineCharge", OFFLINE_CHARGE);
+            it.buildConfigField("int", "immediateCode", IMMEDIATE_CODE);
+            it.buildConfigField("int", "requestLimit", REQUEST_LIMIT);
+            it.buildConfigField("int", "requestSelect", REQUEST_SELECT);
+            it.buildConfigField("int", "requestDeleteCancel", REQUEST_DELETE_CANCEL);
+            it.buildConfigField("int", "requestAccept", REQUEST_ACCEPT);
+            it.buildConfigField("int", "requestNotExists", REQUEST_NOT_EXISTS);
+            it.buildConfigField("int", "requestFinished", REQUEST_FINISHED);
+            it.buildConfigField("int", "requestExpired", REQUEST_EXPIRED);
+            it.buildConfigField("int", "newsCode", NEWS_CODE);
+            it.buildConfigField("int", "openRequest", OPEN_REQUEST);
+            it.buildConfigField("int", "openService", OPEN_SERVICE);
 
         }
     }
@@ -68,6 +68,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.2.0'
     implementation 'com.google.firebase:firebase-auth:19.1.0'
 
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

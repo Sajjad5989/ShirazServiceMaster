@@ -8,12 +8,14 @@
 
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width = "match_parent"
-        android:layout_height = "match_parent"
-        app:layout_constraintLeft_toLeftOf = "parent"
-        app:layout_constraintRight_toRightOf = "parent"
-        app:layout_constraintBottom_toTopOf="@+id/btn_finish_service"
-        app:layout_constraintTop_toTopOf = "parent">
+        android:layout_width = "0dp"
+        android:layout_height = "0dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_finish_service"
+        >
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width = "match_parent"
@@ -601,6 +603,31 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id = "@+id/lyt_map_selector"
+                    android:layout_width = "match_parent"
+                    android:layout_height = "250dp"
+                    android:layout_margin = "@dimen/dimen_dp_tiny"
+                    android:background = "@drawable/const_border_line">
+
+
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/mapView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
             </LinearLayout>
 
 
@@ -617,8 +644,8 @@
         android:fontFamily = "@font/iran_sans_bold"
         android:text = "پایان سرویس دهی"
         android:textColor = "@color/colorWhite"
-        android:textSize = "@dimen/dimen_sp_small"
-        android:visibility = "gone"
+        android:textSize = "@dimen/dimen_sp_large"
+        android:visibility = "visible"
         app:layout_constraintBottom_toBottomOf = "parent"
         app:layout_constraintLeft_toLeftOf = "parent"
         app:layout_constraintRight_toRightOf = "parent" />
