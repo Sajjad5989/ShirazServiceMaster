@@ -13,19 +13,24 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ir.shirazservice.expert.R;
 
-public class ExitAppDialog extends Dialog {
+public class YesNoDialog extends Dialog {
 
     private final ChooseRequestListener chooseRequestListener;
-@BindView(R.id.tv_message)
-protected AppCompatTextView tvMessage;
-private Context context;
+    @BindView(R.id.tv_message)
+    protected AppCompatTextView tvMessage;
+    @BindView(R.id.tv_title)
+    protected AppCompatTextView tvTitle;
+    private Context context;
+    private String title;
+    private String message;
 
-    public ExitAppDialog(@NonNull Context context, ChooseRequestListener chooseRequestListener) {
+    public YesNoDialog(@NonNull Context context,String title,String message, ChooseRequestListener chooseRequestListener) {
 
         super(context);
         this.context = context;
         this.chooseRequestListener = chooseRequestListener;
-
+        this.title=title;
+        this.message=message;
     }
 
 
@@ -45,12 +50,12 @@ private Context context;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.dialog_exit_app);
+        setContentView(R.layout.dialog_yes_no);
 
         ButterKnife.bind(this);
-        String msgExit = context.getResources().getString(R.string.text_exit_app)+
-                context.getResources().getString(R.string.text_exit_app_confirmation);
-        tvMessage.setText(Html.fromHtml(msgExit));
+
+        tvTitle.setText(title);
+        tvMessage.setText(Html.fromHtml(message));
     }
 
 }

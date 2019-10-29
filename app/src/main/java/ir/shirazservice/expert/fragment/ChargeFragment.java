@@ -300,7 +300,7 @@ public class ChargeFragment extends Fragment implements IInternetController {
         ZarinPal za = ZarinPal.getPurchase(getActivity());
         PaymentRequest paymentRequest = ZarinPal.getPaymentRequest();
         paymentRequest.setMerchantID(BuildConfig.paymentMerchant);
-        paymentRequest.setAmount(amount);
+        paymentRequest.setAmount((long)amount/10);
         String payDesc = String.format("%s%s- %s%s", getString(R.string.text_zarinpal_part_1), serviceManFullName, getString(R.string.text_zarinpal_part_2), String.valueOf(amount));
         paymentRequest.setDescription(payDesc);
         paymentRequest.setCallbackURL(BuildConfig.paymentUrl);

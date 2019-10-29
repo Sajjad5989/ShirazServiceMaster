@@ -138,6 +138,9 @@
     <string name = "text_choose_request_3">آیا برای انتخاب این درخواست اطمینان دارید؟</string>
     <string name = "text_exit_app">پس از خروج از حساب کاربری، بایستی مجددا وارد نرم افزار شوید،</string>
     <string name = "text_exit_app_confirmation">آیا از انجام این عملیات اطمینان دارید؟</string>
+
+    <string name = "text_finish_service">آیا انجام این سرویس به پایان رسیده است؟</string>
+    <string name = "text_finish_service_title">پایان سرویس دهی</string>
     <string name = "text_yes">بـله</string>
     <string name = "text_no">خیر</string>
     <string name = "text_the_newest_request">جدید ترین درخواست ها</string>

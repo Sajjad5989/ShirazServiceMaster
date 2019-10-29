@@ -3,6 +3,7 @@ package ir.shirazservice.expert.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -37,6 +38,7 @@ import butterknife.OnClick;
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.activity.ServiceRequestDetailActivity;
+import ir.shirazservice.expert.dialog.YesNoDialog;
 import ir.shirazservice.expert.interfaces.IInternetController;
 import ir.shirazservice.expert.internetutils.ConnectionInternetDialog;
 import ir.shirazservice.expert.internetutils.InternetConnectionListener;
@@ -180,7 +182,7 @@ public class RequestFullFragment extends Fragment implements IInternetController
                 imgRequestDetail.setImageResource(R.drawable.img_no_icon);
             } else {
                 Picasso.get()
-                        .load(picAddress)  //Url of the image to load.
+                        .load(picAddress)
                         .transform(new CropCircleTransformation())
                         .error(R.drawable.img_no_icon)
                         .placeholder(R.drawable.img_loading)
@@ -346,16 +348,37 @@ public class RequestFullFragment extends Fragment implements IInternetController
 
 
     private void setViewsVisibility() {
-//        int vs = serviceOrRequest == BuildConfig.openRequest ? VISIBLE : GONE;
-//        int notVs = serviceOrRequest == BuildConfig.openService ? VISIBLE : GONE;
-//
         btnFinishService.setVisibility(requestDetailsFull.getState()==BuildConfig.requestAccept?VISIBLE:GONE);
-
     }
 
     private void onClickConfig() {
         tvServiceInfo.setOnClickListener(view -> openServiceInfo());
-        btnFinishService.setOnClickListener(view -> callFinishRequest());
+        btnFinishService.setOnClickListener(view -> finishServiceConfirmation());
+
+    }
+
+    private void finishServiceConfirmation()
+    {
+        String msgFinish = getResources().getString(R.string.text_finish_service);
+
+        YesNoDialog yesNoDialog = new YesNoDialog(getActivity(), getString(R.string.text_finish_service_title)
+                , msgFinish, done -> {
+            if (done) {
+                callFinishRequest();
+            }
+        });
+
+
+        Objects.requireNonNull(yesNoDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        yesNoDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
+        yesNoDialog.setCancelable(false);
+        yesNoDialog.show();
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        width = (int) ((width) * 0.9);
+        yesNoDialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
 
     }
 

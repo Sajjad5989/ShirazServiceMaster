@@ -24,7 +24,7 @@ import butterknife.OnClick;
 import ir.shirazservice.expert.BuildConfig;
 import ir.shirazservice.expert.R;
 import ir.shirazservice.expert.activity.ProfileActivity;
-import ir.shirazservice.expert.dialog.ExitAppDialog;
+import ir.shirazservice.expert.dialog.YesNoDialog;
 import ir.shirazservice.expert.dialog.socialnetworks.SocialNetworkDialog;
 import ir.shirazservice.expert.dialog.socialnetworks.SocialNetworkOnClickListener;
 import ir.shirazservice.expert.interfaces.IInternetController;
@@ -160,17 +160,18 @@ public class MoreInfoFragment extends Fragment implements IInternetController {
         startActivity(callIntent);
     }
 
-    private String getSupportTeamPhone()
-    {
+    private String getSupportTeamPhone() {
         BaseInfoOfApp baseInfoOfApp = GeneralPreferences.getInstance(context).getBaseInfoOfApp();
-       return baseInfoOfApp.getSupportPhone();
+        return baseInfoOfApp.getSupportPhone();
 
     }
 
     private void ExitApp() {
 
-        ExitAppDialog exitAppDialog = new ExitAppDialog(getActivity(),
-                done -> {
+        String msgExit = getResources().getString(R.string.text_exit_app) +
+                getResources().getString(R.string.text_exit_app_confirmation);
+        YesNoDialog yesNoDialog = new YesNoDialog(getActivity(), getString(R.string.text_exit_title)
+                , msgExit, done -> {
                     if (done) {
                         GeneralPreferences.getInstance(context).remove(BuildConfig.userName);
                         GeneralPreferences.getInstance(context).remove(BuildConfig.userPass);
@@ -178,16 +179,17 @@ public class MoreInfoFragment extends Fragment implements IInternetController {
                     }
                 });
 
-        Objects.requireNonNull(exitAppDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        exitAppDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
-        exitAppDialog.setCancelable(false);
-        exitAppDialog.show();
+
+        Objects.requireNonNull(yesNoDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        yesNoDialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
+        yesNoDialog.setCancelable(false);
+        yesNoDialog.show();
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
         width = (int) ((width) * 0.9);
-        exitAppDialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+        yesNoDialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
 
     }
 
