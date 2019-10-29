@@ -68,6 +68,15 @@ public class MyServicesFragment extends Fragment implements IInternetController 
         }
     };
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        showHideWaitingProgress(false);
+        getMyServices();
+    }
+
+
     public static MyServicesFragment newInstance() {
         return new MyServicesFragment();
     }
@@ -87,8 +96,7 @@ public class MyServicesFragment extends Fragment implements IInternetController 
         super.onViewCreated(view, savedInstanceState);
 
         ButterKnife.bind(this,view);
-        showHideWaitingProgress(false);
-        getMyServices();
+
 
     }
 

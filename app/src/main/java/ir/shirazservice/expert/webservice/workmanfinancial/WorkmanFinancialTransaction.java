@@ -2,7 +2,25 @@ package ir.shirazservice.expert.webservice.workmanfinancial;
 
 import java.io.Serializable;
 
-public class WorkmanFinancialTransaction   implements Serializable {
+import ir.shirazservice.expert.utils.UsefulFunction;
+
+public class WorkmanFinancialTransaction implements Serializable {
+    private int id;
+    private int action;
+    private String actionTitle;
+    private int type;
+    private String typeTitle;
+    private int requestId;
+    private String price;
+    private String remainCredit;
+    private String desc;
+    private String advanceDesc;
+    private String insrtFullDateTimePersian;
+    private String insrtDatePersian;
+    private String insrtDatePersian1;
+    private String insrtTimePersian;
+    private int insrtTime;
+    private String trackingCode;
     public WorkmanFinancialTransaction(int id, int action, String actionTitle, int type, String typeTitle, int requestId, String price, String remainCredit, String desc, String advanceDesc, String insrtFullDateTimePersian, String insrtDatePersian, String insrtDatePersian1, String insrtTimePersian, int insrtTime, String trackingCode) {
         this.id = id;
         this.action = action;
@@ -21,26 +39,8 @@ public class WorkmanFinancialTransaction   implements Serializable {
         this.insrtTime = insrtTime;
         this.trackingCode = trackingCode;
     }
-
     public WorkmanFinancialTransaction() {
     }
-
-    private int id;
-    private int action;
-    private String actionTitle;
-    private int type;
-    private String typeTitle;
-    private int requestId;
-    private String price;
-    private String remainCredit;
-    private String desc;
-    private String advanceDesc;
-    private String insrtFullDateTimePersian;
-    private String insrtDatePersian;
-    private String insrtDatePersian1;
-    private String insrtTimePersian;
-    private int insrtTime;
-    private String trackingCode;
 
     public int getId() {
         return id;
@@ -173,5 +173,14 @@ public class WorkmanFinancialTransaction   implements Serializable {
     public double getPriceByDouble() {
         return
                 Double.valueOf(price);
+    }
+
+    public String getDescForWhatsUpMessage() {
+        return "عملیات " + getActionTitle()+"\n" + " مبلغ " +" «"+
+                new UsefulFunction().attachCamma(getPrice().replace("-", "")) +  " ریال " +"» "
+                +"\n"+
+                " مورخ «" + getInsrtDatePersian1() +
+                " » " +"\n"
+                + "ساعت «" + getInsrtTimePersian() + "» ";
     }
 }

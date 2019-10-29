@@ -2,17 +2,18 @@ package ir.shirazservice.expert.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
@@ -52,10 +53,10 @@ public class ServiceInfoFragment extends Fragment {
         tvRequestDetailServiceTitle.setText(serviceInfoS.getServiceTitle());
 
         tvExtraTitle1.setText(serviceInfoS.getExtraTitle1());
-        tvExtraField1.setText(serviceInfoS.getExtraField1());
+        tvExtraField1.setText(Html.fromHtml(serviceInfoS.getExtraField1()));
 
         tvExtraTitle2.setText(serviceInfoS.getExtraTitle2());
-        tvExtraField2.setText(serviceInfoS.getExtraField2());
+        tvExtraField2.setText(Html.fromHtml(serviceInfoS.getExtraField2()));
 
         tvServiceDescriptionTitle.setText(serviceInfoS.getServiceTitle());
         tvServiceDescription.setText(serviceInfoS.getBody());

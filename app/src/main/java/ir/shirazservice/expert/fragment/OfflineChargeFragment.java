@@ -32,6 +32,7 @@ import ir.shirazservice.expert.internetutils.ConnectionInternetDialog;
 import ir.shirazservice.expert.internetutils.InternetConnectionListener;
 import ir.shirazservice.expert.preferences.GeneralPreferences;
 import ir.shirazservice.expert.utils.APP;
+import ir.shirazservice.expert.utils.NumberTextWatcherForThousand;
 import ir.shirazservice.expert.utils.OnlineCheck;
 import ir.shirazservice.expert.webservice.depositmoney.DepositMoney;
 import ir.shirazservice.expert.webservice.depositmoney.DepositMoneyReq;
@@ -72,7 +73,7 @@ public class OfflineChargeFragment extends Fragment implements Serializable, IIn
                 @Override
                 public void onResponse(boolean successful, ErrorResponseSimple errorResponse, DepositMoney response) {
                     if (successful) {
-                        APP.customToast(errorResponse.getMessage());
+                        APP.customToast(getActivity().getString(R.string.text_save_pay_money));
                         getActivity().finish();
                     } else
                         APP.customToast(errorResponse.getMessage());
@@ -108,6 +109,7 @@ public class OfflineChargeFragment extends Fragment implements Serializable, IIn
     }
 
     private void onClickConfig() {
+        etPayMoney.addTextChangedListener(new NumberTextWatcherForThousand(etPayMoney));
         btnSave.setOnClickListener(view -> saveOfflinePaymentInformation());
         btnDate.setOnClickListener(view -> openDateDialog());
     }

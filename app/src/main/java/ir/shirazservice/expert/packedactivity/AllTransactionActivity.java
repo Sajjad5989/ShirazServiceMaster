@@ -112,7 +112,7 @@ public class AllTransactionActivity extends AppCompatActivity implements Seriali
                             transactionList.getWorkmanFinancialTransactions().get(position));
 
             Objects.requireNonNull(transactionDetailDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-            transactionDetailDialog.getWindow().setBackgroundDrawable(this.getResources().getDrawable(R.drawable.dialog_bg));
+            transactionDetailDialog.getWindow().setBackgroundDrawable(this.getResources().getDrawable(R.drawable.dialog_bg_no_padding));
             transactionDetailDialog.show();
             Display display = AllTransactionActivity.this.getWindowManager().getDefaultDisplay();
             Point size = new Point();

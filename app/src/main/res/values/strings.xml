@@ -46,6 +46,7 @@
 اطلاعات فرمول شارژ پلکانی در قالب یک وب سرویس به اپلیکیشن بازگردانده می شود</string>
 
     <string name = "text_service_detail">جزئیات سرویس</string>
+    <string name = "text_request_detail">جزئیات درخواست</string>
     <string name = "text_successful_operation">عملیات با موفقیت ثبت شد</string>
     <string name = "error_money_select">مبلغی انتخاب نشده است</string>
     <string name = "text_online_payment_description">پرداخت متخصص</string>
@@ -58,7 +59,6 @@
     <string name = "text_fire_base_news">News</string>
     <string name = "text_profile_title">اطلاعات شخصی</string>
     <string name = "text_request_detail_title">جزئیات درخواست</string>
-    <string name = "text_service_detail_title">جزئیات سرویس</string>
     <string name = "text_payment_detail">اطلاعات واریز</string>
     <string name = "text_error_need_value">پر کردن تمامی مقادیر الزامی می باشد</string>
     <string name = "text_error_select_payment_type">انتخاب نوع واریز الزامی می باشد</string>
@@ -149,5 +149,25 @@
 
 
     <string name = "text_request_location" >محل اجرای درخواست</string >
+    <string name="text_discount_code">کد تخفیف</string>
+    <string name="text_all_text_in_currency">تمامی مبالغ به ریال می باشد</string>
+    <string name="text_gift_charge_caption">شارژ هدیه:</string>
+    <string name="text_account_after_choose">اعتبار شما پس از انتخاب</string>
+    <string name="text_save_pay_money">اطلاعات واریزی شما ثبت شد</string>
+
+
+    <string name="link_shz_terms">https://shiraz-service.ir/terms/</string>
+    <string name="link_shz_aboutus">https://shiraz-service.ir/aboutus/</string>
+    <string name="link_shz_faq">https://shiraz-service.ir/faq/</string>
+    <string name="link_shz_insta">http://www.instagram.com/ShirazServiceApp</string>
+    <string name="link_shz_aparat">https://www.aparat.com/shirazservice</string>
+    <string name="link_shz_telegram">https://telegram.me/ShirazServiceApp</string>
+    <string name="link_shz_eitaa">https://eitaa.com/ShirazServiceApp</string>
+    <string name="link_shz_ble">https://ble.im/ShirazServiceApp</string>
+    <string name="link_shz_sapp">https://sapp.ir/ShirazServiceApp</string>
+    <string name="link_bazaar">com.farsitel.bazaar</string>
+    <string name="link_bazaar_specefic">bazaar://details?id=ir.shirazservice.general</string>
+    <string name="text_zarinpal_part_1">پرداخت آنلاین شیراز سرویس - افزایش اعتبار متخصصین -</string>
+    <string name="text_zarinpal_part_2">به مبلغ</string>
 
 </resources>

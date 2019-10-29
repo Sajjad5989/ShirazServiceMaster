@@ -29,7 +29,6 @@ public class UsefulFunction {
         return s;
     }
 
-
     public String deAttachCamma(String value) {
         String retval = value.replace(",", "").replace("٬", "");
         return retval;

@@ -7,12 +7,6 @@ import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +17,12 @@ import com.squareup.picasso.Picasso;
 import java.io.Serializable;
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.BuildConfig;
@@ -98,7 +98,10 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
             = new CancelRequestByWorkmanApi.cancelRequestByWorkmanCallback() {
         @Override
         public void onResponse(boolean successful, ErrorResponseSimple errorResponse, PickupResponse response) {
-
+            if ( successful )
+                getActivity().finish();
+            else
+                APP.customToast( errorResponse.getMessage() );
         }
 
         @Override
@@ -384,7 +387,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
                         .placeholder(R.drawable.img_loading)
                         .into(imgRequestDetail);
             }
-
+            requestId = currentRequest.getRequestId();
             tvRequestDetailServiceTitle.setText(currentRequest.getServiceTitle());
             tvRequestDetailTracking_code.setText(currentRequest.getTrackingCode());
             tvRequestStatus.setText(currentRequest.getStateTitle());

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+    android:background="@color/colorWhite"
+    android:clickable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const_help"
@@ -35,8 +35,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:animationDuration="600"
-        app:layoutManagerOrientation="vertical"
         app:gridLayoutManagerColumns="1"
+        app:layoutManagerOrientation="vertical"
         app:layoutManagerReverse="false"
         app:layoutManagerType="grid"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -55,36 +55,39 @@
             android:id="@+id/et_charge_amount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_sp_very_tiny"
+            android:layout_marginEnd="@dimen/dimen_sp_very_tiny"
             android:background="@drawable/const_border"
             android:fontFamily="@font/iran_sans"
-            android:textSize="@dimen/dimen_sp_large"
-            android:padding="@dimen/dimen_dp_medium"
-            android:inputType="number"
             android:gravity="center"
             android:hint="@string/text_other_amount"
-            app:layout_constraintRight_toRightOf="parent"
+            android:inputType="number"
+            android:padding="@dimen/dimen_dp_medium"
+            android:textSize="@dimen/dimen_sp_huge"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_add_charge"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="@dimen/dimen_dp_small"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="@dimen/dimen_dp_large"
             android:src="@drawable/ic_add_charge"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_decrease_charge"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginEnd="@dimen/dimen_dp_small"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="@dimen/dimen_dp_large"
             android:src="@drawable/ic_decrease_charge"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -102,29 +105,43 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/iran_sans"
-            android:textSize="@dimen/dimen_sp_medium"
-            android:textColor="@color/color_black"
             android:gravity="end"
-            android:text="شارژ هدیه:"
-            app:layout_constraintRight_toRightOf="parent"
+            android:text="@string/text_gift_charge_caption"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/dimen_sp_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/tv_gift_charge"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iran_sans_bold"
+            android:gravity="end"
+            android:text="@string/text_all_text_in_currency"
+            android:textColor="@color/colorBlackStep_1"
+            android:textSize="@dimen/dimen_sp_very_tiny"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_charge"
+            app:layout_constraintTop_toBottomOf="@+id/tv_charge" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_gift_charge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/iran_sans"
-            android:textSize="@dimen/dimen_sp_large"
-            android:textColor="@color/color_red"
-            android:padding="@dimen/dimen_dp_medium"
             android:layout_marginEnd="@dimen/dimen_dp_small"
+            android:fontFamily="@font/iran_sans_bold"
             android:gravity="start"
-            app:layout_constraintRight_toLeftOf="@+id/tv_charge"
+            android:padding="@dimen/dimen_dp_medium"
+            android:text="0"
+            android:textColor="@color/color_red"
+            android:textSize="@dimen/dimen_sp_large"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintRight_toLeftOf="@+id/tv_charge"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -169,6 +186,7 @@
 
 
     </LinearLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const_waiting_main_fragment"
         android:layout_width="0dp"
@@ -204,6 +222,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const_not_found_info"
         android:layout_width="match_parent"

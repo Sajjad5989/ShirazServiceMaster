@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatTextView;
+import android.text.Html;
 import android.view.Window;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -45,9 +46,10 @@ public class TransactionDetailDialog extends Dialog {
     @OnClick(R.id.img_share)
     void shareTransactionDetail()
     {
-        sendTextViaWhatsUP("hi");
-    }
+        String msg = transactionList.getDescForWhatsUpMessage();
+        sendTextViaWhatsUP(msg);
 
+    }
     private void sendTextViaWhatsUP(String text) {
         PackageManager pm = context.getPackageManager();
         try {
@@ -96,7 +98,10 @@ public class TransactionDetailDialog extends Dialog {
         tvDatePersian.setText(transactionList.getInsrtDatePersian());
         tvTimePersian.setText(transactionList.getInsrtTimePersian());
 
-        tvDesc.setText(transactionList.getAdvanceDesc());
+        String desc = "".equals(transactionList.getAdvanceDesc())?transactionList.getDesc():
+                transactionList.getAdvanceDesc();
+
+        tvDesc.setText(Html.fromHtml(desc));
     }
 
 }

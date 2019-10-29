@@ -5,14 +5,16 @@ import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Display;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.BuildConfig;
@@ -59,16 +61,13 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
     private String isNews;
     private String toolbarTitle;
     private RequestDetails requestDetails;
+
     private final GetRequestDetailsApi.getRequestDetailsCallback getRequestDetailsCallback = new GetRequestDetailsApi.getRequestDetailsCallback() {
         @Override
         public void onResponse(boolean successful, ErrorResponseSimple errorResponse, RequestDetails response) {
             if (successful) {
                 requestDetails = response;
-                if (chooseCorrectFragment == BuildConfig.requestAccept)
-                    openRequestFull();
-                else
-                    openServiceFull();
-
+                openRequestFull(reqId);
             } else {
                 requestDetails = null;
             }
@@ -138,6 +137,10 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
         setContentView(R.layout.activity_service_request_detail);
         ButterKnife.bind(this);
 
@@ -198,9 +201,7 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
     }
 
     private void openCorrectFragment() {
-
-        toolbarTitle = getResources().getString(R.string.text_service_detail);
-        prepareToolbar();
+        setToolbarTitle();
         switch (chooseCorrectFragment) {
             case BuildConfig.requestLimit:
                 openRequestlimit();
@@ -213,18 +214,33 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
                 getRequestDetails(reqId);
                 break;
             case BuildConfig.serviceInfo:
-                toolbarTitle = getString(R.string.text_service_information);
-                prepareToolbar();
                 getServiceInfo(reqId);
                 break;
             case BuildConfig.offlineCharge:
-                toolbarTitle = getResources().getString(R.string.text_payment_detail);
-                prepareToolbar();
                 openOfflineCharge();
                 break;
         }
     }
 
+    private void setToolbarTitle() {
+        switch (chooseCorrectFragment) {
+            case BuildConfig.requestLimit:
+            case BuildConfig.requestAccept:
+            case BuildConfig.requestSelect:
+                toolbarTitle = getString(R.string.text_request_detail);
+                break;
+            case BuildConfig.requestFinished:
+                toolbarTitle = getString(R.string.text_service_detail);
+                break;
+            case BuildConfig.serviceInfo:
+                toolbarTitle = getString(R.string.text_service_information);
+                break;
+            case BuildConfig.offlineCharge:
+                toolbarTitle = getString(R.string.text_payment_detail);
+                break;
+        }
+        prepareToolbar();
+    }
 
     private void openOfflineCharge() {
         OfflineChargeFragment offlineChargeFragment = OfflineChargeFragment.newInstance();
@@ -234,8 +250,8 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
                 .commit();
     }
 
-    private void openRequestFull() {
-        RequestFullFragment requestFullFragment = RequestFullFragment.newInstance(requestDetails,BuildConfig.openRequest);
+    private void openRequestFull(int myReqId) {
+        RequestFullFragment requestFullFragment = RequestFullFragment.newInstance(requestDetails, myReqId);
         getFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, requestFullFragment)
                 .addToBackStack(null)
@@ -260,7 +276,8 @@ public class ServiceRequestDetailActivity extends AppCompatActivity implements I
     }
 
     private void openServiceFull() {
-        RequestFullFragment requestFullFragment = RequestFullFragment.newInstance(requestDetails, BuildConfig.openService);
+        RequestFullFragment requestFullFragment = RequestFullFragment.newInstance
+                (requestDetails, BuildConfig.openService);
         getFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, requestFullFragment)
                 .addToBackStack(null)

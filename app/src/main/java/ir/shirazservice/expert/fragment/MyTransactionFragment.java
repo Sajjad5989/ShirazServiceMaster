@@ -224,7 +224,7 @@ public class MyTransactionFragment extends Fragment implements Serializable, IIn
                     new TransactionDetailDialog(getActivity(), transactionList.getWorkmanFinancialTransactions().get(position));
 
             Objects.requireNonNull(transactionDetailDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            transactionDetailDialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.dialog_bg));
+            transactionDetailDialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.dialog_bg_no_padding));
             transactionDetailDialog.show();
             Display display = getActivity().getWindowManager().getDefaultDisplay();
             Point size = new Point();

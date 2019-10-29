@@ -31,6 +31,10 @@ public class GeneralPreferences {
         editor.remove(tag).commit();
     }
 
+    public void removeShared() {
+        editor.remove("shirazservice_general_pref_file").commit();
+    }
+
     public void putBoolean(String title, boolean value) {
         remove(title);
         editor.putBoolean(title, value);
@@ -73,7 +77,6 @@ public class GeneralPreferences {
     }
 
 
-
     public void putBaseInfoOfApp(BaseInfoOfApp baseInfoOfApp) {
 
         String tag = context.getString(R.string.text_base_info);
@@ -92,7 +95,6 @@ public class GeneralPreferences {
         return gson.fromJson(serviceManString, BaseInfoOfApp.class);
 
     }
-
 
 
     private void putServiceManString(String serviceMan) {
