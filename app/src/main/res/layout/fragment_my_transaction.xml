@@ -130,7 +130,7 @@
                 android:id="@+id/my_transaction_list_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:animationDuration="600"
+                app:animationDuration="300"
                 app:layoutManagerOrientation="vertical"
                 app:gridLayoutManagerColumns="1"
                 app:layoutManagerReverse="false"

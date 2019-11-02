@@ -34,7 +34,7 @@
         android:id="@+id/recycler_charge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:animationDuration="600"
+        app:animationDuration="300"
         app:gridLayoutManagerColumns="1"
         app:layoutManagerOrientation="vertical"
         app:layoutManagerReverse="false"

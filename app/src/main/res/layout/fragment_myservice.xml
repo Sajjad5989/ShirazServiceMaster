@@ -11,7 +11,7 @@
         android:id="@+id/all_service_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:animationDuration="600"
+        app:animationDuration="300"
         app:layoutManagerOrientation="vertical"
         app:gridLayoutManagerColumns="1"
         app:layoutManagerReverse="false"
