@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android = "http://schemas.android.com/apk/res/android"
                                                    xmlns:app = "http://schemas.android.com/apk/res-auto"
-                                                   android:background = "@drawable/box_for_simple"
                                                    android:layout_width = "match_parent"
                                                    android:layout_height = "wrap_content"
-                                                   android:padding = "@dimen/dimen_dp_small">
+                                                   android:layout_margin = "@dimen/dimen_dp_small"
+                                                   android:background = "@drawable/box_current_service">
 
     <LinearLayout
         android:id = "@+id/layout_pic_rate"
@@ -12,15 +12,14 @@
         android:layout_height = "wrap_content"
         android:baselineAligned = "false"
         android:gravity = "center"
-        android:orientation = "horizontal"
+        android:orientation = "vertical"
         app:layout_constraintLeft_toLeftOf = "parent"
         app:layout_constraintRight_toRightOf = "parent"
         app:layout_constraintTop_toTopOf = "parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width = "0dp"
-            android:layout_height = "wrap_content"
-            android:layout_weight = "1">
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id = "@+id/image_expert"
@@ -59,25 +58,17 @@
                 android:text = "8"
                 android:textColor = "@color/colorWhite"
                 android:textSize = "@dimen/dimen_sp_small"
-                app:layout_constraintRight_toRightOf="@id/image_expert"
-                app:layout_constraintTop_toTopOf="@id/image_expert"
+                app:layout_constraintRight_toRightOf = "@id/image_expert"
+                app:layout_constraintTop_toTopOf = "@id/image_expert"
 
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <RelativeLayout
-            android:layout_width = "0.2dp"
-            android:layout_height = "match_parent"
-            android:background="#E0DBDB"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            />
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width = "0dp"
+            android:layout_width = "match_parent"
             android:layout_height = "wrap_content"
-            android:layout_weight="1"
+            android:layout_marginBottom = "@dimen/dimen_dp_tiny"
             android:gravity = "center"
             android:orientation = "vertical"
             app:layout_constraintLeft_toLeftOf = "parent"
@@ -85,38 +76,35 @@
             app:layout_constraintTop_toBottomOf = "@id/layout_pic_rate">
 
 
-
             <RatingBar
                 android:id = "@+id/ratingBar"
                 style = "@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width = "wrap_content"
                 android:layout_height = "wrap_content"
+                android:layout_margin = "4dp"
                 android:layoutDirection = "ltr"
-                android:layout_margin="4dp"
                 android:numStars = "5"
                 android:rating = "2.5"
                 android:stepSize = "0.1"
                 android:theme = "@style/smallRatingBar"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
+                app:layout_constraintLeft_toLeftOf = "parent"
+                app:layout_constraintRight_toRightOf = "parent"
+                app:layout_constraintTop_toTopOf = "parent" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id = "@+id/tv_ratingBar"
                 android:layout_width = "wrap_content"
                 android:layout_height = "wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop = "8dp"
                 android:fontFamily = "@font/iran_sans"
                 android:gravity = "center"
                 android:text = "8"
                 android:textColor = "@color/colorControlActivated"
                 android:textSize = "@dimen/dimen_sp_tiny"
-                app:layout_constraintLeft_toLeftOf="@id/ratingBar"
-                app:layout_constraintRight_toRightOf="@id/ratingBar"
-                app:layout_constraintTop_toBottomOf="@id/ratingBar"
+                app:layout_constraintLeft_toLeftOf = "@id/ratingBar"
+                app:layout_constraintRight_toRightOf = "@id/ratingBar"
+                app:layout_constraintTop_toBottomOf = "@id/ratingBar"
 
                 />
 
@@ -124,84 +112,40 @@
                 android:id = "@+id/tv_ratingBar_view"
                 android:layout_width = "wrap_content"
                 android:layout_height = "wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop = "8dp"
                 android:fontFamily = "@font/iran_sans"
                 android:gravity = "center"
                 android:text = "مشاهده جزئیات"
                 android:textColor = "@color/colorBlackStep_2"
                 android:textSize = "@dimen/dimen_sp_tiny"
-                android:visibility="gone"
-                app:layout_constraintLeft_toLeftOf="@id/ratingBar"
-                app:layout_constraintRight_toRightOf="@id/ratingBar"
-                app:layout_constraintTop_toBottomOf="@id/tv_ratingBar"
+                android:visibility = "gone"
+                app:layout_constraintLeft_toLeftOf = "@id/ratingBar"
+                app:layout_constraintRight_toRightOf = "@id/ratingBar"
+                app:layout_constraintTop_toBottomOf = "@id/tv_ratingBar"
 
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <RelativeLayout
-            android:layout_width = "0.2dp"
-            android:layout_height = "match_parent"
-            android:background="#E0DBDB"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            />
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width = "0dp"
-            android:layout_height = "wrap_content"
-            android:layout_weight = "1">
 
-            <com.mikhaellopez.circularprogressbar.CircularProgressBar
-                android:id = "@+id/circularProgressBar"
-                android:layout_width = "@dimen/service_man_avatar_size"
-                android:layout_height = "@dimen/service_man_avatar_size"
-                app:cpb_background_progressbar_color = "#E0DBDB"
-                app:cpb_background_progressbar_width = "0.5dp"
-                app:cpb_progress = "0"
-                app:cpb_progress_direction = "to_left"
-                app:cpb_progress_max = "100"
-                app:cpb_progressbar_color = "@color/colorAccent"
-                app:cpb_progressbar_color_direction = "bottom_to_top"
-                app:cpb_progressbar_color_end = "@color/colorAccent"
-                app:cpb_progressbar_color_start = "@color/colorAccent"
-                app:cpb_progressbar_width = "4dp"
-                app:cpb_round_border = "true"
-                app:cpb_start_angle = "180"
-                app:layout_constraintBottom_toBottomOf = "parent"
-                app:layout_constraintLeft_toLeftOf = "parent"
-                app:layout_constraintRight_toRightOf = "parent"
-                app:layout_constraintTop_toTopOf = "parent" />
+        <com.skydoves.progressview.ProgressView
+            android:id = "@+id/progressView1"
+            android:layout_width = "match_parent"
+            android:layout_height = "22dp"
+            app:progressView_autoAnimate = "true"
+            app:progressView_colorBackground = "@color/colorGrayBorderLight"
+            app:progressView_colorProgress = "@color/colorAccent"
+            app:progressView_labelColorInner = "@color/white"
+            app:progressView_labelColorOuter = "@color/black"
+            app:progressView_labelSize = "13sp"
+            app:progressView_labelSpace = "10dp"
+            app:progressView_labelText = "فعالیت شما 65%"
+            app:progressView_labelTypeface = "bold"
+            app:progressView_max = "100"
+            android:layoutDirection="ltr"
+            app:progressView_progress = "40"
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width = "0dp"
-                android:layout_height = "wrap_content"
-                android:background = "@drawable/btn_slider_order"
-                android:fontFamily = "@font/iran_sans_bold"
-                android:gravity = "center"
-                android:text = "فعالیت شما"
-                android:textColor = "@color/colorWhite"
-                android:textSize = "@dimen/dimen_sp_small"
-                app:layout_constraintBottom_toBottomOf = "parent"
-                app:layout_constraintLeft_toLeftOf = "@id/circularProgressBar"
-                app:layout_constraintRight_toRightOf = "@id/circularProgressBar" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id = "@+id/tv_exp_rate"
-                android:layout_width = "wrap_content"
-                android:layout_height = "wrap_content"
-                android:background = "@drawable/circle_bg_text_view_rating"
-                android:fontFamily = "@font/iran_sans"
-                android:gravity = "center"
-                android:text = "42"
-                android:textColor = "@color/colorWhite"
-                android:textSize = "@dimen/dimen_sp_tiny"
-                app:layout_constraintBottom_toBottomOf = "parent"
-                app:layout_constraintLeft_toLeftOf = "parent"
-                app:layout_constraintRight_toRightOf = "parent"
-                app:layout_constraintTop_toTopOf = "parent"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:progressView_radius = "4dp" />
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

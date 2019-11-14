@@ -1,256 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FAFAFA"
-    android:clickable="true"
-    android:layoutDirection="rtl">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+                                                   xmlns:app = "http://schemas.android.com/apk/res-auto"
+                                                   android:layout_width = "match_parent"
+                                                   android:layout_height = "match_parent"
+                                                   android:background="#F6F6F6"
+                                                   android:layoutDirection = "rtl">
 
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width = "0dp"
+        android:layout_height = "0dp"
+        android:layout_margin = "@dimen/dimen_dp_tiny"
+        app:layout_constraintBottom_toBottomOf = "parent"
+        app:layout_constraintLeft_toLeftOf = "parent"
+        app:layout_constraintRight_toRightOf = "parent"
+        app:layout_constraintTop_toTopOf = "parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_width = "match_parent"
+            android:layout_height = "match_parent"
+            android:layout_margin = "@dimen/dimen_dp_small"
+            android:orientation = "vertical">
 
             <include
-                android:id="@+id/top_main"
-                layout="@layout/top_main_template_new"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_dp_tiny"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:id = "@+id/top_main"
+                layout = "@layout/top_main_template_new"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_margin = "@dimen/dimen_dp_tiny"
+                app:layout_constraintLeft_toLeftOf = "parent"
+                app:layout_constraintRight_toRightOf = "parent"
+                app:layout_constraintTop_toTopOf = "parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_margin="@dimen/dimen_dp_tiny">
+                android:id = "@+id/layout_newest_request"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:background = "@color/color_more_back"
+                android:gravity = "center_vertical"
+                android:orientation = "horizontal"
+                android:padding = "4dp"
+                app:layout_constraintLeft_toLeftOf = "parent"
+                app:layout_constraintRight_toRightOf = "parent"
+                app:layout_constraintTop_toTopOf = "parent">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:fontFamily = "@font/iran_sans_bold"
+                    android:gravity = "start"
+                    android:text = "@string/text_the_newest_request"
+                    android:textColor = "@color/colorPrimary"
+                    android:textIsSelectable = "false"
+                    android:textSize = "12sp"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintRight_toRightOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:fontFamily = "@font/iran_sans_light"
+                    android:gravity = "start"
+                    android:text = "@string/text_view_all"
+                    android:textColor = "@color/colorDarkGrey"
+                    android:textIsSelectable = "false"
+                    android:textSize = "@dimen/dimen_sp_tiny"
+                    android:visibility = "gone"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintLeft_toLeftOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.mlsdev.animatedrv.AnimatedRecyclerView
+                android:id = "@+id/recycler_request"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_margin = "@dimen/dimen_dp_tiny"
+                app:animationDuration = "100"
+                app:gridLayoutManagerColumns = "1"
+                app:layoutManagerOrientation = "vertical"
+                app:layoutManagerReverse = "false"
+                app:layoutManagerType = "grid" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width = "match_parent"
+                android:layout_height = "200dp"
+                android:layout_marginTop = "@dimen/dimen_dp_small"
+                android:layout_marginBottom = "@dimen/dimen_dp_small">
 
                 <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/view_pager_slider"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:id = "@+id/view_pager_slider"
+                    android:layout_width = "match_parent"
+                    android:layout_height = "match_parent"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintLeft_toLeftOf = "parent"
+                    app:layout_constraintRight_toRightOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent">
 
                 </androidx.viewpager.widget.ViewPager>
 
                 <LinearLayout
-                    android:id="@+id/linear_dots"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen_dp_small"
-                    android:gravity="center"
-                    android:layoutDirection="ltr"
-                    android:orientation="horizontal"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+                    android:id = "@+id/linear_dots"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:layout_margin = "@dimen/dimen_dp_large"
+                    android:gravity = "center"
+                    android:layoutDirection = "ltr"
+                    android:orientation = "horizontal"
+                    app:layout_constraintRight_toRightOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_newest_request"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/color_more_back"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="4dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:id = "@+id/layout_news"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:background = "@color/color_more_back"
+                android:gravity = "center_vertical"
+                android:orientation = "horizontal"
+                android:padding = "4dp"
+                app:layout_constraintLeft_toLeftOf = "parent"
+                app:layout_constraintRight_toRightOf = "parent"
+                app:layout_constraintTop_toTopOf = "parent">
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/iran_sans_bold"
-                    android:gravity="start"
-                    android:text="@string/text_the_newest_request"
-                    android:textColor="@color/colorPrimary"
-                    android:textIsSelectable="false"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:fontFamily = "@font/iran_sans_bold"
+                    android:gravity = "start"
+                    android:text = "@string/text_news"
+                    android:textColor = "@color/colorPrimary"
+                    android:textIsSelectable = "false"
+                    android:textSize = "@dimen/dimen_sp_small"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintRight_toRightOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/iran_sans_light"
-                    android:gravity="start"
-                    android:text="@string/text_view_all"
-                    android:textColor="@color/colorDarkGrey"
-                    android:textIsSelectable="false"
-                    android:textSize="@dimen/dimen_sp_tiny"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
+                    android:id = "@+id/tv_view_all_news"
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:fontFamily = "@font/iran_sans_light"
+                    android:gravity = "start"
+                    android:text = "@string/text_view_all"
+                    android:textColor = "@color/colorDarkGrey"
+                    android:textIsSelectable = "false"
+                    android:textSize = "@dimen/dimen_sp_tiny"
+                    app:layout_constraintBottom_toBottomOf = "parent"
+                    app:layout_constraintLeft_toLeftOf = "parent"
+                    app:layout_constraintTop_toTopOf = "parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.mlsdev.animatedrv.AnimatedRecyclerView
-                android:id="@+id/recycler_request"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_dp_tiny"
-                app:animationDuration="300"
-                app:gridLayoutManagerColumns="1"
-                app:layoutManagerOrientation="vertical"
-                app:layoutManagerReverse="false"
-                app:layoutManagerType="grid" />
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_news"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/color_more_back"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="4dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/iran_sans_bold"
-                    android:gravity="start"
-                    android:text="@string/text_news"
-                    android:textColor="@color/colorPrimary"
-                    android:textIsSelectable="false"
-                    android:textSize="@dimen/dimen_sp_small"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_view_all_news"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/iran_sans_light"
-                    android:gravity="start"
-                    android:text="@string/text_view_all"
-                    android:textColor="@color/colorDarkGrey"
-                    android:textIsSelectable="false"
-                    android:textSize="@dimen/dimen_sp_tiny"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <com.mlsdev.animatedrv.AnimatedRecyclerView
-                android:id="@+id/recycler_news"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_dp_tiny"
-                app:animationDuration="300"
-                app:gridLayoutManagerColumns="1"
-                app:layoutManagerOrientation="vertical"
-                app:layoutManagerReverse="false"
-                app:layoutManagerType="grid" />
-
+                android:id = "@+id/recycler_news"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_margin = "@dimen/dimen_dp_tiny"
+                app:animationDuration = "100"
+                app:gridLayoutManagerColumns = "1"
+                app:layoutManagerOrientation = "vertical"
+                app:layoutManagerReverse = "false"
+                app:layoutManagerType = "grid" />
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/const_waiting_main_fragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/colorWhite"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:id = "@+id/const_waiting_main_fragment"
+        android:layout_width = "0dp"
+        android:layout_height = "0dp"
+        android:background = "@color/colorWhite"
+        android:visibility = "gone"
+        app:layout_constraintBottom_toBottomOf = "parent"
+        app:layout_constraintLeft_toLeftOf = "parent"
+        app:layout_constraintRight_toRightOf = "parent"
+        app:layout_constraintTop_toTopOf = "parent">
 
         <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id = "@+id/progressBar"
+            style = "?android:attr/progressBarStyle"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            app:layout_constraintBottom_toBottomOf = "parent"
+            app:layout_constraintLeft_toLeftOf = "parent"
+            app:layout_constraintRight_toRightOf = "parent"
+            app:layout_constraintTop_toTopOf = "parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_dp_tiny"
-            android:fontFamily="@font/iran_sans_light"
-            android:text="@string/text_waiting"
-            android:textColor="@color/color_red"
-            android:textSize="@dimen/dimen_sp_tiny"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/progressBar" />
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:layout_marginTop = "@dimen/dimen_dp_tiny"
+            android:fontFamily = "@font/iran_sans_light"
+            android:text = "@string/text_waiting"
+            android:textColor = "@color/color_red"
+            android:textSize = "@dimen/dimen_sp_tiny"
+            app:layout_constraintLeft_toLeftOf = "parent"
+            app:layout_constraintRight_toRightOf = "parent"
+            app:layout_constraintTop_toBottomOf = "@id/progressBar" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/const_not_found_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:id = "@+id/const_not_found_info"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:background = "@color/colorWhite"
+        android:visibility = "gone"
+        app:layout_constraintBottom_toBottomOf = "parent"
+        app:layout_constraintLeft_toLeftOf = "parent"
+        app:layout_constraintRight_toRightOf = "parent"
+        app:layout_constraintTop_toTopOf = "parent">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_not_found"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/iran_sans_bold"
-            android:text="@string/text_no_request_found"
-            android:textColor="@color/color_black"
-            android:textSize="@dimen/dimen_sp_medium"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id = "@+id/tv_not_found"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:fontFamily = "@font/iran_sans_bold"
+            android:text = "@string/text_no_request_found"
+            android:textColor = "@color/color_black"
+            android:textSize = "@dimen/dimen_sp_medium"
+            app:layout_constraintBottom_toBottomOf = "parent"
+            app:layout_constraintLeft_toLeftOf = "parent"
+            app:layout_constraintRight_toRightOf = "parent"
+            app:layout_constraintTop_toTopOf = "parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_retry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_dp_medium"
-            android:background="@drawable/text_view_round_corner"
-            android:fontFamily="@font/iran_sans"
-            android:paddingStart="@dimen/dimen_dp_medium"
-            android:paddingTop="@dimen/dimen_dp_tiny"
-            android:paddingEnd="@dimen/dimen_dp_medium"
-            android:paddingBottom="@dimen/dimen_dp_tiny"
-            android:text="@string/text_try_again"
-            android:textColor="@color/colorWhite"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_not_found" />
+            android:id = "@+id/tv_retry"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:layout_marginTop = "@dimen/dimen_dp_medium"
+            android:background = "@drawable/text_view_round_corner"
+            android:fontFamily = "@font/iran_sans"
+            android:paddingStart = "@dimen/dimen_dp_medium"
+            android:paddingTop = "@dimen/dimen_dp_tiny"
+            android:paddingEnd = "@dimen/dimen_dp_medium"
+            android:paddingBottom = "@dimen/dimen_dp_tiny"
+            android:text = "@string/text_try_again"
+            android:textColor = "@color/colorWhite"
+            app:layout_constraintLeft_toLeftOf = "parent"
+            app:layout_constraintRight_toRightOf = "parent"
+            app:layout_constraintTop_toBottomOf = "@id/tv_not_found" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

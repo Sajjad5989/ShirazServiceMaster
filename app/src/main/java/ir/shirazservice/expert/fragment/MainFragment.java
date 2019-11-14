@@ -6,6 +6,7 @@ import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.provider.Settings;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -14,14 +15,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
-
-import com.mikhaellopez.circularprogressbar.CircularProgressBar;
-import com.mlsdev.animatedrv.AnimatedRecyclerView;
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,8 +25,15 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
+
+import com.mlsdev.animatedrv.AnimatedRecyclerView;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import ir.shirazservice.expert.R;
-import ir.shirazservice.expert.activity.MapsActivity;
 import ir.shirazservice.expert.activity.ProfileActivity;
 import ir.shirazservice.expert.activity.ServiceRequestDetailActivity;
 import ir.shirazservice.expert.adapter.RequestListAdapter;
@@ -84,7 +84,7 @@ public class MainFragment extends Fragment implements IInternetController {
     private RatingBar ratingBar;
     private AppCompatTextView tvRetry;
     private AppCompatImageView imageExpert;
-    private ConstraintLayout   layoutNewRequest;
+    private ConstraintLayout layoutNewRequest;
     private AnimatedRecyclerView recyclerRequest;
     private AnimatedRecyclerView recyclerNews;
 
@@ -92,13 +92,13 @@ public class MainFragment extends Fragment implements IInternetController {
     private LinearLayout linearDots;
     private ConstraintLayout constraintLayout;
     private ConstraintLayout constNotFoundInfo;
-    private List<Request> selectedRequestList;
-    private List<WorkmanNews> workmanNews;
-    private List<AdsSlider> adsSliders;
+    private List< Request > selectedRequestList;
+    private List< WorkmanNews > workmanNews;
+    private List< AdsSlider > adsSliders;
     private final GetWorkmanNewsApi.getWorkmanNewsCallback getWorkmanNewsCallback = new GetWorkmanNewsApi.getWorkmanNewsCallback() {
         @Override
-        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, List<WorkmanNews> response) {
-            if (successful) {
+        public void onResponse( boolean successful, ErrorResponseSimple errorResponse, List< WorkmanNews > response ){
+            if ( successful ) {
                 workmanNews = response;
 
             } else {
@@ -108,17 +108,34 @@ public class MainFragment extends Fragment implements IInternetController {
         }
 
         @Override
-        public void onFailure(String cause) {
+        public void onFailure( String cause ){
 
         }
     };
-    private CircularProgressBar circularProgressBar;
     private int servicemanId;
     private String accessToken;
+    private GeneralIdsInput generalIdsInput;
+    private final RequestListApi.GetRequestListCallback getRequestListCallback = new RequestListApi.GetRequestListCallback() {
+        @Override
+        public void onResponse( boolean successful, ErrorResponseSimple errorResponse, List< Request > response ){
+            if ( successful ) {
+                selectedRequestList = response;
+            } else {
+                selectedRequestList = new ArrayList<>();
+            }
+            fillRequestList();
+        }
+
+        @Override
+        public void onFailure( String cause ){
+            selectedRequestList = new ArrayList<>();
+            fillRequestList();
+        }
+    };
     private final GetAdsSliderApi.getAdsSliderCallback getAdsSliderCallback = new GetAdsSliderApi.getAdsSliderCallback() {
         @Override
-        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, List<AdsSlider> response) {
-            if (successful) {
+        public void onResponse( boolean successful, ErrorResponseSimple errorResponse, List< AdsSlider > response ){
+            if ( successful ) {
                 adsSliders = response;
 
             } else {
@@ -128,61 +145,40 @@ public class MainFragment extends Fragment implements IInternetController {
         }
 
         @Override
-        public void onFailure(String cause) {
+        public void onFailure( String cause ){
             adsSliders = new ArrayList<>();
             setAndShowSlidersPhoto();
-        }
-    };
-    private GeneralIdsInput generalIdsInput;
-    private final RequestListApi.GetRequestListCallback getRequestListCallback = new RequestListApi.GetRequestListCallback() {
-        @Override
-        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, List<Request> response) {
-            if (successful) {
-                selectedRequestList = response;
-            } else {
-                selectedRequestList = new ArrayList<>();
-            }
-            fillRequestList();
-        }
-
-        @Override
-        public void onFailure(String cause) {
-            selectedRequestList = new ArrayList<>();
-            fillRequestList();
         }
     };
     private WorkmanActivityPointApi.getWorkmanActivityPointCallback getWorkmanActivityPointCallback =
             new WorkmanActivityPointApi.getWorkmanActivityPointCallback() {
                 @Override
-                public void onResponse(boolean successful, ErrorResponseSimple errorResponse, WorkManPoint response) {
-                    if (successful) {
-                        setWorkmanPoint(response.getActivityPoint());
-                    } else setWorkmanPoint(0);
+                public void onResponse( boolean successful, ErrorResponseSimple errorResponse, WorkManPoint response ){
+                    if ( successful ) {
+                        setWorkmanPoint( response.getActivityPoint() );
+                    } else setWorkmanPoint( 0 );
                 }
 
                 @Override
-                public void onFailure(String cause) {
-                    setWorkmanPoint(0);
+                public void onFailure( String cause ){
+                    setWorkmanPoint( 0 );
                 }
             };
 
-    public static MainFragment newInstance() {
+    public static MainFragment newInstance( ){
         return new MainFragment();
     }
 
-    private void setWorkmanPoint(int point) {
-        tvExpRate.setText(String.valueOf(point));
-        circularProgressBar.setProgress(point);
-        circularProgressBar.setProgressWithAnimation(65f, 1000L); // =1s
-        circularProgressBar.setProgressMax(100f);
+    private void setWorkmanPoint( int point ){
+        //tvExpRate.setText( String.valueOf( point ) );
 
         callGetSliderAds();
     }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+    public View onCreateView( @NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState ){
+        View view = inflater.inflate( R.layout.fragment_main, container, false );
 
         currentActivity = getActivity();
         assert container != null;
@@ -190,53 +186,51 @@ public class MainFragment extends Fragment implements IInternetController {
         return view;
     }
 
-    private void findViews(View view) {
+    private void findViews( View view ){
 
-        tvExpertName = view.findViewById(R.id.tv_expert_name);
-        tvExpRate = view.findViewById(R.id.tv_exp_rate);
-        tvRetry = view.findViewById(R.id.tv_retry);
-        tvExpertDiscount = view.findViewById(R.id.tv_expert_discount);
-        tvViewAllNews = view.findViewById(R.id.tv_view_all_news);
-        tvRatingBar = view.findViewById(R.id.tv_ratingBar);
-        ratingBar = view.findViewById(R.id.ratingBar);
-        imageExpert = view.findViewById(R.id.image_expert);
-        recyclerRequest = view.findViewById(R.id.recycler_request);
-        recyclerNews = view.findViewById(R.id.recycler_news);
+        tvExpertName = view.findViewById( R.id.tv_expert_name );
+//        tvExpRate = view.findViewById( R.id.tv_exp_rate );
+        tvRetry = view.findViewById( R.id.tv_retry );
+        tvExpertDiscount = view.findViewById( R.id.tv_expert_discount );
+        tvViewAllNews = view.findViewById( R.id.tv_view_all_news );
+        tvRatingBar = view.findViewById( R.id.tv_ratingBar );
+        ratingBar = view.findViewById( R.id.ratingBar );
+        imageExpert = view.findViewById( R.id.image_expert );
+        recyclerRequest = view.findViewById( R.id.recycler_request );
+        recyclerNews = view.findViewById( R.id.recycler_news );
 
-        viewPagerSlider = view.findViewById(R.id.view_pager_slider);
-        linearDots = view.findViewById(R.id.linear_dots);
+        viewPagerSlider = view.findViewById( R.id.view_pager_slider );
+        linearDots = view.findViewById( R.id.linear_dots );
 
-        constraintLayout = view.findViewById(R.id.const_waiting_main_fragment);
-        constNotFoundInfo = view.findViewById(R.id.const_not_found_info);
+        constraintLayout = view.findViewById( R.id.const_waiting_main_fragment );
+        constNotFoundInfo = view.findViewById( R.id.const_not_found_info );
 
-        circularProgressBar = view.findViewById(R.id.circularProgressBar);
 
-        layoutNewRequest=view.findViewById(R.id.layout_newest_request);
+        layoutNewRequest = view.findViewById( R.id.layout_newest_request );
 
     }
 
-    private void btnClickConfig() {
-        tvRetry.setOnClickListener(view -> getAndSetServiceManInfo());
-        tvViewAllNews.setOnClickListener(view -> openAllNewsActivity());
-        imageExpert.setOnClickListener(view -> openExpertProfile());
+    private void btnClickConfig( ){
+        tvRetry.setOnClickListener( view -> getAndSetServiceManInfo() );
+        tvViewAllNews.setOnClickListener( view -> openAllNewsActivity() );
+        imageExpert.setOnClickListener( view -> openExpertProfile() );
     }
 
-    private void openAllNewsActivity() {
-//        Intent intent = new Intent(getActivity(), AllNewsActivity.class);
-        Intent intent = new Intent(getActivity(), MapsActivity.class);
-        startActivity(intent);
+    private void openAllNewsActivity( ){
+        Intent intent = new Intent( getActivity(), AllNewsActivity.class );
+        startActivity( intent );
     }
 
-    private void openExpertProfile() {
-        Intent intent = new Intent(getActivity(), ProfileActivity.class);
-        startActivity(intent);
+    private void openExpertProfile( ){
+        Intent intent = new Intent( getActivity(), ProfileActivity.class );
+        startActivity( intent );
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onViewCreated( @NonNull View view, @Nullable Bundle savedInstanceState ){
+        super.onViewCreated( view, savedInstanceState );
 
-        findViews(view);
+        findViews( view );
         loadNeeded();
 
         btnClickConfig();
@@ -244,140 +238,140 @@ public class MainFragment extends Fragment implements IInternetController {
     }
 
     @Override
-    public void onResume() {
+    public void onResume( ){
         super.onResume();
         getAndSetServiceManInfo();
     }
 
-    private void getAndSetServiceManInfo() {
-        showHideWaitingProgress(false);
-        ServiceMan serviceManInfo = GeneralPreferences.getInstance(getActivity()).getServiceManInfo();
-        if (serviceManInfo == null) {
+    private void getAndSetServiceManInfo( ){
+        showHideWaitingProgress( false );
+        ServiceMan serviceManInfo = GeneralPreferences.getInstance( getActivity() ).getServiceManInfo();
+        if ( serviceManInfo == null ) {
             getActivity().finish();
             return;
         }
 
-        tvExpertName.setText(serviceManInfo.getNameFamily());
-        tvExpertDiscount.setText(String.format("%s%%", String.valueOf(serviceManInfo.getDiscountPercent())));
+        tvExpertName.setText( serviceManInfo.getNameFamily() );
+        tvExpertDiscount.setText( String.format( "%s%%", String.valueOf( serviceManInfo.getDiscountPercent() ) ) );
 
-        tvRatingBar.setText(getString(R.string.text_your_rate) + serviceManInfo.getRating());
-        ratingBar.setRating((float) serviceManInfo.getRating());
+        tvRatingBar.setText( getString( R.string.text_your_rate ) + serviceManInfo.getRating() );
+        ratingBar.setRating( ( float ) serviceManInfo.getRating() );
 
         String picAddress = serviceManInfo.getPicAddress();
-        if (null == picAddress || picAddress.equals("")) {
-            imageExpert.setImageResource(R.drawable.img_no_icon);
+        if ( null == picAddress || picAddress.equals( "" ) ) {
+            imageExpert.setImageResource( R.drawable.img_no_icon );
         } else {
             Picasso.get()
-                    .load(picAddress)  //Url of the image to load.
-                    .transform(new CropCircleTransformation())
-                    .error(R.drawable.img_no_icon)
-                    .placeholder(R.drawable.img_loading)
-                    .into(imageExpert);
+                    .load( picAddress )  //Url of the image to load.
+                    .transform( new CropCircleTransformation() )
+                    .error( R.drawable.img_no_icon )
+                    .placeholder( R.drawable.img_loading )
+                    .into( imageExpert );
         }
 
         getWorkmanPoint();
 
     }
 
-    private void openRequestLimitDetail(Request request) {
-        Intent intent = new Intent(getActivity(), ServiceRequestDetailActivity.class);
+    private void openRequestLimitDetail( Request request ){
+        Intent intent = new Intent( getActivity(), ServiceRequestDetailActivity.class );
         Bundle bundle = new Bundle();
-        bundle.putInt(getString(R.string.text_bundle_req_id), request.getRequestId());
-        intent.putExtras(bundle);
-        startActivity(intent);
+        bundle.putInt( getString( R.string.text_bundle_req_id ), request.getRequestId() );
+        intent.putExtras( bundle );
+        startActivity( intent );
     }
 
-    private void fillRequestList() {
+    private void fillRequestList( ){
 
-        recyclerRequest.setVisibility(selectedRequestList.get(0).getRequestId() == 0 ? View.GONE : View.VISIBLE);
-        layoutNewRequest.setVisibility(recyclerRequest.getVisibility());
+        recyclerRequest.setVisibility( selectedRequestList.get( 0 ).getRequestId() == 0 ? View.GONE : View.VISIBLE );
+        layoutNewRequest.setVisibility( recyclerRequest.getVisibility() );
 
-        RequestListAdapter requestListAdapter = new RequestListAdapter(getActivity(), selectedRequestList, (v, position) -> {
+        RequestListAdapter requestListAdapter = new RequestListAdapter( getActivity(), selectedRequestList, ( v, position ) -> {
 
-            requestDetailList.setRequestLists(selectedRequestList.get(position));
-            openRequestLimitDetail(selectedRequestList.get(position));
-        });
+            requestDetailList.setRequestLists( selectedRequestList.get( position ) );
+            openRequestLimitDetail( selectedRequestList.get( position ) );
+        } );
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
-        recyclerRequest.setLayoutManager(gridLayoutManager);
-        recyclerRequest.setAdapter(requestListAdapter);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager( getActivity(), 1 );
+        recyclerRequest.setLayoutManager( gridLayoutManager );
+        recyclerRequest.setAdapter( requestListAdapter );
         recyclerRequest.scheduleLayoutAnimation();
 
         callGetNews();
     }
 
-    private void loadNeeded() {
-        ServiceMan serviceMan = GeneralPreferences.getInstance(context).getServiceManInfo();
+    private void loadNeeded( ){
+        ServiceMan serviceMan = GeneralPreferences.getInstance( context ).getServiceManInfo();
 
         servicemanId = serviceMan.getServicemanId();
         accessToken = serviceMan.getAccessToken();
         generalIdsInput = new GeneralIdsInput();
-        generalIdsInput.setCityId(serviceMan.getCityId());
-        generalIdsInput.setProvinceId(serviceMan.getProvinceId());
+        generalIdsInput.setCityId( serviceMan.getCityId() );
+        generalIdsInput.setProvinceId( serviceMan.getProvinceId() );
 
     }
 
-    private RequestListInputs getListInput() {
+    private RequestListInputs getListInput( ){
 
         RequestListInputs requestListInputs = new RequestListInputs();
-        requestListInputs.setServicemanId(servicemanId);
-        requestListInputs.setServiceTitle("");
-        requestListInputs.setServiceId(0);
-        requestListInputs.setServiceSubCatId(0);
-        requestListInputs.setAreaId(0);
-        requestListInputs.setPriorityId(0);
-        requestListInputs.setDateFrom(0);
-        requestListInputs.setTime(0);
-        requestListInputs.setDesc("");
+        requestListInputs.setServicemanId( servicemanId );
+        requestListInputs.setServiceTitle( "" );
+        requestListInputs.setServiceId( 0 );
+        requestListInputs.setServiceSubCatId( 0 );
+        requestListInputs.setAreaId( 0 );
+        requestListInputs.setPriorityId( 0 );
+        requestListInputs.setDateFrom( 0 );
+        requestListInputs.setTime( 0 );
+        requestListInputs.setDesc( "" );
         return requestListInputs;
     }
 
-    private void callGetNews() {
+    private void callGetNews( ){
 
-        if (!isOnline()) {
-            openInternetCheckingDialog(METHOD_TYPE_NEWS);
+        if ( !isOnline() ) {
+            openInternetCheckingDialog( METHOD_TYPE_NEWS );
         }
 
-        GetWorkmanNewsController getWorkmanNewsController = new GetWorkmanNewsController(getWorkmanNewsCallback);
-        getWorkmanNewsController.start(servicemanId, accessToken, generalIdsInput);
+        GetWorkmanNewsController getWorkmanNewsController = new GetWorkmanNewsController( getWorkmanNewsCallback );
+        getWorkmanNewsController.start( servicemanId, accessToken, generalIdsInput );
     }
 
-    private void callGetSliderAds() {
-        if (!isOnline()) {
-            openInternetCheckingDialog(METHOD_TYPE_SLIDER);
+    private void callGetSliderAds( ){
+        if ( !isOnline() ) {
+            openInternetCheckingDialog( METHOD_TYPE_SLIDER );
         }
 
-        GetAdsSliderController getAdsSliderController = new GetAdsSliderController(getAdsSliderCallback);
-        getAdsSliderController.start(servicemanId, accessToken, generalIdsInput);
+        GetAdsSliderController getAdsSliderController = new GetAdsSliderController( getAdsSliderCallback );
+        getAdsSliderController.start( servicemanId, accessToken, generalIdsInput );
     }
 
-    private void getRequestList() {
+    private void getRequestList( ){
 
-        if (!isOnline()) {
-            openInternetCheckingDialog(METHOD_TYPE_REQUEST);
+        if ( !isOnline() ) {
+            openInternetCheckingDialog( METHOD_TYPE_REQUEST );
         }
 
-        RequestListController requestListController = new RequestListController(getActivity(),
-                getRequestListCallback);
-        requestListController.start(servicemanId, accessToken, getListInput());
+        RequestListController requestListController = new RequestListController( getActivity(),
+                getRequestListCallback );
+        requestListController.start( servicemanId, accessToken, getListInput() );
 
     }
 
-    private void openInternetCheckingDialog(int methodTypeSlider) {
-        ConnectionInternetDialog dialog = new ConnectionInternetDialog(getActivity(), new InternetConnectionListener() {
+    private void openInternetCheckingDialog( int methodTypeSlider ){
+        ConnectionInternetDialog dialog = new ConnectionInternetDialog( getActivity(), new InternetConnectionListener() {
             @Override
-            public void onInternet() {
-                context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+            public void onInternet( ){
+                context.startActivity( new Intent( Settings.ACTION_WIFI_SETTINGS ) );
             }
 
             @Override
-            public void onFinish() {
+            public void onFinish( ){
                 APP.killApp();
             }
 
             @Override
-            public void OnRetry() {
-                switch (methodTypeSlider) {
+            public void OnRetry( ){
+                switch ( methodTypeSlider ) {
                     case METHOD_TYPE_SLIDER:
                         callGetSliderAds();
                         break;
@@ -392,134 +386,154 @@ public class MainFragment extends Fragment implements IInternetController {
                         break;
                 }
             }
-        });
+        } );
 
-        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
+        Objects.requireNonNull( dialog.getWindow() ).setBackgroundDrawable( new ColorDrawable( android.graphics.Color.TRANSPARENT ) );
+        dialog.getWindow().setBackgroundDrawable( context.getResources().getDrawable( R.drawable.dialog_bg ) );
         dialog.show();
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
-        display.getSize(size);
+        display.getSize( size );
         int width = size.x;
-        width = (int) ((width) * 0.8);
-        dialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+        width = ( int ) ( ( width ) * 0.8 );
+        dialog.getWindow().setLayout( width, ConstraintLayout.LayoutParams.WRAP_CONTENT );
     }
 
-    private void setAndShowSlidersPhoto() {
+    private void setAndShowSlidersPhoto( ){
 
         viewPagerChangeListener();
-        SessionSliderAdapter sessionSliderAdapter = new SessionSliderAdapter(getActivity(), adsSliders,
-                (v, position) -> openUrl(adsSliders.get(position).getUrl()));
+        SessionSliderAdapter sessionSliderAdapter = new SessionSliderAdapter( getActivity(), adsSliders,
+                ( v, position ) -> openUrl( adsSliders.get( position ).getUrl() ) );
 
-        viewPagerSlider.setAdapter(sessionSliderAdapter);
-        showDots(viewPagerSlider.getCurrentItem());
-
+        viewPagerSlider.setAdapter( sessionSliderAdapter );
+        showDots( viewPagerSlider.getCurrentItem() );
+        playCountDown( );
         getRequestList();
 
     }
 
-    private void viewPagerChangeListener() {
-        viewPagerSlider.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+    private void viewPagerChangeListener( ){
+        viewPagerSlider.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int i, float v, int i1) {
+            public void onPageScrolled( int i, float v, int i1 ){
 
             }
 
             @Override
-            public void onPageSelected(int position) {
-                showDots(position);
+            public void onPageSelected( int position ){
+                showDots( position );
             }
 
             @Override
-            public void onPageScrollStateChanged(int i) {
+            public void onPageScrollStateChanged( int i ){
 
             }
-        });
+        } );
     }
 
-    private void showDots(int pageNumber) {
+    private void playCountDown( ){
+        new CountDownTimer( 8000L, 1000 ) {
+            @Override
+            public void onTick( long remainingTime ){
+            }
 
-        if (getActivity() == null)
+            @Override
+            public void onFinish( ){
+                int currentPage = viewPagerSlider.getCurrentItem();
+                int lastPage = Objects.requireNonNull( viewPagerSlider.getAdapter() ).getCount() - 1;
+                if ( currentPage == lastPage ) {
+                    viewPagerSlider.setCurrentItem( 0 );
+                } else {
+                    viewPagerSlider.setCurrentItem( currentPage + 1 );
+                }
+
+                playCountDown();
+            }
+        }.start();
+    }
+    private void showDots( int pageNumber ){
+
+        if ( getActivity() == null )
             return;
 
-        RelativeLayout[] relativeDots = new RelativeLayout[Objects.requireNonNull(viewPagerSlider.getAdapter()).getCount()];
+        RelativeLayout[] relativeDots = new RelativeLayout[ Objects.requireNonNull( viewPagerSlider.getAdapter() ).getCount() ];
 
         linearDots.removeAllViews();
 
 
-        for (int i = 0; i < relativeDots.length; i++) {
-            relativeDots[i] = new RelativeLayout(getActivity());
+        for ( int i = 0; i < relativeDots.length; i++ ) {
+            relativeDots[ i ] = new RelativeLayout( getActivity() );
 
-            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(20, 6);
-            RelativeLayout.LayoutParams currentLayoutParams = new RelativeLayout.LayoutParams(40, 6);
-            layoutParams.setMargins(4, 0, 4, 0);
-            currentLayoutParams.setMargins(4, 0, 4, 0);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams( 20, 6 );
+            RelativeLayout.LayoutParams currentLayoutParams = new RelativeLayout.LayoutParams( 40, 6 );
+            layoutParams.setMargins( 4, 0, 4, 0 );
+            currentLayoutParams.setMargins( 4, 0, 4, 0 );
 
-            if (i == pageNumber) {
-                relativeDots[i].setLayoutParams(currentLayoutParams);
+            if ( i == pageNumber ) {
+                relativeDots[ i ].setLayoutParams( currentLayoutParams );
             } else {
-                relativeDots[i].setLayoutParams(layoutParams);
+                relativeDots[ i ].setLayoutParams( layoutParams );
             }
 
-            if (i == pageNumber) {
-                relativeDots[i].setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorWhite));
-            } else if (i < pageNumber) {
-                relativeDots[i].setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.info_forms_bg));
+            if ( i == pageNumber ) {
+                relativeDots[ i ].setBackgroundColor( ContextCompat.getColor( getActivity(), R.color.colorWhite ) );
+            } else if ( i < pageNumber ) {
+                relativeDots[ i ].setBackgroundColor( ContextCompat.getColor( getActivity(), R.color.info_forms_bg ) );
             } else {
-                relativeDots[i].setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorControlNormal));
+                relativeDots[ i ].setBackgroundColor( ContextCompat.getColor( getActivity(), R.color.colorControlNormal ) );
             }
 
-            linearDots.addView(relativeDots[i]);
+            linearDots.addView( relativeDots[ i ] );
 
         }
     }
 
-    private void openUrl(String url) {
+    private void openUrl( String url ){
 
-        if (url != null && !"".equals(url)) {
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            startActivity(browserIntent);
+        if ( url != null && !"".equals( url ) ) {
+            Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( url ) );
+            startActivity( browserIntent );
         }
     }
 
-    private void fillNewsList() {
-        WorkManNewsAdapter workManNewsAdapter = new WorkManNewsAdapter(getActivity(), workmanNews, 2,
-                (v, position) -> openUrl(workmanNews.get(position).getUrl()));
+    private void fillNewsList( ){
+        WorkManNewsAdapter workManNewsAdapter = new WorkManNewsAdapter( getActivity(), workmanNews, 2,
+                ( v, position ) -> openUrl( workmanNews.get( position ).getUrl() ) );
 
-        LinearLayoutManager gridLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,
-                false);
+        LinearLayoutManager gridLayoutManager = new LinearLayoutManager( getActivity(), LinearLayoutManager.HORIZONTAL,
+                false );
 
-        recyclerNews.setLayoutManager(gridLayoutManager);
-        recyclerNews.setAdapter(workManNewsAdapter);
+        recyclerNews.setLayoutManager( gridLayoutManager );
+        recyclerNews.setAdapter( workManNewsAdapter );
         recyclerNews.scheduleLayoutAnimation();
 
-        showHideWaitingProgress(true);
+        showHideWaitingProgress( true );
         showNotFoundInfoLayout();
     }
 
     @Override
-    public boolean isOnline() {
-        return OnlineCheck.getInstance(getActivity()).isOnline();
+    public boolean isOnline( ){
+        return OnlineCheck.getInstance( getActivity() ).isOnline();
     }
 
-    private void showHideWaitingProgress(boolean hide) {
-        constraintLayout.setVisibility(hide ? View.GONE : View.VISIBLE);
+    private void showHideWaitingProgress( boolean hide ){
+        constraintLayout.setVisibility( hide ? View.GONE : View.VISIBLE );
     }
 
-    private void showNotFoundInfoLayout() {
+    private void showNotFoundInfoLayout( ){
 
-        constNotFoundInfo.setVisibility((selectedRequestList == null && workmanNews == null && adsSliders == null) ? View.VISIBLE : View.GONE);
+        constNotFoundInfo.setVisibility( ( selectedRequestList == null && workmanNews == null && adsSliders == null ) ? View.VISIBLE : View.GONE );
     }
 
-    private void getWorkmanPoint() {
-        if (!isOnline()) {
-            openInternetCheckingDialog(METHOD_TYPE_WORKMAN_POINT);
+    private void getWorkmanPoint( ){
+        if ( !isOnline() ) {
+            openInternetCheckingDialog( METHOD_TYPE_WORKMAN_POINT );
         }
         WorkManPointInput workManPointInput = new WorkManPointInput();
-        workManPointInput.setId(servicemanId);
+        workManPointInput.setId( servicemanId );
 
-        WorkmanActivityPointController workmanActivityPointController = new WorkmanActivityPointController(getWorkmanActivityPointCallback);
-        workmanActivityPointController.start(servicemanId, accessToken, workManPointInput);
+        WorkmanActivityPointController workmanActivityPointController = new WorkmanActivityPointController( getWorkmanActivityPointCallback );
+        workmanActivityPointController.start( servicemanId, accessToken, workManPointInput );
     }
 
 }
