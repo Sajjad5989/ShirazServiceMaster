@@ -1,83 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content"
-                                                   android:layout_marginStart="@dimen/dimen_dp_tiny"
-                                                   android:layout_marginEnd="@dimen/dimen_dp_tiny"
-                                                   android:background="@drawable/const_border_line"
-                                                   android:layoutDirection="rtl"
-                                                   android:padding="@dimen/dimen_dp_small">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+                                                   xmlns:app = "http://schemas.android.com/apk/res-auto"
+                                                   android:layout_width = "match_parent"
+                                                   android:layout_height = "wrap_content"
+                                                   android:layout_margin = "@dimen/dimen_dp_tiny"
+                                                   android:background = "@drawable/box_current_service"
+                                                   android:layoutDirection = "rtl">
 
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/image_my_service"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:src="@drawable/ic_gift"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id = "@+id/image_my_service"
+        android:layout_width = "48dp"
+        android:layout_height = "48dp"
+        android:src = "@drawable/ic_gift"
+        app:layout_constraintBottom_toBottomOf = "parent"
+        app:layout_constraintStart_toStartOf = "parent"
+        app:layout_constraintTop_toTopOf = "parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_my_service_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_dp_tiny"
-        android:layout_marginEnd="@dimen/dimen_dp_tiny"
-        android:fontFamily="@font/iran_sans"
-        android:text="لوله کشی"
-        android:textColor="@color/colorBlackStep_4"
-        android:textSize="@dimen/dimen_sp_tiny"
+        android:id = "@+id/tv_my_service_title"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_marginStart = "@dimen/dimen_dp_small"
+        android:fontFamily = "@font/iran_sans_medium"
+        android:textColor = "@color/colorBlackStep_4"
+        android:textSize = "@dimen/dimen_sp_small"
+        app:layout_constraintStart_toEndOf = "@id/image_my_service"
+        app:layout_constraintTop_toTopOf = "@id/image_my_service"
 
-        app:layout_constraintRight_toLeftOf="@+id/image_my_service"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_my_service_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dimen_dp_tiny"
-
-        android:fontFamily="@font/iran_sans"
-        android:text="18 ساعت پیش"
-        android:textColor="@color/colorBlackStep_1"
-        android:textSize="@dimen/dimen_sp_very_tiny"
-        app:layout_constraintRight_toLeftOf="@+id/image_my_service"
-        app:layout_constraintTop_toBottomOf="@+id/tv_my_service_title" />
+        android:id = "@+id/tv_my_service_time"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:fontFamily = "@font/iran_sans_light"
+        android:textColor = "@color/colorBlackStep_1"
+        android:textSize = "@dimen/dimen_sp_tiny"
+        app:layout_constraintBottom_toBottomOf = "@id/image_my_service"
+        app:layout_constraintStart_toStartOf = "@id/tv_my_service_title" />
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_service_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_dp_medium"
-        android:fontFamily="@font/iran_sans"
-        android:paddingLeft="@dimen/dimen_dp_medium"
-        android:paddingTop="@dimen/dimen_dp_tiny"
-        android:paddingRight="@dimen/dimen_dp_medium"
-        android:paddingBottom="@dimen/dimen_dp_tiny"
-        android:text="انجام شد"
-        android:textColor="@color/color_black"
-        android:textSize="@dimen/dimen_sp_tiny"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id = "@+id/tv_service_status"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:fontFamily = "@font/iran_sans_bold"
+        android:textColor = "@color/color_black"
+        android:textSize = "@dimen/dimen_sp_tiny"
+        app:layout_constraintEnd_toEndOf = "parent"
+        app:layout_constraintTop_toTopOf = "parent" />
 
     <RatingBar
-        android:id="@+id/ratingBar"
-        style="@style/Widget.AppCompat.RatingBar.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_dp_very_tiny"
+        android:id = "@+id/ratingBar"
+        style = "@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_marginTop = "@dimen/dimen_dp_very_tiny"
+        android:numStars = "5"
+        android:rating = "2.5"
         android:layoutDirection="ltr"
-        android:numStars="5"
-        android:rating="2.5"
-        android:stepSize="0.1"
-
-        android:theme="@style/smallRatingBar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/tv_service_status"
-        app:layout_constraintTop_toBottomOf="@+id/tv_service_status" />
+        android:stepSize = "0.1"
+        android:theme = "@style/smallRatingBar"
+        app:layout_constraintBottom_toBottomOf = "parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

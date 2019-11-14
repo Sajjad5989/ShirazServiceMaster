@@ -3,45 +3,33 @@
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="wrap_content"
-                                                   android:background="@color/colorWhite"
                                                    android:layoutDirection="rtl"
-                                                   android:paddingLeft="@dimen/dimen_dp_small"
-                                                   android:paddingTop="@dimen/dimen_dp_tiny"
-                                                   android:paddingRight="@dimen/dimen_dp_small">
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/const_border_line"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+                                                   android:layout_margin = "@dimen/dimen_dp_tiny"
+                                                   android:background = "@drawable/box_current_service">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_transaction"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dimen_dp_small"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
 
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_transaction_actionTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dimen_dp_medium"
-            android:fontFamily="@font/iran_sans"
+            android:layout_marginStart = "@dimen/dimen_dp_small"
+            android:fontFamily="@font/iran_sans_medium"
             android:gravity="start"
             android:text="لوله کشی"
             android:textColor="@color/colorBlackStep_5"
             android:textSize="@dimen/dimen_sp_small"
-            app:layout_constraintRight_toLeftOf="@id/img_transaction"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf = "@id/img_transaction"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_transaction_typeTitle"
@@ -52,8 +40,8 @@
             android:text="شنبه 29 تیر 1398 - 12:13"
             android:textColor="@color/colorBlackStep_1"
             android:textSize="@dimen/dimen_sp_tiny"
-            app:layout_constraintRight_toRightOf="@+id/tv_transaction_actionTitle"
-            app:layout_constraintTop_toBottomOf="@+id/tv_transaction_actionTitle" />
+            app:layout_constraintTop_toBottomOf="@id/tv_transaction_actionTitle"
+            app:layout_constraintStart_toStartOf = "@id/tv_transaction_actionTitle"/>
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -66,9 +54,10 @@
             android:text="5000"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/dimen_sp_large"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/tv_transaction_currency"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@id/tv_transaction_currency"
+            />
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -81,11 +70,9 @@
 
             android:textColor="@color/colorBlackStep_1"
             android:textSize="@dimen/dimen_sp_tiny"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

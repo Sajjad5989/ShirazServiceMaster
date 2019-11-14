@@ -3,7 +3,6 @@
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
-    android:clickable="true"
                                                    android:background="@color/colorWhite">
 
 
@@ -16,6 +15,7 @@
         app:gridLayoutManagerColumns="1"
         app:layoutManagerReverse="false"
         app:layoutManagerType="grid"
+        android:layout_margin = "@dimen/dimen_dp_tiny"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
