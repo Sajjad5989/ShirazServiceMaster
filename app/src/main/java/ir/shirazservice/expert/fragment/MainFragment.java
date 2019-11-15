@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.mlsdev.animatedrv.AnimatedRecyclerView;
+import com.skydoves.progressview.ProgressView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

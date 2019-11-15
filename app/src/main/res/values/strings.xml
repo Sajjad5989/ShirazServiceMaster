@@ -145,7 +145,7 @@
     <string name = "text_no">خیر</string>
     <string name = "text_the_newest_request">جدید ترین درخواست ها</string>
     <string name = "text_view_all">مشاهده همه</string>
-    <string name = "text_news">اخبار شیراز سرویس</string>
+    <string name = "text_news">اخبار متخصصین</string>
     <string name = "text_other_amount">مبلغ های دیگر</string>
     <string name = "text_error_login">خطا در ورود، مجددا تلاش نمایید</string>
     <string name = "title_activity_maps">Map</string>
@@ -172,5 +172,10 @@
     <string name="link_bazaar_specefic">bazaar://details?id=ir.shirazservice.general</string>
     <string name="text_zarinpal_part_1">پرداخت آنلاین شیراز سرویس - افزایش اعتبار متخصصین -</string>
     <string name="text_zarinpal_part_2">به مبلغ</string>
+    <string name="text_all_message">پیام ها</string>
+    <string name="text_contact_us">09032226915</string>
+    <string name="text_call_our_consult">تمـاس با امور مشتریان</string>
+    <string name="text_consult_us">09032226910</string>
+    <string name="text_call_us">تماس با امور متخصصین</string>
 
 </resources>

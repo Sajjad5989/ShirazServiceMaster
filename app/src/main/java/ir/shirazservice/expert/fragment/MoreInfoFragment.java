@@ -103,6 +103,9 @@ public class MoreInfoFragment extends Fragment implements IInternetController {
             case R.id.tv_view_contact_us:
                 CallSupportTeam();
                 break;
+            case R.id.tv_view_consult_us:
+                CallConsultTeam();
+                break;
             case R.id.tv_view_follow_us:
                 openSocialNetWork();
                 break;
@@ -160,11 +163,25 @@ public class MoreInfoFragment extends Fragment implements IInternetController {
         startActivity(callIntent);
     }
 
-    private String getSupportTeamPhone() {
-        BaseInfoOfApp baseInfoOfApp = GeneralPreferences.getInstance(context).getBaseInfoOfApp();
-        return baseInfoOfApp.getSupportPhone();
-
+    private void CallConsultTeam() {
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:" + getConsultTeamPhone().trim()));
+        callIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(callIntent);
     }
+
+    private String getSupportTeamPhone() {
+       return getResources().getString(R.string.text_contact_us);
+//        BaseInfoOfApp baseInfoOfApp = GeneralPreferences.getInstance(context).getBaseInfoOfApp();
+//        return baseInfoOfApp.getSupportPhone();
+    }
+    private String getConsultTeamPhone() {
+       return getResources().getString(R.string.text_consult_us);
+//        BaseInfoOfApp baseInfoOfApp = GeneralPreferences.getInstance(context).getBaseInfoOfApp();
+//        return baseInfoOfApp.getSupportPhone();
+    }
+
+
 
     private void ExitApp() {
 

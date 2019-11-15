@@ -176,11 +176,13 @@ public class WorkmanFinancialTransaction implements Serializable {
     }
 
     public String getDescForWhatsUpMessage() {
-        return "عملیات " + getActionTitle()+"\n" + " مبلغ " +" «"+
-                new UsefulFunction().attachCamma(getPrice().replace("-", "")) +  " ریال " +"» "
-                +"\n"+
-                " مورخ «" + getInsrtDatePersian1() +
-                " » " +"\n"
-                + "ساعت «" + getInsrtTimePersian() + "» ";
+        return getAdvanceDesc();
+
+//                "عملیات " + getActionTitle()+"\n" + " مبلغ " +" «"+
+//                new UsefulFunction().attachCamma(getPrice().replace("-", "")) +  " ریال " +"» "
+//                +"\n"+
+//                " تاریخ «" + getInsrtDatePersian1() +
+//                " » " +"\n"
+//                + "ساعت «" + getInsrtTimePersian() + "» ";
     }
 }

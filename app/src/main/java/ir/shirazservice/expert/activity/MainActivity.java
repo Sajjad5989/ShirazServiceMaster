@@ -154,8 +154,8 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
         super.onResume();
         APP.currentActivity = MainActivity.this;
         neededId();
-        sendOnlineCharge();
         getWorkManCredit();
+        sendOnlineCharge();
     }
 
     private void sendOnlineCharge( ){

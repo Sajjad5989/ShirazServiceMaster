@@ -125,6 +125,12 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
     protected AppCompatTextView tvRequestDetailTracking_code;
     @BindView(R.id.tv_request_status)
     protected AppCompatTextView tvRequestStatus;
+
+    @BindView(R.id.tv_receiver_name)
+    protected AppCompatTextView tvReceiverName;
+    @BindView(R.id.const_request_receiver)
+    protected ConstraintLayout constRequestReceiver;
+
     @BindView(R.id.tv_request_detail_tracking_caption)
     protected AppCompatTextView tvRequestDetailTrackingCaption;
     @BindView(R.id.tv_request_detail_calculated_price)
@@ -289,7 +295,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
 
 
         btnAcceptRequest.setVisibility(vs);
-
+        constRequestReceiver.setVisibility(GONE);
     }
 
     private void onClickConfig() {
@@ -387,6 +393,7 @@ public class RequestLimitFragment extends Fragment implements Serializable, IInt
                         .placeholder(R.drawable.img_loading)
                         .into(imgRequestDetail);
             }
+            //tvReceiverName.setText();
             requestId = currentRequest.getRequestId();
             tvRequestDetailServiceTitle.setText(currentRequest.getServiceTitle());
             tvRequestDetailTracking_code.setText(currentRequest.getTrackingCode());

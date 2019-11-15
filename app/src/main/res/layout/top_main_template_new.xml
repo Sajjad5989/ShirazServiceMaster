@@ -143,7 +143,6 @@
             app:progressView_max = "100"
             android:layoutDirection="ltr"
             app:progressView_progress = "40"
-
             app:progressView_radius = "4dp" />
     </LinearLayout>
 

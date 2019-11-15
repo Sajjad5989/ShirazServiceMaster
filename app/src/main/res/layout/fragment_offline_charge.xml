@@ -175,6 +175,7 @@
                     android:fontFamily="@font/iran_sans_medium"
                     android:gravity="center"
                     android:padding="@dimen/dimen_dp_medium"
+                    android:inputType="text"
                     android:textColorHint="@color/colorBackGrayStep_2"
                     android:textSize="@dimen/dimen_sp_medium"
                     app:layout_constraintLeft_toLeftOf="parent"
