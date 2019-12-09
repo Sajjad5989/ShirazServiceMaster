@@ -260,22 +260,22 @@ public class ChargeFragment extends Fragment implements IInternetController {
 
     private void confirmRequest() {
 
-//        if ("".equals(Objects.requireNonNull(etChargeAmount.getText()).toString())) {
-//            APP.customToast(getString(R.string.error_money_select));
-//            return;
-//        }
+        if ("".equals(Objects.requireNonNull(etChargeAmount.getText()).toString())) {
+            APP.customToast(getString(R.string.error_money_select));
+            return;
+        }
 //
        Long payMoney = Long.valueOf(usefulFunction.deAttachCamma(Objects.requireNonNull(etChargeAmount.getText()).toString()));
-//        if (minAccountChargeAmount > payMoney) {
-//            APP.customToast(getString(R.string.text_min_charge_1) + minAccountChargeAmount
-//                    + getString(R.string.text_min_charge_2));
-//            return;
-//        }
-//
-//        if (payMoney <= 0) {
-//            APP.customToast(getString(R.string.error_money_select));
-//            return;
-//        }
+        if (minAccountChargeAmount > payMoney) {
+            APP.customToast(getString(R.string.text_min_charge_1) + minAccountChargeAmount
+                    + getString(R.string.text_min_charge_2));
+            return;
+        }
+
+        if (payMoney <= 0) {
+            APP.customToast(getString(R.string.error_money_select));
+            return;
+        }
 
         IncreaseAccountChargeDialog chooseRequestDialog =
                 new IncreaseAccountChargeDialog(getActivity(), makeConfirmMessage(), done -> {
@@ -301,7 +301,9 @@ public class ChargeFragment extends Fragment implements IInternetController {
         PaymentRequest paymentRequest = ZarinPal.getPaymentRequest();
         paymentRequest.setMerchantID(BuildConfig.paymentMerchant);
         paymentRequest.setAmount((long)amount/10);
-        String payDesc = String.format("%s%s- %s%s", getString(R.string.text_zarinpal_part_1), serviceManFullName, getString(R.string.text_zarinpal_part_2), String.valueOf(amount));
+        String payDesc = String.format("%s%s- %s%s%s", getString(R.string.text_zarinpal_part_1), serviceManFullName
+                , getString(R.string.text_zarinpal_part_2), String.valueOf(amount),
+                getString(R.string.text_currency_symbol));
         paymentRequest.setDescription(payDesc);
         paymentRequest.setCallbackURL(BuildConfig.paymentUrl);
 

@@ -12,6 +12,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -23,9 +27,6 @@ import com.zarinpal.ewallets.purchase.ZarinPal;
 
 import java.util.Objects;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ir.shirazservice.expert.R;
@@ -68,29 +69,29 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
     private static final int METHOD_TYPE_SAVE_MONEY_TO_SITE = 3;
     private final SaveTokenKeyApi.saveTokenKeyCallback saveTokenKeyCallback = new SaveTokenKeyApi.saveTokenKeyCallback() {
         @Override
-        public void onResponse(boolean successful, ErrorResponseSimple errorResponse, SaveTokenKeyResponse response) {
-            GeneralPreferences.getInstance(MainActivity.this).remove("newFirebaseTokenKey");
+        public void onResponse( boolean successful, ErrorResponseSimple errorResponse, SaveTokenKeyResponse response ){
+            GeneralPreferences.getInstance( MainActivity.this ).remove( "newFirebaseTokenKey" );
         }
 
         @Override
-        public void onFailure(String cause) {
+        public void onFailure( String cause ){
 
         }
     };
-    @BindView(R.id.text_cr)
+    @BindView( R.id.text_cr )
     protected AppCompatTextView textCr;
     private final InsrtDepositMoneyApi.insrtDepositMoneyCallback insrtDepositMoneyCallback =
             new InsrtDepositMoneyApi.insrtDepositMoneyCallback() {
                 @Override
-                public void onResponse(boolean successful, ErrorResponseSimple errorResponse, DepositMoney response) {
-                    if (successful) {
-                        setCredit(response.getNewCredit());
+                public void onResponse( boolean successful, ErrorResponseSimple errorResponse, DepositMoney response ){
+                    if ( successful ) {
+                        setCredit( response.getNewCredit() );
                     } else
-                        APP.customToast(errorResponse.getMessage());
+                        APP.customToast( errorResponse.getMessage() );
                 }
 
                 @Override
-                public void onFailure(String cause) {
+                public void onFailure( String cause ){
 
                 }
             };
@@ -100,19 +101,19 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
     private final GetWorkmanCreditApi.getWorkmanCreditCallback getWorkmanCreditCallback =
             new GetWorkmanCreditApi.getWorkmanCreditCallback() {
                 @Override
-                public void onResponse(boolean successful, ErrorResponseSimple errorResponse, WorkmanCredit response) {
-                    if (successful) {
+                public void onResponse( boolean successful, ErrorResponseSimple errorResponse, WorkmanCredit response ){
+                    if ( successful ) {
                         workmanCredit = response;
 
                     } else workmanCredit = null;
 
-                    setCredit(workmanCredit.getTempCredit());
+                    setCredit( workmanCredit.getTempCredit() );
                 }
 
                 @Override
-                public void onFailure(String cause) {
+                public void onFailure( String cause ){
                     workmanCredit = null;
-                    setCredit("0");
+                    setCredit( "0" );
                 }
 
             };
@@ -125,132 +126,128 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
     private String currentRefId;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    protected void onCreate( Bundle savedInstanceState ){
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_main );
+        ButterKnife.bind( this );
 
 
         mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
         FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
-                .setMinimumFetchIntervalInSeconds(3600)
+                .setMinimumFetchIntervalInSeconds( 3600 )
                 .build();
-        mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        mFirebaseRemoteConfig.setConfigSettingsAsync( configSettings );
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance( this );
 
 
         OnActivityDefaultSetting();
         setButtonNavigation();
 
-        bottomNavigation.setSelectedItemId(R.id.navigation_home);
+        bottomNavigation.setSelectedItemId( R.id.navigation_home );
         openMainFragment();
 
         saveTokenKey();
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume( ){
         super.onResume();
         APP.currentActivity = MainActivity.this;
         neededId();
-        sendOnlineCharge();
         getWorkManCredit();
+        sendOnlineCharge();
     }
 
-    private void sendOnlineCharge() {
+    private void sendOnlineCharge( ){
 
-        if (MainActivity.this.getIntent().getData() != null) {
+        if ( MainActivity.this.getIntent().getData() != null ) {
 
-            ZarinPal.getPurchase(MainActivity.this).verificationPayment(MainActivity.this.getIntent().getData(),
-                    (isPaymentSuccess, refID, paymentRequest) -> {
+            ZarinPal.getPurchase( MainActivity.this ).verificationPayment( MainActivity.this.getIntent().getData(),
+                    ( isPaymentSuccess, refID, paymentRequest ) -> {
 
-                        paymentAmountToZarinPal = String.valueOf(paymentRequest.getAmount());
+                        paymentAmountToZarinPal = String.valueOf( paymentRequest.getAmount() );
                         currentRefId = refID;
                         sendPayMoneyToSite();
 
-                    });
+                    } );
         }
     }
 
-    private DepositMoneyReq getValues() {
+    private DepositMoneyReq getValues( ){
 
         PersianCalendar persianCalendar = new PersianCalendar();
 
         DepositMoneyReq depositMoneyReq = new DepositMoneyReq();
 
-        depositMoneyReq.setServicemanId(servicemanId);
-        depositMoneyReq.setCardNo(currentRefId);
-        depositMoneyReq.setTrackingCode(currentRefId);
-        depositMoneyReq.setFullName(serviceManFullName);
-        depositMoneyReq.setType(3);
-        depositMoneyReq.setDepositTimeYear(persianCalendar.getPersianYear());
-        depositMoneyReq.setDepositTimeMonth(persianCalendar.getPersianMonth());
-        depositMoneyReq.setDepositTimeDay(persianCalendar.getPersianDay());
-        depositMoneyReq.setDepositTime(0);
-        depositMoneyReq.setPrice(paymentAmountToZarinPal);
+        depositMoneyReq.setServicemanId( servicemanId );
+        depositMoneyReq.setCardNo( currentRefId );
+        depositMoneyReq.setTrackingCode( currentRefId );
+        depositMoneyReq.setFullName( serviceManFullName );
+        depositMoneyReq.setType( 3 );
+        depositMoneyReq.setDepositTimeYear( persianCalendar.getPersianYear() );
+        depositMoneyReq.setDepositTimeMonth( persianCalendar.getPersianMonth() );
+        depositMoneyReq.setDepositTimeDay( persianCalendar.getPersianDay() );
+        depositMoneyReq.setDepositTime( 0 );
+        depositMoneyReq.setPrice( paymentAmountToZarinPal );
 
         return depositMoneyReq;
     }
 
-    private void sendPayMoneyToSite() {
+    private void sendPayMoneyToSite( ){
 
-        if (!isOnline()) {
-            openInternetCheckingDialog(METHOD_TYPE_SAVE_MONEY_TO_SITE);
+        if ( !isOnline() ) {
+            openInternetCheckingDialog( METHOD_TYPE_SAVE_MONEY_TO_SITE );
         }
 
         InsrtDepositMoneyController insrtDepositMoneyController = new
-                InsrtDepositMoneyController(insrtDepositMoneyCallback);
-        insrtDepositMoneyController.start(servicemanId, accessToken, getValues());
+                InsrtDepositMoneyController( insrtDepositMoneyCallback );
+        insrtDepositMoneyController.start( servicemanId, accessToken, getValues() );
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed( ){
 
-        if (doubleBackToExitPressedOnce) {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+        if ( doubleBackToExitPressedOnce ) {
+            Intent intent = new Intent( Intent.ACTION_MAIN );
+            intent.addCategory( Intent.CATEGORY_HOME );
+            intent.setFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP );
+            startActivity( intent );
             finishAffinity();
             finish();
-            System.exit(0);
+            System.exit( 0 );
             MainActivity.this.finish();
             return;
         }
 
         this.doubleBackToExitPressedOnce = true;
-        APP.customToast(getString(R.string.text_all_tap_back_button));
-        new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
+        APP.customToast( getString( R.string.text_all_tap_back_button ) );
+        new Handler().postDelayed( ( ) -> doubleBackToExitPressedOnce = false, 2000 );
     }
 
     @Override
-    public void OnActivityDefaultSetting() {
+    public void OnActivityDefaultSetting( ){
         OnPageRight();
     }
 
     @Override
-    public void OnPageRight() {
-        if (getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR) {
-            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+    public void OnPageRight( ){
+        if ( getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR ) {
+            getWindow().getDecorView().setLayoutDirection( View.LAYOUT_DIRECTION_RTL );
         }
     }
 
     @Override
-    public boolean isOnline() {
-        return OnlineCheck.getInstance(MainActivity.this).isOnline();
+    public boolean isOnline( ){
+        return OnlineCheck.getInstance( MainActivity.this ).isOnline();
     }
 
-    private void setButtonNavigation() {
+    private void setButtonNavigation( ){
 
-        bottomNavigation = findViewById(R.id.navigation);
-        bottomNavigation.setOnNavigationItemSelectedListener(menuItem -> {
+        bottomNavigation = findViewById( R.id.navigation );
+        bottomNavigation.setOnNavigationItemSelectedListener( menuItem -> {
             int id = menuItem.getItemId();
 
-            switch (id) {
+            switch ( id ) {
                 case R.id.navigation_home:
                     openMainFragment();
                     break;
@@ -269,95 +266,95 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
                     break;
             }
             return true;
-        });
+        } );
     }
 
-    private void openChargeActivity() {
+    private void openChargeActivity( ){
         ChargeFragment chargeFragment = ChargeFragment.newInstance();
         getFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, chargeFragment)
-                .addToBackStack(null)
+                .add( R.id.fragment_container, chargeFragment )
+                .addToBackStack( null )
                 .commit();
     }
 
-    private void openMoreInfoActivity() {
+    private void openMoreInfoActivity( ){
         MoreInfoFragment moreInfoFragment = MoreInfoFragment.newInstance();
         getFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, moreInfoFragment)
-                .addToBackStack(null)
+                .add( R.id.fragment_container, moreInfoFragment )
+                .addToBackStack( null )
                 .commit();
     }
 
-    private void openMainFragment() {
+    private void openMainFragment( ){
         MainFragment mainFragment = MainFragment.newInstance();
         getFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, mainFragment)
-                .addToBackStack(null)
+                .add( R.id.fragment_container, mainFragment )
+                .addToBackStack( null )
                 .commit();
     }
 
-    private void openMyServiceFragment() {
+    private void openMyServiceFragment( ){
         MyServicesFragment myServicesFragment = MyServicesFragment.newInstance();
         getFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, myServicesFragment)
-                .addToBackStack(null)
+                .add( R.id.fragment_container, myServicesFragment )
+                .addToBackStack( null )
                 .commit();
 
     }
 
-    private void openMyTransactionFragment() {
+    private void openMyTransactionFragment( ){
         MyTransactionFragment myTransactionFragment = MyTransactionFragment.newInstance();
         getFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, myTransactionFragment)
-                .addToBackStack(null)
+                .add( R.id.fragment_container, myTransactionFragment )
+                .addToBackStack( null )
                 .commit();
     }
 
-    private void neededId() {
-        ServiceMan serviceMan = GeneralPreferences.getInstance(this).getServiceManInfo();
+    private void neededId( ){
+        ServiceMan serviceMan = GeneralPreferences.getInstance( this ).getServiceManInfo();
         servicemanId = serviceMan.getServicemanId();
         accessToken = serviceMan.getAccessToken();
         serviceManFullName = serviceMan.getFullName();
     }
 
-    private void saveTokenKey() {
+    private void saveTokenKey( ){
 
-        if (!isOnline()) {
-            openInternetCheckingDialog(METHOD_TYPE_SAVE_TOKEN);
+        if ( !isOnline() ) {
+            openInternetCheckingDialog( METHOD_TYPE_SAVE_TOKEN );
         }
 
-        String tkn = GeneralPreferences.getInstance(this).getString("newFirebaseTokenKey");
-        if (tkn != null && !tkn.isEmpty()) {
+        String tkn = GeneralPreferences.getInstance( this ).getString( "newFirebaseTokenKey" );
+        if ( tkn != null && !tkn.isEmpty() ) {
             SaveTokenKey saveTokenKey = new SaveTokenKey();
-            saveTokenKey.setPersonId(servicemanId);
-            saveTokenKey.setDeviceTokenKey(tkn);
+            saveTokenKey.setPersonId( servicemanId );
+            saveTokenKey.setDeviceTokenKey( tkn );
 
-            SaveTokenKeyController saveTokenKeyController = new SaveTokenKeyController(saveTokenKeyCallback);
-            saveTokenKeyController.start(servicemanId, accessToken, saveTokenKey);
+            SaveTokenKeyController saveTokenKeyController = new SaveTokenKeyController( saveTokenKeyCallback );
+            saveTokenKeyController.start( servicemanId, accessToken, saveTokenKey );
         }
 
     }
 
-    private String getToken() {
-        FirebaseMessaging.getInstance().subscribeToTopic(getString(R.string.text_fire_base_news));
+    private String getToken( ){
+        FirebaseMessaging.getInstance().subscribeToTopic( getString( R.string.text_fire_base_news ) );
         return FirebaseInstanceId.getInstance().getToken();
     }
 
-    private void openInternetCheckingDialog(int methodType) {
-        ConnectionInternetDialog dialog = new ConnectionInternetDialog(MainActivity.this, new InternetConnectionListener() {
+    private void openInternetCheckingDialog( int methodType ){
+        ConnectionInternetDialog dialog = new ConnectionInternetDialog( MainActivity.this, new InternetConnectionListener() {
             @Override
-            public void onInternet() {
-                context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+            public void onInternet( ){
+                context.startActivity( new Intent( Settings.ACTION_WIFI_SETTINGS ) );
             }
 
             @Override
-            public void onFinish() {
+            public void onFinish( ){
                 APP.killApp();
             }
 
             @Override
-            public void OnRetry() {
-                switch (methodType) {
+            public void OnRetry( ){
+                switch ( methodType ) {
                     case METHOD_TYPE_SAVE_TOKEN:
                         saveTokenKey();
                         break;
@@ -369,38 +366,38 @@ public class MainActivity extends AppCompatActivity implements IRtl, IDefault, I
                         break;
                 }
             }
-        });
+        } );
 
-        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.dialog_bg));
+        Objects.requireNonNull( dialog.getWindow() ).setBackgroundDrawable( new ColorDrawable( android.graphics.Color.TRANSPARENT ) );
+        dialog.getWindow().setBackgroundDrawable( context.getResources().getDrawable( R.drawable.dialog_bg ) );
         dialog.show();
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
-        display.getSize(size);
+        display.getSize( size );
         int width = size.x;
-        width = (int) ((width) * 0.8);
-        dialog.getWindow().setLayout(width, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+        width = ( int ) ( ( width ) * 0.8 );
+        dialog.getWindow().setLayout( width, ConstraintLayout.LayoutParams.WRAP_CONTENT );
     }
 
-    private void getWorkManCredit() {
+    private void getWorkManCredit( ){
 
-        if (!isOnline()) {
-            openInternetCheckingDialog(METHOD_TYPE_WORKMAN_CREDIT);
+        if ( !isOnline() ) {
+            openInternetCheckingDialog( METHOD_TYPE_WORKMAN_CREDIT );
         }
 
         WorkmanCreditReq workmanCreditReq = new WorkmanCreditReq();
-        workmanCreditReq.setId(servicemanId);
+        workmanCreditReq.setId( servicemanId );
 
         GetWorkmanCreditController getWorkmanCreditController =
-                new GetWorkmanCreditController(getWorkmanCreditCallback);
-        getWorkmanCreditController.start(servicemanId, accessToken, workmanCreditReq);
+                new GetWorkmanCreditController( getWorkmanCreditCallback );
+        getWorkmanCreditController.start( servicemanId, accessToken, workmanCreditReq );
     }
 
-    private void setCredit(String credit) {
+    private void setCredit( String credit ){
         UsefulFunction usefulFunction = new UsefulFunction();
-        String crd = "اعتبار شما  <span style=\"color: #d32f2f\">" + usefulFunction.attachCamma(credit)
+        String crd = "اعتبار شما  <span style=\"color: #d32f2f\">" + usefulFunction.attachCamma( credit )
                 + "</span> ریال";
-        textCr.setText(Html.fromHtml(crd), AppCompatTextView.BufferType.SPANNABLE);
+        textCr.setText( Html.fromHtml( crd ), AppCompatTextView.BufferType.SPANNABLE );
     }
 
 }

@@ -49,7 +49,7 @@ public class RequestListAdapter extends RecyclerView.Adapter<RequestListAdapter.
         holder.tvRequestTitle.setText(items.get(position).getServiceTitle());
         holder.tvRequestPosition.setText(String.valueOf(items.get(position).getAreaTitle()));
         Picasso.get()
-                .load(items.get(position).getServicePicAddress())  //Url of the image to load.
+                .load(items.get(position).getServicePicAddress())
                 .into(holder.imageRequest);
     }
 
