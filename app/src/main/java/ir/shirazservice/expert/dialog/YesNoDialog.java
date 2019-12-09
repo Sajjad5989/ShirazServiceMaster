@@ -24,7 +24,8 @@ public class YesNoDialog extends Dialog {
     private String title;
     private String message;
 
-    public YesNoDialog(@NonNull Context context,String title,String message, ChooseRequestListener chooseRequestListener) {
+    public YesNoDialog(@NonNull Context context,String title,String message,
+                       ChooseRequestListener chooseRequestListener) {
 
         super(context);
         this.context = context;

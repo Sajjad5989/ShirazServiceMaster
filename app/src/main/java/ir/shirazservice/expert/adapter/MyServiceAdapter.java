@@ -22,8 +22,6 @@ public class MyServiceAdapter extends RecyclerView.Adapter<MyServiceAdapter.View
 
 
     private final List<MyService> items;
-
-
     private final RecyclerViewClickListener listener;
 
     public MyServiceAdapter( List<MyService> items, RecyclerViewClickListener listener) {

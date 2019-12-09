@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   android:background="#FAFAFA">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA">
 
     <RelativeLayout
         android:id="@+id/const_top"
@@ -16,64 +16,57 @@
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id = "@+id/tv_app_name"
-            android:layout_width = "match_parent"
-            android:layout_height = "60dp"
-            android:background = "@color/color_red"
-            android:fontFamily = "@font/iran_sans_medium"
-            android:gravity = "top|center_horizontal"
+            android:id="@+id/tv_app_name"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/color_red"
+            android:fontFamily="@font/iran_sans_medium"
+            android:gravity="top|center_horizontal"
             android:paddingTop="8dp"
-            android:text = "@string/app_name"
-            android:textColor = "@color/colorWhite"
-            android:textSize = "@dimen/dimen_sp_very_large"
-            app:layout_constraintLeft_toLeftOf = "parent"
-            app:layout_constraintRight_toRightOf = "parent"
-            app:layout_constraintTop_toTopOf = "parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width = "match_parent"
-            android:layout_height = "wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="40dp"
-            >
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id = "@+id/text_cr"
-            android:layout_width = "match_parent"
-            android:layout_height = "wrap_content"
-            android:fontFamily = "@font/iran_sans_bold"
-            android:gravity = "center"
-            android:padding="8dp"
-            android:textColor = "@color/colorPrimary"
-            android:textSize = "@dimen/dimen_sp_large"
-            android:background = "@drawable/box_search_complete"
+            android:text="@string/app_name"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dimen_sp_very_large"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="32dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id = "@+id/image_charge_credit"
-            android:layout_width = "16dp"
-            android:layout_height = "16dp"
-            android:alpha="0.2"
-            android:contentDescription = "@string/app_name"
-            android:src = "@drawable/ic_charge"
-            app:layout_constraintLeft_toLeftOf="@id/text_cr"
-            app:layout_constraintTop_toTopOf="@id/text_cr"
-            app:layout_constraintBottom_toBottomOf="@id/text_cr"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_cr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/box_search_complete"
+                android:fontFamily="@font/iran_sans_bold"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimen_sp_large"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_charge_credit"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:alpha="0.2"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_charge"
+                app:layout_constraintBottom_toBottomOf="@id/text_cr"
+                app:layout_constraintLeft_toLeftOf="@id/text_cr"
+                app:layout_constraintTop_toTopOf="@id/text_cr" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
-
-
-
 
 
     <FrameLayout
@@ -92,10 +85,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background = "#F2F2F2"
-        app:itemIconTint = "@drawable/bnv_tab_item_foreground"
-        app:itemTextColor = "@drawable/bnv_tab_item_foreground"
+        android:background="#F2F2F2"
         app:itemBackground="@color/colorWhite"
+        app:itemIconTint="@drawable/bnv_tab_item_foreground"
+        app:itemTextColor="@drawable/bnv_tab_item_foreground"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/navigation" />

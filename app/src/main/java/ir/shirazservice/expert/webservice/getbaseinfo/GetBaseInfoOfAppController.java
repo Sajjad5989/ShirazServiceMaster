@@ -3,7 +3,6 @@ package ir.shirazservice.expert.webservice.getbaseinfo;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
-
 import ir.shirazservice.expert.webservice.generalmodels.ErrorResponseSimple;
 import ir.shirazservice.expert.webservice.shirazserviceapi.AppController;
 import retrofit2.Call;
@@ -12,7 +11,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 
+
 public class GetBaseInfoOfAppController {
+
 
     private final GetBaseInfoOfAppApi.GetBaseInfoOfAppCallback callback;
 
